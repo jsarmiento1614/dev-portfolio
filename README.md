@@ -1,4 +1,4 @@
-# 🚀 Portafolio Personal - Juan Pérez
+# 🚀 Portafolio Personal - Jesús Sarmiento
 
 Un portafolio moderno y dinámico desarrollado con Next.js, React y TypeScript que muestra mis habilidades como desarrollador full stack.
 
@@ -155,9 +155,9 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 
 ## 📞 Contacto
 
-- **Email**: juan.perez@email.com
-- **LinkedIn**: [Juan Pérez](https://linkedin.com/in/juanperez)
-- **GitHub**: [@juanperez](https://github.com/juanperez)
+- **Email**: jsarmiento1614@gmail.com
+- **LinkedIn**: [Jesús Sarmiento](https://linkedin.com/in/jsarmiento1614)
+- **GitHub**: [@jsarmiento1614](https://github.com/jsarmiento1614)
 
 ---
 

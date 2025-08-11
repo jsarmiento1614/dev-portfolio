@@ -59,7 +59,7 @@ export default function Header() {
             href="/" 
             className="text-xl font-bold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 hover:scale-105"
           >
-            <span className="gradient-text">Juan Pérez</span>
+            <span className="gradient-text">Jesús Sarmiento</span>
           </Link>
 
           {/* Desktop Navigation */}

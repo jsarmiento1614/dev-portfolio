@@ -59,8 +59,8 @@ export default function ContactSection() {
     {
       icon: Mail,
       title: "Email",
-      value: "juan.perez@email.com",
-      href: "mailto:juan.perez@email.com",
+      value: "jsarmiento1614@gmail.com",
+      href: "mailto:jsarmiento1614@gmail.com",
       color: "bg-blue-500"
     },
     {
@@ -83,21 +83,21 @@ export default function ContactSection() {
     {
       icon: Linkedin,
       name: "LinkedIn",
-      url: "https://linkedin.com/in/juanperez",
+      url: "https://linkedin.com/in/jsarmiento1614",
       color: "bg-blue-600",
       description: "Conecta conmigo profesionalmente"
     },
     {
       icon: Github,
       name: "GitHub",
-      url: "https://github.com/juanperez",
+      url: "https://github.com/jsarmiento1614",
       color: "bg-gray-900",
       description: "Revisa mi código y proyectos"
     },
     {
       icon: Twitter,
       name: "Twitter",
-      url: "https://twitter.com/juanperez",
+      url: "https://twitter.com/jsarmiento1614",
       color: "bg-blue-400",
       description: "Sígueme para actualizaciones"
     }

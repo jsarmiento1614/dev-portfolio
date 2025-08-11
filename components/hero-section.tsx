@@ -58,7 +58,7 @@ export default function HeroSection() {
         <div className="animate-fade-in-up">
           {/* Name with gradient effect */}
           <h1 className="text-5xl md:text-7xl font-bold mb-6 gradient-text">
-            Juan Pérez
+            Jesús Sarmiento
           </h1>
           
           {/* Animated title */}

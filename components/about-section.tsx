@@ -118,7 +118,7 @@ export default function AboutSection() {
                 <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-blue-100 dark:border-blue-900 shadow-xl hover-lift">
                   <Image
                     src="/professional-developer-portrait.png"
-                    alt="Juan Pérez - Desarrollador Full Stack"
+                    alt="Jesús Sarmiento - Desarrollador Full Stack"
                     width={320}
                     height={320}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
