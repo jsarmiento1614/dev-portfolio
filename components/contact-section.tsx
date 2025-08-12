@@ -19,7 +19,8 @@ import {
   Palette,
   MessageSquare,
   Clock,
-  Globe
+  Globe,
+  MessageCircle
 } from "lucide-react"
 
 export default function ContactSection() {
@@ -64,10 +65,10 @@ export default function ContactSection() {
       color: "bg-blue-500"
     },
     {
-      icon: Phone,
-      title: "Teléfono",
+      icon: MessageCircle,
+      title: "WhatsApp",
       value: "+504 8785-7498",
-      href: "tel:+50487857498",
+      href: "https://wa.me/50487857498",
       color: "bg-green-500"
     },
     {
