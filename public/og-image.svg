@@ -1,0 +1,52 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fafafa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e5e7eb;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1e40af;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="100" cy="100" r="50" fill="#1e40af" opacity="0.1"/>
+  <circle cx="1100" cy="530" r="80" fill="#f97316" opacity="0.1"/>
+  <circle cx="200" cy="500" r="30" fill="#1e40af" opacity="0.05"/>
+  
+  <!-- Main content area -->
+  <rect x="100" y="100" width="1000" height="430" rx="20" fill="white" opacity="0.9"/>
+  
+  <!-- Logo/Title -->
+  <text x="600" y="200" font-family="Arial, sans-serif" font-size="48" font-weight="bold" text-anchor="middle" fill="url(#textGradient)">
+    Jesús Sarmiento
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="600" y="250" font-family="Arial, sans-serif" font-size="24" font-weight="500" text-anchor="middle" fill="#64748b">
+    Desarrollador Full Stack
+  </text>
+  
+  <!-- Tagline -->
+  <text x="600" y="300" font-family="Arial, sans-serif" font-size="18" font-weight="400" text-anchor="middle" fill="#94a3b8">
+    Construyo experiencias digitales simples y efectivas
+  </text>
+  
+  <!-- Technologies -->
+  <text x="600" y="380" font-family="Arial, sans-serif" font-size="16" font-weight="500" text-anchor="middle" fill="#1e40af">
+    React • Next.js • Angular • Node.js • TypeScript
+  </text>
+  
+  <!-- Website -->
+  <text x="600" y="420" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#f97316">
+    jsarmiento.dev
+  </text>
+  
+  <!-- Decorative accent -->
+  <rect x="100" y="100" width="8" height="430" fill="#f97316"/>
+</svg>
