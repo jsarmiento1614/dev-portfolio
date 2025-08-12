@@ -3,12 +3,12 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Sun, Moon } from "lucide-react"
+import { Menu, X } from "lucide-react"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isDarkMode, setIsDarkMode] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,23 +18,12 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  useEffect(() => {
-    // Check for dark mode preference
-    const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches
-    setIsDarkMode(isDark)
-  }, [])
-
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
       element.scrollIntoView({ behavior: "smooth" })
     }
     setIsMobileMenuOpen(false)
-  }
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode)
-    document.documentElement.classList.toggle("dark")
   }
 
   const navItems = [
@@ -76,18 +65,7 @@ export default function Header() {
             ))}
             
             {/* Dark mode toggle */}
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={toggleDarkMode}
-              className="w-10 h-10 p-0 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
-            >
-              {isDarkMode ? (
-                <Sun className="w-5 h-5 text-yellow-500" />
-              ) : (
-                <Moon className="w-5 h-5 text-gray-600" />
-              )}
-            </Button>
+            <ThemeToggle />
 
             {/* CTA Button - Marca Personal */}
             <Button
@@ -100,18 +78,7 @@ export default function Header() {
 
           {/* Mobile menu button */}
           <div className="lg:hidden flex items-center space-x-2">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={toggleDarkMode}
-              className="w-10 h-10 p-0 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
-            >
-              {isDarkMode ? (
-                <Sun className="w-5 h-5 text-yellow-500" />
-              ) : (
-                <Moon className="w-5 h-5 text-gray-600" />
-              )}
-            </Button>
+            <ThemeToggle />
             
             <Button
               variant="ghost"

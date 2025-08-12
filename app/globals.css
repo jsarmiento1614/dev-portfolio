@@ -188,6 +188,8 @@
   .bg-brand-accent {
     background-color: var(--color-accent);
   }
+
+
 }
 
 /* Enhanced animations */
@@ -329,6 +331,8 @@
   animation: gradient-shift 3s ease infinite;
 }
 
+
+
 @keyframes gradient-shift {
   0%, 100% {
     background-position: 0% 50%;
@@ -357,6 +361,8 @@
   box-shadow: 0 4px 12px rgba(30, 64, 175, 0.25);
 }
 
+
+
 .btn-brand-secondary {
   background-color: transparent;
   color: var(--color-primary);
@@ -374,6 +380,8 @@
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(30, 64, 175, 0.15);
 }
+
+
 
 /* Enlaces según la guía de marca */
 .link-brand {
@@ -404,6 +412,8 @@
   width: 100%;
 }
 
+
+
 /* Tagline styling */
 .tagline {
   font-family: 'Poppins', sans-serif;
@@ -418,6 +428,8 @@
   color: var(--color-accent);
   font-weight: 600;
 }
+
+
 
 /* Glass effect */
 .glass {
