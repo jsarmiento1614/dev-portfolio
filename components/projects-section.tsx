@@ -6,7 +6,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
-import { ExternalLink, Github, Eye, ArrowRight, Calendar, Palette } from "lucide-react"
+import { ExternalLink, Github, Eye, ArrowRight, Calendar, Palette, Code } from "lucide-react"
 
 export default function ProjectsSection() {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null)
