@@ -6,13 +6,13 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
-import { ExternalLink, Github, Eye, ArrowRight, Calendar } from "lucide-react"
+import { ExternalLink, Github, Eye, ArrowRight, Calendar, Palette } from "lucide-react"
 
 export default function ProjectsSection() {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null)
   const { elementRef, isVisible } = useScrollAnimation()
 
-  const projects = [
+  const developmentProjects = [
     {
       id: 1,
       title: "Randa Ticketera NFT",
@@ -54,48 +54,51 @@ export default function ProjectsSection() {
       featured: false,
       period: "2021-12 - 2023-05",
       role: "Desarrollador Web Angular"
-    },
+    }
+  ]
+
+  const designProjects = [
     {
       id: 4,
-      title: "Grupo Leitz - App Móvil",
+      title: "Multicomer - UX/UI Design",
       description:
-        "Aplicación móvil desarrollada con Xamarin Forms para gestión interna del Grupo Leitz. Sistema completo de gestión empresarial móvil.",
-      image: "/modern-ecommerce-dashboard.png",
-      technologies: ["Xamarin Forms", "C#", ".NET", "SQL Server"],
+        "Proyecto completo de diseño UX/UI para plataforma de comercio electrónico. Diseño centrado en el usuario con wireframes, prototipos y sistema de diseño completo.",
+      image: "/preview/project4.png",
+      technologies: ["Figma", "Adobe XD", "Sketch", "UX Research", "UI Design"],
       demoUrl: "#",
       repoUrl: "#",
-      category: "Mobile App",
-      featured: false,
-      period: "2021-04 - 2021-11",
-      role: "Desarrollador Móvil Xamarin"
+      category: "UX/UI Design",
+      featured: true,
+      period: "2021-01 - 2021-04",
+      role: "Diseñador UX/UI"
     },
     {
       id: 5,
-      title: "Chocolats Halba",
+      title: "San Rafael - App Design",
       description:
-        "Sistema de gestión para Chocolats Halba desarrollado con .NET, Xamarin, DotLiquid y Razor. Aplicación web y móvil integrada.",
-      image: "/task-management-app.png",
-      technologies: [".NET", "Xamarin", "DotLiquid", "Razor", "C#"],
+        "Diseño completo de aplicación móvil para San Rafael. Incluye investigación de usuarios, arquitectura de información y diseño de interfaces.",
+      image: "/modern-ecommerce-dashboard.png",
+      technologies: ["Figma", "Adobe Creative Suite", "UX Research", "Mobile Design"],
       demoUrl: "#",
       repoUrl: "#",
-      category: "Full Stack",
+      category: "Mobile Design",
       featured: false,
-      period: "2021-01 - 2021-04",
-      role: "Desarrollador .NET/C#"
+      period: "2020-06 - 2021-01",
+      role: "Diseñador UX/UI Móvil"
     },
     {
       id: 6,
-      title: "Multicomer - UX/UI + Angular",
+      title: "Inversiones la Paz - Web Design",
       description:
-        "Proyecto completo de diseño UX/UI y desarrollo web con Angular 9 y TypeScript. Plataforma de comercio electrónico moderna.",
-      image: "/preview/project4.png",
-      technologies: ["Figma", "Angular 9", "TypeScript", "UX/UI Design"],
+        "Diseño de interfaz web para sistema empresarial. Creación de sistema de diseño, componentes reutilizables y experiencia de usuario optimizada.",
+      image: "/task-management-app.png",
+      technologies: ["Figma", "Adobe Photoshop", "UI Design", "Design System"],
       demoUrl: "#",
       repoUrl: "#",
-      category: "Design + Web",
+      category: "Web Design",
       featured: false,
-      period: "2021-01 - 2021-04",
-      role: "Diseñador UX + Desarrollador Angular"
+      period: "2019-03 - 2020-10",
+      role: "Diseñador UI"
     }
   ]
 
@@ -125,139 +128,298 @@ export default function ProjectsSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <Card 
-              key={project.id} 
-              className={`group relative overflow-hidden bg-white dark:bg-gray-800 border-0 shadow-lg hover-lift transition-all duration-500 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              }`}
-              style={{ 
-                transitionDelay: `${index * 200}ms`,
-                transform: hoveredProject === project.id ? "translateY(-8px) scale(1.02)" : "translateY(0) scale(1)"
-              }}
-              onMouseEnter={() => setHoveredProject(project.id)}
-              onMouseLeave={() => setHoveredProject(null)}
-            >
-              <CardContent className="p-0">
-                {/* Project image with overlay */}
-                <div className="relative overflow-hidden">
-                  <Image
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    width={500}
-                    height={300}
-                    className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  
-                  {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <div className="flex gap-2">
-                        <Button 
-                          asChild 
-                          size="sm" 
-                          className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-0"
-                        >
-                          <Link href={project.demoUrl} target="_blank" rel="noopener noreferrer">
-                            <Eye className="w-4 h-4 mr-1" />
-                            Demo
-                          </Link>
-                        </Button>
-                        <Button 
-                          asChild 
-                          size="sm" 
-                          variant="outline"
-                          className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-white/30"
-                        >
-                          <Link href={project.repoUrl} target="_blank" rel="noopener noreferrer">
-                            <Github className="w-4 h-4 mr-1" />
-                            Código
-                          </Link>
-                        </Button>
+        {/* Development Projects Section */}
+        <div className="mb-16">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+              Proyectos de <span className="gradient-text">Desarrollo</span>
+            </h3>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              Aplicaciones web y móviles desarrolladas con las últimas tecnologías y mejores prácticas.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {developmentProjects.map((project, index) => (
+              <Card 
+                key={project.id} 
+                className={`group relative overflow-hidden bg-white dark:bg-gray-800 border-0 shadow-lg hover-lift transition-all duration-500 ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                }`}
+                style={{ 
+                  transitionDelay: `${index * 200}ms`,
+                  transform: hoveredProject === project.id ? "translateY(-8px) scale(1.02)" : "translateY(0) scale(1)"
+                }}
+                onMouseEnter={() => setHoveredProject(project.id)}
+                onMouseLeave={() => setHoveredProject(null)}
+              >
+                <CardContent className="p-0">
+                  {/* Project image with overlay */}
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src={project.image || "/placeholder.svg"}
+                      alt={project.title}
+                      width={500}
+                      height={300}
+                      className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <div className="flex gap-2">
+                          <Button 
+                            asChild 
+                            size="sm" 
+                            className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-0"
+                          >
+                            <Link href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+                              <Eye className="w-4 h-4 mr-1" />
+                              Demo
+                            </Link>
+                          </Button>
+                          <Button 
+                            asChild 
+                            size="sm" 
+                            variant="outline"
+                            className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-white/30"
+                          >
+                            <Link href={project.repoUrl} target="_blank" rel="noopener noreferrer">
+                              <Github className="w-4 h-4 mr-1" />
+                              Código
+                            </Link>
+                          </Button>
+                        </div>
                       </div>
                     </div>
+
+                    {/* Featured badge */}
+                    {project.featured && (
+                      <div className="absolute top-4 right-4">
+                        <span className="px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs font-semibold rounded-full">
+                          Destacado
+                        </span>
+                      </div>
+                    )}
                   </div>
 
-                  {/* Featured badge */}
-                  {project.featured && (
-                    <div className="absolute top-4 right-4">
-                      <span className="px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs font-semibold rounded-full">
-                        Destacado
+                  <div className="p-6">
+                    {/* Period and Role */}
+                    <div className="mb-3 flex items-center justify-between">
+                      <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
+                        {project.category}
+                      </span>
+                      <div className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
+                        <Calendar className="w-3 h-3" />
+                        <span>{project.period}</span>
+                      </div>
+                    </div>
+
+                    {/* Role */}
+                    <div className="mb-2">
+                      <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
+                        {project.role}
                       </span>
                     </div>
-                  )}
-                </div>
 
-                <div className="p-6">
-                  {/* Period and Role */}
-                  <div className="mb-3 flex items-center justify-between">
-                    <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
-                      {project.category}
-                    </span>
-                    <div className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
-                      <Calendar className="w-3 h-3" />
-                      <span>{project.period}</span>
+                    {/* Title */}
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                      {project.title}
+                    </h3>
+                    
+                    {/* Description */}
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed text-sm">
+                      {project.description}
+                    </p>
+
+                    {/* Technologies */}
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {project.technologies.map((tech) => (
+                        <span 
+                          key={tech} 
+                          className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium transition-colors hover:bg-blue-100 dark:hover:bg-blue-900 hover:text-blue-700 dark:hover:text-blue-300"
+                        >
+                          {tech}
+                        </span>
+                      ))}
                     </div>
-                  </div>
 
-                  {/* Role */}
-                  <div className="mb-2">
-                    <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
-                      {project.role}
-                    </span>
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                    {project.title}
-                  </h3>
-                  
-                  {/* Description */}
-                  <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed text-sm">
-                    {project.description}
-                  </p>
-
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.technologies.map((tech) => (
-                      <span 
-                        key={tech} 
-                        className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium transition-colors hover:bg-blue-100 dark:hover:bg-blue-900 hover:text-blue-700 dark:hover:text-blue-300"
+                    {/* Action buttons */}
+                    <div className="flex gap-3">
+                      <Button 
+                        asChild 
+                        size="sm" 
+                        className="bg-blue-600 hover:bg-blue-700 text-white flex-1 group/btn"
                       >
-                        {tech}
-                      </span>
-                    ))}
+                        <Link href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+                          <ExternalLink className="w-4 h-4 mr-2 group-hover/btn:translate-x-1 transition-transform" />
+                          Ver Demo
+                        </Link>
+                      </Button>
+                      <Button 
+                        asChild 
+                        variant="outline" 
+                        size="sm"
+                        className="group/btn"
+                      >
+                        <Link href={project.repoUrl} target="_blank" rel="noopener noreferrer">
+                          <Github className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
+                          Código
+                        </Link>
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Design Projects Section */}
+        <div className="mb-16">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+              Proyectos de <span className="gradient-text">Diseño UX/UI</span>
+            </h3>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              Diseños centrados en el usuario con investigación UX, wireframes, prototipos y sistemas de diseño.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {designProjects.map((project, index) => (
+              <Card 
+                key={project.id} 
+                className={`group relative overflow-hidden bg-white dark:bg-gray-800 border-0 shadow-lg hover-lift transition-all duration-500 ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                }`}
+                style={{ 
+                  transitionDelay: `${index * 200}ms`,
+                  transform: hoveredProject === project.id ? "translateY(-8px) scale(1.02)" : "translateY(0) scale(1)"
+                }}
+                onMouseEnter={() => setHoveredProject(project.id)}
+                onMouseLeave={() => setHoveredProject(null)}
+              >
+                <CardContent className="p-0">
+                  {/* Project image with overlay */}
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src={project.image || "/placeholder.svg"}
+                      alt={project.title}
+                      width={500}
+                      height={300}
+                      className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <div className="flex gap-2">
+                          <Button 
+                            asChild 
+                            size="sm" 
+                            className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-0"
+                          >
+                            <Link href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+                              <Eye className="w-4 h-4 mr-1" />
+                              Ver Diseño
+                            </Link>
+                          </Button>
+                          <Button 
+                            asChild 
+                            size="sm" 
+                            variant="outline"
+                            className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-white/30"
+                          >
+                            <Link href={project.repoUrl} target="_blank" rel="noopener noreferrer">
+                              <Palette className="w-4 h-4 mr-1" />
+                              Portfolio
+                            </Link>
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Featured badge */}
+                    {project.featured && (
+                      <div className="absolute top-4 right-4">
+                        <span className="px-3 py-1 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-semibold rounded-full">
+                          Destacado
+                        </span>
+                      </div>
+                    )}
                   </div>
 
-                  {/* Action buttons */}
-                  <div className="flex gap-3">
-                    <Button 
-                      asChild 
-                      size="sm" 
-                      className="bg-blue-600 hover:bg-blue-700 text-white flex-1 group/btn"
-                    >
-                      <Link href={project.demoUrl} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="w-4 h-4 mr-2 group-hover/btn:translate-x-1 transition-transform" />
-                        Ver Demo
-                      </Link>
-                    </Button>
-                    <Button 
-                      asChild 
-                      variant="outline" 
-                      size="sm"
-                      className="group/btn"
-                    >
-                      <Link href={project.repoUrl} target="_blank" rel="noopener noreferrer">
-                        <Github className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
-                        Código
-                      </Link>
-                    </Button>
+                  <div className="p-6">
+                    {/* Period and Role */}
+                    <div className="mb-3 flex items-center justify-between">
+                      <span className="text-sm font-medium text-purple-600 dark:text-purple-400">
+                        {project.category}
+                      </span>
+                      <div className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
+                        <Calendar className="w-3 h-3" />
+                        <span>{project.period}</span>
+                      </div>
+                    </div>
+
+                    {/* Role */}
+                    <div className="mb-2">
+                      <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
+                        {project.role}
+                      </span>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                      {project.title}
+                    </h3>
+                    
+                    {/* Description */}
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed text-sm">
+                      {project.description}
+                    </p>
+
+                    {/* Technologies */}
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {project.technologies.map((tech) => (
+                        <span 
+                          key={tech} 
+                          className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium transition-colors hover:bg-purple-200 dark:hover:bg-purple-900/50"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Action buttons */}
+                    <div className="flex gap-3">
+                      <Button 
+                        asChild 
+                        size="sm" 
+                        className="bg-purple-600 hover:bg-purple-700 text-white flex-1 group/btn"
+                      >
+                        <Link href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+                          <Eye className="w-4 h-4 mr-2 group-hover/btn:translate-x-1 transition-transform" />
+                          Ver Diseño
+                        </Link>
+                      </Button>
+                      <Button 
+                        asChild 
+                        variant="outline" 
+                        size="sm"
+                        className="group/btn border-purple-300 text-purple-600 hover:bg-purple-50 dark:border-purple-600 dark:text-purple-400 dark:hover:bg-purple-900/20"
+                      >
+                        <Link href={project.repoUrl} target="_blank" rel="noopener noreferrer">
+                          <Palette className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
+                          Portfolio
+                        </Link>
+                      </Button>
+                    </div>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
 
         {/* View more projects button */}
