@@ -32,7 +32,7 @@ export default function HeroSection() {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 py-8 sm:py-12"
     >
       {/* Animated background - Marca Personal */}
       <div className="absolute inset-0 bg-gradient-to-br from-brand-base via-white to-brand-base dark:from-slate-900 dark:via-slate-800 dark:to-slate-900" />
@@ -40,98 +40,98 @@ export default function HeroSection() {
       {/* Floating elements - Marca Personal */}
       <div className="absolute inset-0 overflow-hidden">
         <div 
-          className="absolute top-20 left-10 w-20 h-20 bg-brand-primary/20 dark:bg-brand-primary/30 rounded-full opacity-30 animate-float"
+          className="absolute top-10 sm:top-20 left-5 sm:left-10 w-12 h-12 sm:w-20 sm:h-20 bg-brand-primary/20 dark:bg-brand-primary/30 rounded-full opacity-20 sm:opacity-30 animate-float"
           style={{ animationDelay: "0s" }}
         />
         <div 
-          className="absolute top-40 right-20 w-16 h-16 bg-brand-accent/20 dark:bg-brand-accent/30 rounded-full opacity-30 animate-float"
+          className="absolute top-20 sm:top-40 right-5 sm:right-20 w-10 h-10 sm:w-16 sm:h-16 bg-brand-accent/20 dark:bg-brand-accent/30 rounded-full opacity-20 sm:opacity-30 animate-float"
           style={{ animationDelay: "1s" }}
         />
         <div 
-          className="absolute bottom-40 left-20 w-12 h-12 bg-brand-primary/20 dark:bg-brand-primary/30 rounded-full opacity-30 animate-float"
+          className="absolute bottom-20 sm:bottom-40 left-5 sm:left-20 w-8 h-8 sm:w-12 sm:h-12 bg-brand-primary/20 dark:bg-brand-primary/30 rounded-full opacity-20 sm:opacity-30 animate-float"
           style={{ animationDelay: "2s" }}
         />
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative z-10 max-w-6xl mx-auto px-2 sm:px-6 lg:px-8 text-center">
         <div className="animate-fade-in-up">
           {/* Name with gradient effect - Marca Personal */}
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 gradient-text font-brand-primary">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 sm:mb-6 gradient-text font-brand-primary leading-tight">
             Jesús Sarmiento
           </h1>
           
           {/* Animated title */}
-          <div className="mb-8">
-            <h2 className="text-xl sm:text-2xl md:text-3xl text-brand-primary dark:text-brand-primary font-semibold mb-4 font-brand-primary">
+          <div className="mb-6 sm:mb-8">
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-brand-primary dark:text-brand-primary font-semibold mb-3 sm:mb-4 font-brand-primary">
               Full Stack Developer
             </h2>
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-4 text-sm text-gray-600 dark:text-gray-400">
-              <div className="flex items-center gap-2">
-                <Code className="w-4 h-4" />
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-1 sm:gap-2 md:gap-4 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+              <div className="flex items-center gap-1 sm:gap-2">
+                <Code className="w-3 h-3 sm:w-4 sm:h-4" />
                 <span>Desarrollo Web</span>
               </div>
               <div className="hidden sm:block w-1 h-1 bg-gray-400 rounded-full" />
-              <div className="flex items-center gap-2">
-                <Smartphone className="w-4 h-4" />
+              <div className="flex items-center gap-1 sm:gap-2">
+                <Smartphone className="w-3 h-3 sm:w-4 sm:h-4" />
                 <span>Desarrollo Móvil</span>
               </div>
               <div className="hidden sm:block w-1 h-1 bg-gray-400 rounded-full" />
-              <div className="flex items-center gap-2">
-                <Palette className="w-4 h-4" />
+              <div className="flex items-center gap-1 sm:gap-2">
+                <Palette className="w-3 h-3 sm:w-4 sm:h-4" />
                 <span>UI/UX Design</span>
               </div>
             </div>
           </div>
 
           {/* Description */}
-          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed px-4 font-brand-secondary">
+          <p className="text-sm sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-2 sm:px-4 font-brand-secondary">
             Profesional enfocado en el diseño y desarrollo de aplicaciones web/móviles; aplicando un toque de UX/UI 
             a cada proyecto. Especializado en Angular, React, .NET/C#, Flutter y tecnologías modernas.
           </p>
 
           {/* CTA Buttons - Marca Personal */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 px-4">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-12 sm:mb-16 px-2 sm:px-4">
             <Button
               onClick={scrollToProjects}
               size="lg"
-              className="btn-brand-primary px-8 py-3 text-lg font-semibold rounded-lg transition-all duration-300 hover:scale-105 group"
+              className="btn-brand-primary px-6 sm:px-8 py-2.5 sm:py-3 text-base sm:text-lg font-semibold rounded-lg transition-all duration-300 hover:scale-105 group w-full sm:w-auto"
             >
               Ver proyectos
-              <ArrowDown className="ml-2 w-5 h-5 group-hover:translate-y-1 transition-transform" />
+              <ArrowDown className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-y-1 transition-transform" />
             </Button>
             <Button
               onClick={scrollToAbout}
               variant="outline"
               size="lg"
-              className="btn-brand-secondary px-8 py-3 text-lg font-semibold rounded-lg transition-all duration-300 hover:scale-105"
+              className="btn-brand-secondary px-6 sm:px-8 py-2.5 sm:py-3 text-base sm:text-lg font-semibold rounded-lg transition-all duration-300 hover:scale-105 w-full sm:w-auto"
             >
               Conoce más
             </Button>
           </div>
 
           {/* Stats - Marca Personal */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-2xl mx-auto px-4">
+          <div className="grid grid-cols-3 gap-2 sm:gap-6 md:gap-8 max-w-2xl mx-auto px-2 sm:px-4">
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-brand-primary dark:text-brand-primary mb-2 font-brand-primary">5+</div>
-              <div className="text-sm sm:text-base text-gray-600 dark:text-gray-400 font-brand-secondary">Años de experiencia</div>
+              <div className="text-lg sm:text-2xl md:text-3xl font-bold text-brand-primary dark:text-brand-primary mb-1 sm:mb-2 font-brand-primary">5+</div>
+              <div className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 font-brand-secondary leading-tight">Años de experiencia</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-brand-primary dark:text-brand-primary mb-2 font-brand-primary">15+</div>
-              <div className="text-sm sm:text-base text-gray-600 dark:text-gray-400 font-brand-secondary">Proyectos completados</div>
+              <div className="text-lg sm:text-2xl md:text-3xl font-bold text-brand-primary dark:text-brand-primary mb-1 sm:mb-2 font-brand-primary">15+</div>
+              <div className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 font-brand-secondary leading-tight">Proyectos completados</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-brand-primary dark:text-brand-primary mb-2 font-brand-primary">100%</div>
-              <div className="text-sm sm:text-base text-gray-600 dark:text-gray-400 font-brand-secondary">Satisfacción del cliente</div>
+              <div className="text-lg sm:text-2xl md:text-3xl font-bold text-brand-primary dark:text-brand-primary mb-1 sm:mb-2 font-brand-primary">100%</div>
+              <div className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 font-brand-secondary leading-tight">Satisfacción del cliente</div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-gray-400 dark:border-gray-600 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-gray-400 dark:bg-gray-600 rounded-full mt-2 animate-pulse" />
+      <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="w-5 h-8 sm:w-6 sm:h-10 border-2 border-gray-400 dark:border-gray-600 rounded-full flex justify-center">
+          <div className="w-1 h-2 sm:h-3 bg-gray-400 dark:bg-gray-600 rounded-full mt-1.5 sm:mt-2 animate-pulse" />
         </div>
       </div>
 
