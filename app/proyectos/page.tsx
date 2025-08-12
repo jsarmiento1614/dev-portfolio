@@ -310,6 +310,10 @@ export default function AllProjectsPage() {
                          ? 'object-contain bg-gray-100 dark:bg-gray-700' 
                          : 'object-cover'
                      }`}
+                     onError={(e) => {
+                       const target = e.target as HTMLImageElement;
+                       target.src = "/placeholder.svg";
+                     }}
                    />
                   
                   {/* Status badge */}
