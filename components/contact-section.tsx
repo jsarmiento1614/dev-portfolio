@@ -66,14 +66,14 @@ export default function ContactSection() {
     {
       icon: Phone,
       title: "Teléfono",
-      value: "+1 (555) 123-4567",
-      href: "tel:+15551234567",
+      value: "+504 8785-7498",
+      href: "tel:+50487857498",
       color: "bg-green-500"
     },
     {
       icon: MapPin,
       title: "Ubicación",
-      value: "Madrid, España",
+      value: "Copán, Honduras",
       href: "#",
       color: "bg-purple-500"
     }
@@ -95,11 +95,11 @@ export default function ContactSection() {
       description: "Revisa mi código y proyectos"
     },
     {
-      icon: Twitter,
-      name: "Twitter",
-      url: "https://twitter.com/jsarmiento1614",
-      color: "bg-blue-400",
-      description: "Sígueme para actualizaciones"
+      icon: Palette,
+      name: "Behance",
+      url: "https://www.behance.net/jsarmiento1614",
+      color: "bg-blue-500",
+      description: "Portfolio de diseño UX/UI"
     }
   ]
 

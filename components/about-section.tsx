@@ -15,7 +15,12 @@ import {
   Award,
   Users,
   Clock,
-  TrendingUp
+  TrendingUp,
+  Palette,
+  GraduationCap,
+  MapPin,
+  Mail,
+  Phone
 } from "lucide-react"
 
 export default function AboutSection() {
@@ -23,14 +28,18 @@ export default function AboutSection() {
   const { elementRef, isVisible } = useScrollAnimation()
 
   const skills = [
+    { name: "Angular", icon: Code, category: "Frontend", level: 95 },
     { name: "React", icon: Code, category: "Frontend", level: 95 },
-    { name: "Next.js", icon: Globe, category: "Frontend", level: 90 },
-    { name: "TypeScript", icon: Code, category: "Frontend", level: 88 },
-    { name: "Node.js", icon: Code, category: "Backend", level: 85 },
-    { name: "Python", icon: Code, category: "Backend", level: 80 },
-    { name: "PostgreSQL", icon: Database, category: "Database", level: 85 },
+    { name: ".NET/C#", icon: Code, category: "Backend", level: 95 },
+    { name: "TypeScript", icon: Code, category: "Frontend", level: 95 },
+    { name: "JavaScript", icon: Code, category: "Frontend", level: 95 },
+    { name: "NodeJS", icon: Code, category: "Backend", level: 95 },
+    { name: "Flutter", icon: Smartphone, category: "Mobile", level: 80 },
+    { name: "Xamarin", icon: Smartphone, category: "Mobile", level: 80 },
+    { name: "SQL Server", icon: Database, category: "Database", level: 80 },
     { name: "MongoDB", icon: Database, category: "Database", level: 80 },
-    { name: "AWS", icon: Cloud, category: "Cloud", level: 75 },
+    { name: "Docker", icon: Cloud, category: "DevOps", level: 80 },
+    { name: "Figma", icon: Palette, category: "Design", level: 95 },
   ]
 
   const experiences = [
@@ -41,22 +50,22 @@ export default function AboutSection() {
     },
     {
       icon: Users,
-      title: "50+ Proyectos",
+      title: "15+ Proyectos",
       description: "Completados exitosamente"
     },
     {
-      icon: Clock,
-      title: "24/7",
-      description: "Soporte disponible"
+      icon: GraduationCap,
+      title: "Ingeniería",
+      description: "En Informática"
     },
     {
-      icon: TrendingUp,
-      title: "100%",
-      description: "Satisfacción del cliente"
+      icon: MapPin,
+      title: "Copán",
+      description: "Honduras"
     }
   ]
 
-  const skillCategories = ["Frontend", "Backend", "Database", "Cloud"]
+  const skillCategories = ["Frontend", "Backend", "Mobile", "Database", "DevOps", "Design"]
 
   return (
     <section id="sobre-mi" className="py-20 bg-white dark:bg-gray-900 relative overflow-hidden">
@@ -80,15 +89,38 @@ export default function AboutSection() {
                 Sobre <span className="gradient-text">mí</span>
               </h2>
               <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                Soy un desarrollador full stack apasionado por crear soluciones digitales innovadoras. 
-                Con más de 5 años de experiencia, he trabajado en proyectos que van desde aplicaciones 
-                web complejas hasta sistemas empresariales.
+                Soy un profesional enfocado en el diseño y desarrollo de aplicaciones web/móviles, 
+                aplicando un toque de UX/UI a cada proyecto. Con más de 5 años de experiencia, 
+                he trabajado en proyectos que van desde aplicaciones web complejas hasta sistemas móviles.
               </p>
               <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
                 Mi enfoque se centra en escribir código limpio, escalable y mantenible, siempre 
                 buscando las mejores prácticas y las tecnologías más actuales para ofrecer 
                 resultados excepcionales.
               </p>
+            </div>
+
+            {/* Personal Info */}
+            <div className="space-y-4">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Información Personal</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="flex items-center gap-3">
+                  <Mail className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                  <span className="text-gray-600 dark:text-gray-300">jsarmiento1614@gmail.com</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Phone className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                  <span className="text-gray-600 dark:text-gray-300">+504 8785-7498</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <MapPin className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                  <span className="text-gray-600 dark:text-gray-300">Copán, Honduras</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Globe className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                  <span className="text-gray-600 dark:text-gray-300">Hondureño</span>
+                </div>
+              </div>
             </div>
 
             {/* Experience cards */}
@@ -118,7 +150,7 @@ export default function AboutSection() {
                 <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-blue-100 dark:border-blue-900 shadow-xl hover-lift">
                   <Image
                     src="/professional-developer-portrait.png"
-                    alt="Jesús Sarmiento - Desarrollador Full Stack"
+                    alt="Jesús Alberto Sarmiento Bautista - Full Stack Web/Móvil Developer"
                     width={320}
                     height={320}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -130,10 +162,10 @@ export default function AboutSection() {
                   <Code className="w-8 h-8 text-white" />
                 </div>
                 <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center animate-float" style={{ animationDelay: "1s" }}>
-                  <Database className="w-8 h-8 text-white" />
+                  <Smartphone className="w-8 h-8 text-white" />
                 </div>
                 <div className="absolute top-1/2 -right-8 w-12 h-12 bg-cyan-500 rounded-full flex items-center justify-center animate-float" style={{ animationDelay: "2s" }}>
-                  <Globe className="w-6 h-6 text-white" />
+                  <Palette className="w-6 h-6 text-white" />
                 </div>
               </div>
             </div>

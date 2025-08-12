@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { useParallax } from "@/hooks/use-scroll-animation"
-import { ArrowDown, Code, Palette, Zap } from "lucide-react"
+import { ArrowDown, Code, Palette, Zap, Smartphone, Globe } from "lucide-react"
 
 export default function HeroSection() {
   const [mounted, setMounted] = useState(false)
@@ -58,36 +58,36 @@ export default function HeroSection() {
         <div className="animate-fade-in-up">
           {/* Name with gradient effect */}
           <h1 className="text-5xl md:text-7xl font-bold mb-6 gradient-text">
-            Jesús Sarmiento
+            Jesús Alberto Sarmiento Bautista
           </h1>
           
           {/* Animated title */}
           <div className="mb-8">
             <h2 className="text-2xl md:text-3xl text-blue-600 dark:text-blue-400 font-semibold mb-4">
-              Desarrollador Full Stack
+              Full Stack Web/Móvil Developer
             </h2>
             <div className="flex justify-center items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
               <div className="flex items-center gap-2">
                 <Code className="w-4 h-4" />
-                <span>Código Limpio</span>
+                <span>Desarrollo Web</span>
+              </div>
+              <div className="w-1 h-1 bg-gray-400 rounded-full" />
+              <div className="flex items-center gap-2">
+                <Smartphone className="w-4 h-4" />
+                <span>Desarrollo Móvil</span>
               </div>
               <div className="w-1 h-1 bg-gray-400 rounded-full" />
               <div className="flex items-center gap-2">
                 <Palette className="w-4 h-4" />
-                <span>Diseño Elegante</span>
-              </div>
-              <div className="w-1 h-1 bg-gray-400 rounded-full" />
-              <div className="flex items-center gap-2">
-                <Zap className="w-4 h-4" />
-                <span>Rendimiento</span>
+                <span>UI/UX Design</span>
               </div>
             </div>
           </div>
 
           {/* Description */}
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Creo experiencias digitales excepcionales combinando diseño elegante con código limpio y eficiente.
-            Especializado en React, Next.js y Node.js.
+            Profesional enfocado en el diseño y desarrollo de aplicaciones web/móviles; aplicando un toque de UX/UI 
+            a cada proyecto. Especializado en Angular, React, .NET/C#, Flutter y tecnologías modernas.
           </p>
 
           {/* CTA Buttons */}
@@ -117,7 +117,7 @@ export default function HeroSection() {
               <div className="text-gray-600 dark:text-gray-400">Años de experiencia</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">50+</div>
+              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">15+</div>
               <div className="text-gray-600 dark:text-gray-400">Proyectos completados</div>
             </div>
             <div className="text-center">

@@ -6,7 +6,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
-import { ExternalLink, Github, Eye, ArrowRight } from "lucide-react"
+import { ExternalLink, Github, Eye, ArrowRight, Calendar } from "lucide-react"
 
 export default function ProjectsSection() {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null)
@@ -15,40 +15,88 @@ export default function ProjectsSection() {
   const projects = [
     {
       id: 1,
-      title: "E-commerce Platform",
+      title: "Randa Ticketera NFT",
       description:
-        "Plataforma de comercio electrónico completa con panel de administración, gestión de inventario y pasarela de pagos integrada.",
+        "Plataforma de ticketera NFT desarrollada con React 18, Node.js, Express, Next.js, PostgreSQL y Docker. Sistema completo de gestión de eventos y tokens NFT.",
       image: "/modern-ecommerce-dashboard.png",
-      technologies: ["Next.js", "TypeScript", "Stripe", "PostgreSQL"],
-      demoUrl: "https://demo-ecommerce.vercel.app",
-      repoUrl: "https://github.com/juanperez/ecommerce-platform",
-      category: "Full Stack",
+      technologies: ["React 18", "Node.js", "Express", "Next.js", "PostgreSQL", "Docker"],
+      demoUrl: "#",
+      repoUrl: "#",
+      category: "Web App",
       featured: true,
+      period: "2024-12 - 2025-08",
+      role: "Desarrollador React"
     },
     {
       id: 2,
-      title: "Task Management App",
+      title: "Zero Variance - Ubiquity",
       description:
-        "Aplicación de gestión de tareas con colaboración en tiempo real, notificaciones push y análisis de productividad avanzado.",
+        "Sistema empresarial desarrollado con Angular 15, .NET Core 8 y SQL Server. Aplicación compleja para gestión de datos y análisis de varianza.",
       image: "/task-management-app.png",
-      technologies: ["React", "Node.js", "Socket.io", "MongoDB"],
-      demoUrl: "https://taskmanager-demo.vercel.app",
-      repoUrl: "https://github.com/juanperez/task-manager",
-      category: "Web App",
+      technologies: ["Angular 15", ".NET Core 8", "SQL Server", "TypeScript"],
+      demoUrl: "#",
+      repoUrl: "#",
+      category: "Enterprise",
       featured: true,
+      period: "2023-05 - 2024-12",
+      role: "Desarrollador Angular"
     },
     {
       id: 3,
-      title: "Weather Dashboard",
+      title: "NexGen Virtual Office",
       description: 
-        "Dashboard meteorológico con pronósticos detallados, mapas interactivos y alertas personalizadas para múltiples ubicaciones.",
+        "Oficina virtual completa desarrollada con Angular. Sistema de gestión empresarial con múltiples módulos integrados.",
       image: "/preview/project4.png",
-      technologies: ["Vue.js", "Python", "FastAPI", "Chart.js"],
-      demoUrl: "https://weather-dashboard-demo.vercel.app",
-      repoUrl: "https://github.com/juanperez/weather-dashboard",
-      category: "Dashboard",
+      technologies: ["Angular", "TypeScript", "Node.js", "MongoDB"],
+      demoUrl: "#",
+      repoUrl: "#",
+      category: "Web App",
       featured: false,
+      period: "2021-12 - 2023-05",
+      role: "Desarrollador Web Angular"
     },
+    {
+      id: 4,
+      title: "Grupo Leitz - App Móvil",
+      description:
+        "Aplicación móvil desarrollada con Xamarin Forms para gestión interna del Grupo Leitz. Sistema completo de gestión empresarial móvil.",
+      image: "/modern-ecommerce-dashboard.png",
+      technologies: ["Xamarin Forms", "C#", ".NET", "SQL Server"],
+      demoUrl: "#",
+      repoUrl: "#",
+      category: "Mobile App",
+      featured: false,
+      period: "2021-04 - 2021-11",
+      role: "Desarrollador Móvil Xamarin"
+    },
+    {
+      id: 5,
+      title: "Chocolats Halba",
+      description:
+        "Sistema de gestión para Chocolats Halba desarrollado con .NET, Xamarin, DotLiquid y Razor. Aplicación web y móvil integrada.",
+      image: "/task-management-app.png",
+      technologies: [".NET", "Xamarin", "DotLiquid", "Razor", "C#"],
+      demoUrl: "#",
+      repoUrl: "#",
+      category: "Full Stack",
+      featured: false,
+      period: "2021-01 - 2021-04",
+      role: "Desarrollador .NET/C#"
+    },
+    {
+      id: 6,
+      title: "Multicomer - UX/UI + Angular",
+      description:
+        "Proyecto completo de diseño UX/UI y desarrollo web con Angular 9 y TypeScript. Plataforma de comercio electrónico moderna.",
+      image: "/preview/project4.png",
+      technologies: ["Figma", "Angular 9", "TypeScript", "UX/UI Design"],
+      demoUrl: "#",
+      repoUrl: "#",
+      category: "Design + Web",
+      featured: false,
+      period: "2021-01 - 2021-04",
+      role: "Diseñador UX + Desarrollador Angular"
+    }
   ]
 
   return (
@@ -73,7 +121,7 @@ export default function ProjectsSection() {
             Proyectos <span className="gradient-text">Destacados</span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Una selección de mis trabajos más recientes que demuestran mis habilidades y experiencia en desarrollo full stack.
+            Una selección de mis trabajos más recientes que demuestran mi experiencia en desarrollo web, móvil y diseño UX/UI.
           </p>
         </div>
 
@@ -142,10 +190,21 @@ export default function ProjectsSection() {
                 </div>
 
                 <div className="p-6">
-                  {/* Category */}
-                  <div className="mb-3">
+                  {/* Period and Role */}
+                  <div className="mb-3 flex items-center justify-between">
                     <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
                       {project.category}
+                    </span>
+                    <div className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
+                      <Calendar className="w-3 h-3" />
+                      <span>{project.period}</span>
+                    </div>
+                  </div>
+
+                  {/* Role */}
+                  <div className="mb-2">
+                    <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
+                      {project.role}
                     </span>
                   </div>
 
@@ -155,7 +214,7 @@ export default function ProjectsSection() {
                   </h3>
                   
                   {/* Description */}
-                  <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                  <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed text-sm">
                     {project.description}
                   </p>
 
