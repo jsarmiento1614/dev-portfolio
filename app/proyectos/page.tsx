@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Image from "next/image"
+import { OptimizedImage } from "@/components/ui/optimized-image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -300,21 +301,18 @@ export default function AllProjectsPage() {
               <CardContent className="p-0">
                                  {/* Project image with overlay */}
                  <div className="relative overflow-hidden">
-                   <Image
-                     src={project.image || "/placeholder.svg"}
-                     alt={project.title}
-                     width={500}
-                     height={300}
-                     className={`w-full h-48 transition-transform duration-500 group-hover:scale-110 ${
-                       isMobileAppImage(project.image) 
-                         ? 'object-contain bg-gray-100 dark:bg-gray-700' 
-                         : 'object-cover'
-                     }`}
-                     onError={(e) => {
-                       const target = e.target as HTMLImageElement;
-                       target.src = "/placeholder.svg";
-                     }}
-                   />
+                                       <OptimizedImage
+                      src={project.image || "/placeholder.svg"}
+                      alt={project.title}
+                      width={500}
+                      height={300}
+                      className={`w-full h-48 transition-transform duration-500 group-hover:scale-110 ${
+                        isMobileAppImage(project.image) 
+                          ? 'object-contain bg-gray-100 dark:bg-gray-700' 
+                          : 'object-cover'
+                      }`}
+                      fallbackSrc="/placeholder.svg"
+                    />
                   
                   {/* Status badge */}
                   <div className="absolute top-4 left-4">

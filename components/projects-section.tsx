@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Image from "next/image"
+import { OptimizedImage } from "@/components/ui/optimized-image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -197,7 +198,7 @@ export default function ProjectsSection() {
                 <CardContent className="p-0">
                   {/* Project image with overlay */}
                   <div className="relative overflow-hidden">
-                    <Image
+                    <OptimizedImage
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
                       width={500}
@@ -207,10 +208,7 @@ export default function ProjectsSection() {
                           ? 'object-contain bg-gray-100 dark:bg-gray-700' 
                           : 'object-cover'
                       }`}
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.src = "/placeholder.svg";
-                      }}
+                      fallbackSrc="/placeholder.svg"
                     />
                     
                     {/* Hover overlay - removed redundant buttons */}
