@@ -149,7 +149,7 @@ export default function AboutSection() {
               <div className="relative group">
                 <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-blue-100 dark:border-blue-900 shadow-xl hover-lift">
                   <Image
-                    src="/jesus-sarmiento-profile.jpg"
+                    src="/jesus-sarmiento-profile.png"
                     alt="Jesús Alberto Sarmiento Bautista - Full Stack Web/Móvil Developer"
                     width={320}
                     height={320}
