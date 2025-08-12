@@ -111,63 +111,67 @@ export default function AllProjectsPage() {
     },
     {
       id: 6,
-      title: "Multicomer - UX/UI + Angular",
+      title: "Aplicación de Encuestas - Grupo Leitz",
       description:
-        "Proyecto completo de diseño UX/UI y desarrollo web con Angular 9 y TypeScript. Plataforma de comercio electrónico moderna con diseño centrado en el usuario.",
+        "Diseño UX y prototipado de aplicación móvil para recolección, monitoreo y gestión de datos de cosecha de granos de café. Optimización de procesos agrícolas con experiencia de usuario centrada en el usuario.",
       image: "/preview/project4.png",
-      technologies: ["Figma", "Angular 9", "TypeScript", "UX/UI Design", "SCSS"],
-      demoUrl: "#",
-      repoUrl: "#",
-      category: "Design + Web",
-      featured: false,
-      period: "2021-01 - 2021-04",
-      role: "Diseñador UX + Desarrollador Angular",
-      status: "Completado"
+      technologies: ["Figma", "UX Research", "Prototyping", "Mobile Design", "Agricultural UX"],
+      demoUrl: "https://www.behance.net/gallery/188075513/Survey-App",
+      repoUrl: "https://www.behance.net/gallery/188075513/Survey-App",
+      category: "UX/UI Design",
+      featured: true,
+      period: "2021-04 - 2021-11",
+      role: "Diseñador UX/UI",
+      status: "Completado",
+      client: "Grupo Leitz, TerraKappe"
     },
     {
       id: 7,
-      title: "San Rafael - Flutter App",
+      title: "Manual de Marca Securex",
       description:
-        "Aplicación móvil desarrollada con Flutter para San Rafael. Sistema de gestión móvil con integración a .NET backend y SQL Server para gestión de datos empresariales.",
+        "Creación de identidad de marca y prototipo de aplicación para soluciones de seguridad residencial. Diseño de experiencia visual coherente y funcional con enfoque en seguridad y confianza.",
       image: "/modern-ecommerce-dashboard.png",
-      technologies: ["Flutter", "Dart", ".NET", "SQL Server", "REST API"],
-      demoUrl: "#",
-      repoUrl: "#",
-      category: "Mobile App",
-      featured: false,
-      period: "2020-06 - 2021-01",
-      role: "Diseñador UX + Desarrollador Móvil Flutter",
-      status: "Completado"
+      technologies: ["Figma", "Brand Identity", "UI Design", "Security UX", "Prototyping"],
+      demoUrl: "https://www.behance.net/gallery/170720981/Securex",
+      repoUrl: "https://www.behance.net/gallery/170720981/Securex",
+      category: "Brand Design",
+      featured: true,
+      period: "2021-12 - 2022-05",
+      role: "Diseñador UX/UI",
+      status: "Completado",
+      client: "Securex App"
     },
     {
       id: 8,
-      title: "Grupo ASESOR - Vanilla JS",
+      title: "SuperCompra - E-commerce UX",
       description:
-        "Sistema web desarrollado con JavaScript vanilla y C#. Aplicación de gestión empresarial con stored procedures y funcionalidades avanzadas de reporting.",
+        "Diseño UX y prototipado de aplicación de comercio electrónico para Distribuidora San Rafael. Enfoque en facilitar la experiencia de compra en línea con navegación intuitiva y procesos optimizados.",
       image: "/task-management-app.png",
-      technologies: ["JavaScript", "C#", "Stored Procedures", "SQL Server", "HTML/CSS"],
-      demoUrl: "#",
-      repoUrl: "#",
-      category: "Web App",
+      technologies: ["Figma", "E-commerce UX", "Mobile Design", "User Research", "Prototyping"],
+      demoUrl: "https://www.behance.net/gallery/142323061/SuperCompra",
+      repoUrl: "https://www.behance.net/gallery/142323061/SuperCompra",
+      category: "E-commerce UX",
       featured: false,
-      period: "2020-11 - 2020-12",
-      role: "Desarrollador Web Vanilla JS/Node JS",
-      status: "Completado"
+      period: "2020-03 - 2020-07",
+      role: "Diseñador UX/UI",
+      status: "Completado",
+      client: "Distribuidora San Rafael"
     },
     {
       id: 9,
-      title: "Inversiones la Paz - Angular",
+      title: "Orange - Delivery App",
       description:
-        "Sistema web empresarial desarrollado con Angular 6, TypeScript, MongoDB y Spring Boot. Plataforma completa de gestión financiera y administrativa.",
+        "Diseño de identidad de marca y prototipo de aplicación para startup local de servicios de delivery. Experiencia de usuario intuitiva alineada con los valores de la marca y necesidades del usuario.",
       image: "/preview/project4.png",
-      technologies: ["Angular 6", "TypeScript", "MongoDB", "Spring Boot", "Java"],
-      demoUrl: "#",
-      repoUrl: "#",
-      category: "Full Stack",
+      technologies: ["Figma", "Brand Design", "Delivery UX", "Mobile Design", "Startup UX"],
+      demoUrl: "https://www.behance.net/gallery/98890391/Orange-app",
+      repoUrl: "https://www.behance.net/gallery/98890391/Orange-app",
+      category: "Brand + UX",
       featured: false,
-      period: "2019-03 - 2020-10",
-      role: "Diseñador UI + Desarrollador Web Angular",
-      status: "Completado"
+      period: "2019-02 - 2019-05",
+      role: "Diseñador UX/UI",
+      status: "Completado",
+      client: "Orange App"
     },
     {
       id: 10,
@@ -186,7 +190,7 @@ export default function AllProjectsPage() {
     }
   ]
 
-  const categories = ["Todos", "Web App", "Mobile App", "Enterprise", "Full Stack", "Design + Web"]
+  const categories = ["Todos", "Web App", "Mobile App", "Enterprise", "Full Stack", "UX/UI Design", "Brand Design", "E-commerce UX", "Brand + UX"]
 
   const filteredProjects = allProjects.filter(project => {
     const matchesCategory = selectedCategory === "Todos" || project.category === selectedCategory

@@ -57,26 +57,26 @@ export default function HeroSection() {
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="animate-fade-in-up">
           {/* Name with gradient effect */}
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 gradient-text">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 gradient-text">
             Jesús Sarmiento
           </h1>
           
           {/* Animated title */}
           <div className="mb-8">
-            <h2 className="text-2xl md:text-3xl text-blue-600 dark:text-blue-400 font-semibold mb-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl text-blue-600 dark:text-blue-400 font-semibold mb-4">
               Full Stack Web/Móvil Developer
             </h2>
-            <div className="flex justify-center items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-4 text-sm text-gray-600 dark:text-gray-400">
               <div className="flex items-center gap-2">
                 <Code className="w-4 h-4" />
                 <span>Desarrollo Web</span>
               </div>
-              <div className="w-1 h-1 bg-gray-400 rounded-full" />
+              <div className="hidden sm:block w-1 h-1 bg-gray-400 rounded-full" />
               <div className="flex items-center gap-2">
                 <Smartphone className="w-4 h-4" />
                 <span>Desarrollo Móvil</span>
               </div>
-              <div className="w-1 h-1 bg-gray-400 rounded-full" />
+              <div className="hidden sm:block w-1 h-1 bg-gray-400 rounded-full" />
               <div className="flex items-center gap-2">
                 <Palette className="w-4 h-4" />
                 <span>UI/UX Design</span>
@@ -85,13 +85,13 @@ export default function HeroSection() {
           </div>
 
           {/* Description */}
-          <p className="text-xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed px-4">
             Profesional enfocado en el diseño y desarrollo de aplicaciones web/móviles; aplicando un toque de UX/UI 
             a cada proyecto. Especializado en Angular, React, .NET/C#, Flutter y tecnologías modernas.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 px-4">
             <Button
               onClick={scrollToProjects}
               size="lg"
@@ -111,18 +111,18 @@ export default function HeroSection() {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-2xl mx-auto px-4">
             <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">5+</div>
-              <div className="text-gray-600 dark:text-gray-400">Años de experiencia</div>
+              <div className="text-2xl sm:text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">5+</div>
+              <div className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Años de experiencia</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">15+</div>
-              <div className="text-gray-600 dark:text-gray-400">Proyectos completados</div>
+              <div className="text-2xl sm:text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">15+</div>
+              <div className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Proyectos completados</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">100%</div>
-              <div className="text-gray-600 dark:text-gray-400">Satisfacción del cliente</div>
+              <div className="text-2xl sm:text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">100%</div>
+              <div className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Satisfacción del cliente</div>
             </div>
           </div>
         </div>

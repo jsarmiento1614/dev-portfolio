@@ -64,45 +64,63 @@ export default function ProjectsSection() {
   const designProjects = [
     {
       id: 4,
-      title: "Multicomer - UX/UI Design",
+      title: "Aplicación de Encuestas - Grupo Leitz",
       description:
-        "Proyecto completo de diseño UX/UI para plataforma de comercio electrónico. Diseño centrado en el usuario con wireframes, prototipos y sistema de diseño completo.",
+        "Diseño UX y prototipado de aplicación móvil para recolección, monitoreo y gestión de datos de cosecha de granos de café. Optimización de procesos agrícolas con experiencia de usuario centrada en el usuario.",
       image: "/preview/project4.png",
-      technologies: ["Figma", "Adobe XD", "Sketch", "UX Research", "UI Design"],
-      demoUrl: "#",
-      repoUrl: "#",
+      technologies: ["Figma", "UX Research", "Prototyping", "Mobile Design", "Agricultural UX"],
+      demoUrl: "https://www.behance.net/gallery/188075513/Survey-App",
+      repoUrl: "https://www.behance.net/gallery/188075513/Survey-App",
       category: "UX/UI Design",
       featured: true,
-      period: "2021-01 - 2021-04",
-      role: "Diseñador UX/UI"
+      period: "2021-04 - 2021-11",
+      role: "Diseñador UX/UI",
+      client: "Grupo Leitz, TerraKappe"
     },
     {
       id: 5,
-      title: "San Rafael - App Design",
+      title: "Manual de Marca Securex",
       description:
-        "Diseño completo de aplicación móvil para San Rafael. Incluye investigación de usuarios, arquitectura de información y diseño de interfaces.",
+        "Creación de identidad de marca y prototipo de aplicación para soluciones de seguridad residencial. Diseño de experiencia visual coherente y funcional con enfoque en seguridad y confianza.",
       image: "/modern-ecommerce-dashboard.png",
-      technologies: ["Figma", "Adobe Creative Suite", "UX Research", "Mobile Design"],
-      demoUrl: "#",
-      repoUrl: "#",
-      category: "Mobile Design",
-      featured: false,
-      period: "2020-06 - 2021-01",
-      role: "Diseñador UX/UI Móvil"
+      technologies: ["Figma", "Brand Identity", "UI Design", "Security UX", "Prototyping"],
+      demoUrl: "https://www.behance.net/gallery/170720981/Securex",
+      repoUrl: "https://www.behance.net/gallery/170720981/Securex",
+      category: "Brand Design",
+      featured: true,
+      period: "2021-12 - 2022-05",
+      role: "Diseñador UX/UI",
+      client: "Securex App"
     },
     {
       id: 6,
-      title: "Inversiones la Paz - Web Design",
+      title: "SuperCompra - E-commerce UX",
       description:
-        "Diseño de interfaz web para sistema empresarial. Creación de sistema de diseño, componentes reutilizables y experiencia de usuario optimizada.",
+        "Diseño UX y prototipado de aplicación de comercio electrónico para Distribuidora San Rafael. Enfoque en facilitar la experiencia de compra en línea con navegación intuitiva y procesos optimizados.",
       image: "/task-management-app.png",
-      technologies: ["Figma", "Adobe Photoshop", "UI Design", "Design System"],
-      demoUrl: "#",
-      repoUrl: "#",
-      category: "Web Design",
+      technologies: ["Figma", "E-commerce UX", "Mobile Design", "User Research", "Prototyping"],
+      demoUrl: "https://www.behance.net/gallery/142323061/SuperCompra",
+      repoUrl: "https://www.behance.net/gallery/142323061/SuperCompra",
+      category: "E-commerce UX",
       featured: false,
-      period: "2019-03 - 2020-10",
-      role: "Diseñador UI"
+      period: "2020-03 - 2020-07",
+      role: "Diseñador UX/UI",
+      client: "Distribuidora San Rafael"
+    },
+    {
+      id: 7,
+      title: "Orange - Delivery App",
+      description:
+        "Diseño de identidad de marca y prototipo de aplicación para startup local de servicios de delivery. Experiencia de usuario intuitiva alineada con los valores de la marca y necesidades del usuario.",
+      image: "/preview/project4.png",
+      technologies: ["Figma", "Brand Design", "Delivery UX", "Mobile Design", "Startup UX"],
+      demoUrl: "https://www.behance.net/gallery/98890391/Orange-app",
+      repoUrl: "https://www.behance.net/gallery/98890391/Orange-app",
+      category: "Brand + UX",
+      featured: false,
+      period: "2019-02 - 2019-05",
+      role: "Diseñador UX/UI",
+      client: "Orange App"
     }
   ]
 
@@ -155,7 +173,7 @@ export default function ProjectsSection() {
             </div>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {developmentProjects.map((project, index) => (
               <Card 
                 key={project.id} 
@@ -370,7 +388,7 @@ export default function ProjectsSection() {
             </div>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {designProjects.map((project, index) => (
               <Card 
                 key={project.id} 
@@ -448,11 +466,18 @@ export default function ProjectsSection() {
                       </div>
                     </div>
 
-                    {/* Role */}
+                    {/* Role and Client */}
                     <div className="mb-2">
                       <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
                         {project.role}
                       </span>
+                      {project.client && (
+                        <div className="mt-1">
+                          <span className="text-xs text-purple-600 dark:text-purple-400 font-medium">
+                            Cliente: {project.client}
+                          </span>
+                        </div>
+                      )}
                     </div>
 
                     {/* Title */}

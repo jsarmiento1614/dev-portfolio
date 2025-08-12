@@ -30,7 +30,7 @@ export default function Footer() {
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Main footer content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-12">
           {/* Personal Info */}
           <div className="lg:col-span-2">
             <h3 className="text-2xl font-bold mb-4 gradient-text">

@@ -85,25 +85,25 @@ export default function AboutSection() {
             }`}
           >
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
                 Sobre <span className="gradient-text">mí</span>
               </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
                 Soy un profesional enfocado en el diseño y desarrollo de aplicaciones web/móviles, 
                 aplicando un toque de UX/UI a cada proyecto. Con más de 5 años de experiencia, 
                 he trabajado en proyectos que van desde aplicaciones web complejas hasta sistemas móviles.
               </p>
-              <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
                 Mi enfoque se centra en escribir código limpio, escalable y mantenible, siempre 
                 buscando las mejores prácticas y las tecnologías más actuales para ofrecer 
                 resultados excepcionales.
               </p>
             </div>
 
-            {/* Personal Info */}
-            <div className="space-y-4">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Información Personal</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                         {/* Personal Info */}
+             <div className="space-y-4">
+               <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white mb-4">Información Personal</h3>
+               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div className="flex items-center gap-3">
                   <Mail className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                   <span className="text-gray-600 dark:text-gray-300">jsarmiento1614@gmail.com</span>
@@ -124,7 +124,7 @@ export default function AboutSection() {
             </div>
 
             {/* Experience cards */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {experiences.map((exp, index) => (
                 <Card 
                   key={index}
@@ -147,7 +147,7 @@ export default function AboutSection() {
             {/* Profile image */}
             <div className="flex justify-center">
               <div className="relative group">
-                <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-blue-100 dark:border-blue-900 shadow-xl hover-lift">
+                <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-blue-100 dark:border-blue-900 shadow-xl hover-lift">
                   <Image
                     src="/jesus-sarmiento-profile.png"
                     alt="Jesús Alberto Sarmiento Bautista - Full Stack Web/Móvil Developer"
