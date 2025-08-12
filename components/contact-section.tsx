@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { useAnalytics } from "@/hooks/use-analytics"
+import { useVercelAnalytics } from "@/hooks/use-vercel-analytics"
 import Link from "next/link"
 import { 
   Mail, 
@@ -36,6 +37,7 @@ export default function ContactSection() {
   const [error, setError] = useState("")
   const { elementRef, isVisible } = useScrollAnimation()
   const { trackContact, trackSocial } = useAnalytics()
+  const { trackContact: trackVercelContact, trackSocial: trackVercelSocial } = useVercelAnalytics()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -67,6 +69,7 @@ export default function ContactSection() {
       setSubmitted(true)
       setFormData({ name: "", email: "", message: "" })
       trackContact() // Track contact form submission
+      trackVercelContact() // Track with Vercel Analytics
       setTimeout(() => setSubmitted(false), 4000)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error al enviar el mensaje')
@@ -297,7 +300,10 @@ export default function ContactSection() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => trackSocial(social.name.toLowerCase())}
+                    onClick={() => {
+                      trackSocial(social.name.toLowerCase())
+                      trackVercelSocial(social.name.toLowerCase())
+                    }}
                     className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-lg hover-lift border border-gray-200 dark:border-gray-700 group"
                   >
                     <div className={`w-12 h-12 ${social.color} rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform`}>

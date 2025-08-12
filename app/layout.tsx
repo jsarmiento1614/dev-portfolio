@@ -5,6 +5,7 @@ import "./globals.css"
 import StructuredData from "@/components/structured-data"
 import { ThemeProvider } from "@/components/theme-provider"
 import GoogleAnalytics from "@/components/google-analytics"
+import VercelAnalytics from "@/components/vercel-analytics"
 import AnalyticsDebug from "@/components/analytics-debug"
 
 const inter = Inter({
@@ -110,6 +111,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <GoogleAnalytics />
+          <VercelAnalytics />
           <StructuredData />
           {children}
           <AnalyticsDebug />

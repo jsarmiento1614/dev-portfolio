@@ -4,32 +4,54 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { useAnalytics } from '@/hooks/use-analytics'
+import { useVercelAnalytics } from '@/hooks/use-vercel-analytics'
 import { GA_TRACKING_ID } from '@/lib/analytics'
-import { CheckCircle, AlertCircle, Play, Mail, Github, Linkedin } from 'lucide-react'
+import { CheckCircle, AlertCircle, Play, Mail, Github, Linkedin, Zap } from 'lucide-react'
 
 export default function AnalyticsDebug() {
   const [isVisible, setIsVisible] = useState(false)
   const { trackEvent, trackContact, trackProject, trackSocial } = useAnalytics()
+  const { 
+    trackEvent: trackVercelEvent, 
+    trackContact: trackVercelContact, 
+    trackProject: trackVercelProject, 
+    trackSocial: trackVercelSocial 
+  } = useVercelAnalytics()
 
   const testEvents = [
     {
-      name: 'Test Contact Form',
+      name: 'GA - Contact Form',
       action: () => trackContact(),
       icon: Mail
     },
     {
-      name: 'Test Project View',
+      name: 'GA - Project View',
       action: () => trackProject('Test Project'),
       icon: Play
     },
     {
-      name: 'Test Social Link',
+      name: 'GA - Social Link',
       action: () => trackSocial('linkedin'),
       icon: Linkedin
     },
     {
-      name: 'Custom Event',
-      action: () => trackEvent('test_action', 'debug', 'test_label', 1),
+      name: 'Vercel - Contact Form',
+      action: () => trackVercelContact(),
+      icon: Zap
+    },
+    {
+      name: 'Vercel - Project View',
+      action: () => trackVercelProject('Test Project'),
+      icon: Zap
+    },
+    {
+      name: 'Vercel - Social Link',
+      action: () => trackVercelSocial('linkedin'),
+      icon: Zap
+    },
+    {
+      name: 'Vercel - Custom Event',
+      action: () => trackVercelEvent('test_custom_event', { test: true }),
       icon: CheckCircle
     }
   ]
@@ -54,26 +76,32 @@ export default function AnalyticsDebug() {
     <div className="fixed bottom-4 right-4 z-50 w-80">
       <Card className="shadow-xl border-2">
         <CardHeader className="pb-3">
-          <CardTitle className="text-lg flex items-center gap-2">
-            <CheckCircle className="w-5 h-5 text-green-500" />
-            Google Analytics Debug
-          </CardTitle>
+                   <CardTitle className="text-lg flex items-center gap-2">
+           <CheckCircle className="w-5 h-5 text-green-500" />
+           Analytics Debug
+         </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          {/* GA ID Status */}
-          <div className="flex items-center gap-2 p-2 rounded-lg bg-gray-50 dark:bg-gray-800">
-            {GA_TRACKING_ID ? (
-              <>
-                <CheckCircle className="w-4 h-4 text-green-500" />
-                <span className="text-sm">GA ID: {GA_TRACKING_ID}</span>
-              </>
-            ) : (
-              <>
-                <AlertCircle className="w-4 h-4 text-red-500" />
-                <span className="text-sm text-red-500">GA ID no configurado</span>
-              </>
-            )}
-          </div>
+                     {/* Analytics Status */}
+           <div className="space-y-2">
+             <div className="flex items-center gap-2 p-2 rounded-lg bg-gray-50 dark:bg-gray-800">
+               {GA_TRACKING_ID ? (
+                 <>
+                   <CheckCircle className="w-4 h-4 text-green-500" />
+                   <span className="text-sm">Google Analytics: {GA_TRACKING_ID}</span>
+                 </>
+               ) : (
+                 <>
+                   <AlertCircle className="w-4 h-4 text-red-500" />
+                   <span className="text-sm text-red-500">Google Analytics: No configurado</span>
+                 </>
+               )}
+             </div>
+             <div className="flex items-center gap-2 p-2 rounded-lg bg-blue-50 dark:bg-blue-900/20">
+               <Zap className="w-4 h-4 text-blue-500" />
+               <span className="text-sm">Vercel Analytics: Activo</span>
+             </div>
+           </div>
 
           {/* Test Events */}
           <div className="space-y-2">

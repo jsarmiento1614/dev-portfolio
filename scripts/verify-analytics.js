@@ -34,8 +34,10 @@ if (!gaId.startsWith('G-')) {
 // Verificar archivos de componentes
 const requiredFiles = [
   'components/google-analytics.tsx',
+  'components/vercel-analytics.tsx',
   'lib/analytics.ts',
-  'hooks/use-analytics.ts'
+  'hooks/use-analytics.ts',
+  'hooks/use-vercel-analytics.ts'
 ]
 
 console.log('\n📁 Verificando archivos de componentes...')
@@ -65,17 +67,28 @@ if (fs.existsSync(layoutPath)) {
   } else {
     console.log('❌ GoogleAnalytics no encontrado en layout.tsx')
   }
+  
+  if (layoutContent.includes('VercelAnalytics')) {
+    console.log('✅ VercelAnalytics integrado en layout.tsx')
+  } else {
+    console.log('❌ VercelAnalytics no encontrado en layout.tsx')
+  }
 }
 
-console.log('\n🎉 Configuración de Google Analytics verificada correctamente!')
+console.log('\n🎉 Configuración de Analytics verificada correctamente!')
 console.log('\n📋 Próximos pasos:')
 console.log('1. Ejecuta: npm run dev')
 console.log('2. Abre http://localhost:3000')
 console.log('3. Usa el botón "Debug Analytics" en la esquina inferior derecha')
 console.log('4. Verifica en las herramientas de desarrollador (F12) > Network')
-console.log('5. Busca requests a googletagmanager.com')
+console.log('5. Busca requests a googletagmanager.com y vitals.vercel-insights.com')
 console.log('\n📊 Para ver datos en Google Analytics:')
 console.log('1. Ve a tu panel de Google Analytics')
 console.log('2. Navega a Reports > Realtime > Overview')
 console.log('3. Visita tu sitio web')
 console.log('4. Deberías ver actividad en tiempo real')
+console.log('\n📊 Para ver datos en Vercel Analytics:')
+console.log('1. Ve a tu dashboard de Vercel')
+console.log('2. Navega a Analytics > Web Analytics')
+console.log('3. Visita tu sitio web')
+console.log('4. Deberías ver datos en tiempo real')

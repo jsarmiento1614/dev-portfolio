@@ -8,12 +8,14 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { useAnalytics } from "@/hooks/use-analytics"
+import { useVercelAnalytics } from "@/hooks/use-vercel-analytics"
 import { ExternalLink, Github, Eye, ArrowRight, Calendar, Palette, Code } from "lucide-react"
 
 export default function ProjectsSection() {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null)
   const { elementRef, isVisible } = useScrollAnimation()
   const { trackProject } = useAnalytics()
+  const { trackProject: trackVercelProject } = useVercelAnalytics()
 
   // Función para detectar si una imagen es de una app móvil
   const isMobileAppImage = (imagePath: string) => {
@@ -310,7 +312,10 @@ export default function ProjectsSection() {
                               href={project.demoUrl} 
                               target="_blank" 
                               rel="noopener noreferrer"
-                              onClick={() => trackProject(project.title)}
+                              onClick={() => {
+                                trackProject(project.title)
+                                trackVercelProject(project.title)
+                              }}
                             >
                               <ExternalLink className="w-4 h-4 mr-2 group-hover/btn:translate-x-1 transition-transform" />
                               Ver Demo
@@ -483,7 +488,10 @@ export default function ProjectsSection() {
                           href={project.demoUrl} 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          onClick={() => trackProject(project.title)}
+                          onClick={() => {
+                            trackProject(project.title)
+                            trackVercelProject(project.title)
+                          }}
                         >
                           <Eye className="w-4 h-4 mr-2 group-hover/btn:translate-x-1 transition-transform" />
                           Ver Diseño
