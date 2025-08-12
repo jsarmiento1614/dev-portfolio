@@ -16,7 +16,7 @@ import {
   CheckCircle, 
   Linkedin, 
   Github, 
-  Twitter,
+  Palette,
   MessageSquare,
   Clock,
   Globe
