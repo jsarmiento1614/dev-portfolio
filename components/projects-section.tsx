@@ -265,12 +265,15 @@ export default function ProjectsSection() {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}>
           <Button 
+            asChild
             size="lg" 
             variant="outline"
             className="group border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-3"
           >
-            Ver todos los proyectos
-            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <Link href="/proyectos">
+              Ver todos los proyectos
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </Button>
         </div>
       </div>
