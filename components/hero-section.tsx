@@ -34,21 +34,21 @@ export default function HeroSection() {
       id="inicio"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Animated background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" />
+      {/* Animated background - Marca Personal */}
+      <div className="absolute inset-0 bg-gradient-to-br from-brand-base via-white to-brand-base dark:from-slate-900 dark:via-slate-800 dark:to-slate-900" />
       
-      {/* Floating elements */}
+      {/* Floating elements - Marca Personal */}
       <div className="absolute inset-0 overflow-hidden">
         <div 
-          className="absolute top-20 left-10 w-20 h-20 bg-blue-200 dark:bg-blue-800 rounded-full opacity-20 animate-float"
+          className="absolute top-20 left-10 w-20 h-20 bg-brand-primary/20 dark:bg-brand-primary/30 rounded-full opacity-30 animate-float"
           style={{ animationDelay: "0s" }}
         />
         <div 
-          className="absolute top-40 right-20 w-16 h-16 bg-purple-200 dark:bg-purple-800 rounded-full opacity-20 animate-float"
+          className="absolute top-40 right-20 w-16 h-16 bg-brand-accent/20 dark:bg-brand-accent/30 rounded-full opacity-30 animate-float"
           style={{ animationDelay: "1s" }}
         />
         <div 
-          className="absolute bottom-40 left-20 w-12 h-12 bg-cyan-200 dark:bg-cyan-800 rounded-full opacity-20 animate-float"
+          className="absolute bottom-40 left-20 w-12 h-12 bg-brand-primary/20 dark:bg-brand-primary/30 rounded-full opacity-30 animate-float"
           style={{ animationDelay: "2s" }}
         />
       </div>
@@ -56,15 +56,20 @@ export default function HeroSection() {
       {/* Main content */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="animate-fade-in-up">
-          {/* Name with gradient effect */}
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 gradient-text">
+          {/* Name with gradient effect - Marca Personal */}
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 gradient-text font-brand-primary">
             Jesús Sarmiento
           </h1>
           
+          {/* Tagline - Marca Personal */}
+          <p className="tagline mb-6">
+            "Construyo experiencias digitales <span className="tagline-accent">simples y efectivas</span>"
+          </p>
+          
           {/* Animated title */}
           <div className="mb-8">
-            <h2 className="text-xl sm:text-2xl md:text-3xl text-blue-600 dark:text-blue-400 font-semibold mb-4">
-              Full Stack Web/Móvil Developer
+            <h2 className="text-xl sm:text-2xl md:text-3xl text-brand-primary dark:text-brand-primary font-semibold mb-4 font-brand-primary">
+              Full Stack Developer
             </h2>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-4 text-sm text-gray-600 dark:text-gray-400">
               <div className="flex items-center gap-2">
@@ -85,17 +90,17 @@ export default function HeroSection() {
           </div>
 
           {/* Description */}
-          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed px-4">
+          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed px-4 font-brand-secondary">
             Profesional enfocado en el diseño y desarrollo de aplicaciones web/móviles; aplicando un toque de UX/UI 
             a cada proyecto. Especializado en Angular, React, .NET/C#, Flutter y tecnologías modernas.
           </p>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons - Marca Personal */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 px-4">
             <Button
               onClick={scrollToProjects}
               size="lg"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover-glow group"
+              className="btn-brand-primary px-8 py-3 text-lg font-semibold rounded-lg transition-all duration-300 hover:scale-105 group"
             >
               Ver proyectos
               <ArrowDown className="ml-2 w-5 h-5 group-hover:translate-y-1 transition-transform" />
@@ -104,25 +109,25 @@ export default function HeroSection() {
               onClick={scrollToAbout}
               variant="outline"
               size="lg"
-              className="px-8 py-3 text-lg font-semibold rounded-lg border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300 hover:scale-105"
+              className="btn-brand-secondary px-8 py-3 text-lg font-semibold rounded-lg transition-all duration-300 hover:scale-105"
             >
               Conoce más
             </Button>
           </div>
 
-          {/* Stats */}
+          {/* Stats - Marca Personal */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-2xl mx-auto px-4">
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">5+</div>
-              <div className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Años de experiencia</div>
+              <div className="text-2xl sm:text-3xl font-bold text-brand-primary dark:text-brand-primary mb-2 font-brand-primary">5+</div>
+              <div className="text-sm sm:text-base text-gray-600 dark:text-gray-400 font-brand-secondary">Años de experiencia</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">15+</div>
-              <div className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Proyectos completados</div>
+              <div className="text-2xl sm:text-3xl font-bold text-brand-primary dark:text-brand-primary mb-2 font-brand-primary">15+</div>
+              <div className="text-sm sm:text-base text-gray-600 dark:text-gray-400 font-brand-secondary">Proyectos completados</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">100%</div>
-              <div className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Satisfacción del cliente</div>
+              <div className="text-2xl sm:text-3xl font-bold text-brand-primary dark:text-brand-primary mb-2 font-brand-primary">100%</div>
+              <div className="text-sm sm:text-base text-gray-600 dark:text-gray-400 font-brand-secondary">Satisfacción del cliente</div>
             </div>
           </div>
         </div>
@@ -135,7 +140,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Parallax background element */}
+      {/* Parallax background element - Marca Personal */}
       <div
         ref={elementRef}
         className="absolute inset-0 opacity-5"
@@ -143,8 +148,8 @@ export default function HeroSection() {
           transform: `translateY(${offset}px)`,
         }}
       >
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-400 to-purple-600 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-purple-400 to-pink-600 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-brand-primary to-brand-accent rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-brand-accent to-brand-primary rounded-full blur-3xl" />
       </div>
     </section>
   )

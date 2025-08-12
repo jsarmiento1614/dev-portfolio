@@ -48,30 +48,30 @@ export default function Header() {
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         isScrolled 
-          ? "bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg border-b border-gray-200 dark:border-gray-700" 
+          ? "bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-lg border-b border-gray-200 dark:border-slate-700" 
           : "bg-transparent"
       }`}
     >
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
+          {/* Logo - Marca Personal */}
           <Link 
             href="/" 
-            className="text-xl font-bold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 hover:scale-105"
+            className="text-xl font-bold text-gray-900 dark:text-white hover:text-brand-primary dark:hover:text-brand-primary transition-all duration-300 hover:scale-105 font-brand-primary"
           >
             <span className="gradient-text">JSarmiento</span>
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation - Marca Personal */}
           <div className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 relative group"
+                className="text-gray-700 dark:text-gray-300 hover:text-brand-primary dark:hover:text-brand-primary transition-all duration-300 relative group font-brand-secondary"
               >
                 {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 dark:bg-blue-400 transition-all duration-300 group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full" />
               </button>
             ))}
             
@@ -89,10 +89,10 @@ export default function Header() {
               )}
             </Button>
 
-            {/* CTA Button */}
+            {/* CTA Button - Marca Personal */}
             <Button
               onClick={() => scrollToSection("contacto")}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-all duration-300 hover:scale-105 hover-glow"
+              className="btn-brand-primary px-6 py-2 rounded-lg transition-all duration-300 hover:scale-105"
             >
               Contáctame
             </Button>
@@ -150,7 +150,7 @@ export default function Header() {
             <div className="px-4 pt-2">
               <Button
                 onClick={() => scrollToSection("contacto")}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg transition-all duration-300"
+                className="w-full btn-brand-primary py-3 rounded-lg transition-all duration-300"
               >
                 Contáctame
               </Button>
