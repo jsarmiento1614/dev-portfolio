@@ -27,167 +27,172 @@ export default function AllProjectsPage() {
   const [searchTerm, setSearchTerm] = useState("")
   const { elementRef, isVisible } = useScrollAnimation()
 
+  // Función para detectar si una imagen es de una app móvil
+  const isMobileAppImage = (imagePath: string) => {
+    return imagePath.includes('-app.png') || imagePath.includes('app-')
+  }
+
   const allProjects = [
-    {
-      id: 1,
-      title: "Randa Ticketera NFT",
-      description:
-        "Plataforma de ticketera NFT desarrollada con React 18, Node.js, Express, Next.js, PostgreSQL y Docker. Sistema completo de gestión de eventos y tokens NFT con funcionalidades avanzadas de blockchain.",
-      image: "/modern-ecommerce-dashboard.png",
-      technologies: ["React 18", "Node.js", "Express", "Next.js", "PostgreSQL", "Docker"],
-      demoUrl: "#",
-      repoUrl: "#",
-      category: "Web App",
-      featured: true,
-      period: "2024-12 - 2025-08",
-      role: "Desarrollador React",
-      status: "En desarrollo",
-      isPrivate: true,
-      privateReason: "Proyecto empresarial - Código propietario"
-    },
-    {
-      id: 2,
-      title: "Zero Variance - Ubiquity",
-      description:
-        "Sistema empresarial desarrollado con Angular 15, .NET Core 8 y SQL Server. Aplicación compleja para gestión de datos y análisis de varianza con reportes avanzados y dashboards interactivos.",
-      image: "/task-management-app.png",
-      technologies: ["Angular 15", ".NET Core 8", "SQL Server", "TypeScript", "Entity Framework"],
-      demoUrl: "#",
-      repoUrl: "#",
-      category: "Enterprise",
-      featured: true,
-      period: "2023-05 - 2024-12",
-      role: "Desarrollador Angular",
-      status: "Completado",
-      isPrivate: true,
-      privateReason: "Sistema empresarial privado"
-    },
-    {
-      id: 3,
-      title: "NexGen Virtual Office",
-      description: 
-        "Oficina virtual completa desarrollada con Angular. Sistema de gestión empresarial con múltiples módulos integrados incluyendo gestión de empleados, proyectos, y comunicación interna.",
-      image: "/preview/project4.png",
-      technologies: ["Angular", "TypeScript", "Node.js", "MongoDB", "Socket.io"],
-      demoUrl: "#",
-      repoUrl: "#",
-      category: "Web App",
-      featured: false,
-      period: "2021-12 - 2023-05",
-      role: "Desarrollador Web Angular",
-      status: "Completado",
-      isPrivate: true,
-      privateReason: "Aplicación interna corporativa"
-    },
-    {
-      id: 4,
-      title: "Grupo Leitz - App Móvil",
-      description:
-        "Aplicación móvil desarrollada con Xamarin Forms para gestión interna del Grupo Leitz. Sistema completo de gestión empresarial móvil con sincronización offline y reportes en tiempo real.",
-      image: "/modern-ecommerce-dashboard.png",
-      technologies: ["Xamarin Forms", "C#", ".NET", "SQL Server", "Azure"],
-      demoUrl: "#",
-      repoUrl: "#",
-      category: "Mobile App",
-      featured: false,
-      period: "2021-04 - 2021-11",
-      role: "Desarrollador Móvil Xamarin",
-      status: "Completado"
-    },
-    {
-      id: 5,
-      title: "Chocolats Halba",
-      description:
-        "Sistema de gestión para Chocolats Halba desarrollado con .NET, Xamarin, DotLiquid y Razor. Aplicación web y móvil integrada para gestión de inventario y ventas.",
-      image: "/task-management-app.png",
-      technologies: [".NET", "Xamarin", "DotLiquid", "Razor", "C#", "SQL Server"],
-      demoUrl: "#",
-      repoUrl: "#",
-      category: "Full Stack",
-      featured: false,
-      period: "2021-01 - 2021-04",
-      role: "Desarrollador .NET/C#",
-      status: "Completado"
-    },
-    {
-      id: 6,
-      title: "Aplicación de Encuestas - Grupo Leitz",
-      description:
-        "Diseño UX y prototipado de aplicación móvil para recolección, monitoreo y gestión de datos de cosecha de granos de café. Optimización de procesos agrícolas con experiencia de usuario centrada en el usuario.",
-      image: "/preview/project4.png",
-      technologies: ["Figma", "UX Research", "Prototyping", "Mobile Design", "Agricultural UX"],
-      demoUrl: "https://www.behance.net/gallery/188075513/Survey-App",
-      repoUrl: "https://www.behance.net/gallery/188075513/Survey-App",
-      category: "UX/UI Design",
-      featured: true,
-      period: "2021-04 - 2021-11",
-      role: "Diseñador UX/UI",
-      status: "Completado",
-      client: "Grupo Leitz, TerraKappe"
-    },
-    {
-      id: 7,
-      title: "Manual de Marca Securex",
-      description:
-        "Creación de identidad de marca y prototipo de aplicación para soluciones de seguridad residencial. Diseño de experiencia visual coherente y funcional con enfoque en seguridad y confianza.",
-      image: "/modern-ecommerce-dashboard.png",
-      technologies: ["Figma", "Brand Identity", "UI Design", "Security UX", "Prototyping"],
-      demoUrl: "https://www.behance.net/gallery/170720981/Securex",
-      repoUrl: "https://www.behance.net/gallery/170720981/Securex",
-      category: "Brand Design",
-      featured: true,
-      period: "2021-12 - 2022-05",
-      role: "Diseñador UX/UI",
-      status: "Completado",
-      client: "Securex App"
-    },
-    {
-      id: 8,
-      title: "SuperCompra - E-commerce UX",
-      description:
-        "Diseño UX y prototipado de aplicación de comercio electrónico para Distribuidora San Rafael. Enfoque en facilitar la experiencia de compra en línea con navegación intuitiva y procesos optimizados.",
-      image: "/task-management-app.png",
-      technologies: ["Figma", "E-commerce UX", "Mobile Design", "User Research", "Prototyping"],
-      demoUrl: "https://www.behance.net/gallery/142323061/SuperCompra",
-      repoUrl: "https://www.behance.net/gallery/142323061/SuperCompra",
-      category: "E-commerce UX",
-      featured: false,
-      period: "2020-03 - 2020-07",
-      role: "Diseñador UX/UI",
-      status: "Completado",
-      client: "Distribuidora San Rafael"
-    },
-    {
-      id: 9,
-      title: "Orange - Delivery App",
-      description:
-        "Diseño de identidad de marca y prototipo de aplicación para startup local de servicios de delivery. Experiencia de usuario intuitiva alineada con los valores de la marca y necesidades del usuario.",
-      image: "/preview/project4.png",
-      technologies: ["Figma", "Brand Design", "Delivery UX", "Mobile Design", "Startup UX"],
-      demoUrl: "https://www.behance.net/gallery/98890391/Orange-app",
-      repoUrl: "https://www.behance.net/gallery/98890391/Orange-app",
-      category: "Brand + UX",
-      featured: false,
-      period: "2019-02 - 2019-05",
-      role: "Diseñador UX/UI",
-      status: "Completado",
-      client: "Orange App"
-    },
-    {
-      id: 10,
-      title: "Grupo Leitz - ASP.NET",
-      description:
-        "Sistema web desarrollado con ASP.NET Core para Grupo Leitz. Aplicación de gestión empresarial con arquitectura moderna y patrones de diseño avanzados.",
-      image: "/modern-ecommerce-dashboard.png",
-      technologies: ["ASP.NET", ".NET Core", "C#", "SQL Server", "Entity Framework"],
-      demoUrl: "#",
-      repoUrl: "#",
-      category: "Web App",
-      featured: false,
-      period: "2019-12 - 2019-02",
-      role: "Desarrollador Web ASP.NET/.NET/C#",
-      status: "Completado"
-    }
+         {
+       id: 1,
+       title: "Randa Ticketera NFT",
+       description:
+         "Plataforma de ticketera NFT desarrollada con React 18, Node.js, Express, Next.js, PostgreSQL y Docker. Sistema completo de gestión de eventos y tokens NFT con funcionalidades avanzadas de blockchain.",
+       image: "/preview/randa-site.png",
+       technologies: ["React 18", "Node.js", "Express", "Next.js", "PostgreSQL", "Docker"],
+       demoUrl: "#",
+       repoUrl: "#",
+       category: "Web App",
+       featured: true,
+       period: "2024-12 - 2025-08",
+       role: "Desarrollador React",
+       status: "En desarrollo",
+       isPrivate: true,
+       privateReason: "Proyecto empresarial - Código propietario"
+     },
+         {
+       id: 2,
+       title: "Zero Variance - Ubiquity",
+       description:
+         "Sistema empresarial desarrollado con Angular 15, .NET Core 8 y SQL Server. Aplicación compleja para gestión de datos y análisis de varianza con reportes avanzados y dashboards interactivos.",
+       image: "/preview/zerovariance-site.png",
+       technologies: ["Angular 15", ".NET Core 8", "SQL Server", "TypeScript", "Entity Framework"],
+       demoUrl: "#",
+       repoUrl: "#",
+       category: "Enterprise",
+       featured: true,
+       period: "2023-05 - 2024-12",
+       role: "Desarrollador Angular",
+       status: "Completado",
+       isPrivate: true,
+       privateReason: "Sistema empresarial privado"
+     },
+         {
+       id: 3,
+       title: "NexGen Virtual Office",
+       description: 
+         "Oficina virtual completa desarrollada con Angular. Sistema de gestión empresarial con múltiples módulos integrados incluyendo gestión de empleados, proyectos, y comunicación interna.",
+       image: "/preview/nextgen-site.png",
+       technologies: ["Angular", "TypeScript", "Node.js", "MongoDB", "Socket.io"],
+       demoUrl: "#",
+       repoUrl: "#",
+       category: "Web App",
+       featured: false,
+       period: "2021-12 - 2023-05",
+       role: "Desarrollador Web Angular",
+       status: "Completado",
+       isPrivate: true,
+       privateReason: "Aplicación interna corporativa"
+     },
+         {
+       id: 4,
+       title: "Grupo Leitz - App Móvil",
+       description:
+         "Aplicación móvil desarrollada con Xamarin Forms para gestión interna del Grupo Leitz. Sistema completo de gestión empresarial móvil con sincronización offline y reportes en tiempo real.",
+       image: "/preview/inloher-app.png",
+       technologies: ["Xamarin Forms", "C#", ".NET", "SQL Server", "Azure"],
+       demoUrl: "#",
+       repoUrl: "#",
+       category: "Mobile App",
+       featured: false,
+       period: "2021-04 - 2021-11",
+       role: "Desarrollador Móvil Xamarin",
+       status: "Completado"
+     },
+         {
+       id: 5,
+       title: "Chocolats Halba",
+       description:
+         "Sistema de gestión para Chocolats Halba desarrollado con .NET, Xamarin, DotLiquid y Razor. Aplicación web y móvil integrada para gestión de inventario y ventas.",
+       image: "/preview/olympic-app.png",
+       technologies: [".NET", "Xamarin", "DotLiquid", "Razor", "C#", "SQL Server"],
+       demoUrl: "#",
+       repoUrl: "#",
+       category: "Full Stack",
+       featured: false,
+       period: "2021-01 - 2021-04",
+       role: "Desarrollador .NET/C#",
+       status: "Completado"
+     },
+         {
+       id: 6,
+       title: "Aplicación de Encuestas - Grupo Leitz",
+       description:
+         "Diseño UX y prototipado de aplicación móvil para recolección, monitoreo y gestión de datos de cosecha de granos de café. Optimización de procesos agrícolas con experiencia de usuario centrada en el usuario.",
+       image: "/preview/supercompra-app.png",
+       technologies: ["Figma", "UX Research", "Prototyping", "Mobile Design", "Agricultural UX"],
+       demoUrl: "https://www.behance.net/gallery/188075513/Survey-App",
+       repoUrl: "https://www.behance.net/gallery/188075513/Survey-App",
+       category: "UX/UI Design",
+       featured: true,
+       period: "2021-04 - 2021-11",
+       role: "Diseñador UX/UI",
+       status: "Completado",
+       client: "Grupo Leitz, TerraKappe"
+     },
+         {
+       id: 7,
+       title: "Manual de Marca Securex",
+       description:
+         "Creación de identidad de marca y prototipo de aplicación para soluciones de seguridad residencial. Diseño de experiencia visual coherente y funcional con enfoque en seguridad y confianza.",
+       image: "/preview/securex-app.png",
+       technologies: ["Figma", "Brand Identity", "UI Design", "Security UX", "Prototyping"],
+       demoUrl: "https://www.behance.net/gallery/170720981/Securex",
+       repoUrl: "https://www.behance.net/gallery/170720981/Securex",
+       category: "Brand Design",
+       featured: true,
+       period: "2021-12 - 2022-05",
+       role: "Diseñador UX/UI",
+       status: "Completado",
+       client: "Securex App"
+     },
+         {
+       id: 8,
+       title: "SuperCompra - E-commerce UX",
+       description:
+         "Diseño UX y prototipado de aplicación de comercio electrónico para Distribuidora San Rafael. Enfoque en facilitar la experiencia de compra en línea con navegación intuitiva y procesos optimizados.",
+       image: "/preview/supercompra-app.png",
+       technologies: ["Figma", "E-commerce UX", "Mobile Design", "User Research", "Prototyping"],
+       demoUrl: "https://www.behance.net/gallery/142323061/SuperCompra",
+       repoUrl: "https://www.behance.net/gallery/142323061/SuperCompra",
+       category: "E-commerce UX",
+       featured: false,
+       period: "2020-03 - 2020-07",
+       role: "Diseñador UX/UI",
+       status: "Completado",
+       client: "Distribuidora San Rafael"
+     },
+         {
+       id: 9,
+       title: "Orange - Delivery App",
+       description:
+         "Diseño de identidad de marca y prototipo de aplicación para startup local de servicios de delivery. Experiencia de usuario intuitiva alineada con los valores de la marca y necesidades del usuario.",
+       image: "/preview/timbrit-app.png",
+       technologies: ["Figma", "Brand Design", "Delivery UX", "Mobile Design", "Startup UX"],
+       demoUrl: "https://www.behance.net/gallery/98890391/Orange-app",
+       repoUrl: "https://www.behance.net/gallery/98890391/Orange-app",
+       category: "Brand + UX",
+       featured: false,
+       period: "2019-02 - 2019-05",
+       role: "Diseñador UX/UI",
+       status: "Completado",
+       client: "Orange App"
+     },
+         {
+       id: 10,
+       title: "Grupo Leitz - ASP.NET",
+       description:
+         "Sistema web desarrollado con ASP.NET Core para Grupo Leitz. Aplicación de gestión empresarial con arquitectura moderna y patrones de diseño avanzados.",
+       image: "/preview/inciensa-site.png",
+       technologies: ["ASP.NET", ".NET Core", "C#", "SQL Server", "Entity Framework"],
+       demoUrl: "#",
+       repoUrl: "#",
+       category: "Web App",
+       featured: false,
+       period: "2019-12 - 2019-02",
+       role: "Desarrollador Web ASP.NET/.NET/C#",
+       status: "Completado"
+     }
   ]
 
   const categories = ["Todos", "Web App", "Mobile App", "Enterprise", "Full Stack", "UX/UI Design", "Brand Design", "E-commerce UX", "Brand + UX"]
@@ -293,15 +298,19 @@ export default function AllProjectsPage() {
               className="group relative overflow-hidden bg-white dark:bg-gray-800 border-0 shadow-lg hover-lift transition-all duration-500"
             >
               <CardContent className="p-0">
-                {/* Project image with overlay */}
-                <div className="relative overflow-hidden">
-                  <Image
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    width={500}
-                    height={300}
-                    className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
+                                 {/* Project image with overlay */}
+                 <div className="relative overflow-hidden">
+                   <Image
+                     src={project.image || "/placeholder.svg"}
+                     alt={project.title}
+                     width={500}
+                     height={300}
+                     className={`w-full h-48 transition-transform duration-500 group-hover:scale-110 ${
+                       isMobileAppImage(project.image) 
+                         ? 'object-contain bg-gray-100 dark:bg-gray-700' 
+                         : 'object-cover'
+                     }`}
+                   />
                   
                   {/* Status badge */}
                   <div className="absolute top-4 left-4">
@@ -328,34 +337,8 @@ export default function AllProjectsPage() {
                      </div>
                    )}
 
-                  {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <div className="flex gap-2">
-                        <Button 
-                          asChild 
-                          size="sm" 
-                          className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-0"
-                        >
-                          <Link href={project.demoUrl} target="_blank" rel="noopener noreferrer">
-                            <Eye className="w-4 h-4 mr-1" />
-                            Demo
-                          </Link>
-                        </Button>
-                        <Button 
-                          asChild 
-                          size="sm" 
-                          variant="outline"
-                          className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-white/30"
-                        >
-                          <Link href={project.repoUrl} target="_blank" rel="noopener noreferrer">
-                            <Github className="w-4 h-4 mr-1" />
-                            Código
-                          </Link>
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
+                  {/* Hover overlay - removed redundant buttons */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
 
                 <div className="p-6">

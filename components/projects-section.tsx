@@ -12,13 +12,18 @@ export default function ProjectsSection() {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null)
   const { elementRef, isVisible } = useScrollAnimation()
 
+  // Función para detectar si una imagen es de una app móvil
+  const isMobileAppImage = (imagePath: string) => {
+    return imagePath.includes('-app.png') || imagePath.includes('app-')
+  }
+
   const developmentProjects = [
     {
       id: 1,
       title: "Randa Ticketera NFT",
       description:
         "Plataforma de ticketera NFT desarrollada con React 18, Node.js, Express, Next.js, PostgreSQL y Docker. Sistema completo de gestión de eventos y tokens NFT.",
-      image: "/modern-ecommerce-dashboard.png",
+      image: "/preview/randa-site.png",
       technologies: ["React 18", "Node.js", "Express", "Next.js", "PostgreSQL", "Docker"],
       demoUrl: "#",
       repoUrl: "#",
@@ -34,7 +39,7 @@ export default function ProjectsSection() {
       title: "Zero Variance - Ubiquity",
       description:
         "Sistema empresarial desarrollado con Angular 15, .NET Core 8 y SQL Server. Aplicación compleja para gestión de datos y análisis de varianza.",
-      image: "/task-management-app.png",
+      image: "/preview/zerovariance-site.png",
       technologies: ["Angular 15", ".NET Core 8", "SQL Server", "TypeScript"],
       demoUrl: "#",
       repoUrl: "#",
@@ -50,7 +55,7 @@ export default function ProjectsSection() {
       title: "NexGen Virtual Office",
       description: 
         "Oficina virtual completa desarrollada con Angular. Sistema de gestión empresarial con múltiples módulos integrados.",
-      image: "/preview/project4.png",
+      image: "/preview/nextgen-site.png",
       technologies: ["Angular", "TypeScript", "Node.js", "MongoDB"],
       demoUrl: "#",
       repoUrl: "#",
@@ -67,7 +72,7 @@ export default function ProjectsSection() {
       title: "Aplicación de Encuestas - Grupo Leitz",
       description:
         "Diseño UX y prototipado de aplicación móvil para recolección, monitoreo y gestión de datos de cosecha de granos de café. Optimización de procesos agrícolas con experiencia de usuario centrada en el usuario.",
-      image: "/preview/project4.png",
+      image: "/preview/supercompra-app.png",
       technologies: ["Figma", "UX Research", "Prototyping", "Mobile Design", "Agricultural UX"],
       demoUrl: "https://www.behance.net/gallery/188075513/Survey-App",
       repoUrl: "https://www.behance.net/gallery/188075513/Survey-App",
@@ -82,7 +87,7 @@ export default function ProjectsSection() {
       title: "Manual de Marca Securex",
       description:
         "Creación de identidad de marca y prototipo de aplicación para soluciones de seguridad residencial. Diseño de experiencia visual coherente y funcional con enfoque en seguridad y confianza.",
-      image: "/modern-ecommerce-dashboard.png",
+      image: "/preview/securex-app.png",
       technologies: ["Figma", "Brand Identity", "UI Design", "Security UX", "Prototyping"],
       demoUrl: "https://www.behance.net/gallery/170720981/Securex",
       repoUrl: "https://www.behance.net/gallery/170720981/Securex",
@@ -97,7 +102,7 @@ export default function ProjectsSection() {
       title: "SuperCompra - E-commerce UX",
       description:
         "Diseño UX y prototipado de aplicación de comercio electrónico para Distribuidora San Rafael. Enfoque en facilitar la experiencia de compra en línea con navegación intuitiva y procesos optimizados.",
-      image: "/task-management-app.png",
+      image: "/preview/supercompra-app.png",
       technologies: ["Figma", "E-commerce UX", "Mobile Design", "User Research", "Prototyping"],
       demoUrl: "https://www.behance.net/gallery/142323061/SuperCompra",
       repoUrl: "https://www.behance.net/gallery/142323061/SuperCompra",
@@ -112,7 +117,7 @@ export default function ProjectsSection() {
       title: "Orange - Delivery App",
       description:
         "Diseño de identidad de marca y prototipo de aplicación para startup local de servicios de delivery. Experiencia de usuario intuitiva alineada con los valores de la marca y necesidades del usuario.",
-      image: "/preview/project4.png",
+      image: "/preview/supercompra-app.png",
       technologies: ["Figma", "Brand Design", "Delivery UX", "Mobile Design", "Startup UX"],
       demoUrl: "https://www.behance.net/gallery/98890391/Orange-app",
       repoUrl: "https://www.behance.net/gallery/98890391/Orange-app",
@@ -197,37 +202,15 @@ export default function ProjectsSection() {
                       alt={project.title}
                       width={500}
                       height={300}
-                      className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                      className={`w-full h-48 transition-transform duration-500 group-hover:scale-110 ${
+                        isMobileAppImage(project.image) 
+                          ? 'object-contain bg-gray-100 dark:bg-gray-700' 
+                          : 'object-cover'
+                      }`}
                     />
                     
-                    {/* Hover overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="absolute bottom-4 left-4 right-4">
-                        <div className="flex gap-2">
-                          <Button 
-                            asChild 
-                            size="sm" 
-                            className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-0"
-                          >
-                            <Link href={project.demoUrl} target="_blank" rel="noopener noreferrer">
-                              <Eye className="w-4 h-4 mr-1" />
-                              Demo
-                            </Link>
-                          </Button>
-                          <Button 
-                            asChild 
-                            size="sm" 
-                            variant="outline"
-                            className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-white/30"
-                          >
-                            <Link href={project.repoUrl} target="_blank" rel="noopener noreferrer">
-                              <Github className="w-4 h-4 mr-1" />
-                              Código
-                            </Link>
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
+                    {/* Hover overlay - removed redundant buttons */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                     {/* Featured badge */}
                     {project.featured && (
@@ -412,37 +395,15 @@ export default function ProjectsSection() {
                       alt={project.title}
                       width={500}
                       height={300}
-                      className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                      className={`w-full h-48 transition-transform duration-500 group-hover:scale-110 ${
+                        isMobileAppImage(project.image) 
+                          ? 'object-contain bg-gray-100 dark:bg-gray-700' 
+                          : 'object-cover'
+                      }`}
                     />
                     
-                    {/* Hover overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="absolute bottom-4 left-4 right-4">
-                        <div className="flex gap-2">
-                          <Button 
-                            asChild 
-                            size="sm" 
-                            className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-0"
-                          >
-                            <Link href={project.demoUrl} target="_blank" rel="noopener noreferrer">
-                              <Eye className="w-4 h-4 mr-1" />
-                              Ver Diseño
-                            </Link>
-                          </Button>
-                          <Button 
-                            asChild 
-                            size="sm" 
-                            variant="outline"
-                            className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-white/30"
-                          >
-                            <Link href={project.repoUrl} target="_blank" rel="noopener noreferrer">
-                              <Palette className="w-4 h-4 mr-1" />
-                              Portfolio
-                            </Link>
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
+                    {/* Hover overlay - removed redundant buttons */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                     {/* Featured badge */}
                     {project.featured && (
@@ -507,22 +468,11 @@ export default function ProjectsSection() {
                       <Button 
                         asChild 
                         size="sm" 
-                        className="bg-purple-600 hover:bg-purple-700 text-white flex-1 group/btn"
+                        className="bg-purple-600 hover:bg-purple-700 text-white w-full group/btn"
                       >
                         <Link href={project.demoUrl} target="_blank" rel="noopener noreferrer">
                           <Eye className="w-4 h-4 mr-2 group-hover/btn:translate-x-1 transition-transform" />
                           Ver Diseño
-                        </Link>
-                      </Button>
-                      <Button 
-                        asChild 
-                        variant="outline" 
-                        size="sm"
-                        className="group/btn border-purple-300 text-purple-600 hover:bg-purple-50 dark:border-purple-600 dark:text-purple-400 dark:hover:bg-purple-900/20"
-                      >
-                        <Link href={project.repoUrl} target="_blank" rel="noopener noreferrer">
-                          <Palette className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
-                          Portfolio
                         </Link>
                       </Button>
                     </div>
