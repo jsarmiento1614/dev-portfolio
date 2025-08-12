@@ -58,7 +58,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-3 text-gray-300">
                 <MapPin className="w-4 h-4 text-blue-400" />
-                <span>Copán, Honduras</span>
+                <span>San Pedro Sula, Honduras</span>
               </div>
             </div>
           </div>
