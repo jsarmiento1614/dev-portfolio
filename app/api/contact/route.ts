@@ -36,9 +36,17 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // Log para debugging
+    console.log('Intentando enviar email con Resend:', {
+      hasApiKey: !!process.env.RESEND_API_KEY,
+      from: 'onboarding@resend.dev',
+      to: ['jsarmiento1614@gmail.com'],
+      subject: `Nuevo mensaje de ${name} desde tu portafolio`
+    })
+
     // Enviar email usando Resend
     const { data, error } = await resend.emails.send({
-      from: 'Portfolio Contact <contact@jsarmiento.dev>',
+      from: 'onboarding@resend.dev',
       to: ['jsarmiento1614@gmail.com'],
       subject: `Nuevo mensaje de ${name} desde tu portafolio`,
       html: `
@@ -84,7 +92,11 @@ export async function POST(request: NextRequest) {
     })
 
     if (error) {
-      console.error('Error enviando email:', error)
+      console.error('Error enviando email con Resend:', {
+        error: error,
+        message: error.message,
+        name: error.name
+      })
       return NextResponse.json(
         { 
           error: 'Error al enviar el mensaje. Por favor, intenta de nuevo.',
