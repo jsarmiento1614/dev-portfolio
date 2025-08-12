@@ -54,13 +54,18 @@ export default function Header() {
     >
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo - Marca Personal */}
-          <Link 
-            href="/" 
-            className="text-xl font-bold text-gray-900 dark:text-white hover:text-brand-primary dark:hover:text-brand-primary transition-all duration-300 hover:scale-105 font-brand-primary"
-          >
-            <span className="gradient-text">JSarmiento</span>
-          </Link>
+          {/* Logo y Tagline - Marca Personal */}
+          <div className="flex flex-col">
+            <Link 
+              href="/" 
+              className="text-xl font-bold text-gray-900 dark:text-white hover:text-brand-primary dark:hover:text-brand-primary transition-all duration-300 hover:scale-105 font-brand-primary"
+            >
+              <span className="gradient-text">JSarmiento</span>
+            </Link>
+            <span className="text-xs text-brand-accent font-brand-secondary mt-1 opacity-80">
+              Construyo experiencias digitales simples y efectivas
+            </span>
+          </div>
 
           {/* Desktop Navigation - Marca Personal */}
           <div className="hidden lg:flex items-center space-x-8">

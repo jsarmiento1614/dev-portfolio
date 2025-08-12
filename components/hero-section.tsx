@@ -61,11 +61,6 @@ export default function HeroSection() {
             Jesús Sarmiento
           </h1>
           
-          {/* Tagline - Marca Personal */}
-          <p className="tagline mb-6">
-            "Construyo experiencias digitales <span className="tagline-accent">simples y efectivas</span>"
-          </p>
-          
           {/* Animated title */}
           <div className="mb-8">
             <h2 className="text-xl sm:text-2xl md:text-3xl text-brand-primary dark:text-brand-primary font-semibold mb-4 font-brand-primary">

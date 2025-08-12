@@ -17,13 +17,13 @@ module.exports = {
       },
     },
     extend: {
-      colors: {
-        // Marca Personal - Paleta de Colores
-        brand: {
-          base: '#F5F5F5',      // 70% - Gris muy claro, limpio y minimalista
-          primary: '#1E3A8A',   // 20% - Azul profundo, confianza y estabilidad
-          accent: '#FF7A00',    // 10% - Naranja brillante, energía y atención
-        },
+             colors: {
+         // Marca Personal - Paleta de Colores Mejorada
+         brand: {
+           base: '#fafafa',      // 70% - Gris muy claro, más suave
+           primary: '#1e40af',   // 20% - Azul más vibrante y moderno
+           accent: '#f97316',    // 10% - Naranja más suave y profesional
+         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
