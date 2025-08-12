@@ -68,7 +68,7 @@ export default function ContactSection() {
       icon: MessageCircle,
       title: "WhatsApp",
       value: "+504 8785-7498",
-      href: "https://wa.me/50487857498",
+      href: "https://wa.me/50487857498?text=Hola%20Jesús,%20vi%20tu%20portafolio%20y%20me%20interesa%20contactarte%20para%20discutir%20un%20proyecto%20o%20oportunidad%20laboral.%20¿Podrías%20darme%20más%20información?",
       color: "bg-green-500"
     },
     {
@@ -234,6 +234,8 @@ export default function ContactSection() {
                   <Link
                     key={index}
                     href={info.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-lg hover-lift border border-gray-200 dark:border-gray-700 group"
                   >
                     <div className={`w-12 h-12 ${info.color} rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform`}>
