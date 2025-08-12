@@ -26,6 +26,10 @@ export async function POST(request: NextRequest) {
 
     // Verificar que tenemos una API key válida
     if (!process.env.RESEND_API_KEY || process.env.RESEND_API_KEY === 'dummy_key_for_build') {
+      console.error('RESEND_API_KEY no configurada:', {
+        hasKey: !!process.env.RESEND_API_KEY,
+        keyValue: process.env.RESEND_API_KEY ? '***' : 'undefined'
+      })
       return NextResponse.json(
         { error: 'API key de Resend no configurada' },
         { status: 500 }
@@ -82,7 +86,10 @@ export async function POST(request: NextRequest) {
     if (error) {
       console.error('Error enviando email:', error)
       return NextResponse.json(
-        { error: 'Error al enviar el mensaje. Por favor, intenta de nuevo.' },
+        { 
+          error: 'Error al enviar el mensaje. Por favor, intenta de nuevo.',
+          details: process.env.NODE_ENV === 'development' ? error.message : undefined
+        },
         { status: 500 }
       )
     }
