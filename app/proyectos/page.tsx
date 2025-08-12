@@ -41,7 +41,9 @@ export default function AllProjectsPage() {
       featured: true,
       period: "2024-12 - 2025-08",
       role: "Desarrollador React",
-      status: "En desarrollo"
+      status: "En desarrollo",
+      isPrivate: true,
+      privateReason: "Proyecto empresarial - Código propietario"
     },
     {
       id: 2,
@@ -56,7 +58,9 @@ export default function AllProjectsPage() {
       featured: true,
       period: "2023-05 - 2024-12",
       role: "Desarrollador Angular",
-      status: "Completado"
+      status: "Completado",
+      isPrivate: true,
+      privateReason: "Sistema empresarial privado"
     },
     {
       id: 3,
@@ -71,7 +75,9 @@ export default function AllProjectsPage() {
       featured: false,
       period: "2021-12 - 2023-05",
       role: "Desarrollador Web Angular",
-      status: "Completado"
+      status: "Completado",
+      isPrivate: true,
+      privateReason: "Aplicación interna corporativa"
     },
     {
       id: 4,
@@ -300,14 +306,23 @@ export default function AllProjectsPage() {
                     </Badge>
                   </div>
 
-                  {/* Featured badge */}
-                  {project.featured && (
-                    <div className="absolute top-4 right-4">
-                      <Badge className="bg-gradient-to-r from-blue-500 to-purple-500 text-white">
-                        Destacado
-                      </Badge>
-                    </div>
-                  )}
+                                     {/* Featured badge */}
+                   {project.featured && (
+                     <div className="absolute top-4 right-4">
+                       <Badge className="bg-gradient-to-r from-blue-500 to-purple-500 text-white">
+                         Destacado
+                       </Badge>
+                     </div>
+                   )}
+
+                   {/* Private badge */}
+                   {project.isPrivate && (
+                     <div className="absolute top-4 left-4">
+                       <Badge className="bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200 border border-orange-300 dark:border-orange-600">
+                         🔒 Privado
+                       </Badge>
+                     </div>
+                   )}
 
                   {/* Hover overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -381,30 +396,55 @@ export default function AllProjectsPage() {
                     ))}
                   </div>
 
-                  {/* Action buttons */}
-                  <div className="flex gap-3">
-                    <Button 
-                      asChild 
-                      size="sm" 
-                      className="bg-blue-600 hover:bg-blue-700 text-white flex-1 group/btn"
-                    >
-                      <Link href={project.demoUrl} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="w-4 h-4 mr-2 group-hover/btn:translate-x-1 transition-transform" />
-                        Ver Demo
-                      </Link>
-                    </Button>
-                    <Button 
-                      asChild 
-                      variant="outline" 
-                      size="sm"
-                      className="group/btn"
-                    >
-                      <Link href={project.repoUrl} target="_blank" rel="noopener noreferrer">
-                        <Github className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
-                        Código
-                      </Link>
-                    </Button>
-                  </div>
+                                     {/* Action buttons */}
+                   <div className="flex gap-3">
+                     {project.isPrivate ? (
+                       <>
+                         <Button 
+                           size="sm" 
+                           variant="outline"
+                           className="flex-1 border-orange-300 text-orange-600 hover:bg-orange-50 dark:border-orange-600 dark:text-orange-400 dark:hover:bg-orange-900/20"
+                           disabled
+                         >
+                           <ExternalLink className="w-4 h-4 mr-2" />
+                           Sitio Privado
+                         </Button>
+                         <Button 
+                           size="sm" 
+                           variant="outline"
+                           className="border-orange-300 text-orange-600 hover:bg-orange-50 dark:border-orange-600 dark:text-orange-400 dark:hover:bg-orange-900/20"
+                           disabled
+                         >
+                           <Github className="w-4 h-4 mr-2" />
+                           Código Privado
+                         </Button>
+                       </>
+                     ) : (
+                       <>
+                         <Button 
+                           asChild 
+                           size="sm" 
+                           className="bg-blue-600 hover:bg-blue-700 text-white flex-1 group/btn"
+                         >
+                           <Link href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+                             <ExternalLink className="w-4 h-4 mr-2 group-hover/btn:translate-x-1 transition-transform" />
+                             Ver Demo
+                           </Link>
+                         </Button>
+                         <Button 
+                           asChild 
+                           variant="outline" 
+                           size="sm"
+                           className="group/btn"
+                         >
+                           <Link href={project.repoUrl} target="_blank" rel="noopener noreferrer">
+                             <Github className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
+                             Código
+                           </Link>
+                         </Button>
+                       </>
+                     )}
+                   </div>
                 </div>
               </CardContent>
             </Card>

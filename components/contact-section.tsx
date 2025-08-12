@@ -74,7 +74,7 @@ export default function ContactSection() {
     {
       icon: MapPin,
       title: "Ubicación",
-      value: "Copán, Honduras",
+      value: "San Pedro Sula, Honduras",
       href: "#",
       color: "bg-purple-500"
     }

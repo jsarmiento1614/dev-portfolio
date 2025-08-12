@@ -60,7 +60,7 @@ export default function AboutSection() {
     },
     {
       icon: MapPin,
-      title: "Copán",
+      title: "San Pedro Sula",
       description: "Honduras"
     }
   ]
