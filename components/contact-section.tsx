@@ -20,7 +20,8 @@ import {
   MessageSquare,
   Clock,
   Globe,
-  MessageCircle
+  MessageCircle,
+  AlertCircle
 } from "lucide-react"
 
 export default function ContactSection() {
@@ -31,6 +32,7 @@ export default function ContactSection() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState("")
   const { elementRef, isVisible } = useScrollAnimation()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -43,15 +45,31 @@ export default function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setError("")
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
 
-    setSubmitted(true)
-    setIsSubmitting(false)
-    setFormData({ name: "", email: "", message: "" })
+      const data = await response.json()
 
-    setTimeout(() => setSubmitted(false), 4000)
+      if (!response.ok) {
+        throw new Error(data.error || 'Error al enviar el mensaje')
+      }
+
+      setSubmitted(true)
+      setFormData({ name: "", email: "", message: "" })
+      setTimeout(() => setSubmitted(false), 4000)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Error al enviar el mensaje')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const isFormValid = formData.name && formData.email && formData.message
@@ -144,6 +162,13 @@ export default function ContactSection() {
                   <div className="mb-6 p-4 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 text-green-800 dark:text-green-200 rounded-lg flex items-center gap-3">
                     <CheckCircle className="w-5 h-5 text-green-600" />
                     <span>¡Mensaje enviado correctamente! Te responderé pronto.</span>
+                  </div>
+                )}
+
+                {error && (
+                  <div className="mb-6 p-4 bg-gradient-to-r from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 border border-red-200 dark:border-red-800 text-red-800 dark:text-red-200 rounded-lg flex items-center gap-3">
+                    <AlertCircle className="w-5 h-5 text-red-600" />
+                    <span>{error}</span>
                   </div>
                 )}
 
