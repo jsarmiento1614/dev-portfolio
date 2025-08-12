@@ -8,7 +8,8 @@
     "lint": "next lint",
     "start": "next start",
     "generate-images": "node scripts/generate-images.js",
-    "build:images": "npm run generate-images && npm run build"
+    "build:images": "npm run generate-images && npm run build",
+    "verify-analytics": "node scripts/verify-analytics.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

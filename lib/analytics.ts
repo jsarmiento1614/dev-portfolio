@@ -26,6 +26,39 @@ export const event = ({ action, category, label, value }: {
   }
 }
 
+// Eventos personalizados para el portafolio
+export const trackContactForm = () => {
+  event({
+    action: 'submit_contact_form',
+    category: 'engagement',
+    label: 'contact_form_submission'
+  })
+}
+
+export const trackProjectView = (projectName: string) => {
+  event({
+    action: 'view_project',
+    category: 'engagement',
+    label: projectName
+  })
+}
+
+export const trackDownloadCV = () => {
+  event({
+    action: 'download_cv',
+    category: 'engagement',
+    label: 'cv_download'
+  })
+}
+
+export const trackSocialLink = (platform: string) => {
+  event({
+    action: 'click_social_link',
+    category: 'engagement',
+    label: platform
+  })
+}
+
 // Declare gtag as a global variable
 declare global {
   interface Window {

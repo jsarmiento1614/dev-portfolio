@@ -4,6 +4,8 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import StructuredData from "@/components/structured-data"
 import { ThemeProvider } from "@/components/theme-provider"
+import GoogleAnalytics from "@/components/google-analytics"
+import AnalyticsDebug from "@/components/analytics-debug"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -107,8 +109,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <GoogleAnalytics />
           <StructuredData />
           {children}
+          <AnalyticsDebug />
         </ThemeProvider>
       </body>
     </html>

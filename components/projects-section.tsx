@@ -7,11 +7,13 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
+import { useAnalytics } from "@/hooks/use-analytics"
 import { ExternalLink, Github, Eye, ArrowRight, Calendar, Palette, Code } from "lucide-react"
 
 export default function ProjectsSection() {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null)
   const { elementRef, isVisible } = useScrollAnimation()
+  const { trackProject } = useAnalytics()
 
   // Función para detectar si una imagen es de una app móvil
   const isMobileAppImage = (imagePath: string) => {
@@ -304,7 +306,12 @@ export default function ProjectsSection() {
                             size="sm" 
                             className="bg-blue-600 hover:bg-blue-700 text-white flex-1 group/btn"
                           >
-                            <Link href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+                            <Link 
+                              href={project.demoUrl} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              onClick={() => trackProject(project.title)}
+                            >
                               <ExternalLink className="w-4 h-4 mr-2 group-hover/btn:translate-x-1 transition-transform" />
                               Ver Demo
                             </Link>
@@ -472,7 +479,12 @@ export default function ProjectsSection() {
                         size="sm" 
                         className="bg-purple-600 hover:bg-purple-700 text-white w-full group/btn"
                       >
-                        <Link href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+                        <Link 
+                          href={project.demoUrl} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          onClick={() => trackProject(project.title)}
+                        >
                           <Eye className="w-4 h-4 mr-2 group-hover/btn:translate-x-1 transition-transform" />
                           Ver Diseño
                         </Link>
