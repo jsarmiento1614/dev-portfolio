@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
+import { validateEmail, validateName, validateMessage } from '@/lib/validation'
 
 const resend = new Resend(process.env.RESEND_API_KEY || 'dummy_key_for_build')
 
@@ -7,19 +8,29 @@ export async function POST(request: NextRequest) {
   try {
     const { name, email, message } = await request.json()
 
-    // Validación básica
-    if (!name || !email || !message) {
+    // Validación del nombre
+    const nameValidation = validateName(name)
+    if (!nameValidation.isValid) {
       return NextResponse.json(
-        { error: 'Todos los campos son requeridos' },
+        { error: nameValidation.error },
         { status: 400 }
       )
     }
 
-    // Validación de email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(email)) {
+    // Validación del email
+    const emailValidation = validateEmail(email)
+    if (!emailValidation.isValid) {
       return NextResponse.json(
-        { error: 'Email inválido' },
+        { error: emailValidation.error },
+        { status: 400 }
+      )
+    }
+
+    // Validación del mensaje
+    const messageValidation = validateMessage(message)
+    if (!messageValidation.isValid) {
+      return NextResponse.json(
+        { error: messageValidation.error },
         { status: 400 }
       )
     }
