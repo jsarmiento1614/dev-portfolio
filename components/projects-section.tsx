@@ -133,14 +133,26 @@ export default function ProjectsSection() {
         </div>
 
         {/* Development Projects Section */}
-        <div className="mb-16">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-              Proyectos de <span className="gradient-text">Desarrollo</span>
-            </h3>
+        <div className="mb-20 relative">
+          {/* Section Background */}
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-3xl -m-8"></div>
+          
+          {/* Section Header */}
+          <div className="relative z-10 text-center mb-12">
+            <div className="inline-flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center">
+                <Code className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="text-3xl font-bold text-gray-900 dark:text-white">
+                Proyectos de <span className="gradient-text">Desarrollo</span>
+              </h3>
+            </div>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               Aplicaciones web y móviles desarrolladas con las últimas tecnologías y mejores prácticas.
             </p>
+            <div className="mt-4 flex justify-center">
+              <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full"></div>
+            </div>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -157,6 +169,8 @@ export default function ProjectsSection() {
                 onMouseEnter={() => setHoveredProject(project.id)}
                 onMouseLeave={() => setHoveredProject(null)}
               >
+                {/* Development card accent */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-cyan-500"></div>
                 <CardContent className="p-0">
                   {/* Project image with overlay */}
                   <div className="relative overflow-hidden">
@@ -313,15 +327,47 @@ export default function ProjectsSection() {
           </div>
         </div>
 
+        {/* Section Separator */}
+        <div className="relative mb-20">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-gray-200 dark:border-gray-700"></div>
+          </div>
+          <div className="relative flex justify-center">
+            <div className="bg-white dark:bg-gray-900 px-8 py-4 rounded-full shadow-lg border border-gray-200 dark:border-gray-700">
+              <div className="flex items-center gap-4">
+                <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
+                  <Code className="w-4 h-4 text-white" />
+                </div>
+                <span className="text-sm font-medium text-gray-600 dark:text-gray-400">VS</span>
+                <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                  <Palette className="w-4 h-4 text-white" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Design Projects Section */}
-        <div className="mb-16">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-              Proyectos de <span className="gradient-text">Diseño UX/UI</span>
-            </h3>
+        <div className="mb-20 relative">
+          {/* Section Background */}
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-3xl -m-8"></div>
+          
+          {/* Section Header */}
+          <div className="relative z-10 text-center mb-12">
+            <div className="inline-flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
+                <Palette className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="text-3xl font-bold text-gray-900 dark:text-white">
+                Proyectos de <span className="gradient-text">Diseño UX/UI</span>
+              </h3>
+            </div>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               Diseños centrados en el usuario con investigación UX, wireframes, prototipos y sistemas de diseño.
             </p>
+            <div className="mt-4 flex justify-center">
+              <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
+            </div>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -338,6 +384,8 @@ export default function ProjectsSection() {
                 onMouseEnter={() => setHoveredProject(project.id)}
                 onMouseLeave={() => setHoveredProject(null)}
               >
+                {/* Design card accent */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 to-pink-500"></div>
                 <CardContent className="p-0">
                   {/* Project image with overlay */}
                   <div className="relative overflow-hidden">
