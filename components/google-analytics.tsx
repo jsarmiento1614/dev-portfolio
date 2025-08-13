@@ -2,7 +2,7 @@
 
 import Script from 'next/script'
 import { usePathname, useSearchParams } from 'next/navigation'
-import { useEffect, Suspense } from 'react'
+import { useEffect, Suspense, useState } from 'react'
 import { GA_TRACKING_ID, pageview } from '@/lib/analytics'
 
 function GoogleAnalyticsInner() {
@@ -20,7 +20,13 @@ function GoogleAnalyticsInner() {
 }
 
 export default function GoogleAnalytics() {
-  if (!GA_TRACKING_ID) {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted || !GA_TRACKING_ID) {
     return null
   }
 
