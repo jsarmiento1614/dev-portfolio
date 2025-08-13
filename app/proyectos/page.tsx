@@ -195,7 +195,7 @@ export default function AllProjectsPage() {
        client: "Distribuidora San Rafael"
      },
          {
-               id: 9,
+               id: 10,
         title: "Orange - Delivery App",
         type: "design",
         description:
@@ -214,7 +214,7 @@ export default function AllProjectsPage() {
         privateReason: "Proyecto privado de startup"
      },
          {
-               id: 10,
+               id: 11,
         title: "Grupo Leitz - ASP.NET",
         type: "development",
         description:
@@ -232,7 +232,7 @@ export default function AllProjectsPage() {
         privateReason: "Sistema interno corporativo"
      },
      {
-       id: 11,
+       id: 12,
        title: "Timbrit App - Migración Flutter",
        type: "development",
        description:
@@ -250,7 +250,7 @@ export default function AllProjectsPage() {
        privateReason: "Aplicación móvil privada"
      },
      {
-       id: 12,
+       id: 13,
        title: "Grupo Leitz - Migración Xamarin",
        type: "development",
        description:
@@ -268,7 +268,7 @@ export default function AllProjectsPage() {
        privateReason: "Aplicación interna corporativa"
      },
      {
-       id: 13,
+       id: 14,
        title: "Multicomer - Diseño UX y Desarrollo Angular",
        type: "design",
        description:
@@ -285,7 +285,7 @@ export default function AllProjectsPage() {
        client: "Multicomer"
      },
      {
-       id: 14,
+       id: 15,
        title: "San Rafael - SuperCompra y SuperEntregas",
        type: "development",
        description:
@@ -302,7 +302,7 @@ export default function AllProjectsPage() {
        client: "San Rafael"
      },
      {
-       id: 15,
+       id: 16,
        title: "Grupo ASESOR - INCIENSA",
        type: "development",
        description:
@@ -319,7 +319,7 @@ export default function AllProjectsPage() {
        client: "Grupo ASESOR"
      },
      {
-       id: 16,
+       id: 17,
        title: "Inversiones La Paz - Sistema POS",
        type: "development",
        description:

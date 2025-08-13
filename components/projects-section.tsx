@@ -159,7 +159,7 @@ export default function ProjectsSection() {
       type: "design"
     },
     {
-      id: 7,
+      id: 9,
       title: "Orange - Delivery App",
       description:
         "Diseño de identidad de marca y prototipo de aplicación para startup local de servicios de delivery. Experiencia de usuario intuitiva alineada con los valores de la marca y necesidades del usuario.",

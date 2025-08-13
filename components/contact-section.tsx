@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -27,6 +27,7 @@ import {
 } from "lucide-react"
 
 export default function ContactSection() {
+  const [mounted, setMounted] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -38,6 +39,10 @@ export default function ContactSection() {
   const { elementRef, isVisible } = useScrollAnimation()
   const { trackContact, trackSocial } = useAnalytics()
   const { trackContact: trackVercelContact, trackSocial: trackVercelSocial } = useVercelAnalytics()
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -127,6 +132,28 @@ export default function ContactSection() {
       description: "Portfolio de diseño UX/UI"
     }
   ]
+
+  if (!mounted) {
+    return (
+      <section id="contacto" className="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+              ¿Tienes un <span className="gradient-text">proyecto</span> en mente?
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              Me encantaría escuchar sobre tu idea y ayudarte a convertirla en realidad. 
+              Estoy disponible para proyectos freelance y oportunidades de colaboración.
+            </p>
+          </div>
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+            <div className="h-96 bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse"></div>
+            <div className="h-96 bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse"></div>
+          </div>
+        </div>
+      </section>
+    )
+  }
 
   return (
     <section id="contacto" className="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
