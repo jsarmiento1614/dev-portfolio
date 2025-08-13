@@ -180,7 +180,7 @@ export default function ProjectsSection() {
   return (
     <section 
       id="proyectos" 
-      className="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 relative overflow-hidden"
+      className="pt-20 pb-12 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 relative overflow-hidden"
     >
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-5">
@@ -584,7 +584,7 @@ export default function ProjectsSection() {
         </div>
 
         {/* View more projects button */}
-        <div className={`text-center mt-12 transition-all duration-1000 delay-500 ${
+        <div className={`text-center mt-8 transition-all duration-1000 delay-500 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}>
           <Button 
