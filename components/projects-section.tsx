@@ -25,11 +25,28 @@ export default function ProjectsSection() {
   const developmentProjects = [
     {
       id: 1,
-      title: "Randa Ticketera NFT",
+      title: "Trading Automatizado - Plataforma Backend",
       description:
-        "Plataforma de ticketera NFT desarrollada con React 18, Node.js, Express, Next.js, PostgreSQL y Docker. Sistema completo de gestión de eventos y tokens NFT.",
+        "Diseño e implementación de una plataforma backend para gestión y ejecución de estrategias de trading automatizado en mercados como Forex, Criptomonedas e Índices bursátiles. Desarrollo de lógica para determinar en tiempo real si un mercado está abierto o cerrado usando horarios internacionales y zonas horarias.",
+      image: "/preview/trading-platform.png",
+      technologies: ["TypeScript", "Node.js", "Prisma ORM", "PostgreSQL", "WebSockets", "REST API", "Docker", "Redis", "Fly.io", "SimpleFX API", "JavaScript ES6+", "Git", "CI/CD"],
+      demoUrl: "#",
+      repoUrl: "#",
+      category: "Full Stack",
+      featured: true,
+      period: "2025-03 - 2025-08",
+      role: "Desarrollador Full Stack",
+      isPrivate: true,
+      privateReason: "Proyecto de trading automatizado - Código propietario",
+      type: "development"
+    },
+    {
+      id: 2,
+      title: "Randa Ticketera NFT UI/UX",
+      description:
+        "Plataforma de ticketera NFT desarrollada con React 18. Sistema completo de gestión de eventos y tokens NFT.",
       image: "/preview/randa-site.png",
-      technologies: ["React 18", "Node.js", "Express", "Next.js", "PostgreSQL", "Docker"],
+      technologies: ["React 18", "Vite", "Tailwind CSS", "TypeScript", "JavaScript ES6+", "Git"],
       demoUrl: "#",
       repoUrl: "#",
       category: "Web App",
@@ -37,10 +54,11 @@ export default function ProjectsSection() {
       period: "2024-12 - 2025-08",
       role: "Desarrollador React",
       isPrivate: true,
-      privateReason: "Proyecto empresarial - Código propietario"
+      privateReason: "Proyecto empresarial - Código propietario",
+      type: "development"
     },
     {
-      id: 2,
+      id: 3,
       title: "Zero Variance - Ubiquity",
       description:
         "Sistema empresarial desarrollado con Angular 15, .NET Core 8 y SQL Server. Aplicación compleja para gestión de datos y análisis de varianza.",
@@ -53,10 +71,11 @@ export default function ProjectsSection() {
       period: "2023-05 - 2024-12",
       role: "Desarrollador Angular",
       isPrivate: true,
-      privateReason: "Sistema empresarial privado"
+      privateReason: "Sistema empresarial privado",
+      type: "development"
     },
     {
-      id: 3,
+      id: 4,
       title: "NexGen Virtual Office",
       description: 
         "Oficina virtual completa desarrollada con Angular. Sistema de gestión empresarial con múltiples módulos integrados.",
@@ -67,17 +86,20 @@ export default function ProjectsSection() {
       category: "Web App",
       featured: false,
       period: "2021-12 - 2023-05",
-      role: "Desarrollador Web Angular"
+      role: "Desarrollador Web Angular",
+      isPrivate: true,
+      privateReason: "Aplicación interna corporativa",
+      type: "development"
     }
   ]
 
   const designProjects = [
     {
-      id: 4,
+      id: 5,
       title: "Aplicación de Encuestas - Grupo Leitz",
       description:
         "Diseño UX y prototipado de aplicación móvil para recolección, monitoreo y gestión de datos de cosecha de granos de café. Optimización de procesos agrícolas con experiencia de usuario centrada en el usuario.",
-      image: "/preview/supercompra-app.png",
+      image: "/preview/survey-app.png",
       technologies: ["Figma", "UX Research", "Prototyping", "Mobile Design", "Agricultural UX"],
       demoUrl: "https://www.behance.net/gallery/188075513/Survey-App",
       repoUrl: "https://www.behance.net/gallery/188075513/Survey-App",
@@ -85,10 +107,13 @@ export default function ProjectsSection() {
       featured: true,
       period: "2021-04 - 2021-11",
       role: "Diseñador UX/UI",
-      client: "Grupo Leitz, TerraKappe"
+      client: "Grupo Leitz, TerraKappe",
+      isPrivate: true,
+      privateReason: "Proyecto interno corporativo",
+      type: "design"
     },
     {
-      id: 5,
+      id: 6,
       title: "Manual de Marca Securex",
       description:
         "Creación de identidad de marca y prototipo de aplicación para soluciones de seguridad residencial. Diseño de experiencia visual coherente y funcional con enfoque en seguridad y confianza.",
@@ -100,10 +125,11 @@ export default function ProjectsSection() {
       featured: true,
       period: "2021-12 - 2022-05",
       role: "Diseñador UX/UI",
-      client: "Securex App"
+      client: "Securex App",
+      type: "design"
     },
     {
-      id: 6,
+      id: 7,
       title: "SuperCompra - E-commerce UX",
       description:
         "Diseño UX y prototipado de aplicación de comercio electrónico para Distribuidora San Rafael. Enfoque en facilitar la experiencia de compra en línea con navegación intuitiva y procesos optimizados.",
@@ -113,16 +139,31 @@ export default function ProjectsSection() {
       repoUrl: "https://www.behance.net/gallery/142323061/SuperCompra",
       category: "E-commerce UX",
       featured: false,
-      period: "2020-03 - 2020-07",
-      role: "Diseñador UX/UI",
-      client: "Distribuidora San Rafael"
+      type: "design"
+    },
+    {
+      id: 8,
+      title: "Multicomer - Diseño UX y Desarrollo Angular",
+      description:
+        "Proceso de diseño UX y maquetado web para Multicomer, utilizando Figma para el prototipado y Angular 9 con TypeScript para el desarrollo frontend. Creación de interfaces modernas y funcionales.",
+      image: "/preview/easy-pos-site.png",
+      technologies: ["Figma", "Angular 9", "TypeScript", "UX Design", "Web Development"],
+      demoUrl: "https://multicomer.com",
+      repoUrl: "#",
+      category: "UX/UI Design",
+      featured: false,
+      period: "2021-01 - 2021-04",
+      role: "Diseñador UX, Desarrollador Web Angular",
+      isPrivate: true,
+      privateReason: "Proyecto interno corporativo",
+      type: "design"
     },
     {
       id: 7,
       title: "Orange - Delivery App",
       description:
         "Diseño de identidad de marca y prototipo de aplicación para startup local de servicios de delivery. Experiencia de usuario intuitiva alineada con los valores de la marca y necesidades del usuario.",
-      image: "/preview/supercompra-app.png",
+      image: "/preview/orange-app.png",
       technologies: ["Figma", "Brand Design", "Delivery UX", "Mobile Design", "Startup UX"],
       demoUrl: "https://www.behance.net/gallery/98890391/Orange-app",
       repoUrl: "https://www.behance.net/gallery/98890391/Orange-app",
@@ -130,7 +171,9 @@ export default function ProjectsSection() {
       featured: false,
       period: "2019-02 - 2019-05",
       role: "Diseñador UX/UI",
-      client: "Orange App"
+      client: "Orange App",
+      type: "design",
+      isPrivate: true,
     }
   ]
 
@@ -207,7 +250,7 @@ export default function ProjectsSection() {
                       alt={project.title}
                       width={500}
                       height={300}
-                      className={`w-full h-48 transition-transform duration-500 group-hover:scale-110 ${
+                      className={`w-full h-48 ${
                         isMobileAppImage(project.image) 
                           ? 'object-contain bg-gray-100 dark:bg-gray-700' 
                           : 'object-cover'
@@ -404,16 +447,17 @@ export default function ProjectsSection() {
                 <CardContent className="p-0">
                   {/* Project image with overlay */}
                   <div className="relative overflow-hidden">
-                    <Image
+                    <OptimizedImage
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
                       width={500}
                       height={300}
-                      className={`w-full h-48 transition-transform duration-500 group-hover:scale-110 ${
+                      className={`w-full h-48 ${
                         isMobileAppImage(project.image) 
                           ? 'object-contain bg-gray-100 dark:bg-gray-700' 
                           : 'object-cover'
                       }`}
+                      fallbackSrc="/placeholder.svg"
                     />
                     
                     {/* Hover overlay - removed redundant buttons */}
@@ -448,9 +492,21 @@ export default function ProjectsSection() {
                       </span>
                       {project.client && (
                         <div className="mt-1">
-                          <span className="text-xs text-purple-600 dark:text-purple-400 font-medium">
-                            Cliente: {project.client}
-                          </span>
+                          {project.demoUrl && project.demoUrl !== "#" ? (
+                            <Link 
+                              href={project.demoUrl} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-xs font-medium hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-colors"
+                            >
+                              <ExternalLink className="w-3 h-3" />
+                              {project.client}
+                            </Link>
+                          ) : (
+                            <span className="inline-flex items-center px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-xs font-medium">
+                              {project.client}
+                            </span>
+                          )}
                         </div>
                       )}
                     </div>
@@ -479,24 +535,46 @@ export default function ProjectsSection() {
 
                     {/* Action buttons */}
                     <div className="flex gap-3">
-                      <Button 
-                        asChild 
-                        size="sm" 
-                        className="bg-purple-600 hover:bg-purple-700 text-white w-full group/btn"
-                      >
-                        <Link 
-                          href={project.demoUrl} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          onClick={() => {
-                            trackProject(project.title)
-                            trackVercelProject(project.title)
-                          }}
+                      {project.type === "design" && project.demoUrl && project.demoUrl !== "#" && (
+                        <Button 
+                          asChild 
+                          size="sm" 
+                          className="bg-purple-600 hover:bg-purple-700 text-white w-full group/btn"
                         >
-                          <Eye className="w-4 h-4 mr-2 group-hover/btn:translate-x-1 transition-transform" />
-                          Ver Diseño
-                        </Link>
-                      </Button>
+                          <Link 
+                            href={project.demoUrl} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            onClick={() => {
+                              trackProject(project.title)
+                              trackVercelProject(project.title)
+                            }}
+                          >
+                            <Eye className="w-4 h-4 mr-2 group-hover/btn:translate-x-1 transition-transform" />
+                            Ver Prototipo
+                          </Link>
+                        </Button>
+                      )}
+                      {project.type === "development" && project.repoUrl && project.repoUrl !== "#" && (
+                        <Button 
+                          asChild 
+                          size="sm" 
+                          className="bg-blue-600 hover:bg-blue-700 text-white w-full group/btn"
+                        >
+                          <Link 
+                            href={project.repoUrl} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            onClick={() => {
+                              trackProject(project.title)
+                              trackVercelProject(project.title)
+                            }}
+                          >
+                            <Github className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
+                            Ver Código
+                          </Link>
+                        </Button>
+                      )}
                     </div>
                   </div>
                 </CardContent>

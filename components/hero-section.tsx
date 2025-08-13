@@ -87,7 +87,7 @@ export default function HeroSection() {
           {/* Description */}
           <p className="text-sm sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-2 sm:px-4 font-brand-secondary">
             Profesional enfocado en el diseño y desarrollo de aplicaciones web/móviles; aplicando un toque de UX/UI 
-            a cada proyecto. Especializado en Angular, React, .NET/C#, Flutter y tecnologías modernas.
+            a cada proyecto. Especializado en Angular, React, .NET/C#, Java, Flutter y tecnologías modernas.
           </p>
 
           {/* CTA Buttons - Marca Personal */}
@@ -113,7 +113,7 @@ export default function HeroSection() {
           {/* Stats - Marca Personal */}
           <div className="grid grid-cols-3 gap-2 sm:gap-6 md:gap-8 max-w-2xl mx-auto px-2 sm:px-4">
             <div className="text-center">
-              <div className="text-lg sm:text-2xl md:text-3xl font-bold text-brand-primary dark:text-brand-primary mb-1 sm:mb-2 font-brand-primary">5+</div>
+              <div className="text-lg sm:text-2xl md:text-3xl font-bold text-brand-primary dark:text-brand-primary mb-1 sm:mb-2 font-brand-primary">6+</div>
               <div className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 font-brand-secondary leading-tight">Años de experiencia</div>
             </div>
             <div className="text-center">

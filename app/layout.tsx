@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     default: "Jesús Sarmiento - Desarrollador Full Stack | jsarmiento.dev",
     template: "%s | jsarmiento.dev"
   },
-  description: "Desarrollador Full Stack especializado en React, Next.js, Angular y Node.js. Construyo experiencias digitales simples y efectivas. Portafolio con proyectos web y móviles.",
+  description: "Desarrollador Full Stack con 6+ años de experiencia especializado en React, Next.js, Angular y Node.js. Construyo experiencias digitales simples y efectivas. Portafolio con proyectos web y móviles.",
   keywords: [
     "desarrollador full stack",
     "react developer",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     locale: 'es_ES',
     url: 'https://jsarmiento.dev',
     title: 'Jesús Sarmiento - Desarrollador Full Stack',
-    description: 'Desarrollador Full Stack especializado en React, Next.js, Angular y Node.js. Construyo experiencias digitales simples y efectivas.',
+    description: 'Desarrollador Full Stack con 6+ años de experiencia especializado en React, Next.js, Angular y Node.js. Construyo experiencias digitales simples y efectivas.',
     siteName: 'jsarmiento.dev',
     images: [
       {
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Jesús Sarmiento - Desarrollador Full Stack',
-    description: 'Desarrollador Full Stack especializado en React, Next.js, Angular y Node.js. Construyo experiencias digitales simples y efectivas.',
+    description: 'Desarrollador Full Stack con 6+ años de experiencia especializado en React, Next.js, Angular y Node.js. Construyo experiencias digitales simples y efectivas.',
     images: ['/og-image.svg'],
     creator: '@jsarmiento_dev',
   },

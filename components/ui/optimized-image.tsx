@@ -18,7 +18,7 @@ export function OptimizedImage({
   width, 
   height, 
   className = "", 
-  fallbackSrc = "/placeholder.svg" 
+  fallbackSrc = "/placeholder.svg"
 }: OptimizedImageProps) {
   const [imgSrc, setImgSrc] = useState(src)
   const [hasError, setHasError] = useState(false)

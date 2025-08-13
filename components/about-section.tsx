@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Image from "next/image"
+import { OptimizedImage } from "@/components/ui/optimized-image"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
@@ -34,18 +35,22 @@ export default function AboutSection() {
     { name: "TypeScript", icon: Code, category: "Frontend", level: 95 },
     { name: "JavaScript", icon: Code, category: "Frontend", level: 95 },
     { name: "NodeJS", icon: Code, category: "Backend", level: 95 },
+    { name: "Java", icon: Code, category: "Backend", level: 70 },
     { name: "Flutter", icon: Smartphone, category: "Mobile", level: 80 },
     { name: "Xamarin", icon: Smartphone, category: "Mobile", level: 80 },
     { name: "SQL Server", icon: Database, category: "Database", level: 80 },
+    { name: "PostgreSQL", icon: Database, category: "Database", level: 60 },
     { name: "MongoDB", icon: Database, category: "Database", level: 80 },
     { name: "Docker", icon: Cloud, category: "DevOps", level: 80 },
     { name: "Figma", icon: Palette, category: "Design", level: 95 },
+    { name: "Illustrator", icon: Palette, category: "Design", level: 80 },
+    { name: "Photoshop", icon: Palette, category: "Design", level: 80 },
   ]
 
   const experiences = [
     {
       icon: Award,
-      title: "5+ Años",
+      title: "6+ Años",
       description: "Experiencia profesional"
     },
     {
@@ -90,7 +95,7 @@ export default function AboutSection() {
               </h2>
               <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
                 Soy un profesional enfocado en el diseño y desarrollo de aplicaciones web/móviles, 
-                aplicando un toque de UX/UI a cada proyecto. Con más de 5 años de experiencia, 
+                aplicando un toque de UX/UI a cada proyecto. Con más de 6 años de experiencia, 
                 he trabajado en proyectos que van desde aplicaciones web complejas hasta sistemas móviles.
               </p>
               <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
@@ -148,12 +153,12 @@ export default function AboutSection() {
             <div className="flex justify-center">
               <div className="relative group">
                 <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-blue-100 dark:border-blue-900 shadow-xl hover-lift">
-                  <Image
+                  <OptimizedImage
                     src="/jesus-sarmiento-profile.png"
                     alt="Jesús Alberto Sarmiento Bautista - Full Stack Web/Móvil Developer"
                     width={320}
                     height={320}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 
