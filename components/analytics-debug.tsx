@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { useAnalytics } from '@/hooks/use-analytics'
@@ -9,6 +9,7 @@ import { GA_TRACKING_ID } from '@/lib/analytics'
 import { CheckCircle, AlertCircle, Play, Mail, Github, Linkedin, Zap } from 'lucide-react'
 
 export default function AnalyticsDebug() {
+  const [mounted, setMounted] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
   const { trackEvent, trackContact, trackProject, trackSocial } = useAnalytics()
   const { 
@@ -17,6 +18,10 @@ export default function AnalyticsDebug() {
     trackProject: trackVercelProject, 
     trackSocial: trackVercelSocial 
   } = useVercelAnalytics()
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const testEvents = [
     {
@@ -55,6 +60,10 @@ export default function AnalyticsDebug() {
       icon: CheckCircle
     }
   ]
+
+  if (!mounted) {
+    return null
+  }
 
   if (!isVisible) {
     return (
