@@ -71,7 +71,7 @@ export default function AllProjectsPage() {
        privateReason: "Proyecto empresarial - Código propietario"
      },
          {
-       id: 2,
+       id: 3,
        title: "Zero Variance - Ubiquity",
        type: "development",
        description:
@@ -89,7 +89,7 @@ export default function AllProjectsPage() {
        privateReason: "Sistema empresarial privado"
      },
          {
-       id: 3,
+       id: 4,
        title: "NexGen Virtual Office",
        type: "development",
        description: 
@@ -107,7 +107,7 @@ export default function AllProjectsPage() {
        privateReason: "Aplicación interna corporativa"
      },
          {
-               id: 4,
+               id: 5,
         title: "Grupo Leitz - App Móvil",
         type: "development",
         description:
@@ -125,7 +125,7 @@ export default function AllProjectsPage() {
         privateReason: "Aplicación interna corporativa"
      },
          {
-               id: 5,
+               id: 6,
         title: "Chocolats Halba",
         type: "development",
         description:
@@ -143,7 +143,7 @@ export default function AllProjectsPage() {
         privateReason: "Sistema empresarial privado"
      },
          {
-               id: 6,
+               id: 7,
         title: "Aplicación de Encuestas - Grupo Leitz",
         type: "design",
         description:
@@ -161,7 +161,7 @@ export default function AllProjectsPage() {
         isPrivate: false
      },
          {
-       id: 7,
+       id: 8,
        title: "Manual de Marca Securex",
        type: "design",
        description:
@@ -178,7 +178,7 @@ export default function AllProjectsPage() {
        client: "Securex App"
      },
          {
-       id: 8,
+       id: 9,
        title: "SuperCompra - E-commerce UX",
        type: "design",
        description:

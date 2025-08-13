@@ -37,7 +37,7 @@ export default function Footer() {
               Jesús Alberto Sarmiento Bautista
             </h3>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Full Stack Web/Móvil Developer con más de 5 años de experiencia en desarrollo 
+              Full Stack Web/Móvil Developer con más de 6 años de experiencia en desarrollo 
               de aplicaciones web, móviles y diseño UX/UI. Apasionado por crear soluciones 
               digitales innovadoras y experiencias de usuario excepcionales.
             </p>
