@@ -73,7 +73,7 @@ export default function AboutSection() {
   const skillCategories = ["Frontend", "Backend", "Mobile", "Database", "DevOps", "Design"]
 
   return (
-    <section id="sobre-mi" className="py-20 bg-white dark:bg-gray-900 relative overflow-hidden">
+    <section id="sobre-mi" className="py-20 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-1/4 right-0 w-96 h-96 bg-blue-400 rounded-full blur-3xl" />
@@ -90,10 +90,10 @@ export default function AboutSection() {
             }`}
           >
             <div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6">
                 Sobre <span className="gradient-text">mí</span>
               </h2>
-              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+              <p className="text-base sm:text-lg text-muted-foreground mb-6 leading-relaxed">
                 Soy un profesional enfocado en el diseño y desarrollo de aplicaciones web/móviles, 
                 aplicando un toque de UX/UI a cada proyecto. Con más de 6 años de experiencia, 
                 he trabajado en proyectos que van desde aplicaciones web complejas hasta sistemas móviles.

@@ -135,20 +135,20 @@ export default function ContactSection() {
 
   if (!mounted) {
     return (
-      <section id="contacto" className="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
+      <section id="contacto" className="py-20 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 relative overflow-hidden">
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               ¿Tienes un <span className="gradient-text">proyecto</span> en mente?
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
               Me encantaría escuchar sobre tu idea y ayudarte a convertirla en realidad. 
               Estoy disponible para proyectos freelance y oportunidades de colaboración.
             </p>
           </div>
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-            <div className="h-96 bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse"></div>
-            <div className="h-96 bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse"></div>
+            <div className="h-96 bg-slate-800/60 rounded-lg animate-pulse"></div>
+            <div className="h-96 bg-slate-800/60 rounded-lg animate-pulse"></div>
           </div>
         </div>
       </section>
@@ -156,7 +156,7 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contacto" className="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
+    <section id="contacto" className="py-20 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-400 rounded-full blur-3xl" />
@@ -170,10 +170,10 @@ export default function ContactSection() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+                      <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             ¿Tienes un <span className="gradient-text">proyecto</span> en mente?
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                      <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
             Me encantaría escuchar sobre tu idea y ayudarte a convertirla en realidad. 
             Estoy disponible para proyectos freelance y oportunidades de colaboración.
           </p>
@@ -184,30 +184,30 @@ export default function ContactSection() {
           <div className={`transition-all duration-1000 delay-200 ${
             isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
           }`}>
-            <Card className="shadow-xl border-0 bg-white dark:bg-gray-800 hover-lift">
+            <Card className="shadow-xl border-0 bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 hover:shadow-2xl transition-all duration-500 rounded-xl">
               <CardContent className="p-8">
                 <div className="flex items-center gap-3 mb-6">
-                  <MessageSquare className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Envíame un mensaje</h3>
+                  <MessageSquare className="w-6 h-6 text-blue-400" />
+                  <h3 className="text-2xl font-bold text-white">Envíame un mensaje</h3>
                 </div>
 
                 {submitted && (
-                  <div className="mb-6 p-4 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 text-green-800 dark:text-green-200 rounded-lg flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-600" />
+                  <div className="mb-6 p-4 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20 text-green-300 rounded-lg flex items-center gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-400" />
                     <span>¡Mensaje enviado correctamente! Te responderé pronto.</span>
                   </div>
                 )}
 
                 {error && (
-                  <div className="mb-6 p-4 bg-gradient-to-r from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 border border-red-200 dark:border-red-800 text-red-800 dark:text-red-200 rounded-lg flex items-center gap-3">
-                    <AlertCircle className="w-5 h-5 text-red-600" />
+                  <div className="mb-6 p-4 bg-gradient-to-r from-red-500/10 to-pink-500/10 border border-red-500/20 text-red-300 rounded-lg flex items-center gap-3">
+                    <AlertCircle className="w-5 h-5 text-red-400" />
                     <span>{error}</span>
                   </div>
                 )}
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-2">
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                    <label htmlFor="name" className="block text-sm font-medium text-slate-300">
                       Nombre completo
                     </label>
                     <Input
@@ -217,13 +217,13 @@ export default function ContactSection() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="transition-all duration-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="transition-all duration-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-slate-800/50 border-slate-600/50 text-white placeholder-slate-400"
                       placeholder="Tu nombre completo"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                    <label htmlFor="email" className="block text-sm font-medium text-slate-300">
                       Email
                     </label>
                     <Input
@@ -233,13 +233,13 @@ export default function ContactSection() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="transition-all duration-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="transition-all duration-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-slate-800/50 border-slate-600/50 text-white placeholder-slate-400"
                       placeholder="tu@email.com"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                    <label htmlFor="message" className="block text-sm font-medium text-slate-300">
                       Mensaje
                     </label>
                     <Textarea
@@ -249,7 +249,7 @@ export default function ContactSection() {
                       onChange={handleChange}
                       required
                       rows={5}
-                      className="transition-all duration-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                      className="transition-all duration-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none bg-slate-800/50 border-slate-600/50 text-white placeholder-slate-400"
                       placeholder="Cuéntame sobre tu proyecto, timeline, presupuesto y cualquier detalle relevante..."
                     />
                   </div>
@@ -257,7 +257,7 @@ export default function ContactSection() {
                   <Button
                     type="submit"
                     disabled={!isFormValid || isSubmitting}
-                    className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50 py-3 text-lg font-semibold group transition-all duration-300"
+                    className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 disabled:opacity-50 py-3 text-lg font-semibold group transition-all duration-300 shadow-lg hover:shadow-xl"
                   >
                     {isSubmitting ? (
                       <div className="flex items-center gap-2">
@@ -282,8 +282,8 @@ export default function ContactSection() {
           }`}>
             {/* Contact Info */}
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
-                <Globe className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+              <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                <Globe className="w-6 h-6 text-blue-400" />
                 Información de contacto
               </h3>
               
@@ -294,14 +294,14 @@ export default function ContactSection() {
                     href={info.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-lg hover-lift border border-gray-200 dark:border-gray-700 group"
+                    className="flex items-center gap-4 p-4 bg-slate-800/60 backdrop-blur-sm rounded-lg hover:shadow-xl transition-all duration-300 border border-slate-700/50 group"
                   >
                     <div className={`w-12 h-12 ${info.color} rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform`}>
                       <info.icon className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900 dark:text-white">{info.title}</h4>
-                      <p className="text-gray-600 dark:text-gray-400">{info.value}</p>
+                      <h4 className="font-semibold text-white">{info.title}</h4>
+                      <p className="text-slate-300">{info.value}</p>
                     </div>
                   </Link>
                 ))}
@@ -310,12 +310,12 @@ export default function ContactSection() {
 
             {/* Social Links */}
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
-                <Clock className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+              <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                <Clock className="w-6 h-6 text-blue-400" />
                 Conectemos
               </h3>
               
-              <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+              <p className="text-slate-300 mb-6 leading-relaxed">
                 Estoy siempre abierto a discutir nuevas oportunidades, proyectos interesantes o simplemente charlar
                 sobre tecnología. ¡No dudes en contactarme!
               </p>
@@ -331,14 +331,14 @@ export default function ContactSection() {
                       trackSocial(social.name.toLowerCase())
                       trackVercelSocial(social.name.toLowerCase())
                     }}
-                    className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-lg hover-lift border border-gray-200 dark:border-gray-700 group"
+                    className="flex items-center gap-4 p-4 bg-slate-800/60 backdrop-blur-sm rounded-lg hover:shadow-xl transition-all duration-300 border border-slate-700/50 group"
                   >
                     <div className={`w-12 h-12 ${social.color} rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform`}>
                       <social.icon className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900 dark:text-white">{social.name}</h4>
-                      <p className="text-gray-600 dark:text-gray-400">{social.description}</p>
+                      <h4 className="font-semibold text-white">{social.name}</h4>
+                      <p className="text-slate-300">{social.description}</p>
                     </div>
                   </Link>
                 ))}
@@ -346,12 +346,12 @@ export default function ContactSection() {
             </div>
 
             {/* Availability Status */}
-            <div className="p-6 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+            <div className="p-6 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-lg border border-blue-500/20">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                <span className="font-semibold text-gray-900 dark:text-white">Disponible para proyectos</span>
+                <span className="font-semibold text-white">Disponible para proyectos</span>
               </div>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">
+              <p className="text-slate-300 text-sm">
                 Actualmente aceptando nuevos proyectos freelance y oportunidades de colaboración.
                 Tiempo de respuesta: 24 horas.
               </p>

@@ -35,7 +35,7 @@ export default function HeroSection() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 py-8 sm:py-12"
     >
       {/* Animated background - Marca Personal */}
-      <div className="absolute inset-0 bg-gradient-to-br from-brand-base via-white to-brand-base dark:from-slate-900 dark:via-slate-800 dark:to-slate-900" />
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted" />
       
       {/* Floating elements - Marca Personal */}
       <div className="absolute inset-0 overflow-hidden">
@@ -66,17 +66,17 @@ export default function HeroSection() {
             <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-brand-primary dark:text-brand-primary font-semibold mb-3 sm:mb-4 font-brand-primary">
               Full Stack Developer
             </h2>
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-1 sm:gap-2 md:gap-4 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-1 sm:gap-2 md:gap-4 text-xs sm:text-sm text-muted-foreground">
               <div className="flex items-center gap-1 sm:gap-2">
                 <Code className="w-3 h-3 sm:w-4 sm:h-4" />
                 <span>Desarrollo Web</span>
               </div>
-              <div className="hidden sm:block w-1 h-1 bg-gray-400 rounded-full" />
+              <div className="hidden sm:block w-1 h-1 bg-muted-foreground rounded-full" />
               <div className="flex items-center gap-1 sm:gap-2">
                 <Smartphone className="w-3 h-3 sm:w-4 sm:h-4" />
                 <span>Desarrollo Móvil</span>
               </div>
-              <div className="hidden sm:block w-1 h-1 bg-gray-400 rounded-full" />
+              <div className="hidden sm:block w-1 h-1 bg-muted-foreground rounded-full" />
               <div className="flex items-center gap-1 sm:gap-2">
                 <Palette className="w-3 h-3 sm:w-4 sm:h-4" />
                 <span>UI/UX Design</span>
@@ -85,7 +85,7 @@ export default function HeroSection() {
           </div>
 
           {/* Description */}
-          <p className="text-sm sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-2 sm:px-4 font-brand-secondary">
+          <p className="text-sm sm:text-lg md:text-xl text-muted-foreground mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-2 sm:px-4 font-brand-secondary">
             Profesional enfocado en el diseño y desarrollo de aplicaciones web/móviles; aplicando un toque de UX/UI 
             a cada proyecto. Especializado en Angular, React, .NET/C#, Java, Flutter y tecnologías modernas.
           </p>
@@ -113,16 +113,16 @@ export default function HeroSection() {
           {/* Stats - Marca Personal */}
           <div className="grid grid-cols-3 gap-2 sm:gap-6 md:gap-8 max-w-2xl mx-auto px-2 sm:px-4">
             <div className="text-center">
-              <div className="text-lg sm:text-2xl md:text-3xl font-bold text-brand-primary dark:text-brand-primary mb-1 sm:mb-2 font-brand-primary">6+</div>
-              <div className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 font-brand-secondary leading-tight">Años de experiencia</div>
+              <div className="text-lg sm:text-2xl md:text-3xl font-bold text-primary mb-1 sm:mb-2 font-brand-primary">6+</div>
+              <div className="text-xs sm:text-sm md:text-base text-muted-foreground font-brand-secondary leading-tight">Años de experiencia</div>
             </div>
             <div className="text-center">
-              <div className="text-lg sm:text-2xl md:text-3xl font-bold text-brand-primary dark:text-brand-primary mb-1 sm:mb-2 font-brand-primary">15+</div>
-              <div className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 font-brand-secondary leading-tight">Proyectos completados</div>
+              <div className="text-lg sm:text-2xl md:text-3xl font-bold text-primary mb-1 sm:mb-2 font-brand-primary">15+</div>
+              <div className="text-xs sm:text-sm md:text-base text-muted-foreground font-brand-secondary leading-tight">Proyectos completados</div>
             </div>
             <div className="text-center">
-              <div className="text-lg sm:text-2xl md:text-3xl font-bold text-brand-primary dark:text-brand-primary mb-1 sm:mb-2 font-brand-primary">100%</div>
-              <div className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 font-brand-secondary leading-tight">Satisfacción del cliente</div>
+              <div className="text-lg sm:text-2xl md:text-3xl font-bold text-primary mb-1 sm:mb-2 font-brand-primary">100%</div>
+              <div className="text-xs sm:text-sm md:text-base text-muted-foreground font-brand-secondary leading-tight">Satisfacción del cliente</div>
             </div>
           </div>
         </div>
@@ -130,8 +130,8 @@ export default function HeroSection() {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-5 h-8 sm:w-6 sm:h-10 border-2 border-gray-400 dark:border-gray-600 rounded-full flex justify-center">
-          <div className="w-1 h-2 sm:h-3 bg-gray-400 dark:bg-gray-600 rounded-full mt-1.5 sm:mt-2 animate-pulse" />
+        <div className="w-5 h-8 sm:w-6 sm:h-10 border-2 border-muted-foreground rounded-full flex justify-center">
+          <div className="w-1 h-2 sm:h-3 bg-muted-foreground rounded-full mt-1.5 sm:mt-2 animate-pulse" />
         </div>
       </div>
 

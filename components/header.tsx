@@ -37,7 +37,7 @@ export default function Header() {
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         isScrolled 
-          ? "bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-lg border-b border-gray-200 dark:border-slate-700" 
+          ? "bg-background/95 backdrop-blur-md shadow-lg border-b border-border" 
           : "bg-transparent"
       }`}
     >
@@ -46,7 +46,7 @@ export default function Header() {
           {/* Logo - Marca Personal */}
           <Link 
             href="/" 
-            className="text-xl font-bold text-gray-900 dark:text-white hover:text-brand-primary dark:hover:text-brand-primary transition-all duration-300 hover:scale-105 font-brand-primary"
+            className="text-xl font-bold text-foreground hover:text-primary transition-all duration-300 hover:scale-105 font-brand-primary"
           >
             <span className="gradient-text">jsarmiento.dev</span>
           </Link>
@@ -57,7 +57,7 @@ export default function Header() {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-gray-700 dark:text-gray-300 hover:text-brand-primary dark:hover:text-brand-primary transition-all duration-300 relative group font-brand-secondary"
+                className="text-muted-foreground hover:text-primary transition-all duration-300 relative group font-brand-secondary"
               >
                 {item.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full" />
@@ -84,12 +84,12 @@ export default function Header() {
               variant="ghost"
               size="sm"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="w-10 h-10 p-0 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
+              className="w-10 h-10 p-0 rounded-full hover:bg-muted"
             >
               {isMobileMenuOpen ? (
-                <X className="w-6 h-6 text-gray-700 dark:text-gray-300" />
+                <X className="w-6 h-6 text-foreground" />
               ) : (
-                <Menu className="w-6 h-6 text-gray-700 dark:text-gray-300" />
+                <Menu className="w-6 h-6 text-foreground" />
               )}
             </Button>
           </div>
@@ -103,12 +103,12 @@ export default function Header() {
               : "max-h-0 opacity-0 invisible"
           }`}
         >
-          <div className="py-4 space-y-2 border-t border-gray-200 dark:border-gray-700">
+          <div className="py-4 space-y-2 border-t border-border">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="block w-full text-left px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-all duration-300"
+                className="block w-full text-left px-4 py-3 text-muted-foreground hover:text-primary hover:bg-muted rounded-lg transition-all duration-300"
               >
                 {item.label}
               </button>

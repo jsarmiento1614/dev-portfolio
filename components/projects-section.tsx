@@ -180,7 +180,7 @@ export default function ProjectsSection() {
   return (
     <section 
       id="proyectos" 
-      className="pt-20 pb-12 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 relative overflow-hidden"
+      className="pt-20 pb-12 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 relative overflow-hidden"
     >
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-5">
@@ -191,46 +191,45 @@ export default function ProjectsSection() {
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div 
           ref={elementRef}
-          className={`text-center mb-16 transition-all duration-1000 ${
+          className={`text-center mb-24 transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+                      <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Proyectos <span className="gradient-text">Destacados</span>
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                      <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
             Una selección de mis trabajos más recientes que demuestran mi experiencia en desarrollo web, móvil y diseño UX/UI.
           </p>
+          
+          {/* Visual separator after main title */}
+          <div className="flex justify-center mb-8">
+            <div className="w-40 h-0.5 bg-gradient-to-r from-transparent via-blue-400 to-transparent"></div>
+          </div>
         </div>
 
         {/* Development Projects Section */}
         <div className="mb-20 relative">
-          {/* Section Background */}
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-3xl -m-8"></div>
-          
-          {/* Section Header */}
-          <div className="relative z-10 text-center mb-12">
-            <div className="inline-flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center">
-                <Code className="w-6 h-6 text-white" />
+          {/* Section Header - Simplified for better hierarchy */}
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 mb-3">
+              <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
+                <Code className="w-4 h-4 text-white" />
               </div>
-              <h3 className="text-3xl font-bold text-gray-900 dark:text-white">
-                Proyectos de <span className="gradient-text">Desarrollo</span>
+              <h3 className="text-2xl font-bold text-white">
+                Proyectos de <span className="text-blue-400">Desarrollo</span>
               </h3>
             </div>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-base text-slate-400 max-w-2xl mx-auto">
               Aplicaciones web y móviles desarrolladas con las últimas tecnologías y mejores prácticas.
             </p>
-            <div className="mt-4 flex justify-center">
-              <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full"></div>
-            </div>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {developmentProjects.map((project, index) => (
               <Card 
                 key={project.id} 
-                className={`group relative overflow-hidden bg-white dark:bg-gray-800 border-0 shadow-lg hover-lift transition-all duration-500 ${
+                className={`group relative overflow-hidden bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 rounded-xl ${
                   isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
                 }`}
                 style={{ 
@@ -252,7 +251,7 @@ export default function ProjectsSection() {
                       height={300}
                       className={`w-full h-48 ${
                         isMobileAppImage(project.image) 
-                          ? 'object-contain bg-gray-100 dark:bg-gray-700' 
+                          ? 'object-contain bg-slate-700/50' 
                           : 'object-cover'
                       }`}
                       fallbackSrc="/placeholder.svg"
@@ -264,8 +263,8 @@ export default function ProjectsSection() {
                     {/* Featured badge */}
                     {project.featured && (
                       <div className="absolute top-4 right-4">
-                        <span className="px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs font-semibold rounded-full">
-                          Destacado
+                        <span className="px-3 py-1 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-semibold rounded-full shadow-lg">
+                          ⭐ Destacado
                         </span>
                       </div>
                     )}
@@ -273,7 +272,7 @@ export default function ProjectsSection() {
                     {/* Private badge */}
                     {project.isPrivate && (
                       <div className="absolute top-4 left-4">
-                        <span className="px-3 py-1 bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200 border border-orange-300 dark:border-orange-600 text-xs font-semibold rounded-full">
+                        <span className="px-3 py-1 bg-orange-500/20 text-orange-300 border border-orange-500/30 text-xs font-semibold rounded-full shadow-lg">
                           🔒 Privado
                         </span>
                       </div>
@@ -283,10 +282,10 @@ export default function ProjectsSection() {
                   <div className="p-6">
                     {/* Period and Role */}
                     <div className="mb-3 flex items-center justify-between">
-                      <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
+                      <span className="text-sm font-medium text-blue-400">
                         {project.category}
                       </span>
-                      <div className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
+                      <div className="flex items-center gap-1 text-xs text-slate-400">
                         <Calendar className="w-3 h-3" />
                         <span>{project.period}</span>
                       </div>
@@ -294,18 +293,18 @@ export default function ProjectsSection() {
 
                     {/* Role */}
                     <div className="mb-2">
-                      <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
+                      <span className="text-xs font-medium text-slate-400">
                         {project.role}
                       </span>
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
                       {project.title}
                     </h3>
                     
                     {/* Description */}
-                    <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed text-sm">
+                    <p className="text-slate-300 mb-4 leading-relaxed text-sm">
                       {project.description}
                     </p>
 
@@ -314,7 +313,7 @@ export default function ProjectsSection() {
                       {project.technologies.map((tech) => (
                         <span 
                           key={tech} 
-                          className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium transition-colors hover:bg-blue-100 dark:hover:bg-blue-900 hover:text-blue-700 dark:hover:text-blue-300"
+                          className="px-3 py-1 bg-slate-700/50 text-slate-300 rounded-full text-sm font-medium transition-colors hover:bg-blue-500/20 hover:text-blue-300 border border-slate-600/30"
                         >
                           {tech}
                         </span>
@@ -328,7 +327,7 @@ export default function ProjectsSection() {
                           <Button 
                             size="sm" 
                             variant="outline"
-                            className="flex-1 border-orange-300 text-orange-600 hover:bg-orange-50 dark:border-orange-600 dark:text-orange-400 dark:hover:bg-orange-900/20"
+                            className="flex-1 border-orange-500/50 text-orange-300 hover:bg-orange-500/10 disabled:opacity-50"
                             disabled
                           >
                             <ExternalLink className="w-4 h-4 mr-2" />
@@ -337,7 +336,7 @@ export default function ProjectsSection() {
                           <Button 
                             size="sm" 
                             variant="outline"
-                            className="border-orange-300 text-orange-600 hover:bg-orange-50 dark:border-orange-600 dark:text-orange-400 dark:hover:bg-orange-900/20"
+                            className="border-orange-500/50 text-orange-300 hover:bg-orange-500/10 disabled:opacity-50"
                             disabled
                           >
                             <Github className="w-4 h-4 mr-2" />
@@ -349,7 +348,7 @@ export default function ProjectsSection() {
                           <Button 
                             asChild 
                             size="sm" 
-                            className="bg-blue-600 hover:bg-blue-700 text-white flex-1 group/btn"
+                            className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white flex-1 group/btn shadow-lg hover:shadow-xl transition-all duration-300"
                           >
                             <Link 
                               href={project.demoUrl} 
@@ -385,54 +384,38 @@ export default function ProjectsSection() {
           </div>
         </div>
 
-        {/* Section Separator */}
+        {/* Section Separator - Enhanced for better focus */}
         <div className="relative mb-20">
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-gray-200 dark:border-gray-700"></div>
+          <div className="flex justify-center">
+            <div className="w-32 h-px bg-gradient-to-r from-transparent via-slate-500 to-transparent"></div>
           </div>
-          <div className="relative flex justify-center">
-            <div className="bg-white dark:bg-gray-900 px-8 py-4 rounded-full shadow-lg border border-gray-200 dark:border-gray-700">
-              <div className="flex items-center gap-4">
-                <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
-                  <Code className="w-4 h-4 text-white" />
-                </div>
-                <span className="text-sm font-medium text-gray-600 dark:text-gray-400">VS</span>
-                <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-                  <Palette className="w-4 h-4 text-white" />
-                </div>
-              </div>
-            </div>
+          <div className="flex justify-center mt-4">
+            <div className="w-16 h-px bg-gradient-to-r from-transparent via-slate-600 to-transparent"></div>
           </div>
         </div>
 
         {/* Design Projects Section */}
         <div className="mb-20 relative">
-          {/* Section Background */}
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-3xl -m-8"></div>
-          
-          {/* Section Header */}
-          <div className="relative z-10 text-center mb-12">
-            <div className="inline-flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
-                <Palette className="w-6 h-6 text-white" />
+          {/* Section Header - Simplified for better hierarchy */}
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 mb-3">
+              <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                <Palette className="w-4 h-4 text-white" />
               </div>
-              <h3 className="text-3xl font-bold text-gray-900 dark:text-white">
-                Proyectos de <span className="gradient-text">Diseño UX/UI</span>
+              <h3 className="text-2xl font-bold text-white">
+                Proyectos de <span className="text-purple-400">Diseño UX/UI</span>
               </h3>
             </div>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-base text-slate-400 max-w-2xl mx-auto">
               Diseños centrados en el usuario con investigación UX, wireframes, prototipos y sistemas de diseño.
             </p>
-            <div className="mt-4 flex justify-center">
-              <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
-            </div>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {designProjects.map((project, index) => (
               <Card 
                 key={project.id} 
-                className={`group relative overflow-hidden bg-white dark:bg-gray-800 border-0 shadow-lg hover-lift transition-all duration-500 ${
+                className={`group relative overflow-hidden bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 rounded-xl ${
                   isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
                 }`}
                 style={{ 
@@ -454,7 +437,7 @@ export default function ProjectsSection() {
                       height={300}
                       className={`w-full h-48 ${
                         isMobileAppImage(project.image) 
-                          ? 'object-contain bg-gray-100 dark:bg-gray-700' 
+                          ? 'object-contain bg-slate-700/50' 
                           : 'object-cover'
                       }`}
                       fallbackSrc="/placeholder.svg"
@@ -466,8 +449,8 @@ export default function ProjectsSection() {
                     {/* Featured badge */}
                     {project.featured && (
                       <div className="absolute top-4 right-4">
-                        <span className="px-3 py-1 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-semibold rounded-full">
-                          Destacado
+                        <span className="px-3 py-1 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-semibold rounded-full shadow-lg">
+                          ⭐ Destacado
                         </span>
                       </div>
                     )}
@@ -476,10 +459,10 @@ export default function ProjectsSection() {
                   <div className="p-6">
                     {/* Period and Role */}
                     <div className="mb-3 flex items-center justify-between">
-                      <span className="text-sm font-medium text-purple-600 dark:text-purple-400">
+                      <span className="text-sm font-medium text-purple-400">
                         {project.category}
                       </span>
-                      <div className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
+                      <div className="flex items-center gap-1 text-xs text-slate-400">
                         <Calendar className="w-3 h-3" />
                         <span>{project.period}</span>
                       </div>
@@ -512,12 +495,12 @@ export default function ProjectsSection() {
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">
                       {project.title}
                     </h3>
                     
                     {/* Description */}
-                    <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed text-sm">
+                    <p className="text-slate-300 mb-4 leading-relaxed text-sm">
                       {project.description}
                     </p>
 
@@ -526,7 +509,7 @@ export default function ProjectsSection() {
                       {project.technologies.map((tech) => (
                         <span 
                           key={tech} 
-                          className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium transition-colors hover:bg-purple-200 dark:hover:bg-purple-900/50"
+                          className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm font-medium transition-colors hover:bg-purple-500/30 border border-purple-500/30"
                         >
                           {tech}
                         </span>
@@ -539,7 +522,7 @@ export default function ProjectsSection() {
                         <Button 
                           asChild 
                           size="sm" 
-                          className="bg-purple-600 hover:bg-purple-700 text-white w-full group/btn"
+                          className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white w-full group/btn shadow-lg hover:shadow-xl transition-all duration-300"
                         >
                           <Link 
                             href={project.demoUrl} 
@@ -559,7 +542,7 @@ export default function ProjectsSection() {
                         <Button 
                           asChild 
                           size="sm" 
-                          className="bg-blue-600 hover:bg-blue-700 text-white w-full group/btn"
+                          className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white w-full group/btn shadow-lg hover:shadow-xl transition-all duration-300"
                         >
                           <Link 
                             href={project.repoUrl} 
@@ -591,7 +574,7 @@ export default function ProjectsSection() {
             asChild
             size="lg" 
             variant="outline"
-            className="group border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-3"
+            className="group border-2 border-blue-400 text-blue-400 hover:bg-blue-500 hover:text-white px-8 py-3 shadow-lg hover:shadow-xl transition-all duration-300"
           >
             <Link href="/proyectos">
               Ver todos los proyectos

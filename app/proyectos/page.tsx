@@ -349,10 +349,10 @@ export default function AllProjectsPage() {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case "Completado": return "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
-      case "En desarrollo": return "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200"
-      case "En pausa": return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200"
-      default: return "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200"
+      case "Completado": return "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"
+      case "En desarrollo": return "bg-blue-500/20 text-blue-300 border border-blue-500/30"
+      case "En pausa": return "bg-amber-500/20 text-amber-300 border border-amber-500/30"
+      default: return "bg-slate-500/20 text-slate-300 border border-slate-500/30"
     }
   }
 
@@ -368,9 +368,9 @@ export default function AllProjectsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800">
       {/* Header */}
-      <div className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
+      <div className="bg-slate-900/50 backdrop-blur-sm border-b border-slate-700/50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -382,7 +382,7 @@ export default function AllProjectsPage() {
               </Link>
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+              <h1 className="text-2xl font-bold text-white">
                 Todos los Proyectos
               </h1>
             </div>
@@ -400,13 +400,13 @@ export default function AllProjectsPage() {
         >
           {/* Search */}
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
             <input
               type="text"
               placeholder="Buscar proyectos, tecnologías..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full pl-10 pr-4 py-3 border border-slate-600/50 rounded-lg bg-slate-800/50 text-white placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500/50 backdrop-blur-sm"
             />
           </div>
 
@@ -427,7 +427,7 @@ export default function AllProjectsPage() {
           </div>
 
           {/* Results count */}
-          <div className="text-gray-600 dark:text-gray-400">
+          <div className="text-slate-300">
             Mostrando {filteredProjects.length} de {allProjects.length} proyectos
           </div>
         </div>
@@ -437,7 +437,7 @@ export default function AllProjectsPage() {
           {filteredProjects.map((project, index) => (
             <Card 
               key={project.id} 
-              className="group relative overflow-hidden bg-white dark:bg-gray-800 border-0 shadow-lg hover-lift transition-all duration-500"
+              className="group relative overflow-hidden bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 rounded-xl"
             >
               <CardContent className="p-0">
                                  {/* Project image with overlay */}
@@ -449,7 +449,7 @@ export default function AllProjectsPage() {
                       height={300}
                                              className={`w-full h-48 ${
                          isMobileAppImage(project.image) 
-                           ? 'object-contain bg-gray-100 dark:bg-gray-700' 
+                           ? 'object-contain bg-slate-700/50' 
                            : 'object-cover'
                        }`}
                        fallbackSrc="/placeholder.svg"
@@ -467,8 +467,8 @@ export default function AllProjectsPage() {
                   {/* Featured badge */}
                   {project.featured && (
                     <div className="absolute top-4 right-4">
-                      <Badge className="bg-gradient-to-r from-blue-500 to-purple-500 text-white">
-                        Destacado
+                      <Badge className="bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg">
+                        ⭐ Destacado
                       </Badge>
                     </div>
                   )}
@@ -476,7 +476,7 @@ export default function AllProjectsPage() {
                   {/* Private badge - takes priority over status */}
                   {project.isPrivate && (
                     <div className="absolute top-4 left-4">
-                      <Badge className="bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200 border border-orange-300 dark:border-orange-600">
+                      <Badge className="bg-orange-500/20 text-orange-300 border border-orange-500/30 shadow-lg">
                         🔒 Privado
                       </Badge>
                     </div>
@@ -489,11 +489,11 @@ export default function AllProjectsPage() {
                 <div className="p-6">
                   {/* Period and Role */}
                   <div className="mb-3 flex items-center justify-between">
-                    <span className="text-sm font-medium text-blue-600 dark:text-blue-400 flex items-center gap-2">
+                    <span className="text-sm font-medium text-blue-400 flex items-center gap-2">
                       {getCategoryIcon(project.category)}
                       {project.category}
                     </span>
-                    <div className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
+                    <div className="flex items-center gap-1 text-xs text-slate-400">
                       <Calendar className="w-3 h-3" />
                       <span>{project.period}</span>
                     </div>
@@ -501,18 +501,18 @@ export default function AllProjectsPage() {
 
                   {/* Role */}
                   <div className="mb-2">
-                    <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
+                    <span className="text-xs font-medium text-slate-400">
                       {project.role}
                     </span>
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
                     {project.title}
                   </h3>
                   
                   {/* Description */}
-                  <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed text-sm">
+                  <p className="text-slate-300 mb-4 leading-relaxed text-sm">
                     {project.description}
                   </p>
 
@@ -521,7 +521,7 @@ export default function AllProjectsPage() {
                     {project.technologies.map((tech) => (
                       <span 
                         key={tech} 
-                        className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium transition-colors hover:bg-blue-100 dark:hover:bg-blue-900 hover:text-blue-700 dark:hover:text-blue-300"
+                        className="px-3 py-1 bg-slate-700/50 text-slate-300 rounded-full text-sm font-medium transition-colors hover:bg-blue-500/20 hover:text-blue-300 border border-slate-600/30"
                       >
                         {tech}
                       </span>
@@ -536,13 +536,13 @@ export default function AllProjectsPage() {
                           href={project.demoUrl} 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors"
+                          className="inline-flex items-center gap-2 px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm font-medium hover:bg-blue-500/30 transition-colors border border-blue-500/30"
                         >
                           <ExternalLink className="w-3 h-3" />
                           {project.client}
                         </Link>
                       ) : (
-                        <span className="inline-flex items-center px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium">
+                        <span className="inline-flex items-center px-3 py-1 bg-slate-700/50 text-slate-300 rounded-full text-sm font-medium border border-slate-600/30">
                           {project.client}
                         </span>
                       )}
@@ -556,7 +556,7 @@ export default function AllProjectsPage() {
                         <Button 
                           size="sm" 
                           variant="outline"
-                          className="flex-1 border-orange-300 text-orange-600 hover:bg-orange-50 dark:border-orange-600 dark:text-orange-400 dark:hover:bg-orange-900/20"
+                          className="flex-1 border-orange-500/50 text-orange-300 hover:bg-orange-500/10 disabled:opacity-50"
                           disabled
                         >
                           <ExternalLink className="w-4 h-4 mr-2" />
@@ -565,7 +565,7 @@ export default function AllProjectsPage() {
                         <Button 
                           size="sm" 
                           variant="outline"
-                          className="border-orange-300 text-orange-600 hover:bg-orange-50 dark:border-orange-600 dark:text-orange-400 dark:hover:bg-orange-900/20"
+                          className="border-orange-500/50 text-orange-300 hover:bg-orange-500/10 disabled:opacity-50"
                           disabled
                         >
                           <Github className="w-4 h-4 mr-2" />
@@ -579,7 +579,7 @@ export default function AllProjectsPage() {
                           <Button 
                             asChild 
                             size="sm" 
-                            className="bg-purple-600 hover:bg-purple-700 text-white flex-1 group/btn"
+                            className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white flex-1 group/btn shadow-lg hover:shadow-xl transition-all duration-300"
                           >
                             <Link href={project.demoUrl} target="_blank" rel="noopener noreferrer">
                               <Eye className="w-4 h-4 mr-2 group-hover/btn:translate-x-1 transition-transform" />
@@ -592,7 +592,7 @@ export default function AllProjectsPage() {
                           <Button 
                             asChild 
                             size="sm" 
-                            className="bg-blue-600 hover:bg-blue-700 text-white flex-1 group/btn"
+                            className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white flex-1 group/btn shadow-lg hover:shadow-xl transition-all duration-300"
                           >
                             <Link href={project.repoUrl} target="_blank" rel="noopener noreferrer">
                               <Github className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
@@ -612,7 +612,7 @@ export default function AllProjectsPage() {
         {/* No results message */}
         {filteredProjects.length === 0 && (
           <div className="text-center py-12">
-            <div className="text-gray-500 dark:text-gray-400 text-lg">
+            <div className="text-slate-300 text-lg">
               No se encontraron proyectos que coincidan con tu búsqueda.
             </div>
             <Button 
@@ -620,7 +620,7 @@ export default function AllProjectsPage() {
                 setSearchTerm("")
                 setSelectedCategory("Todos")
               }}
-              className="mt-4"
+              className="mt-4 bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-700 hover:to-slate-800 text-white shadow-lg"
             >
               Limpiar filtros
             </Button>
