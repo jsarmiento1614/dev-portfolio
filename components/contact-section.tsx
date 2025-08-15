@@ -1,18 +1,10 @@
 "use client"
 
 import type React from "react"
-import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { useScrollAnimation } from "@/hooks/use-scroll-animation"
-import { useAnalytics } from "@/hooks/use-analytics"
-import { useVercelAnalytics } from "@/hooks/use-vercel-analytics"
+import { useState } from "react"
 import Link from "next/link"
 import { 
   Mail, 
-  Phone, 
   MapPin, 
   Send, 
   CheckCircle, 
@@ -27,7 +19,6 @@ import {
 } from "lucide-react"
 
 export default function ContactSection() {
-  const [mounted, setMounted] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -36,13 +27,6 @@ export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState("")
-  const { elementRef, isVisible } = useScrollAnimation()
-  const { trackContact, trackSocial } = useAnalytics()
-  const { trackContact: trackVercelContact, trackSocial: trackVercelSocial } = useVercelAnalytics()
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -73,8 +57,6 @@ export default function ContactSection() {
 
       setSubmitted(true)
       setFormData({ name: "", email: "", message: "" })
-      trackContact() // Track contact form submission
-      trackVercelContact() // Track with Vercel Analytics
       setTimeout(() => setSubmitted(false), 4000)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error al enviar el mensaje')
@@ -133,28 +115,6 @@ export default function ContactSection() {
     }
   ]
 
-  if (!mounted) {
-    return (
-      <section id="contacto" className="py-20 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 relative overflow-hidden">
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              ¿Tienes un <span className="gradient-text">proyecto</span> en mente?
-            </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-              Me encantaría escuchar sobre tu idea y ayudarte a convertirla en realidad. 
-              Estoy disponible para proyectos freelance y oportunidades de colaboración.
-            </p>
-          </div>
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-            <div className="h-96 bg-slate-800/60 rounded-lg animate-pulse"></div>
-            <div className="h-96 bg-slate-800/60 rounded-lg animate-pulse"></div>
-          </div>
-        </div>
-      </section>
-    )
-  }
-
   return (
     <section id="contacto" className="py-20 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 relative overflow-hidden">
       {/* Background decoration */}
@@ -164,16 +124,11 @@ export default function ContactSection() {
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div 
-          ref={elementRef}
-          className={`text-center mb-16 transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-        >
-                      <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             ¿Tienes un <span className="gradient-text">proyecto</span> en mente?
           </h2>
-                      <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
             Me encantaría escuchar sobre tu idea y ayudarte a convertirla en realidad. 
             Estoy disponible para proyectos freelance y oportunidades de colaboración.
           </p>
@@ -181,105 +136,99 @@ export default function ContactSection() {
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Contact Form */}
-          <div className={`transition-all duration-1000 delay-200 ${
-            isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
-          }`}>
-            <Card className="shadow-xl border-0 bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 hover:shadow-2xl transition-all duration-500 rounded-xl">
-              <CardContent className="p-8">
-                <div className="flex items-center gap-3 mb-6">
-                  <MessageSquare className="w-6 h-6 text-blue-400" />
-                  <h3 className="text-2xl font-bold text-white">Envíame un mensaje</h3>
+          <div>
+            <div className="bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 rounded-xl p-8 shadow-xl">
+              <div className="flex items-center gap-3 mb-6">
+                <MessageSquare className="w-6 h-6 text-blue-400" />
+                <h3 className="text-2xl font-bold text-white">Envíame un mensaje</h3>
+              </div>
+
+              {submitted && (
+                <div className="mb-6 p-4 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20 text-green-300 rounded-lg flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <span>¡Mensaje enviado correctamente! Te responderé pronto.</span>
+                </div>
+              )}
+
+              {error && (
+                <div className="mb-6 p-4 bg-gradient-to-r from-red-500/10 to-pink-500/10 border border-red-500/20 text-red-300 rounded-lg flex items-center gap-3">
+                  <AlertCircle className="w-5 h-5 text-red-400" />
+                  <span>{error}</span>
+                </div>
+              )}
+
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="space-y-2">
+                  <label htmlFor="name" className="block text-sm font-medium text-slate-300">
+                    Nombre completo
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3 py-2 bg-slate-800/50 border border-slate-600/50 text-white placeholder-slate-400 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                    placeholder="Tu nombre completo"
+                  />
                 </div>
 
-                {submitted && (
-                  <div className="mb-6 p-4 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20 text-green-300 rounded-lg flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-400" />
-                    <span>¡Mensaje enviado correctamente! Te responderé pronto.</span>
-                  </div>
-                )}
+                <div className="space-y-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-slate-300">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3 py-2 bg-slate-800/50 border border-slate-600/50 text-white placeholder-slate-400 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                    placeholder="tu@email.com"
+                  />
+                </div>
 
-                {error && (
-                  <div className="mb-6 p-4 bg-gradient-to-r from-red-500/10 to-pink-500/10 border border-red-500/20 text-red-300 rounded-lg flex items-center gap-3">
-                    <AlertCircle className="w-5 h-5 text-red-400" />
-                    <span>{error}</span>
-                  </div>
-                )}
+                <div className="space-y-2">
+                  <label htmlFor="message" className="block text-sm font-medium text-slate-300">
+                    Mensaje
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows={5}
+                    className="w-full px-3 py-2 bg-slate-800/50 border border-slate-600/50 text-white placeholder-slate-400 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none"
+                    placeholder="Cuéntame sobre tu proyecto, timeline, presupuesto y cualquier detalle relevante..."
+                  />
+                </div>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="block text-sm font-medium text-slate-300">
-                      Nombre completo
-                    </label>
-                    <Input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="transition-all duration-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-slate-800/50 border-slate-600/50 text-white placeholder-slate-400"
-                      placeholder="Tu nombre completo"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="block text-sm font-medium text-slate-300">
-                      Email
-                    </label>
-                    <Input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="transition-all duration-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-slate-800/50 border-slate-600/50 text-white placeholder-slate-400"
-                      placeholder="tu@email.com"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label htmlFor="message" className="block text-sm font-medium text-slate-300">
-                      Mensaje
-                    </label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={5}
-                      className="transition-all duration-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none bg-slate-800/50 border-slate-600/50 text-white placeholder-slate-400"
-                      placeholder="Cuéntame sobre tu proyecto, timeline, presupuesto y cualquier detalle relevante..."
-                    />
-                  </div>
-
-                  <Button
-                    type="submit"
-                    disabled={!isFormValid || isSubmitting}
-                    className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 disabled:opacity-50 py-3 text-lg font-semibold group transition-all duration-300 shadow-lg hover:shadow-xl"
-                  >
-                    {isSubmitting ? (
-                      <div className="flex items-center gap-2">
-                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                        Enviando mensaje...
-                      </div>
-                    ) : (
-                      <div className="flex items-center gap-2">
-                        <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                        Enviar mensaje
-                      </div>
-                    )}
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
+                <button
+                  type="submit"
+                  disabled={!isFormValid || isSubmitting}
+                  className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 disabled:opacity-50 py-3 text-lg font-semibold text-white rounded-md transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      Enviando mensaje...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      Enviar mensaje
+                    </>
+                  )}
+                </button>
+              </form>
+            </div>
           </div>
 
           {/* Contact Info & Social */}
-          <div className={`space-y-8 transition-all duration-1000 delay-400 ${
-            isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
-          }`}>
+          <div className="space-y-8">
             {/* Contact Info */}
             <div>
               <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
@@ -327,10 +276,6 @@ export default function ContactSection() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => {
-                      trackSocial(social.name.toLowerCase())
-                      trackVercelSocial(social.name.toLowerCase())
-                    }}
                     className="flex items-center gap-4 p-4 bg-slate-800/60 backdrop-blur-sm rounded-lg hover:shadow-xl transition-all duration-300 border border-slate-700/50 group"
                   >
                     <div className={`w-12 h-12 ${social.color} rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform`}>
