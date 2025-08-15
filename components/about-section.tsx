@@ -98,7 +98,7 @@ export default function AboutSection() {
                 aplicando un toque de UX/UI a cada proyecto. Con más de 6 años de experiencia, 
                 he trabajado en proyectos que van desde aplicaciones web complejas hasta sistemas móviles.
               </p>
-              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+              <p className="text-base sm:text-lg text-slate-300 mb-8 leading-relaxed">
                 Mi enfoque se centra en escribir código limpio, escalable y mantenible, siempre 
                 buscando las mejores prácticas y las tecnologías más actuales para ofrecer 
                 resultados excepcionales.
@@ -107,23 +107,23 @@ export default function AboutSection() {
 
                          {/* Personal Info */}
              <div className="space-y-4">
-               <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white mb-4">Información Personal</h3>
+               <h3 className="text-lg sm:text-xl font-semibold text-white mb-4">Información Personal</h3>
                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div className="flex items-center gap-3">
-                  <Mail className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                  <span className="text-gray-600 dark:text-gray-300">jsarmiento1614@gmail.com</span>
+                  <Mail className="w-5 h-5 text-blue-400" />
+                  <span className="text-slate-300">jsarmiento1614@gmail.com</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Phone className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                  <span className="text-gray-600 dark:text-gray-300">+504 8785-7498</span>
+                  <Phone className="w-5 h-5 text-blue-400" />
+                  <span className="text-slate-300">+504 8785-7498</span>
                 </div>
                                  <div className="flex items-center gap-3">
-                   <MapPin className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                   <span className="text-gray-600 dark:text-gray-300">San Pedro Sula, Honduras</span>
+                   <MapPin className="w-5 h-5 text-blue-400" />
+                   <span className="text-slate-300">San Pedro Sula, Honduras</span>
                  </div>
                 <div className="flex items-center gap-3">
-                  <Globe className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                  <span className="text-gray-600 dark:text-gray-300">Hondureño</span>
+                  <Globe className="w-5 h-5 text-blue-400" />
+                  <span className="text-slate-300">Hondureño</span>
                 </div>
               </div>
             </div>
@@ -133,12 +133,12 @@ export default function AboutSection() {
               {experiences.map((exp, index) => (
                 <Card 
                   key={index}
-                  className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 border-0 shadow-lg hover-lift"
+                  className="bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 shadow-xl hover:shadow-2xl transition-all duration-500 rounded-xl"
                 >
                   <CardContent className="p-4 text-center">
-                    <exp.icon className="w-8 h-8 text-blue-600 dark:text-blue-400 mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-gray-900 dark:text-white">{exp.title}</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">{exp.description}</div>
+                    <exp.icon className="w-8 h-8 text-blue-400 mx-auto mb-2" />
+                    <div className="text-2xl font-bold text-white">{exp.title}</div>
+                    <div className="text-sm text-slate-300">{exp.description}</div>
                   </CardContent>
                 </Card>
               ))}
@@ -152,7 +152,7 @@ export default function AboutSection() {
             {/* Profile image */}
             <div className="flex justify-center">
               <div className="relative group">
-                <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-blue-100 dark:border-blue-900 shadow-xl hover-lift">
+                <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-slate-700/50 shadow-xl hover:shadow-2xl transition-all duration-500">
                   <OptimizedImage
                     src="/jesus-sarmiento-profile.png"
                     alt="Jesús Alberto Sarmiento Bautista - Full Stack Web/Móvil Developer"
@@ -177,7 +177,7 @@ export default function AboutSection() {
 
             {/* Skills section */}
             <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white text-center">
+              <h3 className="text-2xl font-bold text-white text-center">
                 Tecnologías que domino
               </h3>
               
@@ -187,7 +187,7 @@ export default function AboutSection() {
                   <Badge 
                     key={category}
                     variant="outline"
-                    className="px-4 py-2 text-sm font-medium cursor-pointer hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors"
+                    className="px-4 py-2 text-sm font-medium cursor-pointer bg-slate-800/60 border-slate-700/50 text-slate-300 hover:bg-blue-500/20 hover:text-blue-300 transition-colors"
                   >
                     {category}
                   </Badge>
@@ -199,17 +199,17 @@ export default function AboutSection() {
                 {skills.map((skill) => (
                   <div
                     key={skill.name}
-                    className="relative p-4 bg-gray-50 dark:bg-gray-800 rounded-lg hover-lift cursor-pointer group"
+                    className="relative p-4 bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 rounded-lg hover:shadow-xl transition-all duration-300 cursor-pointer group"
                     onMouseEnter={() => setActiveSkill(skill.name)}
                     onMouseLeave={() => setActiveSkill(null)}
                   >
                     <div className="flex items-center gap-3 mb-2">
-                      <skill.icon className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                      <span className="font-medium text-gray-900 dark:text-white">{skill.name}</span>
+                      <skill.icon className="w-5 h-5 text-blue-400" />
+                      <span className="font-medium text-white">{skill.name}</span>
                     </div>
                     
                     {/* Progress bar */}
-                    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                    <div className="w-full bg-slate-700/50 rounded-full h-2">
                       <div 
                         className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-500"
                         style={{ width: `${skill.level}%` }}
@@ -217,7 +217,7 @@ export default function AboutSection() {
                     </div>
                     
                     {/* Level indicator */}
-                    <div className="absolute top-2 right-2 text-xs font-bold text-blue-600 dark:text-blue-400">
+                    <div className="absolute top-2 right-2 text-xs font-bold text-blue-400">
                       {skill.level}%
                     </div>
                   </div>
