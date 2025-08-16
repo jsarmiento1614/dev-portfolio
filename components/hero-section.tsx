@@ -3,11 +3,17 @@
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { useParallax } from "@/hooks/use-scroll-animation"
+import { useTextReveal, useStaggerAnimation, useDirectionalAnimation } from "@/hooks/use-advanced-animations"
+import { motion } from "framer-motion"
 import { ArrowDown, Code, Palette, Zap, Smartphone, Globe } from "lucide-react"
 
 export default function HeroSection() {
   const [mounted, setMounted] = useState(false)
   const { elementRef, offset } = useParallax(0.3)
+  const titleReveal = useTextReveal({ delay: 500, duration: 1200 })
+  const subtitleReveal = useTextReveal({ delay: 800, duration: 1000 })
+  const buttonsStagger = useStaggerAnimation(2, 0.2)
+  const skillsAnimation = useDirectionalAnimation('up')
 
   useEffect(() => {
     setMounted(true)
@@ -56,76 +62,152 @@ export default function HeroSection() {
 
       {/* Main content */}
       <div className="relative z-10 max-w-6xl mx-auto px-2 sm:px-6 lg:px-8 text-center">
-        <div className="animate-fade-in-up">
+        <div>
           {/* Name with gradient effect - Marca Personal */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 sm:mb-6 gradient-text font-brand-primary leading-tight">
+          <motion.h1 
+            ref={titleReveal.ref}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 sm:mb-6 gradient-text font-brand-primary leading-tight"
+            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+            animate={titleReveal.shouldReveal ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.9 }}
+            transition={{ duration: 1.2, type: "spring", stiffness: 100 }}
+          >
             Jesús Sarmiento
-          </h1>
+          </motion.h1>
           
           {/* Animated title */}
-          <div className="mb-6 sm:mb-8">
-            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-brand-primary dark:text-brand-primary font-semibold mb-3 sm:mb-4 font-brand-primary">
+          <motion.div 
+            ref={subtitleReveal.ref}
+            className="mb-6 sm:mb-8"
+            initial={{ opacity: 0, y: 30 }}
+            animate={subtitleReveal.shouldReveal ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+          >
+            <motion.h2 
+              className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-brand-primary dark:text-brand-primary font-semibold mb-3 sm:mb-4 font-brand-primary"
+              initial={{ opacity: 0 }}
+              animate={subtitleReveal.shouldReveal ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+            >
               Full Stack Developer
-            </h2>
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-1 sm:gap-2 md:gap-4 text-xs sm:text-sm text-muted-foreground">
-              <div className="flex items-center gap-1 sm:gap-2">
+            </motion.h2>
+            <motion.div 
+              ref={skillsAnimation.ref}
+              className="flex flex-col sm:flex-row justify-center items-center gap-1 sm:gap-2 md:gap-4 text-xs sm:text-sm text-muted-foreground"
+              {...skillsAnimation}
+              transition={{ delay: 0.8, duration: 0.8, staggerChildren: 0.1 }}
+            >
+              <motion.div 
+                className="flex items-center gap-1 sm:gap-2"
+                initial={{ opacity: 0, x: -20 }}
+                animate={skillsAnimation.isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                transition={{ delay: 1, duration: 0.6 }}
+              >
                 <Code className="w-3 h-3 sm:w-4 sm:h-4" />
                 <span>Desarrollo Web</span>
-              </div>
+              </motion.div>
               <div className="hidden sm:block w-1 h-1 bg-muted-foreground rounded-full" />
-              <div className="flex items-center gap-1 sm:gap-2">
+              <motion.div 
+                className="flex items-center gap-1 sm:gap-2"
+                initial={{ opacity: 0, x: -20 }}
+                animate={skillsAnimation.isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                transition={{ delay: 1.2, duration: 0.6 }}
+              >
                 <Smartphone className="w-3 h-3 sm:w-4 sm:h-4" />
                 <span>Desarrollo Móvil</span>
-              </div>
+              </motion.div>
               <div className="hidden sm:block w-1 h-1 bg-muted-foreground rounded-full" />
-              <div className="flex items-center gap-1 sm:gap-2">
+              <motion.div 
+                className="flex items-center gap-1 sm:gap-2"
+                initial={{ opacity: 0, x: -20 }}
+                animate={skillsAnimation.isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                transition={{ delay: 1.4, duration: 0.6 }}
+              >
                 <Palette className="w-3 h-3 sm:w-4 sm:h-4" />
                 <span>UI/UX Design</span>
-              </div>
-            </div>
-          </div>
+              </motion.div>
+            </motion.div>
+          </motion.div>
 
           {/* Description */}
-          <p className="text-sm sm:text-lg md:text-xl text-muted-foreground mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-2 sm:px-4 font-brand-secondary">
+          <motion.p 
+            className="text-sm sm:text-lg md:text-xl text-muted-foreground mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-2 sm:px-4 font-brand-secondary"
+            initial={{ opacity: 0, y: 20 }}
+            animate={subtitleReveal.shouldReveal ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ delay: 1.6, duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+          >
             Profesional enfocado en el diseño y desarrollo de aplicaciones web/móviles; aplicando un toque de UX/UI 
             a cada proyecto. Especializado en Angular, React, .NET/C#, Java, Flutter y tecnologías modernas.
-          </p>
+          </motion.p>
 
           {/* CTA Buttons - Marca Personal */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-12 sm:mb-16 px-2 sm:px-4">
-            <Button
-              onClick={scrollToProjects}
-              size="lg"
-              className="btn-brand-primary px-6 sm:px-8 py-2.5 sm:py-3 text-base sm:text-lg font-semibold rounded-lg transition-all duration-300 hover:scale-105 group w-full sm:w-auto"
+          <motion.div 
+            ref={buttonsStagger.ref}
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-12 sm:mb-16 px-2 sm:px-4"
+            initial={{ opacity: 0, y: 30 }}
+            animate={buttonsStagger.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ delay: 1.8, duration: 0.6 }}
+          >
+            <motion.div
+              {...buttonsStagger.getChildAnimation(0)}
             >
-              Ver proyectos
-              <ArrowDown className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-y-1 transition-transform" />
-            </Button>
-            <Button
-              onClick={scrollToAbout}
-              variant="outline"
-              size="lg"
-              className="btn-brand-secondary px-6 sm:px-8 py-2.5 sm:py-3 text-base sm:text-lg font-semibold rounded-lg transition-all duration-300 hover:scale-105 w-full sm:w-auto"
+              <Button
+                onClick={scrollToProjects}
+                size="lg"
+                className="btn-brand-primary px-6 sm:px-8 py-2.5 sm:py-3 text-base sm:text-lg font-semibold rounded-lg transition-all duration-300 hover:scale-105 group w-full sm:w-auto"
+              >
+                Ver proyectos
+                <ArrowDown className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-y-1 transition-transform" />
+              </Button>
+            </motion.div>
+            <motion.div
+              {...buttonsStagger.getChildAnimation(1)}
             >
-              Conoce más
-            </Button>
-          </div>
+              <Button
+                onClick={scrollToAbout}
+                variant="outline"
+                size="lg"
+                className="btn-brand-secondary px-6 sm:px-8 py-2.5 sm:py-3 text-base sm:text-lg font-semibold rounded-lg transition-all duration-300 hover:scale-105 w-full sm:w-auto"
+              >
+                Conoce más
+              </Button>
+            </motion.div>
+          </motion.div>
 
           {/* Stats - Marca Personal */}
-          <div className="grid grid-cols-3 gap-2 sm:gap-6 md:gap-8 max-w-2xl mx-auto px-2 sm:px-4">
-            <div className="text-center">
+          <motion.div 
+            className="grid grid-cols-3 gap-2 sm:gap-6 md:gap-8 max-w-2xl mx-auto px-2 sm:px-4"
+            initial={{ opacity: 0, y: 30 }}
+            animate={buttonsStagger.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ delay: 2.2, duration: 0.8 }}
+          >
+            <motion.div 
+              className="text-center"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={buttonsStagger.isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+              transition={{ delay: 2.4, duration: 0.6, type: "spring", stiffness: 150 }}
+            >
               <div className="text-lg sm:text-2xl md:text-3xl font-bold text-primary mb-1 sm:mb-2 font-brand-primary">6+</div>
               <div className="text-xs sm:text-sm md:text-base text-muted-foreground font-brand-secondary leading-tight">Años de experiencia</div>
-            </div>
-            <div className="text-center">
+            </motion.div>
+            <motion.div 
+              className="text-center"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={buttonsStagger.isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+              transition={{ delay: 2.6, duration: 0.6, type: "spring", stiffness: 150 }}
+            >
               <div className="text-lg sm:text-2xl md:text-3xl font-bold text-primary mb-1 sm:mb-2 font-brand-primary">15+</div>
               <div className="text-xs sm:text-sm md:text-base text-muted-foreground font-brand-secondary leading-tight">Proyectos completados</div>
-            </div>
-            <div className="text-center">
+            </motion.div>
+            <motion.div 
+              className="text-center"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={buttonsStagger.isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+              transition={{ delay: 2.8, duration: 0.6, type: "spring", stiffness: 150 }}
+            >
               <div className="text-lg sm:text-2xl md:text-3xl font-bold text-primary mb-1 sm:mb-2 font-brand-primary">100%</div>
               <div className="text-xs sm:text-sm md:text-base text-muted-foreground font-brand-secondary leading-tight">Satisfacción del cliente</div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
 

@@ -3,6 +3,8 @@
 import { useState } from "react"
 import { OptimizedImage } from "@/components/ui/optimized-image"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
+import { useStaggerAnimation, useDirectionalAnimation, useSmoothParallax } from "@/hooks/use-advanced-animations"
+import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import {
@@ -22,6 +24,11 @@ import {
 export default function AboutSection() {
   const [activeSkill, setActiveSkill] = useState<string | null>(null)
   const { elementRef, isVisible } = useScrollAnimation()
+  const skillsStagger = useStaggerAnimation(8, 0.1)
+  const cardsStagger = useStaggerAnimation(3, 0.15)
+  const profileAnimation = useDirectionalAnimation('left')
+  const textAnimation = useDirectionalAnimation('right')
+  const parallaxBg = useSmoothParallax(-50)
 
   const skills = [
     { name: "Angular", icon: Code, category: "Frontend", level: 95 },
@@ -128,32 +135,65 @@ export default function AboutSection() {
             </div>
 
             {/* Experience cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <motion.div 
+              ref={cardsStagger.ref}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+            >
               {experiences.map((exp, index) => (
-                <Card
+                <motion.div
                   key={index}
-                  className="bg-card backdrop-blur-sm border border-border shadow-xl hover:shadow-2xl transition-all duration-500 rounded-xl"
+                  {...cardsStagger.getChildAnimation(index)}
                 >
-                  <CardContent className="p-4 text-center">
-                    <exp.icon className="w-8 h-8 text-primary mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-foreground">{exp.title}</div>
-                    <div className="text-sm text-muted-foreground">{exp.description}</div>
-                  </CardContent>
-                </Card>
+                  <motion.div
+                    whileHover={{ 
+                      scale: 1.05,
+                      y: -8,
+                      transition: { duration: 0.2 }
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <Card className="bg-card backdrop-blur-sm border border-border shadow-xl hover:shadow-2xl transition-all duration-500 rounded-xl h-full">
+                      <CardContent className="p-4 text-center">
+                        <motion.div
+                          whileHover={{ 
+                            rotate: [0, -15, 15, 0],
+                            scale: 1.2
+                          }}
+                          transition={{ duration: 0.4 }}
+                        >
+                          <exp.icon className="w-8 h-8 text-primary mx-auto mb-2" />
+                        </motion.div>
+                        <div className="text-2xl font-bold text-foreground">{exp.title}</div>
+                        <div className="text-sm text-muted-foreground">{exp.description}</div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
 
           {/* Right column - Image and skills */}
-          <div
-            className={`space-y-8 transition-all duration-1000 delay-300 ${
-              isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
-            }`}
+          <motion.div
+            ref={profileAnimation.ref}
+            className="space-y-8"
+            {...profileAnimation}
+            transition={{ duration: 1, delay: 0.2 }}
           >
             {/* Profile image */}
             <div className="flex justify-center">
               <div className="relative group">
-                <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-border shadow-xl hover:shadow-2xl transition-all duration-500">
+                <motion.div 
+                  className="w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-border shadow-xl hover:shadow-2xl transition-all duration-500"
+                  whileHover={{ 
+                    scale: 1.05,
+                    rotate: 2,
+                    transition: { duration: 0.3 }
+                  }}
+                  initial={{ scale: 0.8, opacity: 0, y: 50 }}
+                  animate={profileAnimation.isInView ? { scale: 1, opacity: 1, y: 0 } : { scale: 0.8, opacity: 0, y: 50 }}
+                  transition={{ duration: 1, delay: 0.4, type: "spring", stiffness: 100 }}
+                >
                   <OptimizedImage
                     src="/jesus-sarmiento-profile.png"
                     alt="Jesús Alberto Sarmiento Bautista - Full Stack Web/Móvil Developer"
@@ -161,24 +201,99 @@ export default function AboutSection() {
                     height={320}
                     className="w-full h-full object-cover"
                   />
-                </div>
+                  {/* Floating animation overlay */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent opacity-0"
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </motion.div>
 
                 {/* Floating elements around image */}
-                <div className="absolute -top-4 -right-4 w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center animate-float">
+                <motion.div 
+                  className="absolute -top-4 -right-4 w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center"
+                  initial={{ opacity: 0, scale: 0, y: -20 }}
+                  animate={profileAnimation.isInView ? { 
+                    opacity: 1, 
+                    scale: 1, 
+                    y: 0,
+                    y: [0, -10, 0]
+                  } : { opacity: 0, scale: 0, y: -20 }}
+                  transition={{ 
+                    duration: 0.6, 
+                    delay: 0.8, 
+                    type: "spring", 
+                    stiffness: 200,
+                    y: {
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }
+                  }}
+                  whileHover={{ scale: 1.2, rotate: 360 }}
+                >
                   <Code className="w-8 h-8 text-white" />
-                </div>
-                <div
-                  className="absolute -bottom-4 -left-4 w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center animate-float"
-                  style={{ animationDelay: "1s" }}
+                </motion.div>
+                <motion.div
+                  className="absolute -bottom-4 -left-4 w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center"
+                  initial={{ opacity: 0, scale: 0, y: 20 }}
+                  animate={profileAnimation.isInView ? { 
+                    opacity: 1, 
+                    scale: 1, 
+                    y: 0,
+                    y: [0, 10, 0],
+                    x: [0, 5, 0]
+                  } : { opacity: 0, scale: 0, y: 20 }}
+                  transition={{ 
+                    duration: 0.6, 
+                    delay: 1, 
+                    type: "spring", 
+                    stiffness: 200,
+                    y: {
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    },
+                    x: {
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }
+                  }}
+                  whileHover={{ scale: 1.2, rotate: -360 }}
                 >
                   <Smartphone className="w-8 h-8 text-white" />
-                </div>
-                <div
-                  className="absolute top-1/2 -right-8 w-12 h-12 bg-cyan-500 rounded-full flex items-center justify-center animate-float"
-                  style={{ animationDelay: "2s" }}
+                </motion.div>
+                <motion.div
+                  className="absolute top-1/2 -right-8 w-12 h-12 bg-cyan-500 rounded-full flex items-center justify-center"
+                  initial={{ opacity: 0, scale: 0, x: 20 }}
+                  animate={profileAnimation.isInView ? { 
+                    opacity: 1, 
+                    scale: 1, 
+                    x: 0,
+                    x: [0, 8, 0],
+                    y: [0, -5, 0]
+                  } : { opacity: 0, scale: 0, x: 20 }}
+                  transition={{ 
+                    duration: 0.6, 
+                    delay: 1.2, 
+                    type: "spring", 
+                    stiffness: 200,
+                    x: {
+                      duration: 5,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    },
+                    y: {
+                      duration: 5,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }
+                  }}
+                  whileHover={{ scale: 1.2, rotate: 180 }}
                 >
                   <Palette className="w-6 h-6 text-white" />
-                </div>
+                </motion.div>
               </div>
             </div>
 
@@ -200,36 +315,64 @@ export default function AboutSection() {
               </div>
 
               {/* Skills grid */}
-              <div className="grid grid-cols-2 gap-4">
-                {skills.map((skill) => (
-                  <div
+              <motion.div 
+                ref={skillsStagger.ref}
+                className="grid grid-cols-2 gap-4"
+              >
+                {skills.map((skill, index) => (
+                  <motion.div
                     key={skill.name}
+                    {...skillsStagger.getChildAnimation(index)}
                     className={`relative p-4 bg-card border border-border rounded-lg hover:shadow-xl transition-all duration-300 cursor-pointer group ${
                       activeSkill === skill.name ? "ring-2 ring-ring" : ""
                     }`}
                     onMouseEnter={() => setActiveSkill(skill.name)}
                     onMouseLeave={() => setActiveSkill(null)}
+                    whileHover={{ 
+                      scale: 1.02, 
+                      y: -2,
+                      transition: { duration: 0.2 }
+                    }}
+                    whileTap={{ scale: 0.98 }}
                   >
                     <div className="flex items-center gap-3 mb-2">
-                      <skill.icon className="w-5 h-5 text-primary" />
+                      <motion.div
+                        whileHover={{ rotate: 360 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <skill.icon className="w-5 h-5 text-primary" />
+                      </motion.div>
                       <span className="font-medium text-foreground">{skill.name}</span>
                     </div>
 
                     {/* Progress bar */}
                     <div className="w-full bg-muted rounded-full h-2">
-                      <div
-                        className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-[width] duration-500"
-                        style={{ width: `${skill.level}%` }}
+                      <motion.div
+                        className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full"
+                        initial={{ width: 0 }}
+                        animate={skillsStagger.animatedChildren[index] ? { width: `${skill.level}%` } : { width: 0 }}
+                        transition={{ 
+                          duration: 1, 
+                          delay: 0.3,
+                          ease: [0.25, 0.46, 0.45, 0.94]
+                        }}
                       />
                     </div>
 
                     {/* Level indicator */}
-                    <div className="absolute top-2 right-2 text-xs font-bold text-primary">{skill.level}%</div>
-                  </div>
+                    <motion.div 
+                      className="absolute top-2 right-2 text-xs font-bold text-primary"
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={skillsStagger.animatedChildren[index] ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
+                      transition={{ delay: 1, duration: 0.3, type: "spring", stiffness: 200 }}
+                    >
+                      {skill.level}%
+                    </motion.div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
