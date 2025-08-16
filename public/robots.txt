@@ -2,7 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://jsarmiento.dev/sitemap.xml
-
-# Crawl-delay
-Crawl-delay: 1
+Sitemap: https://jsarmiento.vercel.app/sitemap.xml
