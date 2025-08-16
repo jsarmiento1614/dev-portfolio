@@ -4,22 +4,22 @@ export default function StructuredData() {
     "@graph": [
       {
         "@type": "Person",
-        "@id": "https://jsarmiento.dev/#person",
+        "@id": "https://jsarmiento.vercel.app/#person",
         "name": "Jesús Alberto Sarmiento Bautista",
         "givenName": "Jesús Alberto",
         "familyName": "Sarmiento Bautista",
-        "url": "https://jsarmiento.dev",
+        "url": "https://jsarmiento.vercel.app",
         "image": {
           "@type": "ImageObject",
-          "url": "https://jsarmiento.dev/jesus-sarmiento-profile.png",
+          "url": "https://jsarmiento.vercel.app/jesus-sarmiento-profile.png",
           "width": 400,
           "height": 400,
           "caption": "Jesús Sarmiento - Desarrollador Full Stack"
         },
         "sameAs": [
-          "https://github.com/jsarmiento",
-          "https://linkedin.com/in/jsarmiento",
-          "https://twitter.com/jsarmiento_dev"
+          "https://github.com/jsarmiento1614",
+          "https://linkedin.com/in/jsarmiento1614",
+          "https://twitter.com/jsarmiento1614"
         ],
         "jobTitle": "Desarrollador Full Stack",
         "hasOccupation": {
@@ -57,8 +57,8 @@ export default function StructuredData() {
         ],
         "address": {
           "@type": "PostalAddress",
-          "addressCountry": "ES",
-          "addressRegion": "España"
+          "addressCountry": "HN",
+          "addressRegion": "Honduras"
         },
         "knowsLanguage": [
           {
@@ -72,28 +72,29 @@ export default function StructuredData() {
             "alternateName": "en"
           }
         ],
-        "email": "contacto@jsarmiento.dev",
-        "telephone": "+34-XXX-XXX-XXX",
+        "email": "jsarmiento1614@gmail.com",
+        "telephone": "+504 8785-7498",
         "alumniOf": {
           "@type": "EducationalOrganization",
-          "name": "Universidad Tecnológica"
+          "name": "Centro Universitario Tecnológico Ceutec",
+          "url": "https://ceutec.hn/"
         }
       },
       {
         "@type": "WebSite",
-        "@id": "https://jsarmiento.dev/#website",
+        "@id": "https://jsarmiento.vercel.app/#website",
         "name": "Jesús Sarmiento - Desarrollador Full Stack Portfolio",
-        "alternateName": "jsarmiento.dev",
-        "url": "https://jsarmiento.dev",
+        "alternateName": "jsarmiento.vercel.app",
+        "url": "https://jsarmiento.vercel.app",
         "description": "Portfolio profesional de Jesús Sarmiento, desarrollador full stack especializado en React, Next.js, Angular y Node.js. Proyectos web y móviles para empresas.",
         "publisher": {
-          "@id": "https://jsarmiento.dev/#person"
+          "@id": "https://jsarmiento.vercel.app/#person"
         },
         "potentialAction": {
           "@type": "SearchAction",
           "target": {
             "@type": "EntryPoint",
-            "urlTemplate": "https://jsarmiento.dev/proyectos?q={search_term_string}"
+            "urlTemplate": "https://jsarmiento.vercel.app/proyectos?q={search_term_string}"
           },
           "query-input": "required name=search_term_string"
         },
@@ -101,15 +102,15 @@ export default function StructuredData() {
       },
       {
         "@type": "ProfessionalService",
-        "@id": "https://jsarmiento.dev/#service",
+        "@id": "https://jsarmiento.vercel.app/#service",
         "name": "Servicios de Desarrollo Full Stack",
         "description": "Desarrollo de aplicaciones web modernas, aplicaciones móviles nativas y sistemas backend escalables utilizando las últimas tecnologías.",
         "provider": {
-          "@id": "https://jsarmiento.dev/#person"
+          "@id": "https://jsarmiento.vercel.app/#person"
         },
         "areaServed": {
           "@type": "Place",
-          "name": "España"
+          "name": "Honduras"
         },
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
@@ -144,23 +145,23 @@ export default function StructuredData() {
         "serviceType": "Desarrollo de Software",
         "serviceArea": {
           "@type": "Place",
-          "name": "España"
+          "name": "Honduras"
         }
       },
       {
         "@type": "Organization",
-        "@id": "https://jsarmiento.dev/#organization",
+        "@id": "https://jsarmiento.vercel.app/#organization",
         "name": "Jesús Sarmiento Development",
-        "alternateName": "jsarmiento.dev",
-        "url": "https://jsarmiento.dev",
+        "alternateName": "jsarmiento.vercel.app",
+        "url": "https://jsarmiento.vercel.app",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://jsarmiento.dev/og-image.svg",
+          "url": "https://jsarmiento.vercel.app/og-image.svg",
           "width": 1200,
           "height": 630
         },
         "founder": {
-          "@id": "https://jsarmiento.dev/#person"
+          "@id": "https://jsarmiento.vercel.app/#person"
         },
         "foundingDate": "2018",
         "description": "Estudio de desarrollo especializado en soluciones web y móviles modernas",
@@ -174,9 +175,9 @@ export default function StructuredData() {
         ],
         "contactPoint": {
           "@type": "ContactPoint",
-          "telephone": "+34-XXX-XXX-XXX",
+          "telephone": "+504 8785-7498",
           "contactType": "customer service",
-          "email": "contacto@jsarmiento.dev",
+          "email": "jsarmiento1614@gmail.com",
           "availableLanguage": ["es", "en"]
         }
       }
