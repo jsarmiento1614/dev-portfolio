@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9fafb; border-radius: 8px;">
           <div style="background-color: #1e40af; color: white; padding: 20px; border-radius: 8px 8px 0 0; text-align: center;">
             <h1 style="margin: 0; font-size: 24px;">Nuevo Mensaje de Contacto</h1>
-            <p style="margin: 5px 0 0 0; opacity: 0.9;">Desde tu portafolio jsarmiento.dev</p>
+            <p style="margin: 5px 0 0 0; opacity: 0.9;">Desde tu portafolio jsarmiento.vercel.app</p>
           </div>
           
           <div style="background-color: white; padding: 30px; border-radius: 0 0 8px 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">

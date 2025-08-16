@@ -19,7 +19,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'jsarmiento.dev',
+        hostname: 'jsarmiento.vercel.app',
         port: '',
         pathname: '/**',
       },

@@ -16,23 +16,19 @@ interface ProjectsStructuredDataProps {
   pageDescription?: string
 }
 
-export default function ProjectsStructuredData({ 
-  projects, 
-  pageTitle = "Proyectos - Portfolio de Desarrollo",
-  pageDescription = "Explora mi portfolio de proyectos web y móviles desarrollados con React, Next.js, Angular, Node.js y tecnologías modernas."
-}: ProjectsStructuredDataProps) {
+export default function ProjectsStructuredData({ projects, pageTitle, pageDescription }: ProjectsStructuredDataProps) {
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "CollectionPage",
-        "@id": "https://jsarmiento.dev/proyectos#page",
+        "@id": "https://jsarmiento.vercel.app/proyectos#page",
         "name": pageTitle,
         "description": pageDescription,
-        "url": "https://jsarmiento.dev/proyectos",
+        "url": "https://jsarmiento.vercel.app/proyectos",
         "mainEntity": {
           "@type": "ItemList",
-          "@id": "https://jsarmiento.dev/proyectos#projects",
+          "@id": "https://jsarmiento.vercel.app/proyectos#projects",
           "name": "Portfolio de Proyectos de Desarrollo",
           "description": "Colección de proyectos web y móviles desarrollados por Jesús Sarmiento",
           "numberOfItems": projects.length,
@@ -41,18 +37,18 @@ export default function ProjectsStructuredData({
             "position": index + 1,
             "item": {
               "@type": "CreativeWork",
-              "@id": `https://jsarmiento.dev/proyectos#${project.id}`,
+              "@id": `https://jsarmiento.vercel.app/proyectos#${project.id}`,
               "name": project.title,
               "description": project.description,
               "image": {
                 "@type": "ImageObject",
-                "url": `https://jsarmiento.dev${project.image}`,
+                "url": `https://jsarmiento.vercel.app${project.image}`,
                 "caption": `Captura de pantalla del proyecto ${project.title}`,
                 "description": `Vista previa del proyecto ${project.title} - ${project.description.substring(0, 100)}`
               },
               "creator": {
                 "@type": "Person",
-                "@id": "https://jsarmiento.dev/#person",
+                "@id": "https://jsarmiento.vercel.app/#person",
                 "name": "Jesús Sarmiento"
               },
               "genre": project.category,
@@ -90,55 +86,79 @@ export default function ProjectsStructuredData({
               "@type": "ListItem",
               "position": 1,
               "name": "Inicio",
-              "item": "https://jsarmiento.dev"
+              "item": "https://jsarmiento.vercel.app"
             },
             {
               "@type": "ListItem",
               "position": 2,
               "name": "Proyectos",
-              "item": "https://jsarmiento.dev/proyectos"
+              "item": "https://jsarmiento.vercel.app/proyectos"
             }
           ]
         },
         "author": {
           "@type": "Person",
-          "@id": "https://jsarmiento.dev/#person",
+          "@id": "https://jsarmiento.vercel.app/#person",
           "name": "Jesús Sarmiento"
         },
         "publisher": {
           "@type": "Organization",
-          "@id": "https://jsarmiento.dev/#organization",
+          "@id": "https://jsarmiento.vercel.app/#organization",
           "name": "Jesús Sarmiento Development"
         }
       },
       {
         "@type": "WebPage",
-        "@id": "https://jsarmiento.dev/proyectos#webpage",
-        "url": "https://jsarmiento.dev/proyectos",
+        "@id": "https://jsarmiento.vercel.app/proyectos#webpage",
+        "url": "https://jsarmiento.vercel.app/proyectos",
         "name": pageTitle,
         "description": pageDescription,
         "isPartOf": {
           "@type": "WebSite",
-          "@id": "https://jsarmiento.dev/#website"
+          "@id": "https://jsarmiento.vercel.app/#website"
         },
         "about": {
           "@type": "Thing",
-          "name": "Desarrollo de Software",
-          "sameAs": "https://es.wikipedia.org/wiki/Desarrollo_de_software"
+          "name": "Desarrollo Web y Móvil"
         },
-        "mentions": projects.map(project => ({
-          "@type": "SoftwareApplication",
-          "name": project.title,
-          "description": project.description,
-          "applicationCategory": project.category,
-          "operatingSystem": "Web, Mobile",
-          "programmingLanguage": project.technologies
-        })),
-        "primaryImageOfPage": {
-          "@type": "ImageObject",
-          "url": "https://jsarmiento.dev/og-image.svg",
-          "width": 1200,
-          "height": 630
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "developers, businesses, startups"
+        },
+        "inLanguage": "es-ES",
+        "isAccessibleForFree": true,
+        "license": "https://creativecommons.org/licenses/by/4.0/",
+        "mainEntity": {
+          "@type": "ItemList",
+          "@id": "https://jsarmiento.vercel.app/proyectos#projects",
+          "name": "Portfolio de Proyectos",
+          "numberOfItems": projects.length,
+          "itemListElement": projects.map((project, index) => ({
+            "@type": "ListItem",
+            "position": index + 1,
+            "item": {
+              "@type": "CreativeWork",
+              "@id": `https://jsarmiento.vercel.app/proyectos#${project.id}`,
+              "name": project.title,
+              "description": project.description,
+              "image": {
+                "@type": "ImageObject",
+                "url": `https://jsarmiento.vercel.app${project.image}`,
+                "caption": `Captura de pantalla del proyecto ${project.title}`
+              },
+              "creator": {
+                "@type": "Person",
+                "@id": "https://jsarmiento.vercel.app/#person",
+                "name": "Jesús Sarmiento"
+              },
+              "genre": project.category,
+              "keywords": project.technologies.join(", "),
+              "dateCreated": "2023",
+              "inLanguage": "es-ES",
+              "license": "https://creativecommons.org/licenses/by/4.0/",
+              "isAccessibleForFree": true
+            }
+          }))
         }
       }
     ]
