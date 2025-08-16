@@ -24,7 +24,7 @@ import {
 export default function AboutSection() {
   const [activeSkill, setActiveSkill] = useState<string | null>(null)
   const { elementRef, isVisible } = useScrollAnimation()
-  const skillsStagger = useStaggerAnimation(8, 0.1)
+  const skillsStagger = useStaggerAnimation(16, 0.1)
   const cardsStagger = useStaggerAnimation(3, 0.15)
   const profileAnimation = useDirectionalAnimation('left')
   const textAnimation = useDirectionalAnimation('right')
@@ -322,13 +322,17 @@ export default function AboutSection() {
 
               {/* Skills grid */}
               <motion.div 
-                ref={skillsStagger.ref}
                 className="grid grid-cols-2 gap-4"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.3 }}
               >
                 {skills.map((skill, index) => (
                   <motion.div
                     key={skill.name}
-                    {...skillsStagger.getChildAnimation(index)}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.5 + (index * 0.1) }}
                     className={`relative p-4 bg-card border border-border rounded-lg hover:shadow-xl transition-all duration-300 cursor-pointer group ${
                       activeSkill === skill.name ? "ring-2 ring-ring" : ""
                     }`}
@@ -356,10 +360,10 @@ export default function AboutSection() {
                       <motion.div
                         className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full"
                         initial={{ width: 0 }}
-                        animate={skillsStagger.animatedChildren[index] ? { width: `${skill.level}%` } : { width: 0 }}
+                        animate={{ width: `${skill.level}%` }}
                         transition={{ 
                           duration: 1, 
-                          delay: 0.3
+                          delay: 0.8 + (index * 0.1)
                         }}
                       />
                     </div>
@@ -368,8 +372,8 @@ export default function AboutSection() {
                     <motion.div 
                       className="absolute top-2 right-2 text-xs font-bold text-primary"
                       initial={{ opacity: 0, scale: 0 }}
-                      animate={skillsStagger.animatedChildren[index] ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
-                      transition={{ delay: 1, duration: 0.3, type: "spring", stiffness: 200 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 1.2 + (index * 0.1), duration: 0.3, type: "spring", stiffness: 200 }}
                     >
                       {skill.level}%
                     </motion.div>
