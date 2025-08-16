@@ -124,9 +124,6 @@ export default function StructuredData() {
         "@id": "https://jsarmiento.vercel.app/#service",
         "name": "Servicios de Desarrollo Full Stack",
         "description": "Desarrollo de aplicaciones web modernas, aplicaciones móviles nativas y sistemas backend escalables utilizando las últimas tecnologías.",
-        "provider": {
-          "@id": "https://jsarmiento.vercel.app/#person"
-        },
         "areaServed": {
           "@type": "Place",
           "name": "Honduras"
@@ -161,7 +158,6 @@ export default function StructuredData() {
             }
           ]
         },
-        "serviceType": "Desarrollo de Software",
         "serviceArea": {
           "@type": "Place",
           "name": "Honduras"
