@@ -32,7 +32,7 @@ export default function FAQPage() {
         {
           id: "technologies",
           question: "¿Con qué tecnologías trabajas?",
-          answer: "Mi stack principal incluye React.js, Next.js, Angular, Node.js, TypeScript, JavaScript ES6+, PostgreSQL, MongoDB, Docker, Redis, y servicios cloud como Vercel y Fly.io. También trabajo con React Native para desarrollo móvil y tengo experiencia con Python y Java para proyectos específicos."
+          answer: "Mi stack principal incluye React.js, Next.js, Angular, Node.js, TypeScript, JavaScript ES6+, PostgreSQL, MongoDB, Docker, Redis, y servicios cloud como Vercel y Fly.io. También trabajo con Flutter, Xamarine para desarrollo móvil y si el cliente solicta experiencia con otro stack no soportado se considera trabajar."
         },
         {
           id: "experience",
@@ -42,7 +42,7 @@ export default function FAQPage() {
         {
           id: "location",
           question: "¿Desde dónde trabajas y qué horarios manejas?",
-          answer: "Trabajo desde España y estoy disponible en horario europeo (GMT+1). Ofrezco servicios tanto para clientes locales como internacionales, adaptándome a diferentes zonas horarias cuando el proyecto lo requiere."
+          answer: "Trabajo desde Honduras y estoy disponible en horario central (GMT-6). Ofrezco servicios tanto para clientes locales como internacionales, adaptándome a diferentes zonas horarias cuando el proyecto lo requiere."
         }
       ]
     },
@@ -86,7 +86,7 @@ export default function FAQPage() {
         {
           id: "seo-optimization",
           question: "¿Incluyes optimización SEO?",
-          answer: "Sí, implemento SEO técnico básico en todos los proyectos: metadata optimizada, structured data (Schema.org), sitemap.xml, robots.txt, optimización de imágenes, Core Web Vitals, y URLs semánticas. Para SEO avanzado ofrezco servicios especializados."
+          answer: "Sí el proyecto lo requiere, implemento SEO técnico básico en todos los proyectos: metadata optimizada, structured data (Schema.org), sitemap.xml, robots.txt, optimización de imágenes, Core Web Vitals, y URLs semánticas."
         },
         {
           id: "performance",
@@ -113,7 +113,7 @@ export default function FAQPage() {
         {
           id: "payment-terms",
           question: "¿Cuáles son tus términos de pago?",
-          answer: "Generalmente trabajo con: 30% al inicio del proyecto, 40% en el hito intermedio, y 30% al finalizar. Para proyectos largos ofrezco pagos mensuales. Acepto transferencias bancarias y PayPal."
+          answer: "Generalmente trabajo con: 30% al inicio del proyecto, 40% en el hito intermedio, y 30% al finalizar. Para proyectos largos ofrezco pagos mensuales. Acepto múltiples métodos de pago: transferencias bancarias, PayPal, y criptomonedas (USDT) a través de exchanges reconocidos para mayor flexibilidad internacional."
         },
         {
           id: "project-ownership",
