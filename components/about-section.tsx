@@ -8,10 +8,6 @@ import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import {
-  Code,
-  Database,
-  Smartphone,
-  Palette,
   GraduationCap,
   MapPin,
   Mail,
@@ -20,6 +16,29 @@ import {
   Award,
   Users,
 } from "lucide-react"
+
+// Iconos específicos de tecnologías
+import { 
+  SiAngular,
+  SiReact, 
+  SiDotnet,
+  SiTypescript,
+  SiJavascript,
+  SiNodedotjs,
+  SiOpenjdk, // Para Java
+  SiFlutter,
+
+  SiMysql, // Para SQL Server (similar)
+  SiPostgresql,
+  SiMongodb,
+  SiDocker,
+  SiFigma,
+  SiAdobeillustrator,
+  SiAdobephotoshop
+} from "react-icons/si"
+
+// Iconos fallback de lucide-react
+import { Code, Smartphone, Palette } from "lucide-react"
 
 export default function AboutSection() {
   const [activeSkill, setActiveSkill] = useState<string | null>(null)
@@ -31,22 +50,22 @@ export default function AboutSection() {
   const parallaxBg = useSmoothParallax(-50)
 
   const skills = [
-    { name: "Angular", icon: Code, category: "Frontend", level: 95 },
-    { name: "React", icon: Code, category: "Frontend", level: 95 },
-    { name: ".NET/C#", icon: Code, category: "Backend", level: 95 },
-    { name: "TypeScript", icon: Code, category: "Frontend", level: 95 },
-    { name: "JavaScript", icon: Code, category: "Frontend", level: 95 },
-    { name: "NodeJS", icon: Code, category: "Backend", level: 95 },
-    { name: "Java", icon: Code, category: "Backend", level: 70 },
-    { name: "Flutter", icon: Smartphone, category: "Mobile", level: 80 },
-    { name: "Xamarin", icon: Smartphone, category: "Mobile", level: 80 },
-    { name: "SQL Server", icon: Database, category: "Database", level: 80 },
-    { name: "PostgreSQL", icon: Database, category: "Database", level: 60 },
-    { name: "MongoDB", icon: Database, category: "Database", level: 80 },
-    { name: "Docker", icon: Palette, category: "DevOps", level: 80 },
-    { name: "Figma", icon: Palette, category: "Design", level: 95 },
-    { name: "Illustrator", icon: Palette, category: "Design", level: 80 },
-    { name: "Photoshop", icon: Palette, category: "Design", level: 80 },
+    { name: "Angular", icon: SiAngular, category: "Frontend", level: 95, color: "#DD0031", bgColor: "#DD0031" },
+    { name: "React", icon: SiReact, category: "Frontend", level: 95, color: "#61DAFB", bgColor: "#61DAFB" },
+    { name: ".NET/C#", icon: SiDotnet, category: "Backend", level: 95, color: "#512BD4", bgColor: "#512BD4" },
+    { name: "TypeScript", icon: SiTypescript, category: "Frontend", level: 95, color: "#3178C6", bgColor: "#3178C6" },
+    { name: "JavaScript", icon: SiJavascript, category: "Frontend", level: 95, color: "#F7DF1E", bgColor: "#F7DF1E" },
+    { name: "NodeJS", icon: SiNodedotjs, category: "Backend", level: 95, color: "#339933", bgColor: "#339933" },
+    { name: "Java", icon: SiOpenjdk, category: "Backend", level: 70, color: "#ED8B00", bgColor: "#ED8B00" },
+    { name: "Flutter", icon: SiFlutter, category: "Mobile", level: 80, color: "#02569B", bgColor: "#02569B" },
+    { name: "Xamarin", icon: Smartphone, category: "Mobile", level: 80, color: "#3498DB", bgColor: "#3498DB" },
+    { name: "SQL Server", icon: SiMysql, category: "Database", level: 80, color: "#CC2927", bgColor: "#CC2927" },
+    { name: "PostgreSQL", icon: SiPostgresql, category: "Database", level: 60, color: "#336791", bgColor: "#336791" },
+    { name: "MongoDB", icon: SiMongodb, category: "Database", level: 80, color: "#47A248", bgColor: "#47A248" },
+    { name: "Docker", icon: SiDocker, category: "DevOps", level: 80, color: "#2496ED", bgColor: "#2496ED" },
+    { name: "Figma", icon: SiFigma, category: "Design", level: 95, color: "#F24E1E", bgColor: "#F24E1E" },
+    { name: "Illustrator", icon: SiAdobeillustrator, category: "Design", level: 80, color: "#FF9A00", bgColor: "#FF9A00" },
+    { name: "Photoshop", icon: SiAdobephotoshop, category: "Design", level: 80, color: "#31A8FF", bgColor: "#31A8FF" },
   ]
 
   const experiences = [
@@ -347,30 +366,39 @@ export default function AboutSection() {
                   >
                     <div className="flex items-center gap-3 mb-2">
                       <motion.div
-                        whileHover={{ rotate: 360 }}
+                        whileHover={{ rotate: 360, scale: 1.1 }}
                         transition={{ duration: 0.5 }}
+                        className="flex-shrink-0"
                       >
-                        <skill.icon className="w-5 h-5 text-primary" />
+                        <skill.icon 
+                          className="w-6 h-6" 
+                          style={{ color: skill.color }}
+                        />
                       </motion.div>
                       <span className="font-medium text-foreground">{skill.name}</span>
                     </div>
 
                     {/* Progress bar */}
-                    <div className="w-full bg-muted rounded-full h-2">
+                    <div className="w-full bg-muted rounded-full h-2 mb-1">
                       <motion.div
-                        className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full"
+                        className="h-2 rounded-full opacity-80"
+                        style={{ 
+                          background: `linear-gradient(90deg, ${skill.bgColor}dd, ${skill.bgColor})`
+                        }}
                         initial={{ width: 0 }}
                         animate={{ width: `${skill.level}%` }}
                         transition={{ 
                           duration: 1, 
-                          delay: 0.8 + (index * 0.1)
+                          delay: 0.8 + (index * 0.1),
+                          ease: "easeOut"
                         }}
                       />
                     </div>
 
                     {/* Level indicator */}
                     <motion.div 
-                      className="absolute top-2 right-2 text-xs font-bold text-primary"
+                      className="absolute top-2 right-2 text-xs font-bold"
+                      style={{ color: skill.color }}
                       initial={{ opacity: 0, scale: 0 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 1.2 + (index * 0.1), duration: 0.3, type: "spring", stiffness: 200 }}
