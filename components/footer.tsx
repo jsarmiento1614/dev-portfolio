@@ -95,6 +95,22 @@ export default function Footer() {
                 </button>
               </li>
               <li>
+                <Link 
+                  href="/proyectos"
+                  className="text-muted-foreground hover:text-foreground transition-colors block"
+                >
+                  Ver todos los proyectos
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/faq"
+                  className="text-muted-foreground hover:text-foreground transition-colors block"
+                >
+                  Preguntas Frecuentes
+                </Link>
+              </li>
+              <li>
                 <button 
                   onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
                   className="text-muted-foreground hover:text-foreground transition-colors"

@@ -164,6 +164,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 2.7, duration: 0.6 }}
+              className="flex flex-col sm:flex-row gap-3"
             >
               <Button
                 onClick={scrollToProjects}
@@ -173,6 +174,14 @@ export default function HeroSection() {
               >
                 <FolderOpen className="mr-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-12 transition-transform" />
                 Ver Proyectos
+              </Button>
+              <Button
+                onClick={() => window.open('/faq', '_blank')}
+                variant="ghost"
+                size="lg"
+                className="px-4 sm:px-6 py-2.5 sm:py-3 text-base sm:text-lg font-medium rounded-lg transition-all duration-300 hover:scale-105 group w-full sm:w-auto text-muted-foreground hover:text-foreground"
+              >
+                FAQ
               </Button>
             </motion.div>
           </motion.div>

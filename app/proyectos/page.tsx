@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
+import Breadcrumbs from "@/components/breadcrumbs"
+import ProjectsStructuredData from "@/components/projects-structured-data"
 import { 
   ExternalLink, 
   Github, 
@@ -28,6 +30,10 @@ export default function AllProjectsPage() {
   const [searchTerm, setSearchTerm] = useState("")
   const { elementRef, isVisible } = useScrollAnimation()
 
+  const breadcrumbItems = [
+    { label: "Proyectos", current: true }
+  ]
+
   // Función para detectar si una imagen es de una app móvil
   const isMobileAppImage = (imagePath: string) => {
     return imagePath.includes('-app.png') || imagePath.includes('app-')
@@ -40,7 +46,7 @@ export default function AllProjectsPage() {
       type: "development",
       description:
         "Diseño e implementación de una plataforma backend para gestión y ejecución de estrategias de trading automatizado en mercados como Forex, Criptomonedas e Índices bursátiles. Desarrollo de lógica para determinar en tiempo real si un mercado está abierto o cerrado usando horarios internacionales y zonas horarias.",
-      image: "/preview/trading-platform.png",
+      image: "/placeholder.svg",
       technologies: ["TypeScript", "Node.js", "Prisma ORM", "PostgreSQL", "WebSockets", "REST API", "Docker", "Redis", "Fly.io", "SimpleFX API", "JavaScript ES6+", "Git", "CI/CD"],
       demoUrl: "https://github.com/jsarmiento1614/jtrading-api",
       repoUrl: "https://github.com/jsarmiento1614/jtrading-api",
@@ -369,9 +375,24 @@ export default function AllProjectsPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800">
+      <ProjectsStructuredData 
+        projects={filteredProjects.map(project => ({
+          id: project.id.toString(),
+          title: project.title,
+          description: project.description,
+          image: project.image,
+          technologies: project.technologies,
+          category: project.category,
+          featured: project.featured,
+          link: project.demoUrl,
+          github: project.repoUrl
+        }))}
+      />
+      
       {/* Header */}
       <div className="bg-slate-900/50 backdrop-blur-sm border-b border-slate-700/50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <Breadcrumbs items={breadcrumbItems} className="mb-4" />
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <Link href="/">
@@ -444,7 +465,7 @@ export default function AllProjectsPage() {
                  <div className="relative overflow-hidden">
                                        <OptimizedImage
                       src={project.image || "/placeholder.svg"}
-                      alt={project.title}
+                      alt={`Captura de pantalla del proyecto ${project.title} - ${project.description.substring(0, 60)}. Desarrollado con ${project.technologies.slice(0, 3).join(', ')}`}
                       width={500}
                       height={300}
                                              className={`w-full h-48 ${

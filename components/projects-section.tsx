@@ -33,7 +33,7 @@ export default function ProjectsSection() {
       title: "Trading Automatizado - Plataforma Backend",
       description:
         "Diseño e implementación de una plataforma backend para gestión y ejecución de estrategias de trading automatizado en mercados como Forex, Criptomonedas e Índices bursátiles. Desarrollo de lógica para determinar en tiempo real si un mercado está abierto o cerrado usando horarios internacionales y zonas horarias.",
-      image: "/preview/trading-platform.png",
+      image: "/placeholder.svg",
       technologies: ["TypeScript", "Node.js", "Prisma ORM", "PostgreSQL", "WebSockets", "REST API", "Docker", "Redis", "Fly.io", "SimpleFX API", "JavaScript ES6+", "Git", "CI/CD"],
       demoUrl: "#",
       repoUrl: "#",
@@ -288,7 +288,7 @@ export default function ProjectsSection() {
                   <div className="relative overflow-hidden">
                     <OptimizedImage
                       src={project.image || "/placeholder.svg"}
-                      alt={project.title}
+                      alt={`Captura de pantalla del proyecto ${project.title} - ${project.description.substring(0, 60)}. Desarrollado con ${project.technologies.slice(0, 3).join(', ')}`}
                       width={500}
                       height={300}
                       className={`w-full h-48 ${
@@ -535,7 +535,7 @@ export default function ProjectsSection() {
                   <div className="relative overflow-hidden">
                     <OptimizedImage
                       src={project.image || "/placeholder.svg"}
-                      alt={project.title}
+                      alt={`Captura de pantalla del proyecto ${project.title} - ${project.description.substring(0, 60)}. Desarrollado con ${project.technologies.slice(0, 3).join(', ')}`}
                       width={500}
                       height={300}
                       className={`w-full h-48 ${

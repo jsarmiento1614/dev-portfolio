@@ -216,7 +216,7 @@ export default function AboutSection() {
                 >
                   <OptimizedImage
                     src="/jesus-sarmiento-profile.png"
-                    alt="Jesús Alberto Sarmiento Bautista - Full Stack Web/Móvil Developer"
+                    alt="Foto profesional de Jesús Alberto Sarmiento Bautista - Desarrollador Full Stack especializado en React, Next.js, Angular y Node.js con 6+ años de experiencia en desarrollo web y móvil"
                     width={320}
                     height={320}
                     className="w-full h-full object-cover"
