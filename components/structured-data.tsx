@@ -38,13 +38,9 @@ export default function StructuredData() {
             }
           },
           "occupationLocation": {
-            "@type": "Place",
+            "@type": "AdministrativeArea",
             "name": "Honduras",
-            "address": {
-              "@type": "PostalAddress",
-              "addressCountry": "HN",
-              "addressRegion": "Honduras"
-            }
+            "addressCountry": "HN"
           }
         },
         "worksFor": {
