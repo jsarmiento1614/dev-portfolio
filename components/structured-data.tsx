@@ -42,7 +42,10 @@ export default function StructuredData() {
             "name": "Honduras",
             "address": {
               "@type": "PostalAddress",
-              "addressCountry": "HN"
+              "addressCountry": "HN",
+              "addressRegion": "Honduras",
+              "addressLocality": "Tegucigalpa",
+              "postalCode": "11101"
             }
           }
         },
@@ -76,7 +79,9 @@ export default function StructuredData() {
         "address": {
           "@type": "PostalAddress",
           "addressCountry": "HN",
-          "addressRegion": "Honduras"
+          "addressRegion": "Honduras",
+          "addressLocality": "Tegucigalpa",
+          "postalCode": "11101"
         },
         "knowsLanguage": [
           {
@@ -168,7 +173,18 @@ export default function StructuredData() {
         "address": {
           "@type": "PostalAddress",
           "addressCountry": "HN",
-          "addressRegion": "Honduras"
+          "addressRegion": "Honduras",
+          "addressLocality": "Tegucigalpa",
+          "postalCode": "11101"
+        },
+        "telephone": "+504 8785-7498",
+        "priceRange": "$$",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://jsarmiento.vercel.app/og-image.svg",
+          "width": 1200,
+          "height": 630,
+          "caption": "Jesús Sarmiento - Servicios de Desarrollo Full Stack"
         }
       },
       {
