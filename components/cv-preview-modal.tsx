@@ -14,25 +14,38 @@ interface CVPreviewModalProps {
 export default function CVPreviewModal({ isOpen, onClose }: CVPreviewModalProps) {
   const { isGenerating, downloadCV, previewCV, pdfUrl, generateCV } = useCVGenerator()
   const [hasGenerated, setHasGenerated] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handlePreview = async () => {
     try {
+      setError(null)
+      console.log('Iniciando preview...')
+      
       if (!hasGenerated) {
+        console.log('Generando PDF por primera vez...')
         await generateCV()
         setHasGenerated(true)
+        console.log('PDF generado, abriendo preview...')
       }
+      
       await previewCV()
+      console.log('Preview completado')
     } catch (error) {
       console.error('Error en preview:', error)
+      setError(error instanceof Error ? error.message : 'Error desconocido en preview')
     }
   }
 
   const handleDownload = async () => {
     try {
+      setError(null)
+      console.log('Iniciando descarga...')
       await downloadCV()
+      console.log('Descarga completada')
       onClose()
     } catch (error) {
       console.error('Error en descarga:', error)
+      setError(error instanceof Error ? error.message : 'Error desconocido en descarga')
     }
   }
 
@@ -87,6 +100,14 @@ export default function CVPreviewModal({ isOpen, onClose }: CVPreviewModalProps)
                 Currículum actualizado en formato PDF profesional
               </p>
             </div>
+
+            {/* Error Message */}
+            {error && (
+              <div className="bg-destructive/10 border border-destructive/20 rounded-lg p-3 mb-4">
+                <p className="text-sm text-destructive font-medium">Error:</p>
+                <p className="text-xs text-destructive/80">{error}</p>
+              </div>
+            )}
 
             {/* CV Info */}
             <div className="bg-muted/30 rounded-lg p-4 mb-6">

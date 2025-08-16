@@ -60,8 +60,9 @@ const cvData = {
 }
 
 export async function generatePDF(): Promise<Blob> {
-  const doc = new jsPDF()
-  let yPosition = 20
+  try {
+    const doc = new jsPDF()
+    let yPosition = 20
 
   // Configurar fuentes y colores
   const primaryColor = [59, 130, 246] // #3B82F6
@@ -201,7 +202,18 @@ export async function generatePDF(): Promise<Blob> {
     })
   }
 
-  // Convertir a Blob
-  const pdfBlob = doc.output('blob')
-  return pdfBlob
+    // Convertir a Blob
+    const pdfBlob = doc.output('blob')
+    
+    // Verificar que el blob se generó correctamente
+    if (!pdfBlob || pdfBlob.size === 0) {
+      throw new Error('Error generando el PDF: blob vacío')
+    }
+    
+    console.log('PDF generado exitosamente, tamaño:', pdfBlob.size, 'bytes')
+    return pdfBlob
+  } catch (error) {
+    console.error('Error en generatePDF:', error)
+    throw new Error(`Error generando PDF: ${error instanceof Error ? error.message : 'Error desconocido'}`)
+  }
 }
