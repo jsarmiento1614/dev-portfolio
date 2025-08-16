@@ -5,10 +5,12 @@ import { Button } from "@/components/ui/button"
 import { useParallax } from "@/hooks/use-scroll-animation"
 import { useTextReveal, useStaggerAnimation, useDirectionalAnimation } from "@/hooks/use-advanced-animations"
 import { motion } from "framer-motion"
-import { ArrowDown, Code, Palette, Zap, Smartphone, Globe } from "lucide-react"
+import { ArrowDown, Code, Palette, Zap, Smartphone, Globe, Download, FolderOpen } from "lucide-react"
+import CVPreviewModal from "@/components/cv-preview-modal"
 
 export default function HeroSection() {
   const [mounted, setMounted] = useState(false)
+  const [showCVModal, setShowCVModal] = useState(false)
   const { elementRef, offset } = useParallax(0.3)
   const titleReveal = useTextReveal({ delay: 500, duration: 1200 })
   const subtitleReveal = useTextReveal({ delay: 800, duration: 1000 })
@@ -26,11 +28,8 @@ export default function HeroSection() {
     }
   }
 
-  const scrollToAbout = () => {
-    const element = document.getElementById("sobre-mi")
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
+  const handleDownloadCV = () => {
+    setShowCVModal(true)
   }
 
   if (!mounted) return null
@@ -144,32 +143,36 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2.3, duration: 0.6 }}
           >
+            {/* Botón principal: Descargar CV */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 2.5, duration: 0.6 }}
             >
               <Button
-                onClick={scrollToProjects}
+                onClick={handleDownloadCV}
                 size="lg"
                 className="btn-brand-primary px-6 sm:px-8 py-2.5 sm:py-3 text-base sm:text-lg font-semibold rounded-lg transition-all duration-300 hover:scale-105 group w-full sm:w-auto"
               >
-                Ver proyectos
-                <ArrowDown className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-y-1 transition-transform" />
+                <Download className="mr-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-y-1 transition-transform" />
+                Descargar CV
               </Button>
             </motion.div>
+            
+            {/* Botón secundario: Ver Proyectos */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 2.7, duration: 0.6 }}
             >
               <Button
-                onClick={scrollToAbout}
+                onClick={scrollToProjects}
                 variant="outline"
                 size="lg"
-                className="btn-brand-secondary px-6 sm:px-8 py-2.5 sm:py-3 text-base sm:text-lg font-semibold rounded-lg transition-all duration-300 hover:scale-105 w-full sm:w-auto"
+                className="btn-brand-secondary px-6 sm:px-8 py-2.5 sm:py-3 text-base sm:text-lg font-semibold rounded-lg transition-all duration-300 hover:scale-105 group w-full sm:w-auto"
               >
-                Conoce más
+                <FolderOpen className="mr-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-12 transition-transform" />
+                Ver Proyectos
               </Button>
             </motion.div>
           </motion.div>
@@ -230,6 +233,12 @@ export default function HeroSection() {
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-brand-primary to-brand-accent rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-brand-accent to-brand-primary rounded-full blur-3xl" />
       </div>
+
+      {/* CV Preview Modal */}
+      <CVPreviewModal 
+        isOpen={showCVModal} 
+        onClose={() => setShowCVModal(false)} 
+      />
     </section>
   )
 }
