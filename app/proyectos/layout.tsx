@@ -13,7 +13,22 @@ export const metadata: Metadata = {
     "proyectos freelance centroamerica",
     "portfolio jesús sarmiento",
     "trabajos desarrollo web",
-    "aplicaciones móviles Honduras"
+    "aplicaciones móviles Honduras",
+    "proyectos web san pedro sula",
+    "portfolio programador tegucigalpa",
+    "casos estudio react Honduras",
+    "proyectos angular centroamerica",
+    "desarrollo apps móviles Honduras",
+    "trabajos freelance tegucigalpa",
+    "portfolio desarrollo software Honduras",
+    "proyectos ecommerce Honduras",
+    "aplicaciones empresariales centroamerica",
+    "sistemas web Honduras",
+    "desarrollo plataformas digitales Honduras",
+    "proyectos startup centroamerica",
+    "aplicaciones fintech Honduras",
+    "sistemas gestión empresarial Honduras",
+    "plataformas web centroamerica"
   ],
   openGraph: {
     title: "Proyectos - Jesús Sarmiento",
