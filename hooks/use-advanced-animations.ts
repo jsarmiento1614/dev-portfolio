@@ -285,7 +285,7 @@ export function useStaggerAnimation(childCount: number, staggerDelay: number = 0
     getChildAnimation: (index: number) => ({
       initial: { opacity: 0, y: 20 },
       animate: animatedChildren[index] ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
-      transition: { duration: 0.6, ease: "easeOut" }
+      transition: { duration: 0.6 }
     })
   }
 }

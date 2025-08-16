@@ -80,7 +80,7 @@ export default function HeroSection() {
             className="mb-6 sm:mb-8"
             initial={{ opacity: 0, y: 30 }}
             animate={subtitleReveal.shouldReveal ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 1, delay: 0.3 }}
           >
             <motion.h2 
               className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-brand-primary dark:text-brand-primary font-semibold mb-3 sm:mb-4 font-brand-primary"
@@ -93,7 +93,8 @@ export default function HeroSection() {
             <motion.div 
               ref={skillsAnimation.ref}
               className="flex flex-col sm:flex-row justify-center items-center gap-1 sm:gap-2 md:gap-4 text-xs sm:text-sm text-muted-foreground"
-              {...skillsAnimation}
+              initial={skillsAnimation.initial}
+              animate={skillsAnimation.animate}
               transition={{ delay: 0.8, duration: 0.8, staggerChildren: 0.1 }}
             >
               <motion.div 
@@ -133,7 +134,7 @@ export default function HeroSection() {
             className="text-sm sm:text-lg md:text-xl text-muted-foreground mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-2 sm:px-4 font-brand-secondary"
             initial={{ opacity: 0, y: 20 }}
             animate={subtitleReveal.shouldReveal ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ delay: 1.6, duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ delay: 1.6, duration: 0.8 }}
           >
             Profesional enfocado en el diseño y desarrollo de aplicaciones web/móviles; aplicando un toque de UX/UI 
             a cada proyecto. Especializado en Angular, React, .NET/C#, Java, Flutter y tecnologías modernas.

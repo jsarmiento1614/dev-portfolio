@@ -177,7 +177,8 @@ export default function AboutSection() {
           <motion.div
             ref={profileAnimation.ref}
             className="space-y-8"
-            {...profileAnimation}
+            initial={profileAnimation.initial}
+            animate={profileAnimation.animate}
             transition={{ duration: 1, delay: 0.2 }}
           >
             {/* Profile image */}
@@ -216,23 +217,28 @@ export default function AboutSection() {
                   animate={profileAnimation.isInView ? { 
                     opacity: 1, 
                     scale: 1, 
-                    y: 0,
-                    y: [0, -10, 0]
+                    y: 0
                   } : { opacity: 0, scale: 0, y: -20 }}
                   transition={{ 
                     duration: 0.6, 
                     delay: 0.8, 
                     type: "spring", 
-                    stiffness: 200,
-                    y: {
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }
+                    stiffness: 200
                   }}
                   whileHover={{ scale: 1.2, rotate: 360 }}
                 >
-                  <Code className="w-8 h-8 text-white" />
+                  <motion.div
+                    animate={{
+                      y: [0, -10, 0]
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity
+
+                    }}
+                  >
+                    <Code className="w-8 h-8 text-white" />
+                  </motion.div>
                 </motion.div>
                 <motion.div
                   className="absolute -bottom-4 -left-4 w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center"
@@ -240,29 +246,29 @@ export default function AboutSection() {
                   animate={profileAnimation.isInView ? { 
                     opacity: 1, 
                     scale: 1, 
-                    y: 0,
-                    y: [0, 10, 0],
-                    x: [0, 5, 0]
+                    y: 0
                   } : { opacity: 0, scale: 0, y: 20 }}
                   transition={{ 
                     duration: 0.6, 
                     delay: 1, 
                     type: "spring", 
-                    stiffness: 200,
-                    y: {
-                      duration: 4,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    },
-                    x: {
-                      duration: 4,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }
+                    stiffness: 200
                   }}
                   whileHover={{ scale: 1.2, rotate: -360 }}
                 >
-                  <Smartphone className="w-8 h-8 text-white" />
+                  <motion.div
+                    animate={{
+                      y: [0, 10, 0],
+                      x: [0, 5, 0]
+                    }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity
+
+                    }}
+                  >
+                    <Smartphone className="w-8 h-8 text-white" />
+                  </motion.div>
                 </motion.div>
                 <motion.div
                   className="absolute top-1/2 -right-8 w-12 h-12 bg-cyan-500 rounded-full flex items-center justify-center"
@@ -270,29 +276,29 @@ export default function AboutSection() {
                   animate={profileAnimation.isInView ? { 
                     opacity: 1, 
                     scale: 1, 
-                    x: 0,
-                    x: [0, 8, 0],
-                    y: [0, -5, 0]
+                    x: 0
                   } : { opacity: 0, scale: 0, x: 20 }}
                   transition={{ 
                     duration: 0.6, 
                     delay: 1.2, 
                     type: "spring", 
-                    stiffness: 200,
-                    x: {
-                      duration: 5,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    },
-                    y: {
-                      duration: 5,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }
+                    stiffness: 200
                   }}
                   whileHover={{ scale: 1.2, rotate: 180 }}
                 >
-                  <Palette className="w-6 h-6 text-white" />
+                  <motion.div
+                    animate={{
+                      x: [0, 8, 0],
+                      y: [0, -5, 0]
+                    }}
+                    transition={{
+                      duration: 5,
+                      repeat: Infinity
+
+                    }}
+                  >
+                    <Palette className="w-6 h-6 text-white" />
+                  </motion.div>
                 </motion.div>
               </div>
             </div>
@@ -353,8 +359,7 @@ export default function AboutSection() {
                         animate={skillsStagger.animatedChildren[index] ? { width: `${skill.level}%` } : { width: 0 }}
                         transition={{ 
                           duration: 1, 
-                          delay: 0.3,
-                          ease: [0.25, 0.46, 0.45, 0.94]
+                          delay: 0.3
                         }}
                       />
                     </div>
