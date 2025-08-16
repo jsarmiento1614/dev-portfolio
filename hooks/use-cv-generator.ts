@@ -1,8 +1,7 @@
 "use client"
 
 import { useState } from 'react'
-import { pdf } from '@react-pdf/renderer'
-import { CVDocument } from '@/components/cv-generator'
+import React from 'react'
 
 export function useCVGenerator() {
   const [isGenerating, setIsGenerating] = useState(false)
@@ -13,8 +12,9 @@ export function useCVGenerator() {
     try {
       setIsGenerating(true)
       
-      // Generar el PDF
-      const blob = await pdf(<CVDocument />).toBlob()
+      // Generar el PDF usando jsPDF (implementación dinámica)
+      const { generatePDF } = await import('@/utils/pdf-generator')
+      const blob = await generatePDF()
       setPdfBlob(blob)
       
       // Crear URL para preview
