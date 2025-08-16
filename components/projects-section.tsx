@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
 import Image from "next/image"
 import { OptimizedImage } from "@/components/ui/optimized-image"
 import Link from "next/link"
@@ -10,12 +10,17 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { useAnalytics } from "@/hooks/use-analytics"
 import { useVercelAnalytics } from "@/hooks/use-vercel-analytics"
 import { ExternalLink, Github, Eye, ArrowRight, Calendar, Palette, Code } from "lucide-react"
+import { motion, useInView } from "framer-motion"
 
 export default function ProjectsSection() {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null)
   const { elementRef, isVisible } = useScrollAnimation()
   const { trackProject } = useAnalytics()
   const { trackProject: trackVercelProject } = useVercelAnalytics()
+  const developmentRef = useRef(null)
+  const designRef = useRef(null)
+  const isDevelopmentInView = useInView(developmentRef, { once: true, margin: "-100px" })
+  const isDesignInView = useInView(designRef, { once: true, margin: "-100px" })
 
   // Función para detectar si una imagen es de una app móvil
   const isMobileAppImage = (imagePath: string) => {
@@ -209,13 +214,29 @@ export default function ProjectsSection() {
         </div>
 
         {/* Development Projects Section */}
-        <div className="mb-20 relative">
+        <motion.div 
+          ref={developmentRef}
+          className="mb-20 relative"
+          initial={{ opacity: 0, y: 50 }}
+          animate={isDevelopmentInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
           {/* Section Header - Simplified for better hierarchy */}
-          <div className="text-center mb-12">
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isDevelopmentInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <div className="inline-flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
+              <motion.div 
+                className="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center"
+                initial={{ scale: 0, rotate: -180 }}
+                animate={isDevelopmentInView ? { scale: 1, rotate: 0 } : { scale: 0, rotate: -180 }}
+                transition={{ duration: 0.6, delay: 0.4, type: "spring", stiffness: 150 }}
+              >
                 <Code className="w-4 h-4 text-white" />
-              </div>
+              </motion.div>
               <h3 className="text-2xl font-bold text-white">
                 Proyectos de <span className="text-blue-400">Desarrollo</span>
               </h3>
@@ -223,22 +244,33 @@ export default function ProjectsSection() {
             <p className="text-base text-slate-400 max-w-2xl mx-auto">
               Aplicaciones web y móviles desarrolladas con las últimas tecnologías y mejores prácticas.
             </p>
-          </div>
+          </motion.div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {developmentProjects.map((project, index) => (
-              <Card 
-                key={project.id} 
-                className={`group relative overflow-hidden bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 rounded-xl ${
-                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-                }`}
-                style={{ 
-                  transitionDelay: `${index * 200}ms`,
-                  transform: hoveredProject === project.id ? "translateY(-8px) scale(1.02)" : "translateY(0) scale(1)"
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                animate={isDevelopmentInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.9 }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: index * 0.15,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 15
                 }}
-                onMouseEnter={() => setHoveredProject(project.id)}
-                onMouseLeave={() => setHoveredProject(null)}
+                whileHover={{ 
+                  y: -8, 
+                  scale: 1.02,
+                  transition: { duration: 0.3, type: "spring", stiffness: 300 }
+                }}
+                whileTap={{ scale: 0.98 }}
+                onHoverStart={() => setHoveredProject(project.id)}
+                onHoverEnd={() => setHoveredProject(null)}
               >
+                <Card 
+                  className="group relative overflow-hidden bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 shadow-xl hover:shadow-2xl transition-all duration-500 rounded-xl"
+                >
                 {/* Development card accent */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-cyan-500"></div>
                 <CardContent className="p-0">
@@ -379,10 +411,11 @@ export default function ProjectsSection() {
                     </div>
                   </div>
                 </CardContent>
-              </Card>
+                </Card>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Section Separator - Enhanced for better focus */}
         <div className="relative mb-20">
@@ -395,13 +428,29 @@ export default function ProjectsSection() {
         </div>
 
         {/* Design Projects Section */}
-        <div className="mb-20 relative">
+        <motion.div 
+          ref={designRef}
+          className="mb-20 relative"
+          initial={{ opacity: 0, y: 50 }}
+          animate={isDesignInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
           {/* Section Header - Simplified for better hierarchy */}
-          <div className="text-center mb-12">
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isDesignInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <div className="inline-flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+              <motion.div 
+                className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center"
+                initial={{ scale: 0, rotate: -180 }}
+                animate={isDesignInView ? { scale: 1, rotate: 0 } : { scale: 0, rotate: -180 }}
+                transition={{ duration: 0.6, delay: 0.4, type: "spring", stiffness: 150 }}
+              >
                 <Palette className="w-4 h-4 text-white" />
-              </div>
+              </motion.div>
               <h3 className="text-2xl font-bold text-white">
                 Proyectos de <span className="text-purple-400">Diseño UX/UI</span>
               </h3>
@@ -409,22 +458,33 @@ export default function ProjectsSection() {
             <p className="text-base text-slate-400 max-w-2xl mx-auto">
               Diseños centrados en el usuario con investigación UX, wireframes, prototipos y sistemas de diseño.
             </p>
-          </div>
+          </motion.div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {designProjects.map((project, index) => (
-              <Card 
-                key={project.id} 
-                className={`group relative overflow-hidden bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 rounded-xl ${
-                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-                }`}
-                style={{ 
-                  transitionDelay: `${index * 200}ms`,
-                  transform: hoveredProject === project.id ? "translateY(-8px) scale(1.02)" : "translateY(0) scale(1)"
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                animate={isDesignInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.9 }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: index * 0.15,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 15
                 }}
-                onMouseEnter={() => setHoveredProject(project.id)}
-                onMouseLeave={() => setHoveredProject(null)}
+                whileHover={{ 
+                  y: -8, 
+                  scale: 1.02,
+                  transition: { duration: 0.3, type: "spring", stiffness: 300 }
+                }}
+                whileTap={{ scale: 0.98 }}
+                onHoverStart={() => setHoveredProject(project.id)}
+                onHoverEnd={() => setHoveredProject(null)}
               >
+                <Card 
+                  className="group relative overflow-hidden bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 shadow-xl hover:shadow-2xl transition-all duration-500 rounded-xl"
+                >
                 {/* Design card accent */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 to-pink-500"></div>
                 <CardContent className="p-0">
@@ -561,27 +621,42 @@ export default function ProjectsSection() {
                     </div>
                   </div>
                 </CardContent>
-              </Card>
+                </Card>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* View more projects button */}
-        <div className={`text-center mt-8 transition-all duration-1000 delay-500 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-        }`}>
-          <Button 
-            asChild
-            size="lg" 
-            variant="outline"
-            className="group border-2 border-blue-400 text-blue-400 hover:bg-blue-500 hover:text-white px-8 py-3 shadow-lg hover:shadow-xl transition-all duration-300"
+        <motion.div 
+          className="text-center mt-8"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+        >
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            <Link href="/proyectos">
-              Ver todos los proyectos
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </Button>
-        </div>
+            <Button 
+              asChild
+              size="lg" 
+              variant="outline"
+              className="group border-2 border-blue-400 text-blue-400 hover:bg-blue-500 hover:text-white px-8 py-3 shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              <Link href="/proyectos">
+                Ver todos los proyectos
+                <motion.div
+                  className="ml-2 inline-block"
+                  whileHover={{ x: 4 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <ArrowRight className="w-5 h-5" />
+                </motion.div>
+              </Link>
+            </Button>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   )
