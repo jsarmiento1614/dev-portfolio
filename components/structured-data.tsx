@@ -30,13 +30,20 @@ export default function StructuredData() {
           "estimatedSalary": {
             "@type": "MonetaryAmount",
             "currency": "USD",
-            "minValue": 30000,
-            "maxValue": 80000,
-            "unitText": "YEAR"
+            "value": {
+              "@type": "QuantitativeValue",
+              "minValue": 30000,
+              "maxValue": 80000,
+              "unitText": "YEAR"
+            }
           },
           "occupationLocation": {
-            "@type": "Country",
-            "name": "Honduras"
+            "@type": "Place",
+            "name": "Honduras",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "HN"
+            }
           }
         },
         "worksFor": {
