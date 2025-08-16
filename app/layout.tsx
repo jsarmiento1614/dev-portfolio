@@ -16,27 +16,29 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Jesús Sarmiento - Desarrollador Full Stack | jsarmiento.dev",
-    template: "%s | jsarmiento.dev"
+    default: "Jesús Sarmiento - Desarrollador Full Stack | jsarmiento.vercel.app",
+    template: "%s | jsarmiento.vercel.app"
   },
-  description: "Desarrollador Full Stack España con 6+ años de experiencia especializado en React, Next.js, Angular y Node.js. Creo aplicaciones web responsivas y aplicaciones móviles nativas para empresas y startups. Portfolio con 15+ proyectos completados.",
+  description: "Desarrollador Full Stack Honduras con 6+ años de experiencia especializado en React, Next.js, Angular y Node.js. Creo aplicaciones web responsivas y aplicaciones móviles nativas para empresas y startups. Portfolio con 15+ proyectos completados.",
   keywords: [
-    "desarrollador full stack España",
-    "programador react madrid",
-    "desarrollador next.js freelance",
+    "desarrollador full stack Honduras",
+    "programador react tegucigalpa",
+    "desarrollador next.js freelance centroamerica",
     "especialista angular typescript",
     "desarrollador node.js backend",
     "creador aplicaciones web responsivas",
     "desarrollador aplicaciones móviles nativas",
     "frontend developer react vue",
     "backend developer apis rest",
-    "desarrollador freelance España",
+    "desarrollador freelance Honduras",
     "portfolio desarrollador web",
     "jesús sarmiento desarrollador",
-    "jsarmiento.dev",
+    "jsarmiento.vercel.app",
     "desarrollo software a medida",
     "consultor tecnológico react",
-    "arquitecto software javascript"
+    "arquitecto software javascript",
+    "desarrollador san pedro sula",
+    "programador centroamerica"
   ],
   authors: [{ name: "Jesús Sarmiento" }],
   creator: "Jesús Sarmiento",
@@ -46,17 +48,17 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://jsarmiento.dev'),
+  metadataBase: new URL('https://jsarmiento.vercel.app'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: 'website',
-    locale: 'es_ES',
-    url: 'https://jsarmiento.dev',
+    locale: 'es_HN',
+    url: 'https://jsarmiento.vercel.app',
     title: 'Jesús Sarmiento - Desarrollador Full Stack',
-    description: 'Desarrollador Full Stack con 6+ años de experiencia especializado en React, Next.js, Angular y Node.js. Construyo experiencias digitales simples y efectivas.',
-    siteName: 'jsarmiento.dev',
+    description: 'Desarrollador Full Stack Honduras con 6+ años de experiencia especializado en React, Next.js, Angular y Node.js. Construyo experiencias digitales simples y efectivas.',
+    siteName: 'jsarmiento.vercel.app',
     images: [
       {
         url: '/og-image.svg',
@@ -69,9 +71,9 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Jesús Sarmiento - Desarrollador Full Stack',
-    description: 'Desarrollador Full Stack con 6+ años de experiencia especializado en React, Next.js, Angular y Node.js. Construyo experiencias digitales simples y efectivas.',
+    description: 'Desarrollador Full Stack Honduras con 6+ años de experiencia especializado en React, Next.js, Angular y Node.js. Construyo experiencias digitales simples y efectivas.',
     images: ['/og-image.svg'],
-    creator: '@jsarmiento_dev',
+    creator: '@jsarmiento1614',
   },
   robots: {
     index: true,

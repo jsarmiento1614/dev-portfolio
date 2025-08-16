@@ -136,17 +136,74 @@ export default function FAQPage() {
 
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqCategories.flatMap(category => 
-      category.questions.map(qa => ({
-        "@type": "Question",
-        "name": qa.question,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": qa.answer
-        }
-      }))
-    )
+    "@graph": [
+      {
+        "@type": "FAQPage",
+        "mainEntity": faqCategories.flatMap(category => 
+          category.questions.map(qa => ({
+            "@type": "Question",
+            "name": qa.question,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": qa.answer
+            }
+          }))
+        )
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Inicio",
+            "item": "https://jsarmiento.vercel.app"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "FAQ",
+            "item": "https://jsarmiento.vercel.app/faq"
+          }
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://jsarmiento.vercel.app/faq#webpage",
+        "url": "https://jsarmiento.vercel.app/faq",
+        "name": "FAQ - Preguntas Frecuentes sobre Desarrollo Full Stack",
+        "description": "Respuestas a preguntas frecuentes sobre servicios de desarrollo web desde Honduras, aplicaciones móviles y procesos de trabajo.",
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": "https://jsarmiento.vercel.app/#website"
+        },
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Inicio",
+              "item": "https://jsarmiento.vercel.app"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "FAQ",
+              "item": "https://jsarmiento.vercel.app/faq"
+            }
+          ]
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Jesús Alberto Sarmiento Bautista",
+          "@id": "https://jsarmiento.vercel.app/#person"
+        },
+        "datePublished": "2025-01-01",
+        "dateModified": new Date().toISOString().split('T')[0],
+        "inLanguage": "es-HN"
+      }
+    ]
   }
 
   return (

@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://jsarmiento.dev'
+  const baseUrl = 'https://jsarmiento.vercel.app'
   
   return [
     {
