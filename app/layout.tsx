@@ -107,9 +107,9 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  verification: {
-    google: 'GcMw2VmYhSf7RgRdeg0nPvIYKh6mgHAZdh31N54XZKM',
-  },
+  // verification: {
+  //   google: 'GcMw2VmYhSf7RgRdeg0nPvIYKh6mgHAZdh31N54XZKM',
+  // },
 }
 
 export default function RootLayout({
