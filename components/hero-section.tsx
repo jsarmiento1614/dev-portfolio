@@ -65,43 +65,40 @@ export default function HeroSection() {
         <div>
           {/* Name with gradient effect - Marca Personal */}
           <motion.h1 
-            ref={titleReveal.ref}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 sm:mb-6 gradient-text font-brand-primary leading-tight"
             initial={{ opacity: 0, y: 50, scale: 0.9 }}
-            animate={titleReveal.shouldReveal ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.9 }}
-            transition={{ duration: 1.2, type: "spring", stiffness: 100 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 1.2, type: "spring", stiffness: 100, delay: 0.5 }}
           >
             Jesús Sarmiento
           </motion.h1>
           
           {/* Animated title */}
           <motion.div 
-            ref={subtitleReveal.ref}
             className="mb-6 sm:mb-8"
             initial={{ opacity: 0, y: 30 }}
-            animate={subtitleReveal.shouldReveal ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 1, delay: 0.3 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.8 }}
           >
             <motion.h2 
               className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-brand-primary dark:text-brand-primary font-semibold mb-3 sm:mb-4 font-brand-primary"
               initial={{ opacity: 0 }}
-              animate={subtitleReveal.shouldReveal ? { opacity: 1 } : { opacity: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1, duration: 0.8 }}
             >
               Full Stack Developer
             </motion.h2>
             <motion.div 
-              ref={skillsAnimation.ref}
               className="flex flex-col sm:flex-row justify-center items-center gap-1 sm:gap-2 md:gap-4 text-xs sm:text-sm text-muted-foreground"
-              initial={skillsAnimation.initial}
-              animate={skillsAnimation.animate}
-              transition={{ delay: 0.8, duration: 0.8, staggerChildren: 0.1 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.2, duration: 0.8 }}
             >
               <motion.div 
                 className="flex items-center gap-1 sm:gap-2"
                 initial={{ opacity: 0, x: -20 }}
-                animate={skillsAnimation.isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                transition={{ delay: 1, duration: 0.6 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1.4, duration: 0.6 }}
               >
                 <Code className="w-3 h-3 sm:w-4 sm:h-4" />
                 <span>Desarrollo Web</span>
@@ -110,8 +107,8 @@ export default function HeroSection() {
               <motion.div 
                 className="flex items-center gap-1 sm:gap-2"
                 initial={{ opacity: 0, x: -20 }}
-                animate={skillsAnimation.isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                transition={{ delay: 1.2, duration: 0.6 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1.6, duration: 0.6 }}
               >
                 <Smartphone className="w-3 h-3 sm:w-4 sm:h-4" />
                 <span>Desarrollo Móvil</span>
@@ -120,8 +117,8 @@ export default function HeroSection() {
               <motion.div 
                 className="flex items-center gap-1 sm:gap-2"
                 initial={{ opacity: 0, x: -20 }}
-                animate={skillsAnimation.isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                transition={{ delay: 1.4, duration: 0.6 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1.8, duration: 0.6 }}
               >
                 <Palette className="w-3 h-3 sm:w-4 sm:h-4" />
                 <span>UI/UX Design</span>
@@ -133,8 +130,8 @@ export default function HeroSection() {
           <motion.p 
             className="text-sm sm:text-lg md:text-xl text-muted-foreground mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-2 sm:px-4 font-brand-secondary"
             initial={{ opacity: 0, y: 20 }}
-            animate={subtitleReveal.shouldReveal ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ delay: 1.6, duration: 0.8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 2, duration: 0.8 }}
           >
             Profesional enfocado en el diseño y desarrollo de aplicaciones web/móviles; aplicando un toque de UX/UI 
             a cada proyecto. Especializado en Angular, React, .NET/C#, Java, Flutter y tecnologías modernas.
@@ -142,14 +139,15 @@ export default function HeroSection() {
 
           {/* CTA Buttons - Marca Personal */}
           <motion.div 
-            ref={buttonsStagger.ref}
             className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-12 sm:mb-16 px-2 sm:px-4"
             initial={{ opacity: 0, y: 30 }}
-            animate={buttonsStagger.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ delay: 1.8, duration: 0.6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 2.3, duration: 0.6 }}
           >
             <motion.div
-              {...buttonsStagger.getChildAnimation(0)}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 2.5, duration: 0.6 }}
             >
               <Button
                 onClick={scrollToProjects}
@@ -161,7 +159,9 @@ export default function HeroSection() {
               </Button>
             </motion.div>
             <motion.div
-              {...buttonsStagger.getChildAnimation(1)}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 2.7, duration: 0.6 }}
             >
               <Button
                 onClick={scrollToAbout}
@@ -178,14 +178,14 @@ export default function HeroSection() {
           <motion.div 
             className="grid grid-cols-3 gap-2 sm:gap-6 md:gap-8 max-w-2xl mx-auto px-2 sm:px-4"
             initial={{ opacity: 0, y: 30 }}
-            animate={buttonsStagger.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ delay: 2.2, duration: 0.8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 3, duration: 0.8 }}
           >
             <motion.div 
               className="text-center"
               initial={{ opacity: 0, scale: 0.8 }}
-              animate={buttonsStagger.isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-              transition={{ delay: 2.4, duration: 0.6, type: "spring", stiffness: 150 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 3.2, duration: 0.6, type: "spring", stiffness: 150 }}
             >
               <div className="text-lg sm:text-2xl md:text-3xl font-bold text-primary mb-1 sm:mb-2 font-brand-primary">6+</div>
               <div className="text-xs sm:text-sm md:text-base text-muted-foreground font-brand-secondary leading-tight">Años de experiencia</div>
@@ -193,8 +193,8 @@ export default function HeroSection() {
             <motion.div 
               className="text-center"
               initial={{ opacity: 0, scale: 0.8 }}
-              animate={buttonsStagger.isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-              transition={{ delay: 2.6, duration: 0.6, type: "spring", stiffness: 150 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 3.4, duration: 0.6, type: "spring", stiffness: 150 }}
             >
               <div className="text-lg sm:text-2xl md:text-3xl font-bold text-primary mb-1 sm:mb-2 font-brand-primary">15+</div>
               <div className="text-xs sm:text-sm md:text-base text-muted-foreground font-brand-secondary leading-tight">Proyectos completados</div>
@@ -202,8 +202,8 @@ export default function HeroSection() {
             <motion.div 
               className="text-center"
               initial={{ opacity: 0, scale: 0.8 }}
-              animate={buttonsStagger.isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-              transition={{ delay: 2.8, duration: 0.6, type: "spring", stiffness: 150 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 3.6, duration: 0.6, type: "spring", stiffness: 150 }}
             >
               <div className="text-lg sm:text-2xl md:text-3xl font-bold text-primary mb-1 sm:mb-2 font-brand-primary">100%</div>
               <div className="text-xs sm:text-sm md:text-base text-muted-foreground font-brand-secondary leading-tight">Satisfacción del cliente</div>
