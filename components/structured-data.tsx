@@ -26,7 +26,30 @@ export default function StructuredData() {
           "@type": "Occupation",
           "name": "Desarrollador Full Stack",
           "occupationalCategory": "15-1254.00",
-          "description": "Desarrollador especializado en tecnologías web frontend y backend, aplicaciones móviles y sistemas escalables"
+          "description": "Desarrollador especializado en tecnologías web frontend y backend, aplicaciones móviles y sistemas escalables",
+          "estimatedSalary": {
+            "@type": "MonetaryAmount",
+            "currency": "USD",
+            "value": {
+              "@type": "QuantitativeValue",
+              "minValue": 30000,
+              "maxValue": 80000,
+              "unitText": "YEAR"
+            },
+            "duration": "P1Y",
+            "name": "base"
+          },
+          "occupationLocation": {
+            "@type": "Place",
+            "name": "Honduras",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "HN",
+              "addressRegion": "Honduras",
+              "addressLocality": "Tegucigalpa",
+              "postalCode": "11101"
+            }
+          }
         },
         "worksFor": {
           "@type": "Organization",
