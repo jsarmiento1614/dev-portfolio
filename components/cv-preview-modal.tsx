@@ -113,12 +113,15 @@ export default function CVPreviewModal({ isOpen, onClose }: CVPreviewModalProps)
             <div className="bg-muted/30 rounded-lg p-4 mb-6">
               <h3 className="font-semibold text-foreground mb-2">Contenido incluido:</h3>
               <ul className="text-sm text-muted-foreground space-y-1">
-                <li>• Información de contacto</li>
-                <li>• Resumen profesional</li>
-                <li>• Habilidades técnicas</li>
-                <li>• Experiencia laboral</li>
-                <li>• Proyectos destacados</li>
-                <li>• Educación</li>
+                <li>• Información personal completa</li>
+                <li>• Resumen profesional detallado</li>
+                <li>• Educación universitaria</li>
+                <li>• Habilidades técnicas organizadas</li>
+                <li>• Idiomas (Español/Inglés)</li>
+                <li>• Experiencia laboral con logros</li>
+                <li>• Proyectos destacados recientes</li>
+                <li>• Cursos y certificaciones</li>
+                <li>• Referencias profesionales</li>
               </ul>
             </div>
 
