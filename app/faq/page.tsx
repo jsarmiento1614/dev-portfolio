@@ -222,12 +222,12 @@ export default function FAQPage() {
                 Estaré encantado de responder cualquier pregunta adicional sobre tu proyecto
               </p>
               <div className="flex gap-4 justify-center">
-                <Link href="/#contact">
+                <Link href="/#contacto">
                   <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
                     Contactar ahora
                   </Button>
                 </Link>
-                <Link href="/proyectos">
+                <Link href="/#proyectos">
                   <Button variant="outline" size="lg">
                     Ver proyectos
                   </Button>
