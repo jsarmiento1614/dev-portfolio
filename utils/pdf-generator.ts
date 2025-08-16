@@ -6,26 +6,33 @@ const cvData = {
     name: "Jesús Alberto Sarmiento Bautista",
     title: "Full Stack Developer & UX/UI Designer",
     email: "jsarmiento1614@gmail.com",
-    phone: "+504 9999-9999",
+    phone: "+504 8785-7498",
     location: "Tegucigalpa, Honduras",
-    linkedin: "linkedin.com/in/jesus-sarmiento",
-    github: "github.com/jesus-sarmiento",
-    portfolio: "jesus-sarmiento.dev"
+    linkedin: "linkedin.com/in/jsarmiento1614",
+    github: "github.com/jsarmiento1614",
+    portfolio: "jsarmiento.vercel.app"
   },
   summary: "Desarrollador Full Stack con más de 6 años de experiencia en desarrollo web y móvil. Especializado en Angular, React, .NET/C#, Java y tecnologías modernas. Enfocado en crear experiencias digitales excepcionales que combinan funcionalidad, diseño UX/UI y mejores prácticas de desarrollo. Experiencia liderando equipos y proyectos de modernización tecnológica.",
   education: [
     {
-      degree: "Ingeniería en Sistemas Computacionales",
-      institution: "Universidad Tecnológica Centroamericana (UNITEC)",
-      location: "Tegucigalpa, Honduras",
-      year: "2015 - 2019",
-      details: "Enfoque en desarrollo de software, bases de datos y arquitectura de sistemas"
+      degree: "Ingeniería en Informática",
+      institution: "CEUTEC de UNITEC",
+      location: "San Pedro Sula, Honduras",
+      year: "2020-06 - Act.",
+      details: "Formación avanzada en desarrollo de software, gestión de bases de datos, arquitectura de sistemas y liderazgo de proyectos tecnológicos. Participación en proyectos prácticos y trabajos colaborativos enfocados en la resolución de problemas reales del sector TI."
+    },
+    {
+      degree: "Técnico Universitario en Diseño y Desarrollo Web, Informática",
+      institution: "CEUTEC de UNITEC",
+      location: "San Pedro Sula, Honduras",
+      year: "2017-06 - 2020-06",
+      details: "Especialización en diseño y desarrollo de aplicaciones web, manejo de tecnologías frontend y backend, y fundamentos sólidos en experiencia de usuario (UX/UI). Desarrollo de proyectos integrales desde la conceptualización hasta la implementación."
     }
   ],
   skills: {
     frontend: ["Angular", "React", "Next.js", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Bootstrap"],
     backend: [".NET/C#", "Node.js", "Java", "Spring Boot", "RESTful APIs", "GraphQL"],
-    mobile: ["Flutter", "React Native", "Xamarin"],
+    mobile: ["Flutter", "Xamarin"],
     databases: ["SQL Server", "PostgreSQL", "MongoDB", "MySQL", "Firebase"],
     tools: ["Docker", "Git", "Azure", "AWS", "Figma", "Adobe Creative Suite", "Postman", "Jenkins"],
     design: ["UI/UX Design", "Prototyping", "Wireframing", "Design Systems", "User Research"]
@@ -37,7 +44,7 @@ const cvData = {
     },
     {
       language: "Inglés",
-      level: "Intermedio (B1-B2)"
+      level: "Basico (A1-A2)"
     }
   ],
   experience: [
@@ -46,112 +53,134 @@ const cvData = {
       company: "Freelance / Consultor Independiente",
       period: "2020 - Presente",
       location: "Honduras",
-      description: "Desarrollo de aplicaciones web y móviles para clientes internacionales. Liderazgo en proyectos de modernización tecnológica, arquitectura de sistemas y optimización de procesos empresariales.",
+      description: "Desarrollo de aplicaciones web y móviles para clientes internacionales. Apoyo en proyectos de modernización tecnológica, arquitectura de sistemas y optimización de procesos empresariales.",
       achievements: [
-        "Lideré la modernización de 5+ sistemas legacy a tecnologías modernas",
-        "Incrementé la eficiencia operativa en un 40% mediante automatización",
+        "Apoye en la modernización de 5+ sistemas legacy a tecnologías modernas",
+        "Implemente soluciones escalables y mantenibles para diversos sectores industriales",
         "Desarrollé aplicaciones para más de 10,000 usuarios activos"
       ]
     },
     {
       title: "Full Stack Developer", 
-      company: "Empresa de Desarrollo de Software",
-      period: "2018 - 2020",
+      company: "Grupo Leitz",
+      period: "2019 - actualidad",
       location: "Tegucigalpa, Honduras",
       description: "Desarrollo de sistemas empresariales con tecnologías .NET, Angular y Java. Implementación de soluciones escalables y mantenibles para diversos sectores industriales.",
       achievements: [
         "Desarrollé 3 sistemas empresariales completos",
-        "Reduje tiempos de carga en un 60% mediante optimizaciones",
-        "Mentoreé a 2 desarrolladores junior"
+        "Apoye en la modernización de +10 sistemas legacy a tecnologías modernas",
+        "Implementé soluciones escalables y mantenibles para diversos sectores industriales",
       ]
     },
     {
       title: "Desarrollador Web Junior",
-      company: "Agencia Digital",
-      period: "2016 - 2018", 
+      company: "Grupo Leitz",
+      period: "2019 - 2020", 
       location: "Tegucigalpa, Honduras",
-      description: "Desarrollo de sitios web responsivos y aplicaciones básicas. Colaboración en proyectos de marketing digital y e-commerce.",
+      description: "Desarrollo de sitios web responsivos y aplicaciones básicas.",
       achievements: [
-        "Completé más de 20 proyectos web",
-        "Implementé mejoras de SEO que aumentaron el tráfico en 35%",
-        "Aprendí metodologías ágiles y trabajo en equipo"
+        "Desarrollé 2 sistemas empresariales completos",
+        "Implementé soluciones escalables y mantenibles para diversos sectores industriales",
       ]
     }
   ],
   projects: [
     {
-      name: "Sistema de Trading Automatizado",
-      period: "2023",
-      technologies: "React, Node.js, MongoDB, WebSockets",
-      description: "Plataforma backend para gestión y ejecución de estrategias de trading automatizado en mercados Forex, Criptomonedas e Índices bursátiles con lógica de horarios internacionales."
+      name: "Trading Automatizado - Plataforma Backend",
+      period: "2025-03 - 2025-08",
+      technologies: "TypeScript, Node.js, Prisma ORM, PostgreSQL, WebSockets, REST API, Docker, Redis",
+      description: "Diseño e implementación de una plataforma backend para gestión y ejecución de estrategias de trading automatizado en mercados como Forex, Criptomonedas e Índices bursátiles. Desarrollo de lógica para determinar en tiempo real si un mercado está abierto o cerrado usando horarios internacionales y zonas horarias.",
+      role: "Desarrollador Full Stack"
     },
     {
-      name: "Plataforma de Gestión Empresarial",
-      period: "2022",
-      technologies: "Angular, .NET Core, SQL Server, Azure",
-      description: "Sistema completo de gestión empresarial con módulos de facturación, inventario, reportes y dashboard analytics en tiempo real."
+      name: "Randa Ticketera NFT UI/UX",
+      period: "2024-12 - 2025-08",
+      technologies: "React 18, Vite, Tailwind CSS, TypeScript, JavaScript ES6+",
+      description: "Plataforma de ticketera NFT desarrollada con React 18. Sistema completo de gestión de eventos y tokens NFT.",
+      role: "Desarrollador React"
     },
     {
-      name: "Aplicación de Encuestas Móvil",
-      period: "2021",
-      technologies: "Flutter, Firebase, Dart",
-      description: "App móvil para recolección de datos con sincronización offline, geolocalización y analytics en tiempo real para investigación de mercados."
+      name: "Zero Variance - Ubiquity",
+      period: "2023-05 - 2024-12",
+      technologies: "Angular 15, .NET Core 8, SQL Server, TypeScript",
+      description: "Sistema empresarial desarrollado con Angular 15, .NET Core 8 y SQL Server. Aplicación compleja para gestión de datos y análisis de varianza.",
+      role: "Desarrollador Angular"
     },
     {
-      name: "E-commerce B2B",
-      period: "2021",
-      technologies: "Next.js, Node.js, PostgreSQL, Stripe",
-      description: "Plataforma de comercio electrónico B2B con sistema de pedidos, gestión de inventario y integración de pagos."
+      name: "NexGen Virtual Office",
+      period: "2021-12 - 2023-05",
+      technologies: "Angular, TypeScript, Node.js, MongoDB",
+      description: "Oficina virtual completa desarrollada con Angular. Sistema de gestión empresarial con múltiples módulos integrados.",
+      role: "Desarrollador Web Angular"
+    },
+    {
+      name: "Aplicación de Encuestas - Grupo Leitz (UX/UI)",
+      period: "2021-04 - 2021-11",
+      technologies: "Figma, UX Research, Prototyping, Mobile Design, Agricultural UX",
+      description: "Diseño UX y prototipado de aplicación móvil para recolección, monitoreo y gestión de datos de cosecha de granos de café. Optimización de procesos agrícolas con experiencia de usuario centrada en el usuario.",
+      role: "Diseñador UX/UI"
+    },
+    {
+      name: "Manual de Marca Securex",
+      period: "2021-12 - 2022-05",
+      technologies: "Figma, Brand Identity, UI Design, Security UX, Prototyping",
+      description: "Creación de identidad de marca y prototipo de aplicación para soluciones de seguridad residencial. Diseño de experiencia visual coherente y funcional con enfoque en seguridad y confianza.",
+      role: "Diseñador UX/UI"
     }
   ],
   courses: [
     {
-      name: "Advanced React and Redux",
+      name: "Inglés - Básico",
+      institution: "Academia Europea",
+      year: "Actualidad",
+      duration: "En curso",
+      description: "Curso para mejorar comunicación con hablantes del idioma",
+      website: "https://academiaeuropea.com/"
+    },
+    {
+      name: "CSS Avanzado",
+      institution: "EDteam",
+      year: "Completado",
+      duration: "Curso completo",
+      description: "Mejora de habilidades de maquetación web",
+      instructor: "Álvaro Felipe",
+      website: "www.edteam.com"
+    },
+    {
+      name: "Flutter",
       institution: "Udemy",
-      year: "2023",
-      duration: "40 horas"
+      year: "Completado",
+      duration: "Curso completo",
+      description: "Desarrollo móvil con tecnología Flutter",
+      instructor: "Fernando Herrera",
+      website: "www.udemy.com"
     },
     {
-      name: "AWS Cloud Practitioner",
-      institution: "Amazon Web Services",
-      year: "2022",
-      duration: "Certificación"
-    },
-    {
-      name: "UX/UI Design Specialization",
-      institution: "Coursera - Google",
-      year: "2022",
-      duration: "6 meses"
-    },
-    {
-      name: "Docker and Kubernetes",
-      institution: "Docker Academy",
-      year: "2021",
-      duration: "30 horas"
-    },
-    {
-      name: "Angular - The Complete Guide",
-      institution: "Udemy",
-      year: "2020",
-      duration: "35 horas"
+      name: "API con .NET Core",
+      institution: "EDteam",
+      year: "Completado",
+      duration: "Curso completo",
+      description: "Creación de APIs con tecnología .NET Core",
+      instructor: "Miguel Teheran",
+      website: "www.edteam.com"
     }
   ],
   references: [
     {
-      name: "María González",
+      name: "José Carlos Estrada",
       position: "Project Manager",
-      company: "TechSolutions",
-      phone: "+504 8888-8888",
-      email: "maria.gonzalez@techsolutions.com",
-      relationship: "Supervisora directa en proyecto de modernización"
+      company: "MQA Americas",
+      phone: "+504 4023-4035",
+      email: "jestrada@mqaamericas.com",
+      relationship: "Supervisor directo en proyectos de desarrollo empresarial"
     },
     {
-      name: "Carlos Mendoza",
-      position: "CTO",
-      company: "InnovateHN",
-      phone: "+504 7777-7777", 
-      email: "carlos.mendoza@innovatehn.com",
-      relationship: "Cliente en múltiples proyectos de desarrollo"
+      name: "Jorge Eduardo Alvares",
+      position: "Desarrollador",
+      company: "Grupo Leitz",
+      phone: "+504 9480-5277",
+      email: "jalvares@grupoleitz.com",
+      relationship: "Colega desarrollador en múltiples proyectos colaborativos"
     }
   ]
 }
@@ -267,6 +296,8 @@ export async function generatePDF(): Promise<Blob> {
     createSectionHeader('EDUCACION')
 
     cvData.education.forEach((edu) => {
+      checkPageBreak(35)
+      
       doc.setFontSize(12)
       doc.setTextColor(...textColor)
       doc.setFont('helvetica', 'bold')
@@ -282,10 +313,14 @@ export async function generatePDF(): Promise<Blob> {
       doc.setTextColor(...grayColor)
       doc.setFont('helvetica', 'normal')
       doc.text(`${edu.location} | ${edu.year}`, leftMargin, yPosition)
-      yPosition += 4
+      yPosition += 5
 
-      doc.text(edu.details, leftMargin, yPosition)
-      yPosition += 10
+      // Dividir los detalles en múltiples líneas
+      doc.setFontSize(9)
+      doc.setTextColor(...textColor)
+      const detailLines = doc.splitTextToSize(edu.details, contentWidth)
+      doc.text(detailLines, leftMargin, yPosition)
+      yPosition += detailLines.length * 4 + 8
     })
     addSectionSeparator()
 
@@ -422,19 +457,28 @@ export async function generatePDF(): Promise<Blob> {
     createSectionHeader('PROYECTOS DESTACADOS')
 
     cvData.projects.forEach((project, index) => {
-      checkPageBreak(30)
+      checkPageBreak(35)
       
       doc.setFontSize(11)
       doc.setFont('helvetica', 'bold')
       doc.setTextColor(...textColor)
       doc.text(project.name, leftMargin, yPosition)
-      
+      yPosition += 5
+
+      // Período y rol en la misma línea
       doc.setFontSize(9)
-      doc.setTextColor(...grayColor)
-      doc.setFont('helvetica', 'normal')
-      doc.text(`(${project.period})`, leftMargin + doc.getTextWidth(project.name) + 5, yPosition)
+      doc.setTextColor(...primaryColor)
+      doc.setFont('helvetica', 'bold')
+      doc.text(`${project.period}`, leftMargin, yPosition)
+      
+      if ((project as any).role) {
+        doc.setTextColor(...grayColor)
+        doc.setFont('helvetica', 'normal')
+        doc.text(`| ${(project as any).role}`, leftMargin + doc.getTextWidth(project.period) + 5, yPosition)
+      }
       yPosition += 6
 
+      // Tecnologías
       doc.setFontSize(9)
       doc.setFont('helvetica', 'bold')
       doc.setTextColor(...primaryColor)
@@ -442,14 +486,17 @@ export async function generatePDF(): Promise<Blob> {
       
       doc.setFont('helvetica', 'normal')
       doc.setTextColor(...grayColor)
-      doc.text(project.technologies, leftMargin + doc.getTextWidth('Tecnologias: '), yPosition)
-      yPosition += 5
+      const techLines = doc.splitTextToSize(project.technologies, contentWidth - doc.getTextWidth('Tecnologias: '))
+      doc.text(techLines, leftMargin + doc.getTextWidth('Tecnologias: '), yPosition)
+      yPosition += Math.max(techLines.length * 3.5, 5) + 3
 
+      // Descripción
       doc.setFontSize(9)
       doc.setTextColor(...textColor)
+      doc.setFont('helvetica', 'normal')
       const projLines = doc.splitTextToSize(project.description, contentWidth)
       doc.text(projLines, leftMargin, yPosition)
-      yPosition += projLines.length * 3.5 + 8
+      yPosition += projLines.length * 3.5 + 10
     })
     addSectionSeparator()
 
@@ -458,7 +505,7 @@ export async function generatePDF(): Promise<Blob> {
     createSectionHeader('CURSOS Y CERTIFICACIONES')
 
     cvData.courses.forEach((course, index) => {
-      checkPageBreak(15)
+      checkPageBreak(20)
       
       doc.setFontSize(10)
       doc.setFont('helvetica', 'bold')
@@ -467,13 +514,41 @@ export async function generatePDF(): Promise<Blob> {
       yPosition += 5
 
       doc.setFontSize(9)
-      doc.setFont('helvetica', 'normal')
+      doc.setFont('helvetica', 'bold')
       doc.setTextColor(...primaryColor)
       doc.text(course.institution, leftMargin, yPosition)
       
       doc.setTextColor(...grayColor)
+      doc.setFont('helvetica', 'normal')
       doc.text(`| ${course.year} | ${course.duration}`, leftMargin + doc.getTextWidth(course.institution) + 5, yPosition)
-      yPosition += 8
+      yPosition += 4
+
+      // Instructor si existe
+      if ((course as any).instructor) {
+        doc.setFontSize(8)
+        doc.setTextColor(...grayColor)
+        doc.text(`Instructor: ${(course as any).instructor}`, leftMargin, yPosition)
+        yPosition += 4
+      }
+
+      // Descripción
+      if ((course as any).description) {
+        doc.setFontSize(8)
+        doc.setTextColor(...textColor)
+        const descLines = doc.splitTextToSize((course as any).description, contentWidth)
+        doc.text(descLines, leftMargin, yPosition)
+        yPosition += descLines.length * 3
+      }
+
+      // Website si existe
+      if ((course as any).website) {
+        doc.setFontSize(8)
+        doc.setTextColor(...primaryColor)
+        doc.text(`Web: ${(course as any).website}`, leftMargin, yPosition)
+        yPosition += 4
+      }
+
+      yPosition += 6
     })
     addSectionSeparator()
 
