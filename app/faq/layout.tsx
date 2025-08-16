@@ -38,18 +38,30 @@ export const metadata: Metadata = {
     "preguntas mantenimiento web Honduras"
   ],
   openGraph: {
-    title: "FAQ - Preguntas Frecuentes | Jesús Sarmiento",
-    description: "Encuentra respuestas a las preguntas más comunes sobre desarrollo Full Stack desde Honduras, tecnologías, procesos y servicios.",
+    title: "FAQ Desarrollo Web | Precios, Procesos y Tecnologías | Jesús Sarmiento",
+    description: "❓ ¿Cuánto cuesta una app? ¿Qué tecnologías uso? ⏱️ ¿Tiempos de entrega? Respuestas claras sobre desarrollo web, móvil y precios desde Honduras. 💰 Acepto criptomonedas USDT",
     url: "https://jsarmiento.vercel.app/faq",
+    type: 'website',
+    locale: 'es_HN',
+    siteName: 'jsarmiento.vercel.app',
+    images: [
+      {
+        url: '/og-image.svg',
+        width: 1200,
+        height: 630,
+        alt: 'FAQ Desarrollo Web - Preguntas Frecuentes Jesús Sarmiento',
+      }
+    ],
   },
   alternates: {
     canonical: "/faq",
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'FAQ - Jesús Sarmiento',
-    description: 'Preguntas frecuentes sobre desarrollo Full Stack desde Honduras',
+    title: 'FAQ Desarrollo Web | Precios y Procesos',
+    description: '❓ Preguntas sobre desarrollo web y móvil 💰 Precios transparentes 🔧 Tecnologías React, Angular 💎 Acepto USDT',
     creator: '@jsarmiento1614',
+    images: ['/og-image.svg'],
   },
 }
 

@@ -77,8 +77,8 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'es_HN',
     url: 'https://jsarmiento.vercel.app',
-    title: 'Jesús Sarmiento - Desarrollador Full Stack',
-    description: 'Desarrollador Full Stack Honduras con 6+ años de experiencia especializado en React, Next.js, Angular y Node.js. Construyo experiencias digitales simples y efectivas.',
+    title: 'Jesús Sarmiento - Desarrollador Full Stack | 15+ Proyectos Completados',
+    description: '🚀 Desarrollador Full Stack desde Honduras con 6+ años creando aplicaciones web y móviles para empresas de Centroamérica y Estados Unidos. React, Next.js, Angular, Node.js. ✅ 15+ proyectos exitosos ⚡ Resultados garantizados.',
     siteName: 'jsarmiento.vercel.app',
     images: [
       {
@@ -91,8 +91,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Jesús Sarmiento - Desarrollador Full Stack',
-    description: 'Desarrollador Full Stack Honduras con 6+ años de experiencia especializado en React, Next.js, Angular y Node.js. Construyo experiencias digitales simples y efectivas.',
+    title: 'Jesús Sarmiento - Desarrollador Full Stack | Portfolio',
+    description: '💻 6+ años desarrollando apps web y móviles desde Honduras 🌎 Especialista React, Next.js, Angular, Node.js ✨ 15+ proyectos para empresas internacionales',
     images: ['/og-image.svg'],
     creator: '@jsarmiento1614',
   },
