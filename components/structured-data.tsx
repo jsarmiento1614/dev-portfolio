@@ -30,17 +30,13 @@ export default function StructuredData() {
           "estimatedSalary": {
             "@type": "MonetaryAmount",
             "currency": "USD",
-            "value": {
-              "@type": "QuantitativeValue",
-              "minValue": 30000,
-              "maxValue": 80000,
-              "unitText": "YEAR"
-            }
+            "minValue": 30000,
+            "maxValue": 80000,
+            "unitText": "YEAR"
           },
           "occupationLocation": {
-            "@type": "AdministrativeArea",
-            "name": "Honduras",
-            "addressCountry": "HN"
+            "@type": "Country",
+            "name": "Honduras"
           }
         },
         "worksFor": {
@@ -93,6 +89,10 @@ export default function StructuredData() {
           "@type": "EducationalOrganization",
           "name": "Centro Universitario Tecnológico Ceutec",
           "url": "https://ceutec.hn/"
+        },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://jsarmiento.vercel.app"
         }
       },
       {
