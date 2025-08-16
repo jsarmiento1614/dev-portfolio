@@ -65,9 +65,9 @@ export async function generatePDF(): Promise<Blob> {
     let yPosition = 20
 
   // Configurar fuentes y colores
-  const primaryColor = [59, 130, 246] // #3B82F6
-  const textColor = [31, 41, 55] // #1F2937
-  const grayColor = [107, 114, 128] // #6B7280
+  const primaryColor: [number, number, number] = [59, 130, 246] // #3B82F6
+  const textColor: [number, number, number] = [31, 41, 55] // #1F2937
+  const grayColor: [number, number, number] = [107, 114, 128] // #6B7280
 
   // Header
   doc.setFontSize(24)

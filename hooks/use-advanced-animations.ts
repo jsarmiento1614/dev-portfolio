@@ -12,7 +12,7 @@ export function useAdvancedScrollAnimation(options?: {
 }) {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, {
-    threshold: options?.threshold || 0.1,
+    amount: options?.threshold || 0.1,
     once: options?.triggerOnce !== false,
     margin: "-10% 0px -10% 0px"
   })
@@ -84,7 +84,7 @@ export function useTextReveal(options?: {
 }) {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { 
-    threshold: 0.1, 
+    amount: 0.1, 
     once: true,
     margin: "-10% 0px -10% 0px"
   })
@@ -216,7 +216,7 @@ export function useScrollProgress(callback?: (progress: number) => void) {
 export function useDirectionalAnimation(direction: 'up' | 'down' | 'left' | 'right' = 'up') {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { 
-    threshold: 0.1, 
+    amount: 0.1, 
     once: true,
     margin: "-5% 0px -5% 0px"
   })
@@ -254,7 +254,7 @@ export function useDirectionalAnimation(direction: 'up' | 'down' | 'left' | 'rig
 export function useStaggerAnimation(childCount: number, staggerDelay: number = 0.1) {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { 
-    threshold: 0.1, 
+    amount: 0.1, 
     once: true,
     margin: "-10% 0px -10% 0px"
   })

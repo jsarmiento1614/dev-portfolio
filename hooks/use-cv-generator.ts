@@ -71,46 +71,13 @@ export function useCVGenerator() {
         throw new Error('No se pudo generar la URL del PDF')
       }
 
-      console.log('Abriendo PDF en nueva ventana...', url)
+      console.log('Abriendo PDF directamente en nueva pestaña...', url)
 
-      // Intentar abrir en nueva ventana
-      const newWindow = window.open('', '_blank', 'width=900,height=700,scrollbars=yes,resizable=yes')
+      // Abrir el PDF directamente en una nueva pestaña
+      const newWindow = window.open(url, '_blank')
       
-      if (newWindow) {
-        // Crear una página HTML simple con el PDF embedido
-        newWindow.document.write(`
-          <!DOCTYPE html>
-          <html>
-            <head>
-              <title>CV - Jesús Sarmiento</title>
-              <style>
-                body { margin: 0; padding: 20px; font-family: Arial, sans-serif; }
-                .container { text-align: center; }
-                iframe { border: none; }
-                .download-link { 
-                  margin-bottom: 10px; 
-                  padding: 10px 20px; 
-                  background: #3B82F6; 
-                  color: white; 
-                  text-decoration: none; 
-                  border-radius: 5px; 
-                  display: inline-block;
-                }
-              </style>
-            </head>
-            <body>
-              <div class="container">
-                <h2>CV - Jesús Alberto Sarmiento Bautista</h2>
-                <a href="${url}" download="Jesus_Sarmiento_CV.pdf" class="download-link">⬇ Descargar PDF</a>
-                <br><br>
-                <iframe src="${url}" width="100%" height="600px"></iframe>
-              </div>
-            </body>
-          </html>
-        `)
-        newWindow.document.close()
-      } else {
-        // Fallback: descargar si no se puede abrir ventana
+      if (!newWindow) {
+        // Fallback: descargar si no se puede abrir ventana (bloqueador de pop-ups)
         console.warn('No se pudo abrir ventana emergente, descargando archivo...')
         await downloadCV()
       }
