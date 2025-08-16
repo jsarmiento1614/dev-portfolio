@@ -30,7 +30,6 @@ export default function Header() {
     { id: "inicio", label: "Inicio" },
     { id: "sobre-mi", label: "Sobre mí" },
     { id: "proyectos", label: "Proyectos" },
-    { id: "contacto", label: "Contacto" },
   ]
 
   return (

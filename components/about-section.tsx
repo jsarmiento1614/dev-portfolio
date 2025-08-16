@@ -68,11 +68,15 @@ export default function AboutSection() {
   const skillCategories = ["Frontend", "Backend", "Mobile", "Database", "DevOps", "Design"]
 
   return (
-    <section id="sobre-mi" className="py-20 bg-background relative overflow-hidden">
+    <section 
+      id="sobre-mi" 
+      className="py-20 relative overflow-hidden"
+      style={{ background: 'var(--color-about-bg)' }}
+    >
       {/* Background decoration */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none">
-        <div className="absolute top-1/4 right-0 w-96 h-96 bg-blue-400 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-purple-400 rounded-full blur-3xl" />
+      <div className="absolute inset-0 opacity-5 dark:opacity-10 pointer-events-none">
+        <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-accent/20 rounded-full blur-3xl" />
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

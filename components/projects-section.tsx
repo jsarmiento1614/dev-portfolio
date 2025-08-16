@@ -185,12 +185,13 @@ export default function ProjectsSection() {
   return (
     <section 
       id="proyectos" 
-      className="pt-20 pb-12 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 relative overflow-hidden"
+      className="pt-20 pb-12 relative overflow-hidden"
+      style={{ background: 'var(--color-projects-bg)' }}
     >
       {/* Background decoration */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-0 w-72 h-72 bg-blue-400 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-72 h-72 bg-purple-400 rounded-full blur-3xl" />
+      <div className="absolute inset-0 opacity-5 dark:opacity-10">
+        <div className="absolute top-0 left-0 w-72 h-72 bg-primary/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-72 h-72 bg-accent/20 rounded-full blur-3xl" />
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -200,16 +201,16 @@ export default function ProjectsSection() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-                      <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                      <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             Proyectos <span className="gradient-text">Destacados</span>
           </h2>
-                      <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
+                      <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8">
             Una selección de mis trabajos más recientes que demuestran mi experiencia en desarrollo web, móvil y diseño UX/UI.
           </p>
           
           {/* Visual separator after main title */}
           <div className="flex justify-center mb-8">
-            <div className="w-40 h-0.5 bg-gradient-to-r from-transparent via-blue-400 to-transparent"></div>
+            <div className="w-40 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
           </div>
         </div>
 
@@ -230,18 +231,19 @@ export default function ProjectsSection() {
           >
             <div className="inline-flex items-center gap-2 mb-3">
               <motion.div 
-                className="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center"
+                className="w-8 h-8 rounded-lg flex items-center justify-center"
+                style={{ background: 'var(--color-projects-accent-dev)' }}
                 initial={{ scale: 0, rotate: -180 }}
                 animate={isDevelopmentInView ? { scale: 1, rotate: 0 } : { scale: 0, rotate: -180 }}
                 transition={{ duration: 0.6, delay: 0.4, type: "spring", stiffness: 150 }}
               >
                 <Code className="w-4 h-4 text-white" />
               </motion.div>
-              <h3 className="text-2xl font-bold text-white">
-                Proyectos de <span className="text-blue-400">Desarrollo</span>
+              <h3 className="text-2xl font-bold text-foreground">
+                Proyectos de <span className="text-primary">Desarrollo</span>
               </h3>
             </div>
-            <p className="text-base text-slate-400 max-w-2xl mx-auto">
+            <p className="text-base text-muted-foreground max-w-2xl mx-auto">
               Aplicaciones web y móviles desarrolladas con las últimas tecnologías y mejores prácticas.
             </p>
           </motion.div>
@@ -269,10 +271,18 @@ export default function ProjectsSection() {
                 onHoverEnd={() => setHoveredProject(null)}
               >
                 <Card 
-                  className="group relative overflow-hidden bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 shadow-xl hover:shadow-2xl transition-all duration-500 rounded-xl"
+                  className="group relative overflow-hidden backdrop-blur-md border transition-all duration-500 rounded-xl hover:backdrop-blur-lg"
+                  style={{ 
+                    backgroundColor: 'var(--color-projects-card-bg)',
+                    borderColor: 'var(--color-projects-card-border)',
+                    boxShadow: '0 20px 25px -5px var(--color-projects-shadow), 0 10px 10px -5px var(--color-projects-shadow)'
+                  }}
                 >
                 {/* Development card accent */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-cyan-500"></div>
+                <div 
+                  className="absolute top-0 left-0 right-0 h-1"
+                  style={{ background: 'var(--color-projects-accent-dev)' }}
+                ></div>
                 <CardContent className="p-0">
                   {/* Project image with overlay */}
                   <div className="relative overflow-hidden">
@@ -283,7 +293,7 @@ export default function ProjectsSection() {
                       height={300}
                       className={`w-full h-48 ${
                         isMobileAppImage(project.image) 
-                          ? 'object-contain bg-slate-700/50' 
+                          ? 'object-contain bg-muted/50' 
                           : 'object-cover'
                       }`}
                       fallbackSrc="/placeholder.svg"
@@ -295,7 +305,10 @@ export default function ProjectsSection() {
                     {/* Featured badge */}
                     {project.featured && (
                       <div className="absolute top-4 right-4">
-                        <span className="px-3 py-1 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-semibold rounded-full shadow-lg">
+                        <span 
+                          className="px-3 py-1 text-white text-xs font-semibold rounded-full shadow-lg"
+                          style={{ background: 'var(--color-projects-accent-design)' }}
+                        >
                           ⭐ Destacado
                         </span>
                       </div>
@@ -304,7 +317,14 @@ export default function ProjectsSection() {
                     {/* Private badge */}
                     {project.isPrivate && (
                       <div className="absolute top-4 left-4">
-                        <span className="px-3 py-1 bg-orange-500/20 text-orange-300 border border-orange-500/30 text-xs font-semibold rounded-full shadow-lg">
+                        <span 
+                          className="px-3 py-1 text-xs font-semibold rounded-full shadow-lg border"
+                          style={{ 
+                            backgroundColor: 'var(--color-projects-private-bg)',
+                            color: 'var(--color-projects-private-text)',
+                            borderColor: 'var(--color-projects-private-text)'
+                          }}
+                        >
                           🔒 Privado
                         </span>
                       </div>
@@ -314,10 +334,10 @@ export default function ProjectsSection() {
                   <div className="p-6">
                     {/* Period and Role */}
                     <div className="mb-3 flex items-center justify-between">
-                      <span className="text-sm font-medium text-blue-400">
+                      <span className="text-sm font-medium text-primary">
                         {project.category}
                       </span>
-                      <div className="flex items-center gap-1 text-xs text-slate-400">
+                      <div className="flex items-center gap-1 text-xs text-muted-foreground">
                         <Calendar className="w-3 h-3" />
                         <span>{project.period}</span>
                       </div>
@@ -325,18 +345,18 @@ export default function ProjectsSection() {
 
                     {/* Role */}
                     <div className="mb-2">
-                      <span className="text-xs font-medium text-slate-400">
+                      <span className="text-xs font-medium text-muted-foreground">
                         {project.role}
                       </span>
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
+                    <h3 className="text-xl font-bold text-card-foreground mb-3 group-hover:text-primary transition-colors">
                       {project.title}
                     </h3>
                     
                     {/* Description */}
-                    <p className="text-slate-300 mb-4 leading-relaxed text-sm">
+                    <p className="text-muted-foreground mb-4 leading-relaxed text-sm">
                       {project.description}
                     </p>
 
@@ -345,7 +365,12 @@ export default function ProjectsSection() {
                       {project.technologies.map((tech) => (
                         <span 
                           key={tech} 
-                          className="px-3 py-1 bg-slate-700/50 text-slate-300 rounded-full text-sm font-medium transition-colors hover:bg-blue-500/20 hover:text-blue-300 border border-slate-600/30"
+                          className="px-3 py-1 rounded-full text-sm font-medium transition-colors hover:opacity-80 border"
+                          style={{
+                            backgroundColor: 'var(--color-projects-badge-bg)',
+                            color: 'var(--color-projects-badge-text)',
+                            borderColor: 'var(--color-projects-badge-text)'
+                          }}
                         >
                           {tech}
                         </span>
@@ -359,7 +384,11 @@ export default function ProjectsSection() {
                           <Button 
                             size="sm" 
                             variant="outline"
-                            className="flex-1 border-orange-500/50 text-orange-300 hover:bg-orange-500/10 disabled:opacity-50"
+                            className="flex-1 disabled:opacity-50"
+                            style={{
+                              borderColor: 'var(--color-projects-private-text)',
+                              color: 'var(--color-projects-private-text)'
+                            }}
                             disabled
                           >
                             <ExternalLink className="w-4 h-4 mr-2" />
@@ -368,7 +397,11 @@ export default function ProjectsSection() {
                           <Button 
                             size="sm" 
                             variant="outline"
-                            className="border-orange-500/50 text-orange-300 hover:bg-orange-500/10 disabled:opacity-50"
+                            className="disabled:opacity-50"
+                            style={{
+                              borderColor: 'var(--color-projects-private-text)',
+                              color: 'var(--color-projects-private-text)'
+                            }}
                             disabled
                           >
                             <Github className="w-4 h-4 mr-2" />
@@ -380,7 +413,8 @@ export default function ProjectsSection() {
                           <Button 
                             asChild 
                             size="sm" 
-                            className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white flex-1 group/btn shadow-lg hover:shadow-xl transition-all duration-300"
+                            className="text-white flex-1 group/btn shadow-lg hover:shadow-xl transition-all duration-300"
+                            style={{ background: 'var(--color-projects-accent-dev)' }}
                           >
                             <Link 
                               href={project.demoUrl} 
@@ -420,10 +454,10 @@ export default function ProjectsSection() {
         {/* Section Separator - Enhanced for better focus */}
         <div className="relative mb-20">
           <div className="flex justify-center">
-            <div className="w-32 h-px bg-gradient-to-r from-transparent via-slate-500 to-transparent"></div>
+            <div className="w-32 h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
           </div>
           <div className="flex justify-center mt-4">
-            <div className="w-16 h-px bg-gradient-to-r from-transparent via-slate-600 to-transparent"></div>
+            <div className="w-16 h-px bg-gradient-to-r from-transparent via-muted to-transparent"></div>
           </div>
         </div>
 
@@ -444,18 +478,19 @@ export default function ProjectsSection() {
           >
             <div className="inline-flex items-center gap-2 mb-3">
               <motion.div 
-                className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center"
+                className="w-8 h-8 rounded-lg flex items-center justify-center"
+                style={{ background: 'var(--color-projects-accent-design)' }}
                 initial={{ scale: 0, rotate: -180 }}
                 animate={isDesignInView ? { scale: 1, rotate: 0 } : { scale: 0, rotate: -180 }}
                 transition={{ duration: 0.6, delay: 0.4, type: "spring", stiffness: 150 }}
               >
                 <Palette className="w-4 h-4 text-white" />
               </motion.div>
-              <h3 className="text-2xl font-bold text-white">
-                Proyectos de <span className="text-purple-400">Diseño UX/UI</span>
+              <h3 className="text-2xl font-bold text-foreground">
+                Proyectos de <span className="text-accent">Diseño UX/UI</span>
               </h3>
             </div>
-            <p className="text-base text-slate-400 max-w-2xl mx-auto">
+            <p className="text-base text-muted-foreground max-w-2xl mx-auto">
               Diseños centrados en el usuario con investigación UX, wireframes, prototipos y sistemas de diseño.
             </p>
           </motion.div>
@@ -483,10 +518,18 @@ export default function ProjectsSection() {
                 onHoverEnd={() => setHoveredProject(null)}
               >
                 <Card 
-                  className="group relative overflow-hidden bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 shadow-xl hover:shadow-2xl transition-all duration-500 rounded-xl"
+                  className="group relative overflow-hidden backdrop-blur-md border transition-all duration-500 rounded-xl hover:backdrop-blur-lg"
+                  style={{ 
+                    backgroundColor: 'var(--color-projects-card-bg)',
+                    borderColor: 'var(--color-projects-card-border)',
+                    boxShadow: '0 20px 25px -5px var(--color-projects-shadow), 0 10px 10px -5px var(--color-projects-shadow)'
+                  }}
                 >
                 {/* Design card accent */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 to-pink-500"></div>
+                <div 
+                  className="absolute top-0 left-0 right-0 h-1"
+                  style={{ background: 'var(--color-projects-accent-design)' }}
+                ></div>
                 <CardContent className="p-0">
                   {/* Project image with overlay */}
                   <div className="relative overflow-hidden">
@@ -497,7 +540,7 @@ export default function ProjectsSection() {
                       height={300}
                       className={`w-full h-48 ${
                         isMobileAppImage(project.image) 
-                          ? 'object-contain bg-slate-700/50' 
+                          ? 'object-contain bg-muted/50' 
                           : 'object-cover'
                       }`}
                       fallbackSrc="/placeholder.svg"
@@ -519,10 +562,10 @@ export default function ProjectsSection() {
                   <div className="p-6">
                     {/* Period and Role */}
                     <div className="mb-3 flex items-center justify-between">
-                      <span className="text-sm font-medium text-purple-400">
+                      <span className="text-sm font-medium text-accent">
                         {project.category}
                       </span>
-                      <div className="flex items-center gap-1 text-xs text-slate-400">
+                      <div className="flex items-center gap-1 text-xs text-muted-foreground">
                         <Calendar className="w-3 h-3" />
                         <span>{project.period}</span>
                       </div>
@@ -530,7 +573,7 @@ export default function ProjectsSection() {
 
                     {/* Role and Client */}
                     <div className="mb-2">
-                      <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
+                      <span className="text-xs font-medium text-muted-foreground">
                         {project.role}
                       </span>
                       {project.client && (
@@ -555,12 +598,12 @@ export default function ProjectsSection() {
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">
+                    <h3 className="text-xl font-bold text-card-foreground mb-3 group-hover:text-accent transition-colors">
                       {project.title}
                     </h3>
                     
                     {/* Description */}
-                    <p className="text-slate-300 mb-4 leading-relaxed text-sm">
+                    <p className="text-muted-foreground mb-4 leading-relaxed text-sm">
                       {project.description}
                     </p>
 
@@ -569,7 +612,12 @@ export default function ProjectsSection() {
                       {project.technologies.map((tech) => (
                         <span 
                           key={tech} 
-                          className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm font-medium transition-colors hover:bg-purple-500/30 border border-purple-500/30"
+                          className="px-3 py-1 rounded-full text-sm font-medium transition-colors hover:opacity-80 border"
+                          style={{
+                            backgroundColor: 'var(--color-projects-private-bg)',
+                            color: 'var(--color-projects-private-text)',
+                            borderColor: 'var(--color-projects-private-text)'
+                          }}
                         >
                           {tech}
                         </span>
@@ -579,30 +627,32 @@ export default function ProjectsSection() {
                     {/* Action buttons */}
                     <div className="flex gap-3">
                       {project.type === "design" && project.demoUrl && project.demoUrl !== "#" && (
-                        <Button 
-                          asChild 
-                          size="sm" 
-                          className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white w-full group/btn shadow-lg hover:shadow-xl transition-all duration-300"
-                        >
-                          <Link 
-                            href={project.demoUrl} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            onClick={() => {
-                              trackProject(project.title)
-                              trackVercelProject(project.title)
-                            }}
+                                                  <Button 
+                            asChild 
+                            size="sm" 
+                            className="text-white w-full group/btn shadow-lg hover:shadow-xl transition-all duration-300"
+                            style={{ background: 'var(--color-projects-accent-design)' }}
                           >
-                            <Eye className="w-4 h-4 mr-2 group-hover/btn:translate-x-1 transition-transform" />
-                            Ver Prototipo
-                          </Link>
-                        </Button>
+                            <Link 
+                              href={project.demoUrl} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              onClick={() => {
+                                trackProject(project.title)
+                                trackVercelProject(project.title)
+                              }}
+                            >
+                              <Eye className="w-4 h-4 mr-2 group-hover/btn:translate-x-1 transition-transform" />
+                              Ver Prototipo
+                            </Link>
+                          </Button>
                       )}
                       {project.type === "development" && project.repoUrl && project.repoUrl !== "#" && (
                         <Button 
                           asChild 
                           size="sm" 
-                          className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white w-full group/btn shadow-lg hover:shadow-xl transition-all duration-300"
+                          className="text-white w-full group/btn shadow-lg hover:shadow-xl transition-all duration-300"
+                          style={{ background: 'var(--color-projects-accent-dev)' }}
                         >
                           <Link 
                             href={project.repoUrl} 
@@ -642,7 +692,7 @@ export default function ProjectsSection() {
               asChild
               size="lg" 
               variant="outline"
-              className="group border-2 border-blue-400 text-blue-400 hover:bg-blue-500 hover:text-white px-8 py-3 shadow-lg hover:shadow-xl transition-all duration-300"
+              className="group border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-3 shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <Link href="/proyectos">
                 Ver todos los proyectos

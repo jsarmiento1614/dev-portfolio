@@ -21,11 +21,14 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-gradient-to-b from-background via-background to-muted text-foreground relative overflow-hidden">
+    <footer 
+      className="text-foreground relative overflow-hidden"
+      style={{ background: 'var(--color-footer-bg)' }}
+    >
       {/* Background decoration */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-0 w-72 h-72 bg-blue-400 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-72 h-72 bg-purple-400 rounded-full blur-3xl" />
+      <div className="absolute inset-0 opacity-5 dark:opacity-10">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-3xl" />
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">

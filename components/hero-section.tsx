@@ -33,9 +33,10 @@ export default function HeroSection() {
     <section
       id="inicio"
       className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 py-8 sm:py-12"
+      style={{ background: 'var(--color-hero-bg)' }}
     >
       {/* Animated background - Marca Personal */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted" />
+      <div className="absolute inset-0" />
       
       {/* Floating elements - Marca Personal */}
       <div className="absolute inset-0 overflow-hidden">

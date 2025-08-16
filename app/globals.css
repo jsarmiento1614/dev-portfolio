@@ -36,6 +36,35 @@
   --chart-4: #94a3b8;
   --chart-5: #cbd5e1;
   --radius: 0.5rem;
+  
+  /* Sistema de backgrounds armonioso - Modo Light */
+  --hero-bg: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  --about-bg: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  --projects-bg: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  --contact-bg: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 50%, #cbd5e1 100%);
+  --footer-bg: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 50%, #cbd5e1 100%);
+  
+  /* Variables para la sección de proyectos - Modo Light */
+  --projects-card-bg: rgba(255, 255, 255, 0.9);
+  --projects-card-border: rgba(226, 232, 240, 0.6);
+  --projects-accent-dev: linear-gradient(90deg, var(--color-primary), #06b6d4);
+  --projects-accent-design: linear-gradient(90deg, #8b5cf6, #ec4899);
+  --projects-shadow: rgba(15, 23, 42, 0.1);
+  --projects-shadow-hover: rgba(15, 23, 42, 0.2);
+  --projects-text-muted: #64748b;
+  --projects-badge-bg: rgba(30, 64, 175, 0.08);
+  --projects-badge-text: var(--color-primary);
+  --projects-private-bg: rgba(249, 115, 22, 0.08);
+  --projects-private-text: #ea580c;
+  
+  /* Variables para ContactSection y Footer - Modo Light */
+  --contact-card-bg: rgba(255, 255, 255, 0.9);
+  --contact-card-border: rgba(226, 232, 240, 0.6);
+  --contact-shadow: rgba(15, 23, 42, 0.1);
+  --contact-shadow-hover: rgba(15, 23, 42, 0.2);
+  --contact-input-bg: rgba(248, 250, 252, 0.8);
+  --contact-input-border: rgba(226, 232, 240, 0.4);
+  
   --sidebar: #ffffff;
   --sidebar-foreground: #0f172a;
   --sidebar-primary: var(--color-primary);
@@ -72,6 +101,35 @@
   --chart-3: #64748b;
   --chart-4: #94a3b8;
   --chart-5: #cbd5e1;
+  
+  /* Sistema de backgrounds armonioso - Modo Dark */
+  --hero-bg: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  --about-bg: linear-gradient(135deg, #0f1419 0%, #1e293b 100%);
+  --projects-bg: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%);
+  --contact-bg: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%);
+  --footer-bg: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%);
+  
+  /* Variables para la sección de proyectos - Modo Dark */
+  --projects-card-bg: rgba(30, 41, 59, 0.8);
+  --projects-card-border: rgba(51, 65, 85, 0.6);
+  --projects-accent-dev: linear-gradient(90deg, #3b82f6, #06b6d4);
+  --projects-accent-design: linear-gradient(90deg, #8b5cf6, #ec4899);
+  --projects-shadow: rgba(2, 6, 23, 0.4);
+  --projects-shadow-hover: rgba(2, 6, 23, 0.6);
+  --projects-text-muted: #94a3b8;
+  --projects-badge-bg: rgba(59, 130, 246, 0.15);
+  --projects-badge-text: #60a5fa;
+  --projects-private-bg: rgba(249, 115, 22, 0.15);
+  --projects-private-text: #fb923c;
+  
+  /* Variables para ContactSection y Footer - Modo Dark */
+  --contact-card-bg: rgba(30, 41, 59, 0.8);
+  --contact-card-border: rgba(51, 65, 85, 0.6);
+  --contact-shadow: rgba(2, 6, 23, 0.4);
+  --contact-shadow-hover: rgba(2, 6, 23, 0.6);
+  --contact-input-bg: rgba(15, 23, 42, 0.6);
+  --contact-input-border: rgba(51, 65, 85, 0.4);
+  
   --sidebar: #1a1a1a;
   --sidebar-foreground: #f8fafc;
   --sidebar-primary: #3b82f6;
@@ -120,6 +178,35 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  
+  /* Variables de proyectos */
+  --color-projects-bg: var(--projects-bg);
+  --color-projects-card-bg: var(--projects-card-bg);
+  --color-projects-card-border: var(--projects-card-border);
+  --color-projects-accent-dev: var(--projects-accent-dev);
+  --color-projects-accent-design: var(--projects-accent-design);
+  --color-projects-shadow: var(--projects-shadow);
+  --color-projects-shadow-hover: var(--projects-shadow-hover);
+  --color-projects-text-muted: var(--projects-text-muted);
+  --color-projects-badge-bg: var(--projects-badge-bg);
+  --color-projects-badge-text: var(--projects-badge-text);
+  --color-projects-private-bg: var(--projects-private-bg);
+  --color-projects-private-text: var(--projects-private-text);
+  
+  /* Variables de backgrounds armonioso */
+  --color-hero-bg: var(--hero-bg);
+  --color-about-bg: var(--about-bg);
+  --color-projects-bg: var(--projects-bg);
+  --color-contact-bg: var(--contact-bg);
+  --color-footer-bg: var(--footer-bg);
+  
+  /* Variables de contact y footer */
+  --color-contact-card-bg: var(--contact-card-bg);
+  --color-contact-card-border: var(--contact-card-border);
+  --color-contact-shadow: var(--contact-shadow);
+  --color-contact-shadow-hover: var(--contact-shadow-hover);
+  --color-contact-input-bg: var(--contact-input-bg);
+  --color-contact-input-border: var(--contact-input-border);
 }
 
 @layer base {
