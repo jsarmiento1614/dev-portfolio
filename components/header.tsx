@@ -28,11 +28,12 @@ export default function Header() {
     setIsMobileMenuOpen(false)
   }
 
-  // Navegación para la página principal (con scroll)
+  // Navegación para la página principal (con scroll y enlaces)
   const homeNavItems = [
-    { id: "inicio", label: "Inicio" },
-    { id: "sobre-mi", label: "Sobre mí" },
-    { id: "proyectos", label: "Proyectos" },
+    { id: "inicio", label: "Inicio", type: "scroll" as const },
+    { id: "sobre-mi", label: "Sobre mí", type: "scroll" as const },
+    { id: "proyectos", label: "Proyectos", type: "scroll" as const },
+    { href: "/blog", label: "Blog", type: "link" as const },
   ]
 
   // Navegación para otras páginas (con enlaces)
@@ -67,16 +68,27 @@ export default function Header() {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             {isHomePage ? (
-              // Navegación con scroll para página principal
+              // Navegación con scroll y enlaces para página principal
               homeNavItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="text-muted-foreground hover:text-primary transition-all duration-300 relative group font-brand-secondary"
-                >
-                  {item.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full" />
-                </button>
+                item.type === "scroll" ? (
+                  <button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id!)}
+                    className="text-muted-foreground hover:text-primary transition-all duration-300 relative group font-brand-secondary"
+                  >
+                    {item.label}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full" />
+                  </button>
+                ) : (
+                  <Link
+                    key={item.href}
+                    href={item.href!}
+                    className="text-muted-foreground hover:text-primary transition-all duration-300 relative group font-brand-secondary"
+                  >
+                    {item.label}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full" />
+                  </Link>
+                )
               ))
             ) : (
               // Navegación con enlaces para otras páginas
@@ -143,15 +155,26 @@ export default function Header() {
         >
           <div className="py-4 space-y-2 border-t border-border">
             {isHomePage ? (
-              // Navegación móvil con scroll para página principal
+              // Navegación móvil con scroll y enlaces para página principal
               homeNavItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="block w-full text-left px-4 py-3 text-muted-foreground hover:text-primary hover:bg-muted rounded-lg transition-all duration-300"
-                >
-                  {item.label}
-                </button>
+                item.type === "scroll" ? (
+                  <button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id!)}
+                    className="block w-full text-left px-4 py-3 text-muted-foreground hover:text-primary hover:bg-muted rounded-lg transition-all duration-300"
+                  >
+                    {item.label}
+                  </button>
+                ) : (
+                  <Link
+                    key={item.href}
+                    href={item.href!}
+                    className="block w-full text-left px-4 py-3 text-muted-foreground hover:text-primary hover:bg-muted rounded-lg transition-all duration-300"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                )
               ))
             ) : (
               // Navegación móvil con enlaces para otras páginas

@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import BlogBreadcrumbs from '@/components/blog-breadcrumbs'
 import RelatedPosts from '@/components/related-posts'
+import ShareButtons from '@/components/share-buttons'
 
 export async function generateStaticParams() {
   const posts = await getAllPosts()
@@ -15,8 +16,9 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const post = await getPostBySlug(params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const post = await getPostBySlug(slug)
   
   if (!post) {
     return {
@@ -39,19 +41,20 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default async function BlogPost({ params }: { params: { slug: string } }) {
-  const post = await getPostBySlug(params.slug)
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const post = await getPostBySlug(slug)
   
   if (!post) {
     notFound()
   }
 
   const allPosts = await getAllPosts()
-  const shareUrl = `https://jsarmiento.vercel.app/blog/${params.slug}`
+  const shareUrl = `https://jsarmiento.vercel.app/blog/${slug}`
 
   return (
     <article className="container mx-auto px-4 py-8 max-w-4xl">
-      <BlogBreadcrumbs currentSlug={params.slug} />
+      <BlogBreadcrumbs currentSlug={slug} />
       
       {/* Header */}
       <header className="mb-8">
@@ -77,15 +80,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
             </span>
           </div>
           
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => navigator.share?.({ url: shareUrl, title: post.title })}
-            className="flex items-center gap-2 share-button"
-          >
-            <Share2 className="h-4 w-4" />
-            Compartir
-          </Button>
+          <ShareButtons url={shareUrl} title={post.title} />
         </div>
 
         <div className="flex gap-2 flex-wrap">
@@ -113,20 +108,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
       <footer className="text-center text-muted-foreground">
         <p>¿Te gustó este artículo? ¡Compártelo en redes sociales!</p>
         <div className="flex justify-center gap-4 mt-4">
-          <Button
-            variant="outline"
-            onClick={() => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(shareUrl)}`)}
-            className="share-button"
-          >
-            Twitter
-          </Button>
-          <Button
-            variant="outline"
-            onClick={() => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`)}
-            className="share-button"
-          >
-            LinkedIn
-          </Button>
+          <ShareButtons url={shareUrl} title={post.title} />
         </div>
       </footer>
     </article>
