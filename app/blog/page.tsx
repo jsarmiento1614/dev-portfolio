@@ -1,16 +1,21 @@
-import { getAllPosts } from '@/lib/mdx'
+import { getAllPosts } from '@/lib/blog'
 import Link from 'next/link'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Calendar, Clock, Tag, BookOpen, Code, Lightbulb } from 'lucide-react'
-import BlogBreadcrumbs from '@/components/blog-breadcrumbs'
-import { ScrollAnimations, AnimatedCard, FloatingElement, GradientText } from '@/components/blog-scroll-animations'
+import { 
+  BlogBreadcrumbs,
+  ScrollAnimations, 
+  AnimatedCard, 
+  FloatingElement, 
+  GradientText,
+  BlogStats,
+  BlogCategories,
+  BlogNewsletter,
+  BlogHeroButtons
+} from '@/components/blog'
 import { ScrollToTop } from '@/components/scroll-to-top'
-import { BlogStats } from '@/components/blog-stats'
-import { BlogCategories } from '@/components/blog-categories'
 import { RelatedPosts } from '@/components/related-posts'
-import { BlogNewsletter } from '@/components/blog-newsletter'
-import { BlogHeroButtons } from '@/components/blog-hero-buttons'
 import './blog-animations.css'
 
 export const metadata = {
