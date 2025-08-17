@@ -5,6 +5,8 @@ import { Badge } from '@/components/ui/badge'
 import { Calendar, Clock, Tag, Share2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
+import BlogBreadcrumbs from '@/components/blog-breadcrumbs'
+import RelatedPosts from '@/components/related-posts'
 
 export async function generateStaticParams() {
   const posts = await getAllPosts()
@@ -44,10 +46,13 @@ export default async function BlogPost({ params }: { params: { slug: string } })
     notFound()
   }
 
+  const allPosts = await getAllPosts()
   const shareUrl = `https://jsarmiento.vercel.app/blog/${params.slug}`
 
   return (
     <article className="container mx-auto px-4 py-8 max-w-4xl">
+      <BlogBreadcrumbs currentSlug={params.slug} />
+      
       {/* Header */}
       <header className="mb-8">
         <div className="flex items-center gap-2 mb-4">
@@ -76,7 +81,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
             variant="outline"
             size="sm"
             onClick={() => navigator.share?.({ url: shareUrl, title: post.title })}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 share-button"
           >
             <Share2 className="h-4 w-4" />
             Compartir
@@ -85,7 +90,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
 
         <div className="flex gap-2 flex-wrap">
           {post.tags.map((tag) => (
-            <Badge key={tag} variant="secondary">
+            <Badge key={tag} variant="secondary" className="tag-badge">
               {tag}
             </Badge>
           ))}
@@ -99,6 +104,9 @@ export default async function BlogPost({ params }: { params: { slug: string } })
         <MDXRemote source={post.content} />
       </div>
 
+      {/* Related Posts */}
+      <RelatedPosts currentPost={post} allPosts={allPosts} />
+
       {/* Footer */}
       <Separator className="my-8" />
       
@@ -108,12 +116,14 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           <Button
             variant="outline"
             onClick={() => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(shareUrl)}`)}
+            className="share-button"
           >
             Twitter
           </Button>
           <Button
             variant="outline"
             onClick={() => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`)}
+            className="share-button"
           >
             LinkedIn
           </Button>

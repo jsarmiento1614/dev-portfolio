@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Calendar, Clock, Tag } from 'lucide-react'
+import BlogBreadcrumbs from '@/components/blog-breadcrumbs'
 
 export const metadata = {
   title: 'Blog - Jesús Sarmiento | Desarrollador Full Stack',
@@ -22,6 +23,8 @@ export default async function BlogPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <BlogBreadcrumbs />
+      
       <div className="mb-12 text-center">
         <h1 className="text-4xl font-bold mb-4">Blog de Desarrollo</h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -55,7 +58,7 @@ export default async function BlogPage() {
                   <Tag className="h-4 w-4 text-muted-foreground" />
                   <div className="flex gap-1 flex-wrap">
                     {post.tags.slice(0, 3).map((tag) => (
-                      <Badge key={tag} variant="secondary" className="text-xs">
+                      <Badge key={tag} variant="secondary" className="text-xs tag-badge">
                         {tag}
                       </Badge>
                     ))}
