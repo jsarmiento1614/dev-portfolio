@@ -1,65 +1,113 @@
+'use client'
+
 import Link from 'next/link'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Calendar, Clock } from 'lucide-react'
-import { Post } from '@/lib/mdx'
+import { Calendar, Clock, ArrowRight } from 'lucide-react'
 
-interface RelatedPostsProps {
-  currentPost: Post
-  allPosts: Post[]
+interface Post {
+  slug: string
+  title: string
+  description: string
+  date: string
+  readingTime: number
+  tags: string[]
 }
 
-export default function RelatedPosts({ currentPost, allPosts }: RelatedPostsProps) {
-  // Filtrar posts relacionados por tags comunes
-  const relatedPosts = allPosts
-    .filter(post => post.slug !== currentPost.slug)
-    .filter(post => {
-      const commonTags = post.tags.filter(tag => currentPost.tags.includes(tag))
-      return commonTags.length > 0
-    })
-    .sort((a, b) => {
-      const aCommonTags = a.tags.filter(tag => currentPost.tags.includes(tag)).length
-      const bCommonTags = b.tags.filter(tag => currentPost.tags.includes(tag)).length
-      return bCommonTags - aCommonTags
-    })
-    .slice(0, 3)
+interface RelatedPostsProps {
+  posts: Post[]
+  currentPostSlug?: string
+  maxPosts?: number
+}
 
-  if (relatedPosts.length === 0) {
+export function RelatedPosts({ posts, currentPostSlug, maxPosts = 3 }: RelatedPostsProps) {
+  // Filtrar el post actual si existe
+  const filteredPosts = currentPostSlug 
+    ? posts.filter(post => post.slug !== currentPostSlug)
+    : posts
+
+  // Tomar solo los primeros maxPosts
+  const displayPosts = filteredPosts.slice(0, maxPosts)
+
+  if (displayPosts.length === 0) {
     return null
   }
 
   return (
-    <section className="mt-12">
-      <h2 className="text-2xl font-bold mb-6">Artículos relacionados</h2>
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {relatedPosts.map((post) => (
-          <Link key={post.slug} href={`/blog/${post.slug}`}>
-            <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer">
-              <CardHeader className="pb-3">
-                <div className="flex items-center gap-2 mb-2">
-                  <Calendar className="h-3 w-3 text-muted-foreground" />
-                  <span className="text-xs text-muted-foreground">
-                    {new Date(post.date).toLocaleDateString('es-ES', {
-                      year: 'numeric',
-                      month: 'short',
-                      day: 'numeric'
-                    })}
-                  </span>
-                </div>
-                <CardTitle className="text-base line-clamp-2">{post.title}</CardTitle>
-              </CardHeader>
-              <CardContent className="pt-0">
-                <CardDescription className="line-clamp-2 text-sm mb-3">
-                  {post.description}
-                </CardDescription>
-                <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                  <Clock className="h-3 w-3" />
-                  <span>{post.readingTime} min de lectura</span>
-                </div>
-              </CardContent>
-            </Card>
+    <section className="py-20 bg-slate-900/50">
+      <div className="container mx-auto px-4">
+        <div className="mb-12 text-center">
+          <h2 className="text-3xl font-bold text-white mb-4">
+            Artículos <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Relacionados</span>
+          </h2>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Descubre más contenido que podría interesarte
+          </p>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {displayPosts.map((post, index) => (
+            <div
+              key={post.slug}
+              className="animate-fade-in-up"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <Link href={`/blog/${post.slug}`}>
+                <Card className="h-full bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 hover:border-purple-400/50 transition-all duration-300 cursor-pointer card-hover-effect group">
+                  <CardHeader>
+                    <div className="flex items-center gap-2 mb-2">
+                      <Calendar className="h-4 w-4 text-purple-400" />
+                      <span className="text-sm text-gray-400">
+                        {new Date(post.date).toLocaleDateString('es-ES', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric'
+                        })}
+                      </span>
+                    </div>
+                    <CardTitle className="line-clamp-2 text-white group-hover:text-purple-400 transition-colors">
+                      {post.title}
+                    </CardTitle>
+                    <CardDescription className="line-clamp-3 text-gray-400">
+                      {post.description}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="flex gap-1 flex-wrap">
+                        {post.tags.slice(0, 2).map((tag) => (
+                          <Badge 
+                            key={tag} 
+                            variant="secondary" 
+                            className="text-xs bg-purple-600/20 text-purple-300 border-purple-400/30"
+                          >
+                            {tag}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between text-sm text-gray-400">
+                      <div className="flex items-center gap-2">
+                        <Clock className="h-4 w-4" />
+                        <span>{post.readingTime} min de lectura</span>
+                      </div>
+                      <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center mt-12 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+          <Link href="/blog">
+            <button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 card-hover-effect">
+              Ver Todos los Artículos
+              <ArrowRight className="ml-2 h-4 w-4 inline" />
+            </button>
           </Link>
-        ))}
+        </div>
       </div>
     </section>
   )

@@ -6,7 +6,7 @@ import { Calendar, Clock, Tag, Share2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import BlogBreadcrumbs from '@/components/blog-breadcrumbs'
-import RelatedPosts from '@/components/related-posts'
+import { RelatedPostsServer } from '@/components/related-posts-server'
 import ShareButtons from '@/components/share-buttons'
 
 export async function generateStaticParams() {
@@ -100,7 +100,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       </div>
 
       {/* Related Posts */}
-      <RelatedPosts currentPost={post} allPosts={allPosts} />
+      <RelatedPostsServer posts={allPosts} currentPostSlug={slug} maxPosts={3} />
 
       {/* Footer */}
       <Separator className="my-8" />
