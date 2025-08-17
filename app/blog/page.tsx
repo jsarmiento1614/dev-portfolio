@@ -120,7 +120,7 @@ export default async function BlogPage() {
       {/* Posts Section */}
       <section id="posts-section" className="py-20 bg-slate-900/50">
         <div className="container mx-auto px-4">
-          <BlogBreadcrumbs />
+          <BlogBreadcrumbs variant="dark" />
           
           <div className="mb-12 text-center animate-fade-in-up">
             <h2 className="text-3xl font-bold text-white mb-4">
