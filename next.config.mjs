@@ -9,6 +9,7 @@ const withMDX = createMDX({
     remarkPlugins: [remarkGfm, [remarkToc, { tight: true }]],
     rehypePlugins: [rehypeHighlight, rehypeSlug],
   },
+  extension: /\.mdx?$/,
 })
 
 /** @type {import('next').NextConfig} */

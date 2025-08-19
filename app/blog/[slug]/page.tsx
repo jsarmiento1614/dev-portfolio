@@ -1,5 +1,4 @@
 import { getPostBySlug, getAllPosts } from '@/lib/blog'
-import { MDXRemote } from 'next-mdx-remote/rsc'
 import { notFound } from 'next/navigation'
 import { Badge } from '@/components/ui/badge'
 import { Calendar, Clock, Tag, Share2, ArrowLeft, BookOpen } from 'lucide-react'
@@ -11,6 +10,7 @@ import ShareButtons from '@/components/share-buttons'
 import { TableOfContents } from '@/components/table-of-contents'
 import { ArticleStats } from '@/components/article-stats'
 import { ArticleFooterWrapper } from '@/components/article-footer-wrapper'
+import { MDXContent } from '@/components/mdx-content'
 import Link from 'next/link'
 
 export async function generateStaticParams() {
@@ -176,9 +176,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
                   {/* Article Content */}
                   <div className="p-8 lg:p-12">
-                    <div className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-purple-600 prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900 prose-code:text-purple-600 prose-code:bg-purple-50 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-pre:bg-gray-50 prose-pre:border prose-pre:border-gray-200 prose-blockquote:border-l-4 prose-blockquote:border-purple-400 prose-blockquote:bg-purple-50 prose-blockquote:pl-6 prose-li:text-gray-700 prose-img:rounded-lg prose-img:shadow-md prose-hr:border-gray-200 prose-table:border-gray-200 prose-th:bg-gray-50 prose-th:text-gray-900 prose-td:border-gray-200">
-                      <MDXRemote source={post.content} />
-                    </div>
+                    <MDXContent source={post.content} />
                   </div>
 
                   {/* Article Footer */}
