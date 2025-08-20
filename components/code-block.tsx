@@ -96,7 +96,7 @@ export function CodeBlock({ children, className }: CodeBlockProps) {
   const { displayName } = getLanguageInfo(className)
 
   return (
-    <div className="relative group mb-6">
+    <div className="relative group mb-6 code-block-wrapper">
       {/* Header con lenguaje y botón de copiar */}
       <div className="flex items-center justify-between bg-card border border-border px-4 py-2 rounded-t-lg">
         <span className="text-muted-foreground text-sm font-medium font-brand-secondary">
@@ -118,7 +118,7 @@ export function CodeBlock({ children, className }: CodeBlockProps) {
       </div>
       
       {/* Contenido del código */}
-      <pre className="bg-muted text-foreground p-4 rounded-b-lg overflow-x-auto text-sm leading-relaxed border border-border border-t-0 font-mono">
+      <pre className="code-block-content bg-muted text-foreground p-4 rounded-none rounded-b-lg overflow-x-auto text-sm leading-relaxed border border-border border-t-0 font-mono">
         {children}
       </pre>
     </div>

@@ -14,19 +14,21 @@ interface BlogCategoriesProps {
 
 export function BlogCategories({ categories }: BlogCategoriesProps) {
   const colorVariants = {
-    purple: 'bg-purple-600/20 text-purple-300 border-purple-400/30 hover:bg-purple-600/30',
-    blue: 'bg-blue-600/20 text-blue-300 border-blue-400/30 hover:bg-blue-600/30',
-    green: 'bg-green-600/20 text-green-300 border-green-400/30 hover:bg-green-600/30',
-    orange: 'bg-orange-600/20 text-orange-300 border-orange-400/30 hover:bg-orange-600/30',
-    pink: 'bg-pink-600/20 text-pink-300 border-pink-400/30 hover:bg-pink-600/30',
-    indigo: 'bg-indigo-600/20 text-indigo-300 border-indigo-400/30 hover:bg-indigo-600/30'
+    purple: 'bg-primary/20 text-primary border-primary/30 hover:bg-primary/30',
+    blue: 'bg-primary/20 text-primary border-primary/30 hover:bg-primary/30',
+    green: 'bg-accent/20 text-accent border-accent/30 hover:bg-accent/30',
+    orange: 'bg-accent/20 text-accent border-accent/30 hover:bg-accent/30',
+    pink: 'bg-primary/20 text-primary border-primary/30 hover:bg-primary/30',
+    indigo: 'bg-primary/20 text-primary border-primary/30 hover:bg-primary/30',
+    red: 'bg-accent/20 text-accent border-accent/30 hover:bg-accent/30',
+    yellow: 'bg-accent/20 text-accent border-accent/30 hover:bg-accent/30'
   }
 
   return (
-    <Card className="bg-white/5 backdrop-blur-sm border border-white/10">
+    <Card className="bg-card backdrop-blur-sm border border-border">
       <CardHeader>
-        <CardTitle className="text-white flex items-center gap-2">
-          <TrendingUp className="h-5 w-5 text-purple-400" />
+        <CardTitle className="text-foreground flex items-center gap-2">
+          <TrendingUp className="h-5 w-5 text-primary" />
           Categorías Populares
         </CardTitle>
       </CardHeader>
@@ -62,12 +64,12 @@ export function TagCloud({ tags, maxTags = 10 }: TagCloudProps) {
   const displayTags = tags.slice(0, maxTags)
   
   const colors = [
-    'bg-purple-600/20 text-purple-300 border-purple-400/30',
-    'bg-blue-600/20 text-blue-300 border-blue-400/30',
-    'bg-green-600/20 text-green-300 border-green-400/30',
-    'bg-orange-600/20 text-orange-300 border-orange-400/30',
-    'bg-pink-600/20 text-pink-300 border-pink-400/30',
-    'bg-indigo-600/20 text-indigo-300 border-indigo-400/30'
+    'bg-primary/20 text-primary border-primary/30',
+    'bg-accent/20 text-accent border-accent/30',
+    'bg-primary/20 text-primary border-primary/30',
+    'bg-accent/20 text-accent border-accent/30',
+    'bg-primary/20 text-primary border-primary/30',
+    'bg-accent/20 text-accent border-accent/30'
   ]
 
   return (

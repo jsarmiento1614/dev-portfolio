@@ -67,29 +67,29 @@ export function BlogStats({
       icon: BookOpen,
       value: counts.posts,
       label: 'Artículos Publicados',
-      color: 'text-purple-400',
-      bgColor: 'bg-purple-600/20'
+      color: 'text-primary',
+      bgColor: 'bg-primary/20'
     },
     {
       icon: TrendingUp,
       value: counts.categories,
       label: 'Categorías',
-      color: 'text-blue-400',
-      bgColor: 'bg-blue-600/20'
+      color: 'text-accent',
+      bgColor: 'bg-accent/20'
     },
     {
       icon: Clock,
       value: `${counts.readingTime}+`,
       label: 'Min de Lectura',
-      color: 'text-green-400',
-      bgColor: 'bg-green-600/20'
+      color: 'text-primary',
+      bgColor: 'bg-primary/20'
     },
     {
       icon: Users,
       value: `${counts.free}%`,
       label: 'Gratuito',
-      color: 'text-orange-400',
-      bgColor: 'bg-orange-600/20'
+      color: 'text-accent',
+      bgColor: 'bg-accent/20'
     }
   ]
 
@@ -101,17 +101,17 @@ export function BlogStats({
           className="animate-fade-in-up"
           style={{ animationDelay: `${index * 0.1}s` }}
         >
-          <Card className="bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 card-hover-effect">
+          <Card className="bg-card backdrop-blur-sm border border-border hover:bg-card/80 transition-all duration-300 card-hover-effect">
             <CardContent className="p-6">
               <div className="flex items-center gap-3 mb-3">
                 <div className={`p-2 rounded-lg ${stat.bgColor}`}>
                   <stat.icon className={`h-5 w-5 ${stat.color}`} />
                 </div>
               </div>
-              <div className="text-3xl font-bold text-white mb-1">
+              <div className="text-3xl font-bold text-foreground mb-1">
                 {stat.value}
               </div>
-              <div className="text-gray-400 text-sm">
+              <div className="text-muted-foreground text-sm">
                 {stat.label}
               </div>
             </CardContent>

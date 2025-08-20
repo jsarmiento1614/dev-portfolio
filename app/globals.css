@@ -674,6 +674,36 @@ pre {
   line-height: 1.5 !important;
 }
 
+/* Estilos específicos para el componente CodeBlock - Mayor especificidad */
+.code-block-wrapper .code-block-content {
+  background-color: var(--muted) !important;
+  color: var(--foreground) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 0 0 0.5rem 0.5rem !important;
+  padding: 1rem !important;
+  overflow-x: auto !important;
+  margin-bottom: 0 !important;
+  font-family: 'Fira Code', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace !important;
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+  border-top: none !important;
+}
+
+/* Asegurar que el componente CodeBlock tenga prioridad */
+.code-block-wrapper pre.code-block-content {
+  background-color: var(--muted) !important;
+  color: var(--foreground) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 0 0 0.5rem 0.5rem !important;
+  padding: 1rem !important;
+  overflow-x: auto !important;
+  margin-bottom: 0 !important;
+  font-family: 'Fira Code', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace !important;
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+  border-top: none !important;
+}
+
 pre code {
   background-color: transparent !important;
   color: inherit !important;
@@ -696,6 +726,19 @@ pre code {
 
 /* Modo oscuro para código - Usando variables CSS */
 .dark pre {
+  background-color: var(--muted) !important;
+  color: var(--foreground) !important;
+  border-color: var(--border) !important;
+}
+
+/* Modo oscuro para el componente CodeBlock */
+.dark .code-block-wrapper .code-block-content {
+  background-color: var(--muted) !important;
+  color: var(--foreground) !important;
+  border-color: var(--border) !important;
+}
+
+.dark .code-block-wrapper pre.code-block-content {
   background-color: var(--muted) !important;
   color: var(--foreground) !important;
   border-color: var(--border) !important;

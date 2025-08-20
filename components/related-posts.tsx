@@ -34,13 +34,13 @@ export function RelatedPosts({ posts, currentPostSlug, maxPosts = 3 }: RelatedPo
   }
 
   return (
-    <section className="py-20 bg-slate-900/50">
+    <section className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
-            Artículos <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Relacionados</span>
+          <h2 className="text-3xl font-bold text-foreground mb-4">
+            Artículos <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Relacionados</span>
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <p className="text-muted-foreground max-w-2xl mx-auto">
             Descubre más contenido que podría interesarte
           </p>
         </div>
@@ -53,11 +53,11 @@ export function RelatedPosts({ posts, currentPostSlug, maxPosts = 3 }: RelatedPo
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <Link href={`/blog/${post.slug}`}>
-                <Card className="h-full bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 hover:border-purple-400/50 transition-all duration-300 cursor-pointer card-hover-effect group">
+                <Card className="h-full bg-card backdrop-blur-sm border border-border hover:bg-card/80 hover:border-primary/50 transition-all duration-300 cursor-pointer card-hover-effect group">
                   <CardHeader>
                     <div className="flex items-center gap-2 mb-2">
-                      <Calendar className="h-4 w-4 text-purple-400" />
-                      <span className="text-sm text-gray-400">
+                      <Calendar className="h-4 w-4 text-primary" />
+                      <span className="text-sm text-muted-foreground">
                         {new Date(post.date).toLocaleDateString('es-ES', {
                           year: 'numeric',
                           month: 'long',
@@ -65,10 +65,10 @@ export function RelatedPosts({ posts, currentPostSlug, maxPosts = 3 }: RelatedPo
                         })}
                       </span>
                     </div>
-                    <CardTitle className="line-clamp-2 text-white group-hover:text-purple-400 transition-colors">
+                    <CardTitle className="line-clamp-2 text-foreground group-hover:text-primary transition-colors">
                       {post.title}
                     </CardTitle>
-                    <CardDescription className="line-clamp-3 text-gray-400">
+                    <CardDescription className="line-clamp-3 text-muted-foreground">
                       {post.description}
                     </CardDescription>
                   </CardHeader>
@@ -79,14 +79,14 @@ export function RelatedPosts({ posts, currentPostSlug, maxPosts = 3 }: RelatedPo
                           <Badge 
                             key={tag} 
                             variant="secondary" 
-                            className="text-xs bg-purple-600/20 text-purple-300 border-purple-400/30"
+                            className="text-xs bg-primary/10 text-primary border-primary/30"
                           >
                             {tag}
                           </Badge>
                         ))}
                       </div>
                     </div>
-                    <div className="flex items-center justify-between text-sm text-gray-400">
+                    <div className="flex items-center justify-between text-sm text-muted-foreground">
                       <div className="flex items-center gap-2">
                         <Clock className="h-4 w-4" />
                         <span>{post.readingTime} min de lectura</span>
@@ -102,7 +102,7 @@ export function RelatedPosts({ posts, currentPostSlug, maxPosts = 3 }: RelatedPo
 
         <div className="text-center mt-12 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
           <Link href="/blog">
-            <button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 card-hover-effect">
+            <button className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground px-8 py-3 rounded-lg font-medium transition-all duration-300 card-hover-effect">
               Ver Todos los Artículos
               <ArrowRight className="ml-2 h-4 w-4 inline" />
             </button>
