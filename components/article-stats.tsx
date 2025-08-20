@@ -42,40 +42,41 @@ export function ArticleStats({
   }
 
   return (
-    <div className="bg-gradient-to-r from-purple-50 to-blue-50 px-8 py-4 border-b border-gray-100">
-      <div className="flex items-center justify-between text-sm text-gray-700">
-        <div className="flex items-center gap-6">
-          <div className="flex items-center gap-2">
-            <Eye className="h-4 w-4 text-gray-600" />
-            <span className="font-medium">{views.toLocaleString()} vistas</span>
+    <div className="px-8 py-6 border-b border-gray-100">
+      <div className="flex items-center justify-between">
+        {/* Stats */}
+        <div className="flex items-center gap-8">
+          <div className="flex items-center gap-2 text-gray-500">
+            <Eye className="h-4 w-4" />
+            <span className="text-sm font-medium">{views.toLocaleString()}</span>
           </div>
-          <div className="flex items-center gap-2">
-            <Heart className={`h-4 w-4 ${isLiked ? 'text-red-500 fill-current' : 'text-gray-600'}`} />
-            <span className="font-medium">{currentLikes.toLocaleString()} likes</span>
+          <div className="flex items-center gap-2 text-gray-500">
+            <Heart className={`h-4 w-4 ${isLiked ? 'text-red-500 fill-current' : ''}`} />
+            <span className="text-sm font-medium">{currentLikes.toLocaleString()}</span>
           </div>
-          <div className="flex items-center gap-2">
-            <MessageCircle className="h-4 w-4 text-gray-600" />
-            <span className="font-medium">{comments} comentarios</span>
+          <div className="flex items-center gap-2 text-gray-500">
+            <MessageCircle className="h-4 w-4" />
+            <span className="text-sm font-medium">{comments}</span>
           </div>
         </div>
-        <div className="flex gap-2">
+        
+        {/* Actions */}
+        <div className="flex items-center gap-1">
           <Button 
             variant="ghost" 
             size="sm" 
-            className={`text-gray-700 hover:text-purple-600 hover:bg-purple-50 ${isBookmarked ? 'text-purple-600 bg-purple-50' : ''}`}
+            className={`h-9 w-9 p-0 rounded-full ${isBookmarked ? 'text-purple-600 bg-purple-50' : 'text-gray-500 hover:text-purple-600 hover:bg-purple-50'}`}
             onClick={handleBookmark}
           >
-            <Bookmark className={`h-4 w-4 mr-2 ${isBookmarked ? 'fill-current' : ''}`} />
-            {isBookmarked ? 'Guardado' : 'Guardar'}
+            <Bookmark className={`h-4 w-4 ${isBookmarked ? 'fill-current' : ''}`} />
           </Button>
           <Button 
             variant="ghost" 
             size="sm" 
-            className="text-gray-700 hover:text-purple-600 hover:bg-purple-50"
+            className="h-9 w-9 p-0 rounded-full text-gray-500 hover:text-purple-600 hover:bg-purple-50"
             onClick={handleShare}
           >
-            <Share2 className="h-4 w-4 mr-2" />
-            Compartir
+            <Share2 className="h-4 w-4" />
           </Button>
         </div>
       </div>

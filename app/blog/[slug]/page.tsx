@@ -4,10 +4,9 @@ import { Badge } from '@/components/ui/badge'
 import { Calendar, Clock, Tag, Share2, ArrowLeft, BookOpen } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
-import { BlogBreadcrumbs } from '@/components/blog'
+import { BlogBreadcrumbs, ProgressIndicator } from '@/components/blog'
 import { RelatedPostsServer } from '@/components/related-posts-server'
 import ShareButtons from '@/components/share-buttons'
-import { TableOfContents } from '@/components/table-of-contents'
 import { ArticleStats } from '@/components/article-stats'
 import { ArticleFooterWrapper } from '@/components/article-footer-wrapper'
 import { MDXContent } from '@/components/mdx-content'
@@ -150,46 +149,40 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       {/* Content Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-4xl mx-auto">
             {/* Breadcrumbs */}
             <BlogBreadcrumbs currentSlug={slug} />
             
-            <div className="grid lg:grid-cols-4 gap-8">
-              {/* Sidebar - Table of Contents */}
-              <div className="lg:col-span-1">
-                <div className="sticky top-8">
-                  <TableOfContents />
+            {/* Progress Indicator */}
+            <ProgressIndicator />
+
+            {/* Main Content */}
+            <article className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
+              {/* Article Stats Bar */}
+              <ArticleStats 
+                views={1200}
+                likes={48}
+                comments={12}
+                url={shareUrl}
+                title={post.title}
+              />
+
+              {/* Article Content */}
+              <div className="p-8 lg:p-12">
+                <div className="prose prose-lg max-w-none">
+                  <MDXContent source={post.content} />
                 </div>
               </div>
 
-              {/* Main Content */}
-              <div className="lg:col-span-3">
-                <article className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
-                  {/* Article Stats Bar */}
-                  <ArticleStats 
-                    views={1200}
-                    likes={48}
-                    comments={12}
-                    url={shareUrl}
-                    title={post.title}
-                  />
+              {/* Article Footer */}
+              <ArticleFooterWrapper />
+            </article>
 
-                  {/* Article Content */}
-                  <div className="p-8 lg:p-12">
-                    <MDXContent source={post.content} />
-                  </div>
-
-                  {/* Article Footer */}
-                  <ArticleFooterWrapper />
-                </article>
-
-                {/* Share Section */}
-                <div className="mt-8 text-center">
-                  <p className="text-gray-700 mb-6 font-medium">¡Comparte este artículo si te resultó útil!</p>
-                  <div className="flex justify-center gap-4">
-                    <ShareButtons url={shareUrl} title={post.title} />
-                  </div>
-                </div>
+            {/* Share Section */}
+            <div className="mt-8 text-center">
+              <p className="text-gray-700 mb-6 font-medium">¡Comparte este artículo si te resultó útil!</p>
+              <div className="flex justify-center gap-4">
+                <ShareButtons url={shareUrl} title={post.title} />
               </div>
             </div>
           </div>

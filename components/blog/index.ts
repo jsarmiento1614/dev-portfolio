@@ -11,3 +11,4 @@ export {
   GradientText, 
   ShimmerText 
 } from './scroll-animations'
+export { ProgressIndicator } from './progress-indicator'

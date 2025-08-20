@@ -1,17 +1,3 @@
-import createMDX from '@next/mdx'
-import remarkGfm from 'remark-gfm'
-import rehypeHighlight from 'rehype-highlight'
-import rehypeSlug from 'rehype-slug'
-import remarkToc from 'remark-toc'
-
-const withMDX = createMDX({
-  options: {
-    remarkPlugins: [remarkGfm, [remarkToc, { tight: true }]],
-    rehypePlugins: [rehypeHighlight, rehypeSlug],
-  },
-  extension: /\.mdx?$/,
-})
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
@@ -77,4 +63,4 @@ const nextConfig = {
   },
 }
 
-export default withMDX(nextConfig)
+export default nextConfig
