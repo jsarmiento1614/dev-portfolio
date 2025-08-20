@@ -109,6 +109,15 @@
   --contact-bg: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%);
   --footer-bg: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%);
   
+  /* Variables específicas para el blog - Modo Dark */
+  --blog-bg: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%);
+  --blog-hero-bg: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  --blog-card-bg: rgba(30, 41, 59, 0.8);
+  --blog-card-border: rgba(51, 65, 85, 0.6);
+  --blog-text-muted: #94a3b8;
+  --blog-shadow: rgba(2, 6, 23, 0.4);
+  --blog-shadow-hover: rgba(2, 6, 23, 0.6);
+  
   /* Variables para la sección de proyectos - Modo Dark */
   --projects-card-bg: rgba(30, 41, 59, 0.8);
   --projects-card-border: rgba(51, 65, 85, 0.6);
@@ -847,6 +856,97 @@ pre code {
 
 .animate-fade-in-scale {
   animation: fadeInScale 0.3s ease-out;
+}
+
+/* Estilos para el blog theme toggle */
+.blog-theme-toggle {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.blog-theme-toggle:hover {
+  transform: translateY(-1px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.blog-theme-toggle:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Animación para los iconos del theme toggle */
+.theme-icon-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Efecto glass para el theme toggle flotante */
+.glass-theme-toggle {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass-theme-toggle {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Estilos específicos para las cards de artículos relacionados */
+.related-posts-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.related-posts-card:hover {
+  background: var(--card);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.dark .related-posts-card:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos específicos para el blog usando los colores del portafolio */
+.blog-dark-bg {
+  background: var(--blog-bg) !important;
+}
+
+.blog-hero-dark-bg {
+  background: var(--blog-hero-bg) !important;
+}
+
+.blog-card-dark {
+  background: var(--blog-card-bg) !important;
+  border: 1px solid var(--blog-card-border) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.blog-card-dark:hover {
+  background: rgba(30, 41, 59, 0.9) !important;
+  border-color: #3b82f6 !important;
+  box-shadow: var(--blog-shadow-hover);
+  transform: translateY(-2px);
+}
+
+.blog-text-muted-dark {
+  color: var(--blog-text-muted) !important;
+}
+
+/* Animaciones para las cards */
+.card-hover-effect {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.dark .card-hover-effect:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
 /* Estilos específicos para el blog en modo oscuro */

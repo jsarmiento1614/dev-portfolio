@@ -16,6 +16,7 @@ import {
 } from '@/components/blog'
 import { ScrollToTop } from '@/components/scroll-to-top'
 import { RelatedPosts } from '@/components/related-posts'
+import { BlogThemeToggle } from '@/components/blog-theme-toggle'
 import './blog-animations.css'
 
 export const metadata = {
@@ -36,9 +37,9 @@ export default async function BlogPage() {
 
   return (
     <ScrollAnimations>
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-background" style={{ background: 'var(--hero-bg)' }}>
         {/* Hero Section - Onboarding */}
-        <section className="relative min-h-screen flex items-center bg-gradient-to-br from-hero-bg">
+        <section className="relative min-h-screen flex items-center" style={{ background: 'var(--hero-bg)' }}>
           {/* Background Pattern */}
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10"></div>
@@ -55,6 +56,11 @@ export default async function BlogPage() {
 
           {/* Content */}
           <div className="container mx-auto px-4 relative z-10">
+            {/* Theme Toggle */}
+            <div className="flex justify-end mb-8 animate-fade-in-up">
+              <BlogThemeToggle variant="inline" showLabel={true} />
+            </div>
+            
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Left Content */}
               <div className="space-y-8">
@@ -140,7 +146,7 @@ export default async function BlogPage() {
             {posts.map((post, index) => (
               <AnimatedCard key={post.slug} index={index}>
                 <Link href={`/blog/${post.slug}`}>
-                  <Card className="h-full bg-card backdrop-blur-sm border border-border hover:bg-card/80 hover:border-primary/50 transition-all duration-300 cursor-pointer card-hover-effect">
+                  <Card className="h-full bg-card backdrop-blur-sm border border-border hover:bg-card/80 hover:border-primary/50 transition-all duration-300 cursor-pointer card-hover-effect blog-card-dark">
                     <CardHeader>
                       <div className="flex items-center gap-2 mb-2">
                         <Calendar className="h-4 w-4 text-primary" />
@@ -222,6 +228,7 @@ export default async function BlogPage() {
       {/* Newsletter Section */}
       <BlogNewsletter />
       
+      {/* Scroll to Top Button */}
       <ScrollToTop />
     </div>
     </ScrollAnimations>

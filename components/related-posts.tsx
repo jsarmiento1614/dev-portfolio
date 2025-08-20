@@ -34,7 +34,7 @@ export function RelatedPosts({ posts, currentPostSlug, maxPosts = 3 }: RelatedPo
   }
 
   return (
-    <section className="py-20 bg-muted/30">
+    <section className="py-20 bg-muted/30" style={{ background: 'var(--projects-bg)' }}>
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center">
           <h2 className="text-3xl font-bold text-foreground mb-4">
@@ -53,7 +53,7 @@ export function RelatedPosts({ posts, currentPostSlug, maxPosts = 3 }: RelatedPo
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <Link href={`/blog/${post.slug}`}>
-                <Card className="h-full bg-card backdrop-blur-sm border border-border hover:bg-card/80 hover:border-primary/50 transition-all duration-300 cursor-pointer card-hover-effect group">
+                <Card className="h-full bg-card backdrop-blur-sm border border-border hover:bg-card/80 hover:border-primary/50 transition-all duration-300 cursor-pointer card-hover-effect group blog-card-dark">
                   <CardHeader>
                     <div className="flex items-center gap-2 mb-2">
                       <Calendar className="h-4 w-4 text-primary" />

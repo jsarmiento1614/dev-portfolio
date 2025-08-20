@@ -11,6 +11,7 @@ import { ArticleStats } from '@/components/article-stats'
 import { ArticleFooterWrapper } from '@/components/article-footer-wrapper'
 import { MDXContent } from '@/components/mdx-content'
 import { BlogScrollToTop } from '@/components/blog-scroll-to-top'
+import { BlogThemeToggle } from '@/components/blog-theme-toggle'
 import Link from 'next/link'
 
 export async function generateStaticParams() {
@@ -57,9 +58,9 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   const shareUrl = `https://jsarmiento.vercel.app/blog/${slug}`
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background" style={{ background: 'var(--hero-bg)' }}>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-hero-bg py-20">
+      <section className="relative py-20" style={{ background: 'var(--hero-bg)' }}>
         {/* Background Pattern */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10"></div>
@@ -158,7 +159,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             <ProgressIndicator />
 
             {/* Main Content */}
-            <article className="bg-card rounded-2xl border border-border overflow-hidden">
+            <article className="bg-card rounded-2xl border border-border overflow-hidden blog-card-dark">
               {/* Article Stats Bar */}
               <ArticleStats 
                 views={1200}
@@ -169,7 +170,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
               />
 
               {/* Article Content */}
-              <div className="p-8 lg:p-12 bg-card">
+              <div className="p-8 lg:p-12 bg-card blog-card-dark">
                 <div className="prose prose-lg max-w-none">
                   <MDXContent source={post.content} />
                 </div>
@@ -201,6 +202,9 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
       {/* Blog Scroll to Top Button with Progress */}
       <BlogScrollToTop />
+      
+      {/* Theme Toggle Button */}
+      <BlogThemeToggle variant="floating" />
     </div>
   )
 }
