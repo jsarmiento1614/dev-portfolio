@@ -9,7 +9,8 @@ export function ScrollToTop() {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.pageYOffset > 300) {
+      // Mostrar el botón después de hacer scroll hacia abajo 200px
+      if (window.pageYOffset > 200) {
         setIsVisible(true)
       } else {
         setIsVisible(false)
@@ -32,8 +33,9 @@ export function ScrollToTop() {
       {isVisible && (
         <Button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white border-0 rounded-full w-12 h-12 p-0 shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in-up"
-          aria-label="Volver arriba"
+          className="scroll-to-top-button fixed bottom-8 right-8 z-50 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground border-0 rounded-full w-12 h-12 p-0 shadow-lg transition-all duration-300 animate-fade-in-scale"
+          aria-label="Volver al inicio del artículo"
+          title="Volver arriba"
         >
           <ArrowUp className="h-5 w-5" />
         </Button>

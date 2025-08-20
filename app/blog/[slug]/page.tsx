@@ -10,6 +10,7 @@ import ShareButtons from '@/components/share-buttons'
 import { ArticleStats } from '@/components/article-stats'
 import { ArticleFooterWrapper } from '@/components/article-footer-wrapper'
 import { MDXContent } from '@/components/mdx-content'
+import { BlogScrollToTop } from '@/components/blog-scroll-to-top'
 import Link from 'next/link'
 
 export async function generateStaticParams() {
@@ -197,6 +198,9 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           </div>
         </div>
       </section>
+
+      {/* Blog Scroll to Top Button with Progress */}
+      <BlogScrollToTop />
     </div>
   )
 }
