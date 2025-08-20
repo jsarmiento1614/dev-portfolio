@@ -580,64 +580,91 @@
   }
 }
 
-/* Estilos personalizados para el blog */
+/* Estilos personalizados para el blog - Consistente con la marca */
 .prose {
   @apply text-foreground;
+  color: var(--foreground) !important;
+  background-color: var(--card) !important;
 }
 
 .prose h1 {
   @apply text-3xl font-bold mb-6 text-foreground;
+  color: var(--foreground) !important;
+  font-family: 'Poppins', sans-serif !important;
 }
 
 .prose h2 {
   @apply text-2xl font-semibold mb-4 mt-8 text-foreground;
+  color: var(--foreground) !important;
+  font-family: 'Poppins', sans-serif !important;
 }
 
 .prose h3 {
   @apply text-xl font-semibold mb-3 mt-6 text-foreground;
+  color: var(--foreground) !important;
+  font-family: 'Poppins', sans-serif !important;
 }
 
 .prose h4 {
   @apply text-lg font-semibold mb-2 mt-4 text-foreground;
+  color: var(--foreground) !important;
+  font-family: 'Poppins', sans-serif !important;
 }
 
 .prose p {
   @apply mb-4 text-foreground leading-relaxed;
+  color: var(--foreground) !important;
+  font-family: 'Inter', sans-serif !important;
 }
 
 .prose ul {
   @apply mb-4 pl-6;
+  color: var(--foreground) !important;
 }
 
 .prose ol {
   @apply mb-4 pl-6;
+  color: var(--foreground) !important;
 }
 
 .prose li {
   @apply mb-2 text-foreground;
+  color: var(--foreground) !important;
+  font-family: 'Inter', sans-serif !important;
 }
 
 .prose blockquote {
   @apply border-l-4 border-primary pl-4 italic text-foreground mb-4;
+  color: var(--foreground) !important;
+  background-color: var(--muted) !important;
+  border-left-color: var(--primary) !important;
+  font-family: 'Inter', sans-serif !important;
 }
 
 .prose code {
   @apply bg-muted px-2 py-1 rounded text-sm font-mono text-foreground;
+  color: var(--destructive) !important;
+  background-color: var(--muted) !important;
+  border: 1px solid var(--border) !important;
 }
 
 .prose pre {
   @apply bg-muted p-4 rounded-lg overflow-x-auto mb-4;
+  background-color: var(--muted) !important;
+  border: 1px solid var(--border) !important;
 }
 
 .prose pre code {
   @apply bg-transparent p-0 text-sm;
+  color: var(--foreground) !important;
+  background-color: transparent !important;
 }
 
-/* Estilos específicos para bloques de código */
+/* Estilos específicos para bloques de código - Consistente con la marca */
 pre {
-  background-color: #1e293b !important;
-  color: #e2e8f0 !important;
-  border: 1px solid #475569 !important;
+  background-color: var(--muted) !important;
+  color: var(--foreground) !important;
+  border: 1px solid var(--border) !important;
   border-radius: 0.5rem !important;
   padding: 1rem !important;
   overflow-x: auto !important;
@@ -658,50 +685,69 @@ pre code {
 
 /* Estilos para código inline */
 :not(pre) > code {
-  background-color: #f1f5f9 !important;
-  color: #dc2626 !important;
+  background-color: var(--muted) !important;
+  color: var(--destructive) !important;
   padding: 0.25rem 0.5rem !important;
   border-radius: 0.25rem !important;
   font-family: 'Fira Code', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace !important;
   font-size: 0.875rem !important;
-  border: 1px solid #e2e8f0 !important;
+  border: 1px solid var(--border) !important;
 }
 
-/* Modo oscuro para código */
+/* Modo oscuro para código - Usando variables CSS */
 .dark pre {
-  background-color: #0f172a !important;
-  color: #f1f5f9 !important;
-  border-color: #334155 !important;
+  background-color: var(--muted) !important;
+  color: var(--foreground) !important;
+  border-color: var(--border) !important;
 }
 
 .dark :not(pre) > code {
-  background-color: #1e293b !important;
-  color: #fca5a5 !important;
-  border-color: #475569 !important;
+  background-color: var(--muted) !important;
+  color: var(--destructive) !important;
+  border-color: var(--border) !important;
 }
 
 .prose table {
   @apply w-full border-collapse mb-4;
+  border: 1px solid var(--border) !important;
 }
 
 .prose th {
   @apply border border-border px-4 py-2 text-left font-semibold bg-muted;
+  color: var(--foreground) !important;
+  background-color: var(--muted) !important;
+  border-color: var(--border) !important;
+  font-family: 'Poppins', sans-serif !important;
 }
 
 .prose td {
   @apply border border-border px-4 py-2;
+  color: var(--foreground) !important;
+  border-color: var(--border) !important;
+  font-family: 'Inter', sans-serif !important;
 }
 
 .prose a {
   @apply text-primary hover:text-primary/80 underline;
+  color: var(--primary) !important;
+  text-decoration: underline !important;
+  transition: color 0.3s ease !important;
+}
+
+.prose a:hover {
+  color: var(--accent) !important;
 }
 
 .prose strong {
   @apply font-semibold text-foreground;
+  color: var(--foreground) !important;
+  font-weight: 600 !important;
 }
 
 .prose em {
   @apply italic;
+  color: var(--foreground) !important;
+  font-style: italic !important;
 }
 
 /* Estilos para las tarjetas del blog */
@@ -727,4 +773,104 @@ pre code {
 /* Estilos para badges de tags */
 .tag-badge {
   @apply transition-all duration-200 hover:bg-primary/10;
+}
+
+/* Estilos específicos para el blog en modo oscuro */
+.dark .prose {
+  background-color: var(--card) !important;
+  color: var(--foreground) !important;
+}
+
+.dark .prose h1,
+.dark .prose h2,
+.dark .prose h3,
+.dark .prose h4,
+.dark .prose h5,
+.dark .prose h6 {
+  color: var(--foreground) !important;
+}
+
+.dark .prose p,
+.dark .prose li,
+.dark .prose span,
+.dark .prose div {
+  color: var(--foreground) !important;
+}
+
+.dark .prose blockquote {
+  background-color: var(--muted) !important;
+  border-left-color: var(--primary) !important;
+  color: var(--foreground) !important;
+}
+
+.dark .prose code {
+  background-color: var(--muted) !important;
+  color: var(--destructive) !important;
+  border-color: var(--border) !important;
+}
+
+.dark .prose pre {
+  background-color: var(--muted) !important;
+  border-color: var(--border) !important;
+}
+
+.dark .prose pre code {
+  color: var(--foreground) !important;
+}
+
+.dark .prose table {
+  border-color: var(--border) !important;
+}
+
+.dark .prose th {
+  background-color: var(--muted) !important;
+  color: var(--foreground) !important;
+  border-color: var(--border) !important;
+}
+
+.dark .prose td {
+  color: var(--foreground) !important;
+  border-color: var(--border) !important;
+}
+
+.dark .prose a {
+  color: var(--primary) !important;
+}
+
+.dark .prose a:hover {
+  color: var(--accent) !important;
+}
+
+.dark .prose strong {
+  color: var(--foreground) !important;
+}
+
+.dark .prose em {
+  color: var(--foreground) !important;
+}
+
+/* Asegurar que el contenido del blog sea legible en ambos modos */
+.blog-content {
+  background-color: var(--card) !important;
+  color: var(--foreground) !important;
+}
+
+.blog-content * {
+  color: inherit !important;
+}
+
+.blog-content h1,
+.blog-content h2,
+.blog-content h3,
+.blog-content h4,
+.blog-content h5,
+.blog-content h6 {
+  color: var(--foreground) !important;
+}
+
+.blog-content p,
+.blog-content li,
+.blog-content span,
+.blog-content div {
+  color: var(--foreground) !important;
 }

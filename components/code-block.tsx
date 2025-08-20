@@ -98,19 +98,19 @@ export function CodeBlock({ children, className }: CodeBlockProps) {
   return (
     <div className="relative group mb-6">
       {/* Header con lenguaje y botón de copiar */}
-      <div className="flex items-center justify-between bg-gray-800 px-4 py-2 rounded-t-lg border-b border-gray-700">
-        <span className="text-gray-300 text-sm font-medium">
+      <div className="flex items-center justify-between bg-card border border-border px-4 py-2 rounded-t-lg">
+        <span className="text-muted-foreground text-sm font-medium font-brand-secondary">
           {displayName}
         </span>
         <Button
           variant="ghost"
           size="sm"
-          className="h-7 w-7 p-0 text-gray-400 hover:text-white hover:bg-gray-700 transition-all duration-200 rounded"
+          className="h-7 w-7 p-0 text-muted-foreground hover:text-foreground hover:bg-muted transition-all duration-200 rounded"
           onClick={handleCopy}
           title={copied ? '¡Copiado!' : 'Copiar código'}
         >
           {copied ? (
-            <Check className="h-4 w-4 text-green-400" />
+            <Check className="h-4 w-4 text-green-500" />
           ) : (
             <Copy className="h-4 w-4" />
           )}
@@ -118,7 +118,7 @@ export function CodeBlock({ children, className }: CodeBlockProps) {
       </div>
       
       {/* Contenido del código */}
-      <pre className="bg-gray-800 text-gray-200 p-4 rounded-b-lg overflow-x-auto text-sm leading-relaxed">
+      <pre className="bg-muted text-foreground p-4 rounded-b-lg overflow-x-auto text-sm leading-relaxed border border-border border-t-0 font-mono">
         {children}
       </pre>
     </div>

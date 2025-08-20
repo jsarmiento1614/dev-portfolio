@@ -168,7 +168,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
               />
 
               {/* Article Content */}
-              <div className="p-8 lg:p-12">
+              <div className="p-8 lg:p-12 bg-card">
                 <div className="prose prose-lg max-w-none">
                   <MDXContent source={post.content} />
                 </div>
