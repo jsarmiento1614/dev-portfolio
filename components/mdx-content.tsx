@@ -1,10 +1,10 @@
 'use client'
 
-import { MDXRemote } from 'next-mdx-remote/rsc'
+import { MDXRemote } from 'next-mdx-remote'
 import { CodeBlock } from './code-block'
 
 interface MDXContentProps {
-  source: string
+  source: any // Cambiado de string a any para la versión cliente
 }
 
 const components = {
@@ -31,13 +31,8 @@ export function MDXContent({ source }: MDXContentProps) {
   return (
     <div className="max-w-none text-foreground">
       <MDXRemote 
-        source={source} 
+        {...source} 
         components={components}
-        options={{
-          mdxOptions: {
-            format: 'mdx',
-          },
-        }}
       />
     </div>
   )

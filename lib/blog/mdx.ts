@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import { compileMDX } from 'next-mdx-remote/rsc'
+import { serialize } from 'next-mdx-remote/serialize'
 
 const postsDirectory = path.join(process.cwd(), 'content/blog')
 
@@ -13,7 +13,7 @@ export interface Post {
   tags: string[]
   author: string
   readingTime: number
-  content: string
+  content: any // Cambiado de string a any para el contenido serializado
 }
 
 export async function getAllPosts(): Promise<Post[]> {
@@ -38,6 +38,13 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     const { data, content } = matter(fileContents)
 
+    // Serializar el contenido MDX
+    const mdxSource = await serialize(content, {
+      mdxOptions: {
+        format: 'mdx',
+      },
+    })
+
     // Calcular tiempo de lectura (aproximadamente 200 palabras por minuto)
     const wordCount = content.split(/\s+/).length
     const readingTime = Math.ceil(wordCount / 200)
@@ -50,7 +57,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
       tags: data.tags || [],
       author: data.author || 'Jesús Sarmiento',
       readingTime,
-      content,
+      content: mdxSource,
     }
   } catch (error) {
     console.error(`Error reading post ${slug}:`, error)
