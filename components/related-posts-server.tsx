@@ -32,7 +32,7 @@ export function RelatedPostsServer({ posts, currentPostSlug, maxPosts = 3 }: Rel
   }
 
   return (
-    <section className="py-20 bg-muted/30" style={{ background: 'var(--projects-bg)' }}>
+    <section className="py-20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-2 mb-4 text-primary">

@@ -98,7 +98,7 @@
   --primary-foreground: #ffffff;
   --secondary: #262626;
   --secondary-foreground: #f8fafc;
-  --muted: #262626;
+  --muted: #1c1c1c;
   --muted-foreground: #a3a3a3;
   --accent: #f97316;
   --accent-foreground: #ffffff;
@@ -116,12 +116,12 @@
   /* Sistema de backgrounds armonioso - Modo Dark */
   --hero-bg: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
   --about-bg: linear-gradient(135deg, #0f1419 0%, #1e293b 100%);
-  --projects-bg: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%);
-  --contact-bg: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%);
-  --footer-bg: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%);
+  --projects-bg: linear-gradient(135deg, #0b000f 0%, #0f172a 50%, #1e293b 100%);
+  --contact-bg: linear-gradient(135deg, #0b000f 0%, #0f172a 50%, #1e293b 100%);
+  --footer-bg: linear-gradient(135deg, #0b000f 0%, #0f172a 50%, #1e293b 100%);
   
   /* Variables específicas para el blog - Modo Dark */
-  --blog-bg: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%);
+  --blog-bg: linear-gradient(135deg, #0b000f 0%, #0f172a 50%, #1e293b 100%);
   --blog-hero-bg: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
   --blog-card-bg: rgba(30, 41, 59, 0.8);
   --blog-card-border: rgba(51, 65, 85, 0.6);
