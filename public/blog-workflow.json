@@ -1,0 +1,217 @@
+{
+    "name": "Blog Content Generator - Jesús Sarmiento",
+    "nodes": [
+      {
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "blog-generation",
+          "responseMode": "responseNode",
+          "options": {}
+        },
+        "id": "webhook-trigger",
+        "name": "Webhook Trigger",
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 1,
+        "position": [240, 300],
+        "webhookId": "blog-content-generator"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "string": [
+              {
+                "value1": "={{ $json.webhook_secret }}",
+                "operation": "equal",
+                "value2": "n8n-webhook-secret-2024"
+              }
+            ]
+          }
+        },
+        "id": "security-check",
+        "name": "Security Check",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 1,
+        "position": [460, 300]
+      },
+      {
+        "parameters": {
+          "url": "https://tu-dominio.vercel.app/api/webhook/blog-generation",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
+          "httpHeaderAuth": {
+            "name": "x-webhook-secret",
+            "value": "n8n-webhook-secret-2024"
+          },
+          "sendHeaders": true,
+          "sendBody": true,
+          "bodyParameters": {
+            "topic": "={{ $json.topic }}",
+            "keywords": "={{ $json.keywords }}",
+            "tone": "={{ $json.tone || 'professional' }}",
+            "length": "={{ $json.length || 'medium' }}",
+            "language": "={{ $json.language || 'es' }}",
+            "targetAudience": "={{ $json.targetAudience || 'developers' }}",
+            "includeCodeExamples": "={{ $json.includeCodeExamples !== false }}",
+            "category": "={{ $json.category }}"
+          },
+          "options": {}
+        },
+        "id": "generate-prompt",
+        "name": "Generate Prompt",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.1,
+        "position": [680, 200]
+      },
+      {
+        "parameters": {
+          "model": "claude-3-5-sonnet-20241022",
+          "prompt": "={{ $json.prompt }}",
+          "maxTokens": 4000,
+          "temperature": 0.7
+        },
+        "id": "claude-ai",
+        "name": "Claude AI",
+        "type": "n8n-nodes-base.anthropic",
+        "typeVersion": 1,
+        "position": [900, 200]
+      },
+      {
+        "parameters": {
+          "jsCode": "// Procesar la respuesta de Claude y formatear para la base de datos\nconst aiResponse = $input.first().json.content;\nconst metadata = $node[\"Generate Prompt\"].json.metadata;\n\n// Extraer frontmatter si existe\nlet frontmatter = {};\nlet mdxContent = aiResponse;\n\nconst frontmatterMatch = aiResponse.match(/^---\\s*\\n([\\s\\S]*?)\\n---/);\nif (frontmatterMatch) {\n  try {\n    // Parse YAML frontmatter básico\n    const yamlContent = frontmatterMatch[1];\n    const lines = yamlContent.split('\\n');\n    \n    lines.forEach(line => {\n      const colonIndex = line.indexOf(':');\n      if (colonIndex > -1) {\n        const key = line.substring(0, colonIndex).trim();\n        const value = line.substring(colonIndex + 1).trim().replace(/^\"|\"$/g, '').replace(/^'|'$/g, '');\n        \n        // Handle arrays (tags)\n        if (value.startsWith('[') && value.endsWith(']')) {\n          frontmatter[key] = value.slice(1, -1).split(',').map(item => item.trim().replace(/^\"|\"$/g, '').replace(/^'|'$/g, ''));\n        } else {\n          frontmatter[key] = value;\n        }\n      }\n    });\n    \n    mdxContent = aiResponse.replace(/^---\\s*\\n[\\s\\S]*?\\n---\\n/, '');\n  } catch (e) {\n    console.log('Error parsing frontmatter:', e);\n  }\n}\n\n// Si no hay frontmatter válido, usar metadata\nif (Object.keys(frontmatter).length === 0) {\n  frontmatter = {\n    title: metadata.title,\n    description: metadata.description,\n    date: new Date().toISOString().split('T')[0],\n    tags: metadata.tags || [],\n    author: \"Jesús Sarmiento\"\n  };\n}\n\n// Calcular tiempo de lectura\nconst wordCount = mdxContent.split(/\\s+/).length;\nconst readingTime = Math.ceil(wordCount / 200);\n\nreturn {\n  slug: metadata.slug,\n  title: frontmatter.title || metadata.title,\n  description: frontmatter.description || metadata.description,\n  content: {\n    mdx: mdxContent,\n    frontmatter: frontmatter\n  },\n  tags: frontmatter.tags || metadata.tags || [],\n  status: 'PUBLISHED',\n  seoTitle: metadata.seoTitle,\n  seoDescription: metadata.seoDescription,\n  readingTime: readingTime,\n  publishedAt: new Date().toISOString()\n};"
+        },
+        "id": "format-content",
+        "name": "Format Content",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [1120, 200]
+      },
+      {
+        "parameters": {
+          "url": "https://tu-dominio.vercel.app/api/posts",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
+          "httpHeaderAuth": {
+            "name": "Authorization",
+            "value": "Bearer dev-portfolio-super-secret-2024"
+          },
+          "sendHeaders": true,
+          "sendBody": true,
+          "bodyParameters": {
+            "slug": "={{ $json.slug }}",
+            "title": "={{ $json.title }}",
+            "description": "={{ $json.description }}",
+            "content": "={{ $json.content }}",
+            "tags": "={{ $json.tags }}",
+            "status": "={{ $json.status }}",
+            "seoTitle": "={{ $json.seoTitle }}",
+            "seoDescription": "={{ $json.seoDescription }}",
+            "publishedAt": "={{ $json.publishedAt }}"
+          },
+          "options": {}
+        },
+        "id": "save-to-database",
+        "name": "Save to Database",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.1,
+        "position": [1340, 200]
+      },
+      {
+        "parameters": {
+          "respondWith": "json",
+          "responseBody": "={{ { \"success\": true, \"message\": \"Post creado exitosamente\", \"post\": { \"slug\": $json.post.slug, \"title\": $json.post.title, \"status\": $json.post.status }, \"url\": \"https://tu-dominio.vercel.app/blog/\" + $json.post.slug } }}"
+        },
+        "id": "success-response",
+        "name": "Success Response",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "typeVersion": 1,
+        "position": [1560, 200]
+      },
+      {
+        "parameters": {
+          "respondWith": "json",
+          "responseBody": "={{ { \"success\": false, \"error\": \"No autorizado\", \"message\": \"Webhook secret inválido\" } }}",
+          "responseCode": 401
+        },
+        "id": "unauthorized-response",
+        "name": "Unauthorized Response",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "typeVersion": 1,
+        "position": [680, 400]
+      }
+    ],
+    "connections": {
+      "Webhook Trigger": {
+        "main": [
+          [
+            {
+              "node": "Security Check",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Security Check": {
+        "main": [
+          [
+            {
+              "node": "Generate Prompt",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Unauthorized Response",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Generate Prompt": {
+        "main": [
+          [
+            {
+              "node": "Claude AI",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Claude AI": {
+        "main": [
+          [
+            {
+              "node": "Format Content",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Format Content": {
+        "main": [
+          [
+            {
+              "node": "Save to Database",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Save to Database": {
+        "main": [
+          [
+            {
+              "node": "Success Response",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    }
+  }
