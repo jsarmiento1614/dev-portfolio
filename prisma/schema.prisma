@@ -1,0 +1,148 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Post {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  description String?
+  content     Json     // MDX content as JSON
+  excerpt     String?
+  publishedAt DateTime?
+  updatedAt   DateTime @updatedAt
+  createdAt   DateTime @default(now())
+  readingTime Int      @default(0)
+  status      PostStatus @default(DRAFT)
+  authorId    String?
+  author      User?    @relation(fields: [authorId], references: [id])
+  
+  // SEO
+  seoTitle       String?
+  seoDescription String?
+  canonicalUrl   String?
+  
+  // Analytics
+  viewCount      Int      @default(0)
+  shareCount     Int      @default(0)
+  likeCount      Int      @default(0)
+  
+  // Relations
+  tags      PostTag[]
+  comments  Comment[]
+  analytics PostAnalytics[]
+  
+  @@index([slug])
+  @@index([status])
+  @@index([publishedAt])
+  @@map("posts")
+}
+
+model Tag {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  slug        String   @unique
+  description String?
+  color       String?
+  createdAt   DateTime @default(now())
+  posts       PostTag[]
+  
+  @@index([slug])
+  @@map("tags")
+}
+
+model PostTag {
+  postId String
+  tagId  String
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  tag    Tag    @relation(fields: [tagId], references: [id], onDelete: Cascade)
+  
+  @@id([postId, tagId])
+  @@map("post_tags")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  role      UserRole @default(AUTHOR)
+  posts     Post[]
+  createdAt DateTime @default(now())
+  
+  @@index([email])
+  @@map("users")
+}
+
+model PostAnalytics {
+  id        String   @id @default(cuid())
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  sessionId String?
+  action    String   // 'view', 'share', 'like', 'comment', 'search'
+  metadata  Json?
+  userAgent String?
+  ipAddress String?
+  createdAt DateTime @default(now())
+  
+  @@index([postId])
+  @@index([action])
+  @@index([createdAt])
+  @@map("post_analytics")
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  author    String
+  email     String
+  content   String
+  status    CommentStatus @default(PENDING)
+  createdAt DateTime @default(now())
+  
+  @@index([postId])
+  @@index([status])
+  @@map("comments")
+}
+
+model Search {
+  id           String   @id @default(cuid())
+  query        String
+  resultsCount Int      @default(0)
+  sessionId    String?
+  userAgent    String?
+  ipAddress    String?
+  createdAt    DateTime @default(now())
+  
+  @@index([createdAt])
+  @@map("searches")
+}
+
+// Enums
+enum PostStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum UserRole {
+  ADMIN
+  AUTHOR
+  EDITOR
+}
+
+enum CommentStatus {
+  PENDING
+  APPROVED
+  SPAM
+  REJECTED
+}

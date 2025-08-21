@@ -1,0 +1,273 @@
+---
+title: "Optimización de rendimiento en Next.js: Guía completa"
+description: "Aprende las mejores técnicas para optimizar el rendimiento de tu aplicación Next.js. Desde Server Components hasta optimización de imágenes y bundle splitting."
+date: "2024-01-20"
+tags: ["next.js", "performance", "optimización", "react"]
+author: "Jesús Sarmiento"
+---
+
+# Optimización de rendimiento en Next.js: Guía completa
+
+Next.js es un framework increíblemente potente, pero para aprovechar todo su potencial necesitas conocer las técnicas de optimización. En esta guía completa, te muestro cómo mejorar significativamente el rendimiento de tu aplicación.
+
+## 1. Server Components vs Client Components
+
+Los Server Components son la base de la optimización en Next.js 13+:
+
+```jsx
+// ✅ Server Component (por defecto)
+async function UserProfile({ userId }) {
+  const user = await fetchUser(userId) // Se ejecuta en el servidor
+  
+  return (
+    <div>
+      <h1>{user.name}</h1>
+      <p>{user.email}</p>
+    </div>
+  )
+}
+
+// ❌ Client Component (solo cuando necesites interactividad)
+'use client'
+
+import { useState } from 'react'
+
+function InteractiveForm() {
+  const [formData, setFormData] = useState({})
+  
+  return (
+    <form>
+      {/* Formulario interactivo */}
+    </form>
+  )
+}
+```
+
+**Ventajas de Server Components:**
+- Menor bundle size del cliente
+- Mejor SEO
+- Acceso directo a bases de datos
+- Mejor rendimiento inicial
+
+## 2. Optimización de imágenes con next/image
+
+Next.js optimiza automáticamente las imágenes:
+
+```jsx
+import Image from 'next/image'
+
+function OptimizedImage() {
+  return (
+    <Image
+      src="/hero-image.jpg"
+      alt="Imagen optimizada"
+      width={800}
+      height={600}
+      priority // Para imágenes above the fold
+      placeholder="blur"
+      blurDataURL="data:image/jpeg;base64,..."
+    />
+  )
+}
+```
+
+**Configuración avanzada en next.config.mjs:**
+
+```javascript
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    formats: ['image/webp', 'image/avif'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+  },
+}
+```
+
+## 3. Bundle Splitting y Code Splitting
+
+Next.js hace code splitting automáticamente, pero puedes optimizarlo:
+
+```jsx
+// Lazy loading de componentes
+import dynamic from 'next/dynamic'
+
+const HeavyComponent = dynamic(() => import('./HeavyComponent'), {
+  loading: () => <p>Cargando...</p>,
+  ssr: false // Si no necesitas SSR
+})
+
+// Lazy loading de librerías
+const Chart = dynamic(() => import('react-chartjs-2').then(mod => mod.Line), {
+  ssr: false
+})
+```
+
+## 4. Optimización de fuentes
+
+```jsx
+// En layout.tsx
+import { Inter } from 'next/font/google'
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap', // Evita CLS
+  variable: '--font-inter',
+})
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="es" className={inter.variable}>
+      <body className="font-sans">{children}</body>
+    </html>
+  )
+}
+```
+
+## 5. Caching y Revalidación
+
+```jsx
+// Revalidación cada 3600 segundos (1 hora)
+async function getData() {
+  const res = await fetch('https://api.example.com/data', {
+    next: { revalidate: 3600 }
+  })
+  return res.json()
+}
+
+// Revalidación manual
+import { revalidatePath } from 'next/cache'
+
+export async function POST(request) {
+  const formData = await request.formData()
+  // Procesar datos...
+  
+  revalidatePath('/blog') // Revalidar página específica
+  revalidateTag('blog-posts') // Revalidar por tag
+}
+```
+
+## 6. Optimización de rutas dinámicas
+
+```jsx
+// Generación estática con ISR
+export async function generateStaticParams() {
+  const posts = await getPosts()
+  
+  return posts.map((post) => ({
+    slug: post.slug,
+  }))
+}
+
+// Configuración de página
+export const dynamicParams = false // Solo rutas generadas estáticamente
+export const revalidate = 3600 // Revalidación cada hora
+```
+
+## 7. Optimización de CSS
+
+```jsx
+// CSS Modules para scope local
+import styles from './Component.module.css'
+
+function Component() {
+  return <div className={styles.container}>Contenido</div>
+}
+
+// CSS-in-JS con styled-components (solo en Client Components)
+'use client'
+import styled from 'styled-components'
+
+const StyledButton = styled.button`
+  background: ${props => props.primary ? 'blue' : 'white'};
+  color: ${props => props.primary ? 'white' : 'black'};
+`
+```
+
+## 8. Optimización de API Routes
+
+```jsx
+// app/api/users/route.ts
+import { NextResponse } from 'next/server'
+
+export async function GET() {
+  const users = await getUsers()
+  
+  return NextResponse.json(users, {
+    headers: {
+      'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+    },
+  })
+}
+```
+
+## 9. Monitoreo de rendimiento
+
+```jsx
+// app/layout.tsx
+import { SpeedInsights } from '@vercel/speed-insights/next'
+
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <body>
+        {children}
+        <SpeedInsights />
+      </body>
+    </html>
+  )
+}
+```
+
+## 10. Optimización de terceros
+
+```jsx
+// Scripts de terceros optimizados
+import Script from 'next/script'
+
+export default function Layout({ children }) {
+  return (
+    <html>
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'GA_MEASUREMENT_ID');
+          `}
+        </Script>
+      </head>
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+## Métricas clave a monitorear
+
+- **LCP (Largest Contentful Paint)**: < 2.5s
+- **FID (First Input Delay)**: < 100ms
+- **CLS (Cumulative Layout Shift)**: < 0.1
+- **TTFB (Time to First Byte)**: < 600ms
+
+## Herramientas de análisis
+
+1. **Lighthouse** - Auditoría completa
+2. **WebPageTest** - Análisis detallado
+3. **Vercel Analytics** - Métricas en tiempo real
+4. **Chrome DevTools** - Performance tab
+
+## Conclusión
+
+La optimización de rendimiento es un proceso continuo. Implementa estas técnicas gradualmente y monitorea el impacto en las métricas de Core Web Vitals.
+
+¿Necesitas ayuda implementando alguna de estas optimizaciones? [Contáctame](/contact) para una consultoría personalizada.
+
+---
+
+*¿Te gustó este artículo? ¡Compártelo y sígueme para más contenido sobre desarrollo web!*
