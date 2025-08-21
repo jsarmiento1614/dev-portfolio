@@ -25,7 +25,7 @@ export function ArticleFooter({ onLike, onComment, onFeedback }: ArticleFooterPr
   }
 
   return (
-    <div className="bg-card px-8 py-6 border-t border-border blog-card-dark article-footer-dark">
+    <div className="px-8 py-6 border-t border-border ">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2 text-sm text-foreground">
