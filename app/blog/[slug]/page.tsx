@@ -159,7 +159,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             <ProgressIndicator />
 
             {/* Main Content */}
-            <article className="bg-card rounded-2xl border border-border overflow-hidden blog-card-dark">
+            <article className="rounded-2xl border border-border overflow-hidden">
               {/* Article Stats Bar */}
               <ArticleStats 
                 views={1200}
@@ -170,10 +170,8 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
               />
 
               {/* Article Content */}
-              <div className="p-8 lg:p-12 bg-card blog-card-dark">
-                <div className="prose prose-lg max-w-none">
-                  <MDXContent source={post.content} />
-                </div>
+              <div className="p-8 lg:p-12">
+                <MDXContent source={post.content} />
               </div>
 
               {/* Article Footer */}

@@ -29,7 +29,7 @@ const components = {
 
 export function MDXContent({ source }: MDXContentProps) {
   return (
-    <div className="prose prose-lg max-w-none bg-card text-foreground">
+    <div className="max-w-none text-foreground">
       <MDXRemote 
         source={source} 
         components={components}
