@@ -57,6 +57,15 @@
   --projects-private-bg: rgba(249, 115, 22, 0.08);
   --projects-private-text: #ea580c;
   
+  /* Variables específicas para el blog - Modo Light */
+  --blog-bg: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  --blog-hero-bg: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  --blog-card-bg: rgba(255, 255, 255, 0.9);
+  --blog-card-border: rgba(226, 232, 240, 0.6);
+  --blog-text-muted: #64748b;
+  --blog-shadow: rgba(15, 23, 42, 0.1);
+  --blog-shadow-hover: rgba(15, 23, 42, 0.2);
+  
   /* Variables para ContactSection y Footer - Modo Light */
   --contact-card-bg: rgba(255, 255, 255, 0.9);
   --contact-card-border: rgba(226, 232, 240, 0.6);
@@ -77,13 +86,15 @@
 
 .dark {
   /* Marca Personal - Modo Oscuro Mejorado */
+  --color-primary: #3b82f6;   /* Azul más claro para modo dark */
+  --color-accent: #f97316;    /* Naranja para modo dark */
   --background: #0a0a0a;
   --foreground: #f8fafc;
   --card: #1a1a1a;
   --card-foreground: #f8fafc;
   --popover: #1a1a1a;
   --popover-foreground: #f8fafc;
-  --primary: #3b82f6;
+  --primary: var(--color-primary);
   --primary-foreground: #ffffff;
   --secondary: #262626;
   --secondary-foreground: #f8fafc;
@@ -925,14 +936,40 @@ pre code {
 }
 
 .blog-card-dark:hover {
-  background: rgba(30, 41, 59, 0.9) !important;
-  border-color: #3b82f6 !important;
+  background: var(--blog-card-bg) !important;
+  border-color: var(--primary) !important;
   box-shadow: var(--blog-shadow-hover);
   transform: translateY(-2px);
 }
 
 .blog-text-muted-dark {
   color: var(--blog-text-muted) !important;
+}
+
+/* Estilos específicos para el ArticleFooter en modo oscuro */
+.article-footer-dark {
+  background: var(--blog-card-bg) !important;
+  border-color: var(--blog-card-border) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.article-footer-dark .text-foreground {
+  color: var(--foreground) !important;
+}
+
+.article-footer-dark .border-border {
+  border-color: var(--border) !important;
+}
+
+/* Mejorar los estados hover de los botones en modo oscuro */
+.dark .article-footer-dark button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.dark .article-footer-dark button:active {
+  transform: translateY(0);
 }
 
 /* Animaciones para las cards */

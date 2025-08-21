@@ -583,13 +583,13 @@ export default function ProjectsSection() {
                               href={project.demoUrl} 
                               target="_blank" 
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1 px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-xs font-medium hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-colors"
+                              className="inline-flex items-center gap-1 px-2 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-medium hover:bg-purple-200 transition-colors"
                             >
                               <ExternalLink className="w-3 h-3" />
                               {project.client}
                             </Link>
                           ) : (
-                            <span className="inline-flex items-center px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-xs font-medium">
+                            <span className="inline-flex items-center px-2 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">
                               {project.client}
                             </span>
                           )}
@@ -614,9 +614,9 @@ export default function ProjectsSection() {
                           key={tech} 
                           className="px-3 py-1 rounded-full text-sm font-medium transition-colors hover:opacity-80 border"
                           style={{
-                            backgroundColor: 'var(--color-projects-private-bg)',
-                            color: 'var(--color-projects-private-text)',
-                            borderColor: 'var(--color-projects-private-text)'
+                            backgroundColor: 'var(--color-projects-badge-bg)',
+                            color: 'var(--color-projects-badge-text)',
+                            borderColor: 'var(--color-projects-badge-text)'
                           }}
                         >
                           {tech}
