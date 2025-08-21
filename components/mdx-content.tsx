@@ -1,10 +1,10 @@
 'use client'
 
-import { MDXRemote } from 'next-mdx-remote'
+import { useEffect, useState } from 'react'
 import { CodeBlock } from './code-block'
 
 interface MDXContentProps {
-  source: any // Cambiado de string a any para la versión cliente
+  source: any
 }
 
 const components = {
@@ -28,6 +28,27 @@ const components = {
 }
 
 export function MDXContent({ source }: MDXContentProps) {
+  const [MDXRemote, setMDXRemote] = useState<any>(null)
+
+  useEffect(() => {
+    import('next-mdx-remote').then((mod) => {
+      setMDXRemote(() => mod.MDXRemote)
+    })
+  }, [])
+
+  if (!MDXRemote) {
+    // Fallback durante el build
+    return (
+      <div className="max-w-none text-foreground">
+        <div className="animate-pulse">
+          <div className="h-4 bg-muted rounded mb-4"></div>
+          <div className="h-4 bg-muted rounded mb-4 w-3/4"></div>
+          <div className="h-4 bg-muted rounded mb-4 w-1/2"></div>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="max-w-none text-foreground">
       <MDXRemote 
