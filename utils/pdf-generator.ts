@@ -7,12 +7,12 @@ const cvData = {
     title: "Full Stack Developer & UX/UI Designer",
     email: "jsarmiento1614@gmail.com",
     phone: "+504 8785-7498",
-    location: "Tegucigalpa, Honduras",
+    location: "La Entrada, Copán, Honduras",
     linkedin: "linkedin.com/in/jsarmiento1614",
     github: "github.com/jsarmiento1614",
     portfolio: "jsarmiento.vercel.app"
   },
-  summary: "Desarrollador Full Stack con más de 6 años de experiencia en desarrollo web y móvil. Especializado en Angular, React, .NET/C#, Java y tecnologías modernas. Enfocado en crear experiencias digitales excepcionales que combinan funcionalidad, diseño UX/UI y mejores prácticas de desarrollo. Experiencia liderando equipos y proyectos de modernización tecnológica.",
+  summary: "Desarrollador Full Stack con más de 6 años de experiencia en desarrollo web y móvil. Especializado en Angular, .NET/C#, Flutter y tecnologías modernas. Enfocado en crear experiencias digitales excepcionales que combinan funcionalidad, diseño UX/UI y mejores prácticas de desarrollo. Experiencia liderando equipos y proyectos de modernización tecnológica.",
   education: [
     {
       degree: "Ingeniería en Informática",
@@ -31,10 +31,10 @@ const cvData = {
   ],
   skills: {
     frontend: ["Angular", "React", "Next.js", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Bootstrap"],
-    backend: [".NET/C#", "Node.js", "Java", "Spring Boot", "RESTful APIs", "GraphQL"],
+    backend: [".NET/C#", "Node.js", "Java", "RESTful APIs", "GraphQL"],
     mobile: ["Flutter", "Xamarin"],
     databases: ["SQL Server", "PostgreSQL", "MongoDB", "MySQL", "Firebase"],
-    tools: ["Docker", "Git", "Azure", "AWS", "Figma", "Adobe Creative Suite", "Postman", "Jenkins"],
+    tools: ["Docker", "Git", "Azure", "Figma", "Adobe Creative Suite", "Postman"],
     design: ["UI/UX Design", "Prototyping", "Wireframing", "Design Systems", "User Research"]
   },
   languages: [
@@ -55,7 +55,7 @@ const cvData = {
       location: "Honduras",
       description: "Desarrollo de aplicaciones web y móviles para clientes internacionales. Apoyo en proyectos de modernización tecnológica, arquitectura de sistemas y optimización de procesos empresariales.",
       achievements: [
-        "Apoye en la modernización de 5+ sistemas legacy a tecnologías modernas",
+        "Apoye en la modernización de 3+ sistemas legacy a tecnologías modernas",
         "Implemente soluciones escalables y mantenibles para diversos sectores industriales",
         "Desarrollé aplicaciones para más de 10,000 usuarios activos"
       ]
@@ -68,7 +68,7 @@ const cvData = {
       description: "Desarrollo de sistemas empresariales con tecnologías .NET, Angular y Java. Implementación de soluciones escalables y mantenibles para diversos sectores industriales.",
       achievements: [
         "Desarrollé 3 sistemas empresariales completos",
-        "Apoye en la modernización de +10 sistemas legacy a tecnologías modernas",
+        "Apoye en la modernización de +5 sistemas legacy a tecnologías modernas",
         "Implementé soluciones escalables y mantenibles para diversos sectores industriales",
       ]
     },
@@ -87,21 +87,21 @@ const cvData = {
   projects: [
     {
       name: "Trading Automatizado - Plataforma Backend",
-      period: "2025-03 - 2025-08",
+      period: "2025-05 - 2025-08",
       technologies: "TypeScript, Node.js, Prisma ORM, PostgreSQL, WebSockets, REST API, Docker, Redis",
       description: "Diseño e implementación de una plataforma backend para gestión y ejecución de estrategias de trading automatizado en mercados como Forex, Criptomonedas e Índices bursátiles. Desarrollo de lógica para determinar en tiempo real si un mercado está abierto o cerrado usando horarios internacionales y zonas horarias.",
       role: "Desarrollador Full Stack"
     },
     {
       name: "Randa Ticketera NFT UI/UX",
-      period: "2024-12 - 2025-08",
+      period: "2024-12 - 2025-05",
       technologies: "React 18, Vite, Tailwind CSS, TypeScript, JavaScript ES6+",
       description: "Plataforma de ticketera NFT desarrollada con React 18. Sistema completo de gestión de eventos y tokens NFT.",
       role: "Desarrollador React"
     },
     {
       name: "Zero Variance - Ubiquity",
-      period: "2023-05 - 2024-12",
+      period: "2023-05 - 2025-08",
       technologies: "Angular 15, .NET Core 8, SQL Server, TypeScript",
       description: "Sistema empresarial desarrollado con Angular 15, .NET Core 8 y SQL Server. Aplicación compleja para gestión de datos y análisis de varianza.",
       role: "Desarrollador Angular"
@@ -170,7 +170,7 @@ const cvData = {
       name: "José Carlos Estrada",
       position: "Project Manager",
       company: "MQA Americas",
-      phone: "+504 4023-4035",
+      phone: "+502 4023-4035",
       email: "jestrada@mqaamericas.com",
       relationship: "Supervisor directo en proyectos de desarrollo empresarial"
     },
