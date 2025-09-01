@@ -55,7 +55,7 @@ export default function AboutSection() {
     { name: ".NET/C#", icon: SiDotnet, category: "Backend", level: 95, color: "#512BD4", bgColor: "#512BD4" },
     { name: "TypeScript", icon: SiTypescript, category: "Frontend", level: 95, color: "#3178C6", bgColor: "#3178C6" },
     { name: "JavaScript", icon: SiJavascript, category: "Frontend", level: 95, color: "#F7DF1E", bgColor: "#F7DF1E" },
-    { name: "NodeJS", icon: SiNodedotjs, category: "Backend", level: 95, color: "#339933", bgColor: "#339933" },
+    { name: "NodeJS", icon: SiNodedotjs, category: "Backend", level: 65, color: "#339933", bgColor: "#339933" },
     { name: "Java", icon: SiOpenjdk, category: "Backend", level: 70, color: "#ED8B00", bgColor: "#ED8B00" },
     { name: "Flutter", icon: SiFlutter, category: "Mobile", level: 80, color: "#02569B", bgColor: "#02569B" },
     { name: "Xamarin", icon: Smartphone, category: "Mobile", level: 80, color: "#3498DB", bgColor: "#3498DB" },

@@ -261,7 +261,7 @@ export async function generatePDF(): Promise<Blob> {
     yPosition += 5
 
     // Línea 2: Ubicación
-    doc.text(`Ubicacion: ${cvData.personalInfo.location}`, leftMargin, yPosition)
+    doc.text(`Ubicación: ${cvData.personalInfo.location}`, leftMargin, yPosition)
     yPosition += 5
 
     // Línea 3: Enlaces profesionales
@@ -269,7 +269,7 @@ export async function generatePDF(): Promise<Blob> {
     yPosition += 5
     doc.text(`GitHub: ${cvData.personalInfo.github}`, leftMargin, yPosition)
     yPosition += 5
-    doc.text(`Portfolio: ${cvData.personalInfo.portfolio}`, leftMargin, yPosition)
+    doc.text(`Portafolio: ${cvData.personalInfo.portfolio}`, leftMargin, yPosition)
     yPosition += 8
 
     // Línea separadora principal elegante
