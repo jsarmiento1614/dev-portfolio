@@ -12,7 +12,7 @@ const cvData = {
     github: "github.com/jsarmiento1614",
     portfolio: "jsarmiento.vercel.app"
   },
-  summary: "Desarrollador Full Stack con más de 6 años de experiencia en desarrollo web y móvil. Especializado en Angular, .NET/C#, Flutter y tecnologías modernas. Enfocado en crear experiencias digitales excepcionales que combinan funcionalidad, diseño UX/UI y mejores prácticas de desarrollo. Experiencia liderando equipos y proyectos de modernización tecnológica.",
+  summary: "Desarrollador Full Stack con más de 6 años de experiencia en desarrollo web y móvil. Especializado en Angular, .NET/C#, NestJS, Flutter y tecnologías modernas. Enfocado en crear experiencias digitales excepcionales que combinan funcionalidad, diseño UX/UI y mejores prácticas de desarrollo. Experiencia liderando equipos y proyectos de modernización tecnológica.",
   education: [
     {
       degree: "Ingeniería en Informática",
@@ -31,7 +31,7 @@ const cvData = {
   ],
   skills: {
     frontend: ["Angular", "React", "Next.js", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Bootstrap"],
-    backend: [".NET/C#", "Node.js", "Java", "RESTful APIs", "GraphQL"],
+    backend: [".NET/C#", "Node.js", "NestJS", "Java", "RESTful APIs", "GraphQL"],
     mobile: ["Flutter", "Xamarin"],
     databases: ["SQL Server", "PostgreSQL", "MongoDB", "MySQL", "Firebase"],
     tools: ["Docker", "Git", "Azure", "Figma", "Adobe Creative Suite", "Postman"],
@@ -48,6 +48,18 @@ const cvData = {
     }
   ],
   experience: [
+    {
+      title: "Desarrollador — Ecosistema AVE",
+      company: "Albatros",
+      period: "2025-09 - Presente",
+      location: "Remoto / Honduras",
+      description: "Desarrollo en el ecosistema AVE: microservicios NestJS, integración vía API Gateway y JWT, permisos y datos con MongoDB, y colaboración en el backoffice Angular.",
+      achievements: [
+        "Contribución en arquitectura multi-aplicación y multi-compañía con segregación de datos",
+        "Servicios de dominio (pedidos, materiales, socios de negocio, documentos, notificaciones, etc.)",
+        "Seguridad y permisos evolucionando hacia modelo por aplicación, módulo y evento",
+      ],
+    },
     {
       title: "Senior Full Stack Developer",
       company: "Freelance / Consultor Independiente",
@@ -67,6 +79,7 @@ const cvData = {
       location: "Tegucigalpa, Honduras",
       description: "Desarrollo de sistemas empresariales con tecnologías .NET, Angular y Java. Implementación de soluciones escalables y mantenibles para diversos sectores industriales.",
       achievements: [
+        "GLIM: plataforma hotelera (React + .NET Core) — reservas, pricing, fiscalidad y facturación (2025-12 - presente)",
         "Desarrollé 3 sistemas empresariales completos",
         "Apoye en la modernización de +5 sistemas legacy a tecnologías modernas",
         "Implementé soluciones escalables y mantenibles para diversos sectores industriales",
@@ -85,6 +98,22 @@ const cvData = {
     }
   ],
   projects: [
+    {
+      name: "AVE — Ecosistema de productos (Albatros)",
+      period: "2025-09 - Presente",
+      technologies: "NestJS, TypeScript, Node.js, MongoDB, Angular, JWT, API Gateway, microservicios",
+      description:
+        "Ecosistema para distribución, retail y operaciones en campo: POS, e-commerce, fuerza de ventas, inventario, reservas e integración; multi-aplicación y multi-compañía. Backend por dominios (ave-*), API Gateway y propagación JWT. Backoffice Angular. MongoDB y permisos hacia RBAC/ABAC por acciones.",
+      role: "Desarrollador — Albatros",
+    },
+    {
+      name: "GLIM — Plataforma de gestión hotelera (Grupo Leitz)",
+      period: "2025-12 - Presente",
+      technologies: "React, .NET Core, TypeScript, C#, REST API, SQL Server",
+      description:
+        "Solución web para operación hotelera: reservación, pricing, fiscalidad, cobros, facturación y configuración administrativa centralizada. Frontend React y backend .NET Core.",
+      role: "Desarrollador Full Stack — Grupo Leitz",
+    },
     {
       name: "Trading Automatizado - Plataforma Backend",
       period: "2025-05 - 2025-08",

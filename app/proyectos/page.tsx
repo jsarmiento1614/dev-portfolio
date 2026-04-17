@@ -41,6 +41,51 @@ export default function AllProjectsPage() {
 
   const allProjects = [
     {
+      id: 18,
+      title: "AVE — Ecosistema de productos (Albatros)",
+      type: "development",
+      description:
+        "Suite multi-producto para distribución y retail (POS, e-commerce, fuerza de ventas, inventario, etc.). Microservicios NestJS detrás de API Gateway y JWT, backoffice Angular y permisos con MongoDB en modelo multi-aplicación y multi-compañía.",
+      image: "/preview/ave.png",
+      technologies: [
+        "NestJS",
+        "TypeScript",
+        "Node.js",
+        "MongoDB",
+        "Angular",
+        "JWT",
+        "API Gateway",
+        "Microservicios",
+      ],
+      demoUrl: "#",
+      repoUrl: "#",
+      category: "Enterprise",
+      featured: true,
+      period: "2025-09 - Actualidad",
+      role: "Desarrollador — Albatros",
+      status: "En desarrollo",
+      isPrivate: true,
+      privateReason: "Ecosistema empresarial confidencial (Albatros)",
+    },
+    {
+      id: 19,
+      title: "GLIM — Plataforma de gestión hotelera (Grupo Leitz)",
+      type: "development",
+      description:
+        "Desarrollo de una solución web para operación hotelera que digitaliza y centraliza procesos de reservación, pricing, fiscalidad, cobros, facturación y configuración administrativa, construida con React en frontend y .NET Core en backend.",
+      image: "/preview/glim.png",
+      technologies: ["React", ".NET Core", "TypeScript", "C#", "REST API", "SQL Server"],
+      demoUrl: "#",
+      repoUrl: "#",
+      category: "Enterprise",
+      featured: true,
+      period: "2025-12 - Actualidad",
+      role: "Desarrollador Full Stack — Grupo Leitz",
+      status: "En desarrollo",
+      isPrivate: true,
+      privateReason: "Producto corporativo Grupo Leitz",
+    },
+    {
       id: 1,
       title: "Trading Automatizado - Plataforma Backend",
       type: "development",
@@ -533,7 +578,7 @@ export default function AllProjectsPage() {
                   </h3>
                   
                   {/* Description */}
-                  <p className="text-slate-300 mb-4 leading-relaxed text-sm">
+                  <p className="text-slate-300 mb-4 leading-relaxed text-sm whitespace-pre-line">
                     {project.description}
                   </p>
 

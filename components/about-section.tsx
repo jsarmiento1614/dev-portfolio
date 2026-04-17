@@ -25,6 +25,7 @@ import {
   SiTypescript,
   SiJavascript,
   SiNodedotjs,
+  SiNestjs,
   SiOpenjdk, // Para Java
   SiFlutter,
 
@@ -43,7 +44,7 @@ import { Code, Smartphone, Palette } from "lucide-react"
 export default function AboutSection() {
   const [activeSkill, setActiveSkill] = useState<string | null>(null)
   const { elementRef, isVisible } = useScrollAnimation()
-  const skillsStagger = useStaggerAnimation(16, 0.1)
+  const skillsStagger = useStaggerAnimation(17, 0.1)
   const cardsStagger = useStaggerAnimation(3, 0.15)
   const profileAnimation = useDirectionalAnimation('left')
   const textAnimation = useDirectionalAnimation('right')
@@ -56,6 +57,7 @@ export default function AboutSection() {
     { name: "TypeScript", icon: SiTypescript, category: "Frontend", level: 95, color: "#3178C6", bgColor: "#3178C6" },
     { name: "JavaScript", icon: SiJavascript, category: "Frontend", level: 95, color: "#F7DF1E", bgColor: "#F7DF1E" },
     { name: "NodeJS", icon: SiNodedotjs, category: "Backend", level: 65, color: "#339933", bgColor: "#339933" },
+    { name: "NestJS", icon: SiNestjs, category: "Backend", level: 82, color: "#E0234E", bgColor: "#E0234E" },
     { name: "Java", icon: SiOpenjdk, category: "Backend", level: 70, color: "#ED8B00", bgColor: "#ED8B00" },
     { name: "Flutter", icon: SiFlutter, category: "Mobile", level: 80, color: "#02569B", bgColor: "#02569B" },
     { name: "Xamarin", icon: Smartphone, category: "Mobile", level: 80, color: "#3498DB", bgColor: "#3498DB" },

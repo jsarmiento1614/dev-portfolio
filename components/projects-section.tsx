@@ -29,6 +29,49 @@ export default function ProjectsSection() {
 
   const developmentProjects = [
     {
+      id: 10,
+      title: "AVE — Ecosistema de productos (Albatros)",
+      description:
+        "Suite multi-producto para distribución y retail (POS, e-commerce, fuerza de ventas, inventario, etc.). Microservicios NestJS detrás de API Gateway y JWT, backoffice Angular y permisos con MongoDB en modelo multi-aplicación y multi-compañía.",
+      image: "/preview/ave.png",
+      technologies: [
+        "NestJS",
+        "TypeScript",
+        "Node.js",
+        "MongoDB",
+        "Angular",
+        "JWT",
+        "API Gateway",
+        "Microservicios",
+      ],
+      demoUrl: "#",
+      repoUrl: "#",
+      category: "Enterprise",
+      featured: true,
+      period: "2025-09 - Actualidad",
+      role: "Desarrollador — Albatros",
+      isPrivate: true,
+      privateReason: "Ecosistema empresarial confidencial (Albatros)",
+      type: "development",
+    },
+    {
+      id: 11,
+      title: "GLIM — Plataforma de gestión hotelera (Grupo Leitz)",
+      description:
+        "Desarrollo de una solución web para operación hotelera que digitaliza y centraliza procesos de reservación, pricing, fiscalidad, cobros, facturación y configuración administrativa, construida con React en frontend y .NET Core en backend.",
+      image: "/preview/glim.png",
+      technologies: ["React", ".NET Core", "TypeScript", "C#", "REST API", "SQL Server"],
+      demoUrl: "#",
+      repoUrl: "#",
+      category: "Enterprise",
+      featured: true,
+      period: "2025-12 - Actualidad",
+      role: "Desarrollador Full Stack — Grupo Leitz",
+      isPrivate: true,
+      privateReason: "Producto corporativo Grupo Leitz",
+      type: "development",
+    },
+    {
       id: 1,
       title: "Trading Automatizado - Plataforma Backend",
       description:
@@ -248,10 +291,11 @@ export default function ProjectsSection() {
             </p>
           </motion.div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
             {developmentProjects.map((project, index) => (
               <motion.div
                 key={project.id}
+                className="h-full"
                 initial={{ opacity: 0, y: 50, scale: 0.9 }}
                 animate={isDevelopmentInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.9 }}
                 transition={{ 
@@ -271,7 +315,7 @@ export default function ProjectsSection() {
                 onHoverEnd={() => setHoveredProject(null)}
               >
                 <Card 
-                  className="group relative overflow-hidden backdrop-blur-md border transition-all duration-500 rounded-xl hover:backdrop-blur-lg"
+                  className="group relative flex h-full min-h-0 flex-col overflow-hidden backdrop-blur-md border transition-all duration-500 rounded-xl hover:backdrop-blur-lg"
                   style={{ 
                     backgroundColor: 'var(--color-projects-card-bg)',
                     borderColor: 'var(--color-projects-card-border)',
@@ -283,9 +327,9 @@ export default function ProjectsSection() {
                   className="absolute top-0 left-0 right-0 h-1"
                   style={{ background: 'var(--color-projects-accent-dev)' }}
                 ></div>
-                <CardContent className="p-0">
+                <CardContent className="flex min-h-0 flex-1 flex-col p-0">
                   {/* Project image with overlay */}
-                  <div className="relative overflow-hidden">
+                  <div className="relative shrink-0 overflow-hidden">
                     <OptimizedImage
                       src={project.image || "/placeholder.svg"}
                       alt={`Captura de pantalla del proyecto ${project.title} - ${project.description.substring(0, 60)}. Desarrollado con ${project.technologies.slice(0, 3).join(', ')}`}
@@ -331,7 +375,7 @@ export default function ProjectsSection() {
                     )}
                   </div>
 
-                  <div className="p-6">
+                  <div className="flex min-h-0 flex-1 flex-col p-6">
                     {/* Period and Role */}
                     <div className="mb-3 flex items-center justify-between">
                       <span className="text-sm font-medium text-primary">
@@ -355,13 +399,15 @@ export default function ProjectsSection() {
                       {project.title}
                     </h3>
                     
-                    {/* Description */}
-                    <p className="text-muted-foreground mb-4 leading-relaxed text-sm">
-                      {project.description}
-                    </p>
+                    {/* Description — grows so cards share equal height */}
+                    <div className="mb-4 min-h-0 flex-1">
+                      <p className="text-muted-foreground leading-relaxed text-sm whitespace-pre-line">
+                        {project.description}
+                      </p>
+                    </div>
 
                     {/* Technologies */}
-                    <div className="flex flex-wrap gap-2 mb-6">
+                    <div className="mt-auto flex flex-wrap gap-2 mb-6">
                       {project.technologies.map((tech) => (
                         <span 
                           key={tech} 
@@ -603,7 +649,7 @@ export default function ProjectsSection() {
                     </h3>
                     
                     {/* Description */}
-                    <p className="text-muted-foreground mb-4 leading-relaxed text-sm">
+                    <p className="text-muted-foreground mb-4 leading-relaxed text-sm whitespace-pre-line">
                       {project.description}
                     </p>
 
