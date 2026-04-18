@@ -11,7 +11,7 @@ export default function StructuredData() {
         "url": "https://jsarmiento.vercel.app",
         "image": {
           "@type": "ImageObject",
-          "url": "https://jsarmiento.vercel.app/jesus-sarmiento-profile.png",
+          "url": "https://jsarmiento.vercel.app/profile/person.png",
           "width": 400,
           "height": 400,
           "caption": "Jesús Sarmiento - Desarrollador Full Stack"

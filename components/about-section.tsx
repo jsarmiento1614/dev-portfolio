@@ -216,7 +216,7 @@ export default function AboutSection() {
                   transition={{ duration: 1, delay: 0.4, type: "spring", stiffness: 100 }}
                 >
                   <OptimizedImage
-                    src="/jesus-sarmiento-profile.png"
+                    src="/profile/person.png"
                     alt="Foto profesional de Jesús Alberto Sarmiento Bautista - Desarrollador Full Stack especializado en React, Next.js, Angular y Node.js con 6+ años de experiencia en desarrollo web y móvil"
                     width={320}
                     height={320}

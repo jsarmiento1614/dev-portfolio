@@ -1,5 +1,34 @@
 import jsPDF from 'jspdf'
 
+// Carga una imagen desde una URL pública y la devuelve como data URL junto con
+// sus dimensiones naturales. Devuelve null si no se puede cargar (permite que
+// la generación del PDF continúe sin la foto en caso de error).
+async function loadImage(
+  url: string,
+): Promise<{ dataUrl: string; width: number; height: number } | null> {
+  try {
+    const response = await fetch(url)
+    if (!response.ok) return null
+    const blob = await response.blob()
+    const dataUrl = await new Promise<string>((resolve, reject) => {
+      const reader = new FileReader()
+      reader.onloadend = () => resolve(reader.result as string)
+      reader.onerror = () => reject(reader.error)
+      reader.readAsDataURL(blob)
+    })
+    const dims = await new Promise<{ width: number; height: number }>((resolve, reject) => {
+      const img = new Image()
+      img.onload = () => resolve({ width: img.naturalWidth, height: img.naturalHeight })
+      img.onerror = () => reject(new Error('No se pudo decodificar la imagen'))
+      img.src = dataUrl
+    })
+    return { dataUrl, ...dims }
+  } catch (error) {
+    console.warn('No se pudo cargar la foto de perfil para el PDF:', error)
+    return null
+  }
+}
+
 // Datos del CV
 const cvData = {
   personalInfo: {
@@ -266,40 +295,83 @@ export async function generatePDF(): Promise<Blob> {
       yPosition += 8
     }
 
-    // HEADER - Información Personal
-    doc.setFontSize(28)
+    // HEADER - Información Personal (foto de perfil + datos)
+    const photo = await loadImage('/profile/person.png')
+
+    const photoBoxSize = 42 // mm (lado del recuadro reservado para la foto)
+    const photoGap = 8 // mm de separación entre la foto y el texto
+    const headerTop = yPosition
+    // Si la foto cargó, el texto del header arranca a la derecha del recuadro.
+    // Si no, se conserva el layout original alineado al margen izquierdo.
+    const headerTextX = photo ? leftMargin + photoBoxSize + photoGap : leftMargin
+
+    if (photo) {
+      // Ajustar tamaño manteniendo la relación de aspecto dentro del recuadro
+      const aspect = photo.width / photo.height
+      let drawW = photoBoxSize
+      let drawH = photoBoxSize
+      if (aspect > 1) {
+        drawH = photoBoxSize / aspect
+      } else if (aspect < 1) {
+        drawW = photoBoxSize * aspect
+      }
+
+      // Radio de 6px -> mm (jsPDF trabaja en mm por defecto). 96dpi: 1px = 0.2646mm
+      const cornerRadius = 6 * 0.2645833
+      // Recorte redondeado: se crea un path con roundedRect (estilo null => solo
+      // construye el path) y se aplica como clipping antes de insertar la imagen.
+      doc.saveGraphicsState()
+      doc.roundedRect(leftMargin, headerTop, drawW, drawH, cornerRadius, cornerRadius, null as any)
+      doc.clip()
+      doc.discardPath()
+      doc.addImage(photo.dataUrl, 'PNG', leftMargin, headerTop, drawW, drawH, undefined, 'FAST')
+      doc.restoreGraphicsState()
+    }
+
+    // Nombre (ligeramente reducido para que conviva con la foto sin cortar)
+    doc.setFontSize(photo ? 22 : 28)
     doc.setTextColor(...textColor)
     doc.setFont('helvetica', 'bold')
-    doc.text(cvData.personalInfo.name, leftMargin, yPosition)
-    yPosition += 12
+    doc.text(cvData.personalInfo.name, headerTextX, yPosition + 2)
+    yPosition += photo ? 9 : 12
 
-    doc.setFontSize(16)
+    doc.setFontSize(photo ? 13 : 16)
     doc.setTextColor(...accentColor)
     doc.setFont('helvetica', 'normal')
-    doc.text(cvData.personalInfo.title, leftMargin, yPosition)
-    yPosition += 10
+    doc.text(cvData.personalInfo.title, headerTextX, yPosition + 2)
+    yPosition += photo ? 8 : 10
 
     // Información de contacto organizada en líneas separadas
     doc.setFontSize(10)
     doc.setTextColor(...grayColor)
     doc.setFont('helvetica', 'normal')
-    
+
+    // Ancho disponible para contactos cuando hay foto (evita solaparse)
+    const contactColGap = photo ? 70 : 90
+
     // Línea 1: Email y Teléfono
-    doc.text(`Email: ${cvData.personalInfo.email}`, leftMargin, yPosition)
-    doc.text(`Tel: ${cvData.personalInfo.phone}`, leftMargin + 90, yPosition)
+    doc.text(`Email: ${cvData.personalInfo.email}`, headerTextX, yPosition)
+    doc.text(`Tel: ${cvData.personalInfo.phone}`, headerTextX + contactColGap, yPosition)
     yPosition += 5
 
     // Línea 2: Ubicación
-    doc.text(`Ubicación: ${cvData.personalInfo.location}`, leftMargin, yPosition)
+    doc.text(`Ubicación: ${cvData.personalInfo.location}`, headerTextX, yPosition)
     yPosition += 5
 
     // Línea 3: Enlaces profesionales
-    doc.text(`LinkedIn: ${cvData.personalInfo.linkedin}`, leftMargin, yPosition)
+    doc.text(`LinkedIn: ${cvData.personalInfo.linkedin}`, headerTextX, yPosition)
     yPosition += 5
-    doc.text(`GitHub: ${cvData.personalInfo.github}`, leftMargin, yPosition)
+    doc.text(`GitHub: ${cvData.personalInfo.github}`, headerTextX, yPosition)
     yPosition += 5
-    doc.text(`Portafolio: ${cvData.personalInfo.portfolio}`, leftMargin, yPosition)
+    doc.text(`Portafolio: ${cvData.personalInfo.portfolio}`, headerTextX, yPosition)
     yPosition += 8
+
+    // Asegurar que la posición no quede "dentro" de la foto antes de la
+    // línea separadora (el bloque de texto podría ser más corto que la foto)
+    if (photo) {
+      const headerBottom = headerTop + photoBoxSize + 4
+      if (yPosition < headerBottom) yPosition = headerBottom
+    }
 
     // Línea separadora principal elegante
     doc.setDrawColor(...primaryColor)
