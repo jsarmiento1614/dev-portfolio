@@ -15,31 +15,30 @@ import {
   Globe,
   Award,
   Users,
+  PenTool,
+  ImageIcon,
+  Code,
+  Smartphone,
+  Palette,
 } from "lucide-react"
 
-// Iconos específicos de tecnologías
-import { 
+// Iconos específicos de tecnologías (evitar barrel de react-icons en producción para ítems poco usados)
+import {
   SiAngular,
-  SiReact, 
+  SiReact,
   SiDotnet,
   SiTypescript,
   SiJavascript,
   SiNodedotjs,
   SiNestjs,
-  SiOpenjdk, // Para Java
+  SiOpenjdk,
   SiFlutter,
-
-  SiMysql, // Para SQL Server (similar)
+  SiMysql,
   SiPostgresql,
   SiMongodb,
   SiDocker,
   SiFigma,
-  SiAdobeillustrator,
-  SiAdobephotoshop
 } from "react-icons/si"
-
-// Iconos fallback de lucide-react
-import { Code, Smartphone, Palette } from "lucide-react"
 
 export default function AboutSection() {
   const [activeSkill, setActiveSkill] = useState<string | null>(null)
@@ -66,8 +65,8 @@ export default function AboutSection() {
     { name: "MongoDB", icon: SiMongodb, category: "Database", level: 80, color: "#47A248", bgColor: "#47A248" },
     { name: "Docker", icon: SiDocker, category: "DevOps", level: 80, color: "#2496ED", bgColor: "#2496ED" },
     { name: "Figma", icon: SiFigma, category: "Design", level: 95, color: "#F24E1E", bgColor: "#F24E1E" },
-    { name: "Illustrator", icon: SiAdobeillustrator, category: "Design", level: 80, color: "#FF9A00", bgColor: "#FF9A00" },
-    { name: "Photoshop", icon: SiAdobephotoshop, category: "Design", level: 80, color: "#31A8FF", bgColor: "#31A8FF" },
+    { name: "Illustrator", icon: PenTool, category: "Design", level: 80, color: "#FF9A00", bgColor: "#FF9A00" },
+    { name: "Photoshop", icon: ImageIcon, category: "Design", level: 80, color: "#31A8FF", bgColor: "#31A8FF" },
   ]
 
   const experiences = [
