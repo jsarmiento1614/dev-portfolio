@@ -1,8 +1,7 @@
+/* Import Google Fonts first so it precedes all other rules (CSS spec requires @import before other at-rules except @charset/@layer) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
-
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
 :root {
   /* Marca Personal - Paleta de Colores Mejorada */
